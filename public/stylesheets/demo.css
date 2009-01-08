@@ -1,0 +1,13 @@
+body {padding: 10px;}
+.small {font-size: .9em;}
+
+.bulb-on {
+	background: url(/images/icons/lightbulb.png) no-repeat;
+	width:16px;
+	height:16px;
+}
+.bulb-off {
+	background: url(/images/icons/lightbulb_off.png) no-repeat;
+	width:16px;
+	height:16px;
+}
