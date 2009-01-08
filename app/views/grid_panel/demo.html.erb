@@ -58,11 +58,11 @@ class Clerk < ActiveRecord::Base
     "#{last_name}, #{first_name}"
   end
 
-  # visually mark recently updated records
+  # visually mark recently updated records (HTML in the model is ugly and is here for the sake of the demo only)
   virtual_column :updated
   def updated
     bulb = updated_at < 1.hour.ago ? "on" : "off"
-    "<div class='bulb-#{bulb}' />"
+    "&lt;div class='bulb-#{bulb}' /&gt;"
   end
 
   # Which columns and in which order to expose.
