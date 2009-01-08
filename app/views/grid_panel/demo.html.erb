@@ -1,0 +1,136 @@
+<%- content_for :javascript do -%>
+Ext.onReady(function(){
+  <%- for widget in @widgets -%>
+	<%= send "#{widget}_class_definition" %>
+	<%= send "#{widget}_widget_instance" %>
+	<%= widget.to_js %>.render("<%= widget.to_s.split('_').join('-') %>");
+	<%- end -%>
+})
+<%- end -%>
+
+<h1>Meet Netzke::GridPanel</h1>
+<p>Here's an instance of GridPanel, which by default supports multiline CRUD-operations, pagination, sorting, search filters (per column), automatic column type detection (e.g. "salary" is a number column) and persistent on-the-fly configuration of the columns ("move" and "resize"-operations). The code:</p>
+<pre><code>
+  class GridPanelController < ApplicationController
+    netzke :bosses, 
+      :widget_class_name => "GridPanel", 
+      :data_class_name => 'Boss', 
+      :ext_config => {
+        :rows_per_page => 20
+      }
+  end
+</code></pre>
+<p>&nbsp;</p>
+<div id="bosses"></div>
+<p>&nbsp;</p>
+
+
+<h2>Control over columns</h2>
+<p>Need more control over which columns to display and how? Here's an example (put it inside the controller):</p>
+<pre><code>
+  netzke :bosses_custom_columns, 
+    :widget_class_name => "GridPanel", 
+    :data_class_name => 'Boss', 
+    :ext_config => {
+      :rows_per_page => 20, 
+      :title => "Bosses",
+      :width => 400
+    },
+    :columns => [:id, # id should always be included and is by default hidden
+      :last_name, 
+      {:name => :salary, :read_only => true, :label => "$"}, 
+      {:name => :email, :width => 180}]
+</code></pre>
+<p>&nbsp;</p>
+<div id="bosses-custom-columns"></div>
+<p>&nbsp;</p>
+
+<h2>Associations and "virtual" columns</h2>
+<p>Need to handle one-to-many associations? Need to define some "virtual", "logic" columns in your model? Want to control which columns can be picked-up by the grid from within the model? Here is how:</p>
+<pre><code>
+# Model
+class Clerk < ActiveRecord::Base
+  # declare your association
+  belongs_to :boss
+
+  virtual_column :name
+  def name
+    "#{last_name}, #{first_name}"
+  end
+
+  # visually mark recently updated records
+  virtual_column :updated
+  def updated
+    img = updated_at < 1.hour.ago ? "lightbulb_off" : "lightbulb"
+    "&lt;img src='/images/icons/#{img}.png' /&gt;"
+  end
+
+  # Which columns and in which order to expose.
+  # Note the double underscore notation for signaling which column (or instance method) 
+  # of the association should be used.
+  expose_columns :id, # id should always be exposed and is by default hidden
+    {:name => :name, :read_only => true},
+    {:name => :updated, :read_only => true, :width => 50},
+    :email, 
+    :salary,
+    {:name => :boss__last_name, :read_only => true}
+end
+
+# Inside the controller:
+netzke :clerks, 
+  :widget_class_name => "GridPanel", 
+  :data_class_name => 'Clerk', 
+  :ext_config => {
+    :rows_per_page => 50
+  }
+</code></pre>
+<p>&nbsp;</p>
+<div id="clerks"></div>
+<p>&nbsp;</p>
+
+
+<h2>Permissions</h2>
+Want to specify permissions for the grid?
+<pre><code>
+netzke :bosses_with_permissions, 
+  :widget_class_name => "GridPanel", 
+  :data_class_name => 'Boss', 
+  :ext_config => {
+    :rows_per_page => 20, 
+    :title => "Bosses"
+  },
+  :prohibit => [:update, :delete] # prohibit updating and deleting data
+</code></pre>
+<p>&nbsp;</p>
+<div id="bosses-with-permissions"></div>
+<p class="small">A word about the security: it's not only about disabling buttons. Even if the user manages to submit a prohibited operation, the server side of the widget will block the attempt.
+</p><p>&nbsp;</p>
+
+
+<h2>Dynamic configuration</h2>
+<p>Want to be able to configure the columns or change the permissions on the fly? Enable the configuration tool button for the grid (it's in the right corner of the top toolbar) and get access to the grid configuration panel. It's pretty basic at the moment, but you'll get the idea - try changing the labels, read-only flags, or replace boss__last_name with boss__salary (and then get the hint ;-) ):</p>
+<pre><code>
+  netzke :clerks_with_config_tool, :widget_class_name => "Wrapper", :item => {
+    :widget_class_name => "GridPanel", 
+    :data_class_name => 'Clerk', 
+    :ext_config => {
+      :rows_per_page => 50,
+      :title => "Clerks",
+      :properties => true # enable the configuration tool
+    }}
+</code></pre>
+<p>&nbsp;</p>
+We wrap the grid up so that after changing its configuration it can be automatically reloaded, so that there's no need te refresh the page. Btw, this touches the real power behind the Netzke framework: ability to easily nest widgets. This will be covered in a separate tutorial/demo.
+<p>&nbsp;</p>
+<div id="clerks-with-config-tool"></div>
+<p>&nbsp;</p>
+
+<h2>Get the code</h2>
+<p>Netzke framework consists of 2 Rails plugins/ruby gems: netzke-core and netzke-basepack. Get them on the GitHub along with the source code for this demo: <a href = http://github.com/skozlov>http://github.com/skozlov</a></p>
+<p>The news about Netzke development and more tutorials on <a href = http://blog.writelesscode.com>http://blog.writelesscode.com</a>
+</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p class="small"><%= link_to "regenerate test data", :action => "regenerate_test_data" %></p>
+<p class="small"><%= link_to "reset column configs", :action => "reset_columns" %></p>
+<p class="small"><%= link_to "reset general widget configs", :action => "reset_configs" %></p>

@@ -1,0 +1,18 @@
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>Netzke Framework Demo</title>
+	<%= netzke_js_include %>
+	<%= netzke_css_include %>
+	<style type="text/css" media="screen">
+	body {padding: 10px;}
+	.small {font-size: .9em;}
+	</style>
+  <script type="text/javascript" charset="utf-8">
+    <%= feedback_ghost_class_definition %>
+    <%= feedback_ghost_widget_instance %>
+    <%= yield :javascript %>
+	</script>
+</head>
+<body>
+	<%= yield %>
+</body>
