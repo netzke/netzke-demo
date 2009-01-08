@@ -62,7 +62,7 @@ class Clerk < ActiveRecord::Base
   virtual_column :updated
   def updated
     img = updated_at < 1.hour.ago ? "lightbulb_off" : "lightbulb"
-    "<img src='/images/icons/#{img}.png' />"
+    "&lt;img src='/images/icons/#{img}.png' /&gt;"
   end
 
   # Which columns and in which order to expose.
