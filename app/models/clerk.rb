@@ -10,7 +10,7 @@ class Clerk < ActiveRecord::Base
   # visually mark recently updated records
   virtual_column :updated
   def updated
-    bulb = updated_at < 1.hour.ago ? "on" : "off"
+    bulb = updated_at < 1.hour.ago ? "off" : "on"
     "<div class='bulb-#{bulb}' />"
   end
 
