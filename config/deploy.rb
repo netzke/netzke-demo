@@ -19,6 +19,6 @@ end
 
 desc "Make the link to the DB-file"
 task :make_db_link, :roles => [:app] do
-  run "ln -s #{shared_path}/blog.db #{release_path}/blog.db"
+  run "ln -s #{shared_path}/production.sqlite3 #{release_path}/db/production.sqlite3"
 end
 after "deploy:update_code", :make_db_link
