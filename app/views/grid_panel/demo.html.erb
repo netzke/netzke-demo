@@ -62,7 +62,7 @@ class Clerk < ActiveRecord::Base
   virtual_column :updated
   def updated
     img = updated_at < 1.hour.ago ? "lightbulb_off" : "lightbulb"
-    "&lt;img src='/images/icons/#{img}.png' /&gt;"
+    "<img src='/images/icons/#{img}.png' />"
   end
 
   # Which columns and in which order to expose.
@@ -73,7 +73,7 @@ class Clerk < ActiveRecord::Base
     {:name => :updated, :read_only => true, :width => 50},
     :email, 
     :salary,
-    {:name => :boss__last_name, :read_only => true}
+    :boss__last_name # association
 end
 
 # Inside the controller:

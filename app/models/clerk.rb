@@ -22,5 +22,5 @@ class Clerk < ActiveRecord::Base
     {:name => :updated, :read_only => true, :width => 50},
     :email, 
     :salary,
-    {:name => :boss__last_name, :read_only => true}
+    :boss__last_name # association
 end
