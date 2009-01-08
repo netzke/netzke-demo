@@ -10,8 +10,8 @@ class Clerk < ActiveRecord::Base
   # visually mark recently updated records
   virtual_column :updated
   def updated
-    img = updated_at < 1.hour.ago ? "lightbulb_off" : "lightbulb"
-    "<img src='/images/icons/#{img}.png' />"
+    bulb = updated_at < 1.hour.ago ? "on" : "off"
+    "<div class='bulb-#{bulb}' />"
   end
 
   # Which columns and in which order to expose.
