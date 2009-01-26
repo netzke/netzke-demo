@@ -30,6 +30,8 @@ Rails::Initializer.run do |config|
   
   config.gem "netzke-basepack"
   config.gem "faker"
+  config.gem "authlogic"
+  
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

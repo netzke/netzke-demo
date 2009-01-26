@@ -1,30 +1,31 @@
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
   <title>Netzke framework demo/tutorial - integrating ExtJS and Rails</title>
-  
 </head>
 <body>
   <h2>Netzke framework demo/tutorial</h2>
+  <h3>BasicApp</h3>
+  <%= link_to "Introduction", :controller => "basic_app", :action => "intro" %>,
+  <%= link_to "Demo", :controller => "basic_app", :action => "demo" %>,
+  <%= link_to "Code", :controller => "basic_app", :action => "code" %>
+
   <h3>GridPanel</h3>
   <%= link_to "Demo", :controller => "grid_panel" %>
+
   <h3>FormPanel</h3>
   <%= "Demo" %>
+
   <h3>TreePanel</h3>
   <%= "Demo" %>
+
   <h3>Compound widgets</h3>
   <%= "Demo" %>
-  <h2>Get the code</h2>
+
+  <h2>The code</h2>
   <p>Source code for this demo: <a href = http://github.com/skozlov/netzke-demo/tree/master>http://github.com/skozlov/netzke-demo/tree/master</a></p>
   <p>Netzke framework: <a href = http://github.com/skozlov/netzke-core/tree/master>netzke-core</a>, <a href = http://github.com/skozlov/netzke-basepack/tree/master>netzke-basepack</a></p>
   <p>News about Netzke development and tutorials: <a href = http://blog.writelesscode.com>http://blog.writelesscode.com</a>
   </p>
-  <script type="text/javascript">
-  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-  </script>
-  <script type="text/javascript">
-  try {
-  var pageTracker = _gat._getTracker("UA-6610062-3");
-  pageTracker._trackPageview();
-  } catch(err) {}</script>
+
+	<%= render :partial => "shared/analytics" %>
 </body>

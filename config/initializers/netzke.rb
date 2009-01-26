@@ -1,0 +1,1 @@
+# Netzke::BasicAppDemo.config[:logout_url] = "/blah"
