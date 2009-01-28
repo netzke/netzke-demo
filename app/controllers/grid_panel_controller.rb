@@ -17,7 +17,7 @@ class GridPanelController < ApplicationController
     },
     :columns => [:id, # id should always be included and is by default hidden
       :last_name, 
-      {:name => :salary, :read_only => true, :label => "$"}, 
+      {:name => :salary, :read_only => true, :label => "$", :renderer => 'usMoney'}, 
       {:name => :email, :width => 180}]
 
   netzke :clerks, 

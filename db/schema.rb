@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090125235423) do
+ActiveRecord::Schema.define(:version => 20090128165751) do
 
   create_table "bosses", :force => true do |t|
     t.string   "first_name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20090125235423) do
     t.boolean  "hidden"
     t.integer  "width"
     t.string   "editor",     :limit => 32
+    t.string   "renderer",   :limit => 32
     t.integer  "layout_id"
     t.datetime "created_at"
     t.datetime "updated_at"

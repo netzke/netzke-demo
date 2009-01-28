@@ -38,7 +38,7 @@ Ext.onReady(function(){
     },
     :columns => [:id, # id should always be included and is by default hidden
       :last_name, 
-      {:name => :salary, :read_only => true, :label => "$"}, 
+      {:name => :salary, :read_only => true, :label => "$", :renderer => 'usMoney'}, 
       {:name => :email, :width => 180}]
 </code></pre>
 <p>&nbsp;</p>
@@ -72,7 +72,7 @@ class Clerk < ActiveRecord::Base
     {:name => :name, :read_only => true},
     {:name => :updated, :read_only => true, :width => 50},
     :email, 
-    :salary,
+    {:name => :salary, :renderer => 'usMoney'},
     :boss__last_name # association
 end
 

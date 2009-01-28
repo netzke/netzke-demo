@@ -6,4 +6,9 @@ class BasicAppController < ApplicationController
   def intro
     render :layout => false
   end
+  
+  def index
+    redirect_to :action => "intro"
+  end
+  
 end

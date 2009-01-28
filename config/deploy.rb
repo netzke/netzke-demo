@@ -22,3 +22,8 @@ task :make_db_link, :roles => [:app] do
   run "ln -s #{shared_path}/production.sqlite3 #{release_path}/db/production.sqlite3"
 end
 after "deploy:update_code", :make_db_link
+
+desc "Recreate the database from migrations"
+task :db_migrate_reset, :roles => [:app] do
+  run "cd #{current_path} && rake db:migrate:reset"
+end
