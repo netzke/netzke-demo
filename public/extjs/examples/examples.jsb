@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<project path="" name="Ext Examples" author="Ext JS, LLC" version="2.2" copyright="Ext JS Library $version&#xD;&#xA;Copyright(c) 2006-2008, $author.&#xD;&#xA;licensing@extjs.com&#xD;&#xA;&#xD;&#xA;http://extjs.com/license" output="C:\apps\www\deploy\ext-2.2\examples" source="True" source-dir="$output" minify="False" min-dir="$output\build" doc="False" doc-dir="$output\docs" master="true" master-file="$output\yui-ext.js" zip="true" zip-file="$output\yuo-ext.$version.zip">
+<project path="" name="Ext Examples" author="Ext JS, LLC" version="2.2.1" copyright="Ext JS Library $version&#xD;&#xA;Copyright(c) 2006-2009, $author.&#xD;&#xA;licensing@extjs.com&#xD;&#xA;&#xD;&#xA;http://extjs.com/license" output="E:\apps\www\deploy\ext-2.2.1\examples" source="True" source-dir="$output" minify="False" min-dir="$output\build" doc="False" doc-dir="$output\docs" master="true" master-file="$output\yui-ext.js" zip="true" zip-file="$output\yuo-ext.$version.zip">
   <file name="dialog\blog.html" path="dialog" />
   <file name="dialog\comments.txt" path="dialog" />
   <file name="dialog\hello.html" path="dialog" />
@@ -827,6 +827,8 @@
   <file name="history\history.html" path="history" />
   <file name="shared\screens\history.gif" path="shared\screens" />
   <file name="shared\screens\gmap-panel.gif" path="shared\screens" />
+  <file name="tree\check-nodes.json" path="tree" />
+  <file name="tree\check-tree.html" path="tree" />
   <file name="core\spotlight-example.js" path="core" />
   <file name="core\Spotlight.js" path="core" />
   <file name="core\templates.js" path="core" />
@@ -940,6 +942,7 @@
   <file name="tasks\classes.js" path="tasks" />
   <file name="tasks\gears.js" path="tasks" />
   <file name="tasks\tasks.js" path="tasks" />
+  <file name="tree\check-tree.js" path="tree" />
   <file name="tree\column-tree.js" path="tree" />
   <file name="tree\ColumnNodeUI.js" path="tree" />
   <file name="tree\reorder.js" path="tree" />

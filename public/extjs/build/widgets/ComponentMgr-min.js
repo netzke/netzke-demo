@@ -1,9 +1,1 @@
-/*
- * Ext JS Library 2.2
- * Copyright(c) 2006-2008, Ext JS, LLC.
- * licensing@extjs.com
- * 
- * http://extjs.com/license
- */
-
-Ext.ComponentMgr=function(){var B=new Ext.util.MixedCollection();var A={};return{register:function(C){B.add(C)},unregister:function(C){B.remove(C)},get:function(C){return B.get(C)},onAvailable:function(E,D,C){B.on("add",function(F,G){if(G.id==E){D.call(C||G,G);B.un("add",D,C)}})},all:B,registerType:function(D,C){A[D]=C;C.xtype=D},create:function(C,D){return new A[C.xtype||D](C)}}}();Ext.reg=Ext.ComponentMgr.registerType;
+Ext.ComponentMgr=function(){var b=new Ext.util.MixedCollection();var a={};return{register:function(d){b.add(d)},unregister:function(d){b.remove(d)},get:function(c){return b.get(c)},onAvailable:function(e,d,c){b.on("add",function(f,g){if(g.id==e){d.call(c||g,g);b.un("add",d,c)}})},all:b,registerType:function(d,c){a[d]=c;c.xtype=d},create:function(c,d){return new a[c.xtype||d](c)}}}();Ext.reg=Ext.ComponentMgr.registerType;

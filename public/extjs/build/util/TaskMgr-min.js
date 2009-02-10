@@ -1,9 +1,1 @@
-/*
- * Ext JS Library 2.2
- * Copyright(c) 2006-2008, Ext JS, LLC.
- * licensing@extjs.com
- * 
- * http://extjs.com/license
- */
-
-Ext.util.TaskRunner=function(E){E=E||10;var F=[],A=[];var B=0;var G=false;var D=function(){G=false;clearInterval(B);B=0};var H=function(){if(!G){G=true;B=setInterval(I,E)}};var C=function(J){A.push(J);if(J.onStop){J.onStop.apply(J.scope||J)}};var I=function(){if(A.length>0){for(var O=0,K=A.length;O<K;O++){F.remove(A[O])}A=[];if(F.length<1){D();return }}var M=new Date().getTime();for(var O=0,K=F.length;O<K;++O){var N=F[O];var J=M-N.taskRunTime;if(N.interval<=J){var L=N.run.apply(N.scope||N,N.args||[++N.taskRunCount]);N.taskRunTime=M;if(L===false||N.taskRunCount===N.repeat){C(N);return }}if(N.duration&&N.duration<=(M-N.taskStartTime)){C(N)}}};this.start=function(J){F.push(J);J.taskStartTime=new Date().getTime();J.taskRunTime=0;J.taskRunCount=0;H();return J};this.stop=function(J){C(J);return J};this.stopAll=function(){D();for(var K=0,J=F.length;K<J;K++){if(F[K].onStop){F[K].onStop()}}F=[];A=[]}};Ext.TaskMgr=new Ext.util.TaskRunner();
+Ext.util.TaskRunner=function(e){e=e||10;var f=[],a=[];var b=0;var g=false;var d=function(){g=false;clearInterval(b);b=0};var h=function(){if(!g){g=true;b=setInterval(i,e)}};var c=function(j){a.push(j);if(j.onStop){j.onStop.apply(j.scope||j)}};var i=function(){if(a.length>0){for(var o=0,k=a.length;o<k;o++){f.remove(a[o])}a=[];if(f.length<1){d();return}}var m=new Date().getTime();for(var o=0,k=f.length;o<k;++o){var n=f[o];var j=m-n.taskRunTime;if(n.interval<=j){var l=n.run.apply(n.scope||n,n.args||[++n.taskRunCount]);n.taskRunTime=m;if(l===false||n.taskRunCount===n.repeat){c(n);return}}if(n.duration&&n.duration<=(m-n.taskStartTime)){c(n)}}};this.start=function(j){f.push(j);j.taskStartTime=new Date().getTime();j.taskRunTime=0;j.taskRunCount=0;h();return j};this.stop=function(j){c(j);return j};this.stopAll=function(){d();for(var k=0,j=f.length;k<j;k++){if(f[k].onStop){f[k].onStop()}}f=[];a=[]}};Ext.TaskMgr=new Ext.util.TaskRunner();

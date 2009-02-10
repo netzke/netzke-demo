@@ -1,6 +1,6 @@
 /*
- * Ext JS Library 2.2
- * Copyright(c) 2006-2008, Ext JS, LLC.
+ * Ext JS Library 2.2.1
+ * Copyright(c) 2006-2009, Ext JS, LLC.
  * licensing@extjs.com
  * 
  * http://extjs.com/license
@@ -85,7 +85,7 @@ Ext.EventManager.on(window, 'load', function(){
             text: 'Editable Grid',
             url: 'grid/edit-grid.html',
             icon: 'grid-edit.gif',
-            desc: 'An editable grid loaded from XML that shows multiple types of grid ediors as well as defining custom data records.'
+            desc: 'An editable grid loaded from XML that shows multiple types of grid editors as well as defining custom data records.'
         },{
             text: 'XML Grid',
             url: 'grid/xml-grid.html',
@@ -408,10 +408,29 @@ Ext.EventManager.on(window, 'load', function(){
 
     setTimeout(function(){
         Ext.get('loading').remove();
-        Ext.get('loading-mask').fadeOut({remove:true});
+        Ext.fly('loading-mask').fadeOut({
+			remove:true,
+			callback : function() {
+				var cp = new Ext.state.CookieProvider();
+
+				if(window.console && window.console.firebug && ! cp.get('hideFBWarning')){
+					var tpl = new Ext.Template(
+						'<div style="border: 1px solid #FF0000; background-color:#FFAAAA; display:none; padding:15px; color:#000000;"><b>Warning: </b> Firebug is known to cause performance issues with Ext JS. <a href="#" id="hideWarning">[ Hide ]</a></div>'			   
+					);
+					var newEl = tpl.insertFirst('all-demos');
+					
+					Ext.fly('hideWarning').on('click', function() {
+						Ext.fly(newEl).slideOut('t',{remove:true});
+						cp.set('hideFBWarning', true);	
+					});
+					Ext.fly(newEl).slideIn();
+				}
+				
+				
+			}
+		
+		
+		});
     }, 250);
 
-    if(window.console && window.console.firebug){
-        Ext.Msg.alert('Warning', 'Firebug is known to cause performance issues with Ext JS.');
-    }
 });

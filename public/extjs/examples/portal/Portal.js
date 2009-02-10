@@ -1,6 +1,6 @@
 /*
- * Ext JS Library 2.2
- * Copyright(c) 2006-2008, Ext JS, LLC.
+ * Ext JS Library 2.2.1
+ * Copyright(c) 2006-2009, Ext JS, LLC.
  * licensing@extjs.com
  * 
  * http://extjs.com/license
@@ -101,19 +101,22 @@ Ext.extend(Ext.ux.Portal.DropZone, Ext.dd.DropTarget, {
         // find insert position
         var p, match = false, pos = 0,
             c = portal.items.itemAt(col),
-            items = c.items.items;
+            items = c.items.items, overSelf = false;
 
         for(var len = items.length; pos < len; pos++){
             p = items[pos];
             var h = p.el.getHeight();
-            if(h !== 0 && (p.el.getY()+(h/2)) > xy[1]){
+            if(h === 0){
+                overSelf = true;
+            }
+            else if((p.el.getY()+(h/2)) > xy[1]){
                 match = true;
                 break;
             }
         }
 
-        var overEvent = this.createEvent(dd, e, data, col, c,
-                match && p ? pos : c.items.getCount());
+        pos = (match && p ? pos : c.items.getCount()) + (overSelf ? -1 : 0);
+        var overEvent = this.createEvent(dd, e, data, col, c, pos);
 
         if(portal.fireEvent('validatedrop', overEvent) !== false &&
            portal.fireEvent('beforedragover', overEvent) !== false){
@@ -127,12 +130,12 @@ Ext.extend(Ext.ux.Portal.DropZone, Ext.dd.DropTarget, {
                 px.moveProxy(c.el.dom, null);
             }
 
-            this.lastPos = {c: c, col: col, p: match && p ? pos : false};
+            this.lastPos = {c: c, col: col, p: overSelf || (match && p) ? pos : false};
             this.scrollPos = portal.body.getScroll();
 
             portal.fireEvent('dragover', overEvent);
 
-            return overEvent.status;;
+            return overEvent.status;
         }else{
             return overEvent.status;
         }
@@ -151,14 +154,18 @@ Ext.extend(Ext.ux.Portal.DropZone, Ext.dd.DropTarget, {
         var c = this.lastPos.c, col = this.lastPos.col, pos = this.lastPos.p;
 
         var dropEvent = this.createEvent(dd, e, data, col, c,
-                pos !== false ? pos : c.items.getCount());
+            pos !== false ? pos : c.items.getCount());
 
         if(this.portal.fireEvent('validatedrop', dropEvent) !== false &&
            this.portal.fireEvent('beforedrop', dropEvent) !== false){
 
             dd.proxy.getProxy().remove();
             dd.panel.el.dom.parentNode.removeChild(dd.panel.el.dom);
+            
             if(pos !== false){
+                if(c == dd.panel.ownerCt && (c.items.items.indexOf(dd.panel) <= pos)){
+                    pos++;
+                }
                 c.insert(pos, dd.panel);
             }else{
                 c.add(dd.panel);

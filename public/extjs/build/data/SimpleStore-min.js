@@ -1,9 +1,1 @@
-/*
- * Ext JS Library 2.2
- * Copyright(c) 2006-2008, Ext JS, LLC.
- * licensing@extjs.com
- * 
- * http://extjs.com/license
- */
-
-Ext.data.SimpleStore=function(A){Ext.data.SimpleStore.superclass.constructor.call(this,Ext.apply(A,{reader:new Ext.data.ArrayReader({id:A.id},Ext.data.Record.create(A.fields))}))};Ext.extend(Ext.data.SimpleStore,Ext.data.Store,{loadData:function(E,B){if(this.expandData===true){var D=[];for(var C=0,A=E.length;C<A;C++){D[D.length]=[E[C]]}E=D}Ext.data.SimpleStore.superclass.loadData.call(this,E,B)}});
+Ext.data.SimpleStore=function(a){Ext.data.SimpleStore.superclass.constructor.call(this,Ext.apply(a,{reader:new Ext.data.ArrayReader({id:a.id},Ext.data.Record.create(a.fields))}))};Ext.extend(Ext.data.SimpleStore,Ext.data.Store,{loadData:function(e,b){if(this.expandData===true){var d=[];for(var c=0,a=e.length;c<a;c++){d[d.length]=[e[c]]}e=d}Ext.data.SimpleStore.superclass.loadData.call(this,e,b)}});

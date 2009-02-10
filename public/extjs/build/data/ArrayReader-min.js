@@ -1,9 +1,1 @@
-/*
- * Ext JS Library 2.2
- * Copyright(c) 2006-2008, Ext JS, LLC.
- * licensing@extjs.com
- * 
- * http://extjs.com/license
- */
-
-Ext.data.ArrayReader=Ext.extend(Ext.data.JsonReader,{readRecords:function(C){var B=this.meta?this.meta.id:null;var G=this.recordType,K=G.prototype.fields;var E=[];var M=C;for(var I=0;I<M.length;I++){var D=M[I];var O={};var A=((B||B===0)&&D[B]!==undefined&&D[B]!==""?D[B]:null);for(var H=0,P=K.length;H<P;H++){var L=K.items[H];var F=L.mapping!==undefined&&L.mapping!==null?L.mapping:H;var N=D[F]!==undefined?D[F]:L.defaultValue;N=L.convert(N,D);O[L.name]=N}var J=new G(O,A);J.json=D;E[E.length]=J}return{records:E,totalRecords:E.length}}});
+Ext.data.ArrayReader=Ext.extend(Ext.data.JsonReader,{readRecords:function(c){var b=this.meta?this.meta.id:null;var h=this.recordType,q=h.prototype.fields;var e=[];var s=c;for(var m=0;m<s.length;m++){var d=s[m];var u={};var a=((b||b===0)&&d[b]!==undefined&&d[b]!==""?d[b]:null);for(var l=0,w=q.length;l<w;l++){var r=q.items[l];var g=r.mapping!==undefined&&r.mapping!==null?r.mapping:l;var t=d[g]!==undefined?d[g]:r.defaultValue;t=r.convert(t,d);u[r.name]=t}var p=new h(u,a);p.json=d;e[e.length]=p}return{records:e,totalRecords:e.length}}});

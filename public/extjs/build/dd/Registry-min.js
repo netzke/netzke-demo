@@ -1,9 +1,1 @@
-/*
- * Ext JS Library 2.2
- * Copyright(c) 2006-2008, Ext JS, LLC.
- * licensing@extjs.com
- * 
- * http://extjs.com/license
- */
-
-Ext.dd.Registry=function(){var D={};var B={};var A=0;var C=function(F,E){if(typeof F=="string"){return F}var G=F.id;if(!G&&E!==false){G="extdd-"+(++A);F.id=G}return G};return{register:function(H,I){I=I||{};if(typeof H=="string"){H=document.getElementById(H)}I.ddel=H;D[C(H)]=I;if(I.isHandle!==false){B[I.ddel.id]=I}if(I.handles){var G=I.handles;for(var F=0,E=G.length;F<E;F++){B[C(G[F])]=I}}},unregister:function(H){var J=C(H,false);var I=D[J];if(I){delete D[J];if(I.handles){var G=I.handles;for(var F=0,E=G.length;F<E;F++){delete B[C(G[F],false)]}}}},getHandle:function(E){if(typeof E!="string"){E=E.id}return B[E]},getHandleFromEvent:function(F){var E=Ext.lib.Event.getTarget(F);return E?B[E.id]:null},getTarget:function(E){if(typeof E!="string"){E=E.id}return D[E]},getTargetFromEvent:function(F){var E=Ext.lib.Event.getTarget(F);return E?D[E.id]||B[E.id]:null}}}();
+Ext.dd.Registry=function(){var d={};var b={};var a=0;var c=function(f,e){if(typeof f=="string"){return f}var g=f.id;if(!g&&e!==false){g="extdd-"+(++a);f.id=g}return g};return{register:function(h,j){j=j||{};if(typeof h=="string"){h=document.getElementById(h)}j.ddel=h;d[c(h)]=j;if(j.isHandle!==false){b[j.ddel.id]=j}if(j.handles){var g=j.handles;for(var f=0,e=g.length;f<e;f++){b[c(g[f])]=j}}},unregister:function(h){var k=c(h,false);var j=d[k];if(j){delete d[k];if(j.handles){var g=j.handles;for(var f=0,e=g.length;f<e;f++){delete b[c(g[f],false)]}}}},getHandle:function(e){if(typeof e!="string"){e=e.id}return b[e]},getHandleFromEvent:function(g){var f=Ext.lib.Event.getTarget(g);return f?b[f.id]:null},getTarget:function(e){if(typeof e!="string"){e=e.id}return d[e]},getTargetFromEvent:function(g){var f=Ext.lib.Event.getTarget(g);return f?d[f.id]||b[f.id]:null}}}();
