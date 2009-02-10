@@ -62,7 +62,7 @@ module Netzke
                 :title => false,
                 :body_style => "padding: 5px",
                 :html => %Q{
-What you see is a BorderLayoutPanel-based compound widget, containing a GridPanel interfacing the Clerks data, and a Panel with a little explanation (the one you are reading). <br>What is here to play with: <br>1) Do some on-the-fly configuration of the grid - move around or resize its columns, change something in the columns configuration panel (click the tool-button in the up-right corner), and then log out and again in - you'll see that your changes got stored; <br>2) Change the size of this region - it'll get stored for you as well, by to the BorderLayoutPanel widget. <br>The same explanation naturally applies to the <a href="#bosses">bosses</a> view.
+What you see is a BorderLayoutPanel-based compound widget, containing a GridPanel interfacing the Clerks data, and a Panel with a little explanation (the one you are reading). <br>What is here to play with: <br>1) Do some on-the-fly configuration of the grid - move around or resize its columns, change something in the columns configuration panel (click the tool-button in the up-right corner), and then log out and in again - you'll see that your changes got stored; <br>2) Change the size of this (south) region - it'll get stored for you as well, by to the BorderLayoutPanel widget. <br>The same explanation naturally applies to the <a href="#bosses">bosses</a> view.
 }
               }
             }
@@ -100,12 +100,28 @@ What you see is a BorderLayoutPanel-based compound widget, containing a GridPane
         },
 
         :users => {
-          :widget_class_name => "UserManager"
-          # :data_class_name => "User", 
-          # :ext_config => {
-          #   :title => "Users"
-          # },
-          # :prohibit => :delete
+          :widget_class_name => "BorderLayoutPanel",
+          :ext_config => {
+            :title => 'User manager'
+          },
+          :regions => {
+            :center => {
+              :widget_class_name => "UserManager"
+            },
+            :south => {
+              :widget_class_name => "Panel",
+              :region_config => {
+                :height => 150,
+                :split => true
+              },
+              :ext_config => {
+                :title => false,
+                :auto_scroll => true,
+                :body_style => "padding: 5px",
+                :html => %Q{Here you have a widget called UserManager, which extends the compound TableEditor widget (part of netzke-pasepack), which in its turn consists of a GridPanel and a FormPanel working together.<br>Adding new users is done by filling out the form (see Rails' validations kicking in).<br>Layouts for grid and form are configured separately (by pressing the configuration tool-button on the top-right corner of each widget). See how {"inputType":"password"} is specified in the "Ext config" column for the form - this is how you get the password masked. This way you may specify any additional configuration parameters understood by any Ext.form.Field-derived component. Later the FieldConfigurator will probably provide a GUI for editing this extra configuration, but for now the JSON code can only be edited by hand. But! If you add a column named "input_type" to netzke_form_panel_fields table, this configuration option will get magically over-taken by that column, instead of being present in "Ext config" (this is true for any other configuration option for Ext.form.Field, of course)}
+              }
+            }
+          }
         }
       }
     end
