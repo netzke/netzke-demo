@@ -100,12 +100,12 @@ What you see is a BorderLayoutPanel-based compound widget, containing a GridPane
         },
 
         :users => {
-          :widget_class_name => "GridPanel", 
-          :data_class_name => "User", 
-          :ext_config => {
-            :title => "Users"
-          },
-          :prohibit => :delete
+          :widget_class_name => "UserManager"
+          # :data_class_name => "User", 
+          # :ext_config => {
+          #   :title => "Users"
+          # },
+          # :prohibit => :delete
         }
       }
     end

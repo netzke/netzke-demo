@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090128165751) do
+ActiveRecord::Schema.define(:version => 20090210020716) do
 
   create_table "bosses", :force => true do |t|
     t.string   "first_name"
@@ -31,6 +31,18 @@ ActiveRecord::Schema.define(:version => 20090128165751) do
     t.datetime "updated_at"
   end
 
+  create_table "netzke_form_panel_fields", :force => true do |t|
+    t.string   "name"
+    t.string   "field_label"
+    t.boolean  "hidden"
+    t.boolean  "disabled"
+    t.string   "ext_config",  :limit => 1024
+    t.integer  "position"
+    t.integer  "layout_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "netzke_grid_panel_columns", :force => true do |t|
     t.string   "name"
     t.string   "label"
@@ -40,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20090128165751) do
     t.integer  "width"
     t.string   "editor",     :limit => 32
     t.string   "renderer",   :limit => 32
+    t.string   "ext_config", :limit => 1024
     t.integer  "layout_id"
     t.datetime "created_at"
     t.datetime "updated_at"
