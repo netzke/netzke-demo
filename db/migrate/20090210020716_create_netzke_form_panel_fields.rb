@@ -5,6 +5,7 @@ class CreateNetzkeFormPanelFields < ActiveRecord::Migration
       t.string    :field_label
       t.boolean   :hidden
       t.boolean   :disabled
+      t.string    :xtype
       t.string    :ext_config, :limit => 1024
 
       t.integer   :position

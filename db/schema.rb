@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20090210020716) do
     t.string   "field_label"
     t.boolean  "hidden"
     t.boolean  "disabled"
+    t.string   "xtype"
     t.string   "ext_config",  :limit => 1024
     t.integer  "position"
     t.integer  "layout_id"
