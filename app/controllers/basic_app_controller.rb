@@ -1,5 +1,5 @@
 class BasicAppController < ApplicationController
-  before_filter :require_user, :only => :demo
+  # before_filter :require_user, :only => :demo
   
   netzke :basic_app_demo
   

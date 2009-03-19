@@ -5,6 +5,7 @@ module Netzke
     end
     def initialize(*args)
       super
+      
       config[:grid_config]    = {
         :columns => [
           :id, 
@@ -14,6 +15,7 @@ module Netzke
           :last_request_at],
         :prohibit => :delete
       }
+      
       config[:form_config]    = {
         :fields => [
           :id, 

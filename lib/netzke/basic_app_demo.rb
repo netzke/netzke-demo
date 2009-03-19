@@ -1,35 +1,27 @@
 module Netzke
   class BasicAppDemo < BasicApp
+    
     #
-    # Specify the menus
+    # Specify available "actions" for the application widget
     #
-    def self.js_initial_menus
+    def actions
+      { 
+        :clerks => {:text => "Clerks", :fn => "loadWidgetByAction"},
+        :bosses => {:text => "Bosses", :fn => "loadWidgetByAction"},
+        
+        # Only allow administrative actions when user is logged in
+        :users => {:text => "Users", :fn => "loadWidgetByAction", :disabled => Netzke::Base.user.nil?}
+      }
+    end
+    
+    #
+    # Specify the menus (simply specifying available action names)
+    #
+    def menu
       [{
-          :text => "Go to",
-          :menu => {
-            :items => [{
-              :text => "Clerks",
-              :handler => "this.appLoadWidget".l,
-              :widget => 'clerks',
-              :scope => this
-            },{
-              :text => "Bosses",
-              :handler => "this.appLoadWidget".l,
-              :widget => 'bosses',
-              :scope => this
-            }]
-          }
-        },{
-          :text => "Administration",
-          :menu => {
-            :items => [{
-              :text => "Users",
-              :handler => "this.appLoadWidget".l,
-              :widget => 'users',
-              :scope => this
-            }]
-          }
-        }] + super
+        :text => "Go to",
+        :menu => %w{ clerks bosses users }
+      }]
     end
     
     #

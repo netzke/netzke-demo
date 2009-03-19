@@ -18,8 +18,8 @@ class Clerk < ActiveRecord::Base
   # Note the double underscore notation for signaling which column (or instance method) 
   # of the association should be used.
   expose_columns :id, # id should always be exposed and is by default hidden
-    {:name => :name, :read_only => true},
-    {:name => :updated, :read_only => true, :width => 50},
+    {:name => :name, :read_only => true, :sortable => false},
+    {:name => :updated, :read_only => true, :width => 50, :sortable => false},
     :email, 
     {:name => :salary, :renderer => 'usMoney'},
     :boss__last_name # association
