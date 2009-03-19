@@ -25,6 +25,21 @@ module Netzke
     end
     
     #
+    # Prevent unauthorized access to Users
+    #
+    def interface_app_get_widget(params)
+      widget = params[:widget].underscore
+      if Netzke::Base.user.nil? && widget == "users"
+        flash :error => "You don't have access to users"
+        {:success => false, :flash => @flash}.to_js
+      else
+        super
+      end
+    end
+
+    
+    
+    #
     # Here are the widgets that our application will be able to load dynamically (see the demo for Netzke::GridPanel)
     #
     def initial_late_aggregatees
