@@ -108,19 +108,18 @@ netzke :bosses_with_permissions,
 
 
 <h2>Dynamic configuration</h2>
-<p>Want to be able to configure the columns or change the permissions on the fly? Enable the configuration tool button for the grid (it's in the right corner of the top toolbar) and get access to the grid configuration panel. It's pretty basic at the moment, but you'll get the idea - try changing the labels, read-only flags, or replace boss__last_name with boss__salary (and then get the hint ;-) ):</p>
+<p>Want to be able to configure the columns or change the permissions on the fly? Try out the configuration button in the right corner of the top toolbar, and get access to the grid configuration panel. It's pretty basic at the moment, but you'll get the idea - try changing the labels, read-only flags, or replace boss__last_name with boss__salary (and get the hint ;-) ). Also notice that the configuration window is aggregating an AccordionPanel-based widget:</p>
 <pre><code>
   netzke :clerks_with_config_tool, :widget_class_name => "Wrapper", :item => {
     :widget_class_name => "GridPanel", 
     :data_class_name => 'Clerk', 
     :ext_config => {
       :rows_per_page => 50,
-      :title => "Clerks",
-      :config_tool => true # enable the configuration tool
+      :title => "Clerks"
     }}
 </code></pre>
 <p>&nbsp;</p>
-We wrap the grid up so that after changing its configuration it can be automatically reloaded, so that there's no need te refresh the page. Btw, this touches the real power behind the Netzke framework: ability to easily nest widgets. This will be covered in a separate tutorial/demo.
+We wrap the grid up so that after changing its configuration it can be automatically reloaded, and there's no need to refresh the page (the Wrapper widget reloads the grid). Btw, this touches the real power behind the Netzke framework: ability to easily nest widgets. Another example of it is the configuration window, which loads an AccordionPanel-based widget which aggregates FieldConfigurator and PropertyEditor widgets from netzke-basepack. Widget nesting will be covered in a separate tutorial/demo soon.
 <p>&nbsp;</p>
 <div id="clerks-with-config-tool"></div>
 <p>&nbsp;</p>

@@ -1,11 +1,11 @@
 <h2>BasicApp demo</h2>
 <p style="color: green"><%= flash[:notice] %></p>
 BasicApp is a basis for a Ext.Viewport-based widget ("application"). Currently it supports:<br>
-* Dynamic loading of widgets (the same way as any other Netzke widget): when you select a menu item, it does exactly that.<br>
-* Authentification support (see the login/logout button on the right side of the top toolbar).<br>
-* Browser history support (by means of the browser's Back/Forward buttons): press the "Back"-button to go to the previously loaded widget ("Forward" works, too...)<br>
-* FeedbackGhost-widget powered feedback for Rails validation messages etc.
-* Aggregation of widget's own menus: if a widget provides its own menu, that gets automatically added by the BasicApp to the toolbar along with loading the widget<br>
+* Dynamic loading of widgets (the same way as any other Netzke widget): when you click a menu item, it does exactly that.<br>
+* Authentification support (see the login/logout button on the right side of the top toolbar): login to get access to the UserManager widget.<br>
+* Browser history support (by means of the browser's Back/Forward buttons): press the "Back"-button to go to the previously loaded widget ("Forward" works, too...).<br>
+* FeedbackGhost-widget powered feedback for errors, notifications, Rails validation messages, etc.<br>
+* Aggregation of widget's own menus: if a widget provides its own menu, it gets automatically added by the BasicApp to the toolbar when the widget gets loaded, and is removed, when the widget unloads (currently no widget in this demo provides a menu, but it may be added soon).<br>
 
 <p>Also note that Netzke provides widget class caching: for instance, once a GridPanel is loaded from the server by the BaseApp, it will never be requested again, which 1) significantly reduces the traffic, 2) lets the browser to parse the class only once, increasing the speed even more. Also, the caching provides an advantage in the case when a compound widget (an example of a compound widget aggregating two GridPanels is coming up here soon) re-uses another widget whose class has already been loaded.</p>
 <p>And of course, all the goodies of the GridPanel widget (column resize/move, dynamic configuration, etc - see <%= link_to "GridPanel demo", :controller => "grid_panel", :action => "demo" %>) are inherently accessible </p>
