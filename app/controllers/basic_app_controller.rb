@@ -1,5 +1,5 @@
 class BasicAppController < ApplicationController
-  # before_filter :require_user, :only => :demo
+  before_filter :configure_netzke
   
   netzke :basic_app_demo
   
@@ -10,5 +10,5 @@ class BasicAppController < ApplicationController
   def index
     redirect_to :action => "intro"
   end
-  
+
 end

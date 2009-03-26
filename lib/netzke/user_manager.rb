@@ -1,11 +1,19 @@
 module Netzke
   class UserManager < TableEditor
+
+    #
+    # By specifying TableEditor as js_base_class, we enable Javascript-level inheritance
+    #
     def self.js_base_class
       TableEditor
     end
+
     def initialize(*args)
       super
       
+      #
+      # Default columns and fields
+      #
       config[:grid_config]    = {
         :columns => [
           :id, 
@@ -32,9 +40,12 @@ module Netzke
         ]
       }
 
-      config[:split_region]    = :east
-      config[:split_size]      = 400
-      config[:data_class_name] = 'User'
+      #
+      # Default configs
+      #
+      config[:split_region]    ||= :east
+      config[:split_size]      ||= 400
+      config[:data_class_name] ||= 'User'
     end
   end
 end

@@ -6,8 +6,9 @@ module Netzke
     #
     def actions
       { 
-        :clerks => {:text => "Clerks", :fn => "loadWidgetByAction"},
-        :bosses => {:text => "Bosses", :fn => "loadWidgetByAction"},
+        :clerks            => {:text => "Clerks", :fn => "loadWidgetByAction"},
+        :bosses            => {:text => "Bosses", :fn => "loadWidgetByAction"},
+        :bosses_and_clerks => {:text => "Bosses and clerks", :fn => "loadWidgetByAction"},
         
         # Only allow administrative actions when user is logged in
         :users => {:text => "Users", :fn => "loadWidgetByAction", :disabled => Netzke::Base.user.nil?}
@@ -20,7 +21,7 @@ module Netzke
     def menu
       [{
         :text => "Go to",
-        :menu => %w{ clerks bosses users }
+        :menu => %w{ clerks bosses bosses_and_clerks users }
       }]
     end
     
@@ -104,6 +105,12 @@ What you see is a BorderLayoutPanel-based compound widget, containing a GridPane
               }
             }
           }
+        },
+
+        :bosses_and_clerks => {
+          :widget_class_name    => "OneToManyGridSetPoc",
+          :container_class_name => "Boss",
+          :element_class_name   => "Clerk"
         },
 
         :users => {
