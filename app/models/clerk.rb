@@ -2,6 +2,9 @@ class Clerk < ActiveRecord::Base
   # declare your association
   belongs_to :boss
 
+  validates_presence_of :first_name
+  validates_presence_of :last_name
+
   virtual_column :name
   def name
     "#{last_name}, #{first_name}"
@@ -18,6 +21,8 @@ class Clerk < ActiveRecord::Base
   # Note the double underscore notation for signaling which column (or instance method) 
   # of the association should be used.
   expose_columns :id, # id should always be exposed and is by default hidden
+    :first_name,
+    :last_name,
     {:name => :name, :read_only => true, :sortable => false},
     {:name => :updated, :read_only => true, :width => 50, :sortable => false},
     :email, 

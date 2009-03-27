@@ -1,5 +1,5 @@
-<img src="/images/2009-03-26-intro.jpg" style="float:right; margin:20px 10px 10px 10px;"/>
-This tutorial will show you how to build a composite reusable Netzke component which consists of 2 grids (glued together by Ext's border layout) that display data from Rails models connected by one-to-many relationship. We'll build it in the context of the already existing [netzke-demo](http://github.com/skozlov/netzke-demo/tree/master) project (this demo runs live on <http://netzke-demo.writelesscode.com/>), so that we can spare some time reusing its models and infrastructure. The resulting widget will contain a grid with bosses and a grid with clerks. Selecting a boss will update the clerks grid with the clerks working under that boss. Adding a clerk will automatically bind him to the selected boss. You'll learn how to create a custom Netzke widget using GridPanel and BorderLayoutPanel widgets from [netzke-basepack](http://github.com/skozlov/netzke-basepack/tree/master) (a gem that contains several pre-built, extendible Netzke widgets). If you prefer to quickly see the results rather than to follow this tutorial step-by-step (an added value of which would be to see several functional iterations of our widget), you can go straight to its live [demo](http://netzke-demo.local/basic_app/demo#bossesAndClerks). For those that want to be led through the process of creating a Netzke widget and get a deeper understanding of how Netzke works - read on, and don't let the volume of the post scare you too much, as you can easily skip over some details and have a coffee between the sections :)
+<img src="http://blog.writelesscode.com/images/2009-03-26-intro.jpg" style="float:right; margin:20px 10px 10px 10px;"/>
+This tutorial will show you how to build a composite reusable Netzke component which consists of 2 grids (glued together by Ext's border layout) that display data from Rails models connected by one-to-many relationship. We'll build it in the context of the already existing [netzke-demo](http://github.com/skozlov/netzke-demo/tree/master) project (this demo runs live on <http://netzke-demo.writelesscode.com/>), so that we can spare some time reusing its models and infrastructure. The resulting widget will contain a grid with bosses and a grid with clerks. Selecting a boss will update the clerks grid with the clerks working under that boss. Adding a clerk will automatically bind him to the selected boss. You'll learn how to create a custom Netzke widget using GridPanel and BorderLayoutPanel widgets from [netzke-basepack](http://github.com/skozlov/netzke-basepack/tree/master) (a gem that contains several pre-built, extendible Netzke widgets). If you prefer to quickly see the results rather than to follow this tutorial step-by-step (an added value of which would be to see several functional iterations of our widget), you can go straight to its live [demo](http://netzke-demo.writelesscode.com/basic_app/demo#bossesAndClerks). For those that want to be led through the process of creating a Netzke widget and get a deeper understanding of how Netzke works - read on, and don't let the volume of the post scare you too much, as you can easily skip over some details and have a coffee between the sections :)
 
 # Getting netzke-demo up and running locally
 First of all, clone netzke-demo project from GitHub if you haven't done so yet:
@@ -329,9 +329,8 @@ It's also easy: just recursively merge the region widgets configuration with the
           :data_class_name      => config[:container_class_name],
           :ext_config => {
             :rows_per_page => 20
-          },
-          :columns => [:id, :first_name, :last_name, :email, :salary]
-        }.recursive_merge(config[:container_config]),
+          }
+        }.recursive_merge(config[:container_config] || {}),
     
         :east => {
           :widget_class_name    => "GridPanel", 
@@ -342,14 +341,13 @@ It's also easy: just recursively merge the region widgets configuration with the
           },
           :ext_config => {
             :rows_per_page => 20
-          },
-          :columns => [:id, :first_name, :last_name, :name, :email, :salary]
-        }.recursive_merge(config[:element_config])
+          }
+        }.recursive_merge(config[:element_config] || {})
       }
     end
 
 # Wrapping it up
-![OneToManyGridSetPoc](/images/2009-03-26.jpg)
+![OneToManyGridSetPoc](http://blog.writelesscode.com/images/2009-03-26.jpg)
 
 Well, I hope you managed to follow it all all the way trough, because if you did, you now have a pretty thorough understanding of design decisions lying behind Netzke. The topics we touched here include:
 
