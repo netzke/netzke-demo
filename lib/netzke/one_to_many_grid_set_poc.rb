@@ -9,7 +9,8 @@ module Netzke
           :widget_class_name    => "GridPanel", 
           :data_class_name      => config[:container_class_name],
           :ext_config => {
-            :rows_per_page => 20
+            :rows_per_page => 20,
+            :title         => config[:container_class_name].pluralize
           }
         }.recursive_merge(config[:container_config] || {}),
         
@@ -21,7 +22,8 @@ module Netzke
             :split  => true
           },
           :ext_config => {
-            :rows_per_page => 20
+            :rows_per_page => 20,
+            :title         => config[:element_class_name].pluralize
           }
         }.recursive_merge(config[:element_config] || {})
       }
