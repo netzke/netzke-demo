@@ -1,6 +1,39 @@
 module Netzke
   class BasicAppDemo < BasicApp
-    
+    #
+    # Customizing the application layout. We can put any stuff we want in there,
+    # the only agreement is to specify 2 fit panels with ids "main-panel" &
+    # "main-toolbar" that will be used by Netzke::BasicApp.
+    #
+    def self.js_default_config
+      super.merge({
+        :layout => 'border',
+        :items => [{
+          :region => 'north',
+          :height => 40,
+          :html => %Q{
+            <div style="margin:10px; color:#333; text-align:center; font-family: Helvetica;">
+              <span style="color:#B32D15">Netzke</span> basic application demo
+            </div>
+          },
+          :bodyStyle => {"background" => "#FFF url(\"/images/header-deco1.png\") top left repeat-x"}
+        },{
+          :region => 'center',
+          :layout => 'border',
+          :items => [{
+            :id => 'main-panel',
+            :region => 'center',
+            :layout => 'fit'
+          },{
+      			:id => 'main-toolbar',
+      			:xtype => 'toolbar',
+            :region => 'north',
+            :height => 25
+          }]
+        }]
+      })
+    end
+
     #
     # Specify available "actions" for the application widget
     #
