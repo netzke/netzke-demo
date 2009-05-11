@@ -8,11 +8,15 @@ This is the source-code for http://netzke-demo.writelesscode.com
 
     git clone git://github.com/skozlov/netzke-demo.git && cd netzke-demo
 
-2. Create the database and do the migrations
+2. Install required gems
+
+    rake gems:install
+
+3. Create the database and do the migrations
     
     rake db:create && rake db:migrate
     
-3. Link your Ext JS library, e.g.:
+4. Link your Ext JS library, e.g.:
     
     cd public && ln -s ~/code/extjs/ext-2.2 extjs
 
