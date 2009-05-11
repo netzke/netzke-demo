@@ -17,20 +17,21 @@ module Netzke
       config[:grid_config]    = {
         :columns => [
           :id, 
-          :login, 
+          :login,
+          :role__name,
           :login_count, 
           :last_login_at, 
-          :last_request_at],
-        :prohibit => :delete
+          :last_request_at]
       }
       
       config[:form_config]    = {
         :fields => [
           :id, 
-          :login, 
+          :login,
+          :role__name,
+          {:name => :password, :xtype => 'passfield'}, 
+          {:name => :password_confirmation, :xtype => 'passfield'}, 
           {:name => :login_count, :disabled => true}, 
-          {:name => :password, :inputType => 'password'}, 
-          {:name => :password_confirmation, :inputType => 'password'}, 
           {:name => :last_request_at, :disabled => true}, 
           {:name => :current_login_at, :disabled => true}, 
           {:name => :last_login_ip, :disabled => true}, 

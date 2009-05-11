@@ -79,7 +79,9 @@ class GridPanelController < ApplicationController
         :last_name => Faker::Name.last_name,
         :email => email,
         :salary => (rand(10)+1)*1000,
-        :subject_to_lay_off => rand > 0.8
+        :subject_to_lay_off => rand > 0.8,
+        :created_at => 15.minutes.ago,
+        :updated_at => 15.minutes.ago
       })
     end
     
