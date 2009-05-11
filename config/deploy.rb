@@ -1,5 +1,6 @@
 set :application, "netzke-demo"
-set :domain,      "holland"
+set :domain,      "netzke"
+# set :domain,      "holland"
 set :repository,  "git://github.com/skozlov/netzke-demo.git"
 set :use_sudo,    false
 set :deploy_to,   "/u/apps/#{application}"
