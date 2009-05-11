@@ -1,0 +1,33 @@
+= netzke-demo
+
+This is the source-code for http://netzke-demo.writelesscode.com
+
+= Intstallation (if you want to run it locally)
+
+1. Get the code from github
+
+    git clone git://github.com/skozlov/netzke-demo.git && cd netzke-demo
+
+2. Create the database and do the migrations
+    
+    rake db:create && rake db:migrate
+    
+3. Link your Ext JS library, e.g.:
+    
+    cd public && ln -s ~/code/extjs/ext-2.2 extjs
+
+= Prerequesites
+
+1. Rails >= 2.2
+2. Ext >= 2.0
+
+= Feedback
+
+Google groups:
+http://groups.google.com/group/netzke
+
+Email:
+sergei@playcode.nl
+
+Twitter:
+http://twitter.com/skozlov
