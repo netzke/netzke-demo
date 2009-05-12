@@ -1,5 +1,8 @@
 module Netzke
   class BasicAppDemo < BasicApp
+    # extra javascripts
+    js_include "#{File.dirname(__FILE__)}/basic_app_demo_extras/javascript/xstatusbar.js"
+
     #
     # Customizing the application layout. We can put any stuff we want in here,
     # the only agreement is to specify 2 fit panels with ids "main-panel" &
@@ -38,7 +41,7 @@ module Netzke
             :height => 25
           },{
             :id => 'main-statusbar',
-            :xtype => 'statusbar',
+            :xtype => 'xstatusbar',
             :region => 'south',
             :statusAlign => 'right',
             :busyText => 'Busy...',
