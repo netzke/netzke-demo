@@ -1,17 +1,15 @@
 require 'faker'
 class GridPanelController < ApplicationController
+  WIDGETS = %w{ bosses clerks bosses_custom_columns bosses_with_permissions configurable_clerks }
+  
   netzke :bosses, 
     :widget_class_name => "GridPanel", 
-    :data_class_name => 'Boss', 
-    :ext_config => {
-      :rows_per_page => 20
-    }
+    :data_class_name => 'Boss'
 
   netzke :bosses_custom_columns, 
     :widget_class_name => "GridPanel", 
     :data_class_name => 'Boss', 
     :ext_config => {
-      :rows_per_page => 20, 
       :title => "Bosses",
       :width => 400
     },
@@ -22,31 +20,28 @@ class GridPanelController < ApplicationController
 
   netzke :clerks, 
     :widget_class_name => "GridPanel", 
-    :data_class_name => 'Clerk', 
-    :ext_config => {
-      :rows_per_page => 50
-    }
+    :data_class_name => 'Clerk'
   
   netzke :bosses_with_permissions, 
     :widget_class_name => "GridPanel", 
     :data_class_name => 'Boss', 
-    :prohibit => [:delete, :update],
     :ext_config => {
-      :rows_per_page => 20, 
-      :title => "Bosses"
+      :prohibit_update => true,
+      :prohibit_delete => true
     }
   
-  netzke :clerks_with_config_tool, :widget_class_name => "Wrapper", :item => {
+  netzke :configurable_clerks, :widget_class_name => "Wrapper", :item => {
     :widget_class_name => "GridPanel", 
-    :data_class_name => 'Clerk', 
+    :data_class_name => 'Clerk',
+    :persistent_config => true,
     :ext_config => {
-      :rows_per_page => 50,
-      :title => "Clerks",
-      :config_tool => true # enable the configuration tool
-    }}
+      :mode => :config, # here we enable the configuration mode
+      :title => "Configurable clerks"
+    }
+  }
   
   def demo
-    @widgets = %w{ bosses clerks bosses_custom_columns bosses_with_permissions clerks_with_config_tool }
+    @widgets = WIDGETS
   end
   
   def index
@@ -85,12 +80,6 @@ class GridPanelController < ApplicationController
       })
     end
     
-    redirect_to :action => "demo"
-  end
-
-  def reset_columns
-    NetzkeLayout.delete_all
-    NetzkeGridPanelColumn.delete_all
     redirect_to :action => "demo"
   end
 

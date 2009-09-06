@@ -1,176 +1,38 @@
 module Netzke
   class BasicAppDemo < BasicApp
-    # extra javascripts
-    js_include "#{File.dirname(__FILE__)}/basic_app_demo_extras/javascript/xstatusbar.js"
-
-    #
     # Customizing the application layout. We can put any stuff we want in here,
     # the only agreement is to specify 2 fit panels with ids "main-panel" &
     # "main-toolbar" that will be used by Netzke::BasicApp.
-    #
-    def self.js_default_config
-      # In status bar we want to show what we are masquerading as
-      if session[:masq_user]
-        masquerade_as = %Q{user "#{session[:masq_user].login}"}
-      elsif session[:masq_role]
-        masquerade_as = %Q{role "#{session[:masq_role].name}"}
-      end
-
-      super.merge({
+    # In this case we simple add another banner-like panel in the north, and in the center - the layout from BasicApp
+    def self.js_panels
+      [{
+        :region => 'north',
+        :height => 40,
+        :html => %Q{
+          <div style="margin:10px; color:#333; text-align:center; font-family: Helvetica;">
+            <span style="color:#B32D15">Netzke</span> basic application demo
+          </div>
+        },
+        :bodyStyle => {"background" => "#FFF url(\"/images/header-deco1.png\") top left repeat-x"}
+      },{
+        :region => 'center',
         :layout => 'border',
-        :items => [{
-          :region => 'north',
-          :height => 40,
-          :html => %Q{
-            <div style="margin:10px; color:#333; text-align:center; font-family: Helvetica;">
-              <span style="color:#B32D15">Netzke</span> basic application demo
-            </div>
-          },
-          :bodyStyle => {"background" => "#FFF url(\"/images/header-deco1.png\") top left repeat-x"}
-        },{
-          :region => 'center',
-          :layout => 'border',
-          :items => [{
-            :id => 'main-panel',
-            :region => 'center',
-            :layout => 'fit'
-          },{
-      			:id => 'main-toolbar',
-      			:xtype => 'toolbar',
-            :region => 'north',
-            :height => 25
-          },{
-            :id => 'main-statusbar',
-            :xtype => 'xstatusbar',
-            :region => 'south',
-            :statusAlign => 'right',
-            :busyText => 'Busy...',
-            :default_text => masquerade_as.nil? ? "Ready" : "Masquerading as #{masquerade_as}",
-            :default_icon_cls => ""
-          }]
-        }]
-      })
-    end
-
-    #
-    # Setting the "busy" indicator for Ajax requests
-    #
-    def self.js_after_constructor
-      super << <<-JS
-        Ext.Ajax.on('beforerequest', function(){this.findById('main-statusbar').showBusy()}, this);
-        Ext.Ajax.on('requestcomplete', function(){this.findById('main-statusbar').hideBusy()}, this);
-        Ext.Ajax.on('requestexception', function(){this.findById('main-statusbar').hideBusy()}, this);
-      JS
-    end
-
-    #
-    # Custom functions that co into BasicAppDemo class
-    #
-    def self.js_extend_properties
-      super.merge({
-        
-        # Enter/exit config mode
-        :config_mode => <<-JS.l,
-          function(menuItem){
-            Ext.Ajax.request({
-              url : this.initialConfig.interface.toggleConfigMode,
-              success : function(){
-                window.location.reload();
-              }
-            })
-          }
-        JS
-        
-        # Masquerade selector window
-        :show_masquerade_selector => <<-JS.l,
-          function(){
-            var w = new Ext.Window({
-      				title: 'Masquerade as',
-      				modal: true,
-      				width: Ext.lib.Dom.getViewWidth() * 0.6,
-              height: Ext.lib.Dom.getViewHeight() * 0.6,
-              layout: 'fit',
-      	      closeAction :'destroy',
-              buttons: [{
-                text: 'Select',
-                handler : function(){
-                  if (role = w.getWidget().masquerade.role) {
-                    Ext.Msg.confirm("Masquerading as a role", "Individual preferences for all users with this role will get overwritten as you make changes. Continue?", function(btn){
-                      if (btn === 'yes') {
-                        w.close();
-                      }
-                    });
-                  } else {
-                    w.close();
-                  }
-                },
-                scope:this
-              },{
-                text:'Turn off masquerading',
-                handler:function(){
-                  this.masquerade = {};
-                  w.close();
-                },
-                scope:this
-              },{
-                text:'Cansel',
-                handler:function(){
-                  w.hide();
-                },
-                scope:this
-              }],
-              listeners : {close: {fn: function(){
-                this.masqAs(this.masquerade || w.getWidget().masquerade || {});
-              }, scope: this}}
-      			});
-
-      			w.show(null, function(){
-      			  w.loadWidget("basic_app_demo__app_get_widget", {widget:"masqueradeSelector"});
-      			}, this);
-      			
-          }
-        JS
-        
-        # Masquerade as...
-        :masq_as => <<-JS.l
-          function(masqConfig){
-            params = {};
-
-            if (masqConfig.user) {
-              params.user = masqConfig.user
-            }
-
-            if (masqConfig.role) {
-              params.role = masqConfig.role
-            }
-            
-            Ext.Ajax.request({
-              url : this.initialConfig.interface.masqueradeAs,
-              params : params,
-              success : function(){
-                window.location.reload();
-              }
-            });
-          }
-        JS
-      })
+        :items => super
+      }]
     end
 
     #
     # Specify available actions for the application
     #
     def actions
-      session = Netzke::Base.session
-      
-      { 
-        :clerks            => {:text => "Clerks", :fn => "loadWidgetByAction"},
-        :bosses            => {:text => "Bosses", :fn => "loadWidgetByAction"},
-        :bosses_and_clerks => {:text => "Bosses and clerks", :fn => "loadWidgetByAction"},
-        :masquerade_selector => {:text => "Masquerade as ...", :fn => "showMasqueradeSelector"},
-        :users => {:text => "Users", :fn => "loadWidgetByAction"},
-        :roles => {:text => "Roles", :fn => "loadWidgetByAction"},
-        :toggle_config_mode => {:text => "#{session[:config_mode] ? "Leave" : "Enter"} config mode", :fn => "configMode"}
-      }
+      fn = "loadWidgetByAction"
+      super.merge({ 
+        :clerks            => {:text => "Clerks",            :fn => fn},
+        :bosses            => {:text => "Bosses",            :fn => fn},
+        :bosses_and_clerks => {:text => "Bosses and clerks", :fn => fn},
+        :users             => {:text => "Users",             :fn => fn},
+        :roles             => {:text => "Roles",             :fn => fn},
+      })
     end
     
     #
@@ -183,55 +45,25 @@ module Netzke
       }]
       
       # only add the Admin menu when the user has role "administrator"
-      if session[:user].try(:role).try(:name) == 'administrator'
-        common_menu << {:text => "Admin", :menu => %w{ users roles toggle_config_mode masquerade_selector}}
+      current_user = User.find_by_id(session[:netzke_user_id])
+      if current_user.try(:role).try(:name) == 'administrator'
+        common_menu.unshift(:text => "Admin", :menu => %w{ users roles toggle_config_mode masquerade_selector})
       end
       
-      common_menu
+      common_menu + super
     end
     
-    #
     # Prevent access to UserManager and roles for anonimous users
     #
-    def interface_app_get_widget(params)
-      widget = params[:widget].underscore
-      if Netzke::Base.user.nil? && (widget == "users" || widget == 'roles')
+    def load_aggregatee_with_cache(params)
+      widget = params[:id].underscore
+      current_user = User.find_by_id(session[:netzke_user_id])
+      if current_user.nil? && (widget == "users" || widget == 'roles')
         flash :error => "You don't have access to this widget"
-        {:success => false, :flash => @flash}.to_js
+        {:feedback => @flash}
       else
         super
       end
-    end
-
-    #
-    # Interface
-    #
-    interface :masquerade_as, :toggle_config_mode
-   
-    def masquerade_as(params)
-      session = Netzke::Base.session
-      session[:masq_role] = params[:role] && Role.find(params[:role])
-      session[:masq_user] = params[:user] && User.find(params[:user])
-      {}
-    end
-    
-    def toggle_config_mode(params)
-      session = Netzke::Base.session
-      session[:config_mode] = !session[:config_mode]
-      {}
-    end
-
-    #
-    # Make each child receive a configuration tool in config mode
-    #
-    def weak_children_config
-      # reset config and masquerading modes if just logged in or logged out
-      if session[:netzke_just_logged_in] || session[:netzke_just_logged_out]
-        session[:config_mode] = false
-        session[:masq_user] = session[:masq_roles] = nil
-      end
-
-      super.recursive_merge({:ext_config => {:config_tool => session[:config_mode]}});
     end
     
     #

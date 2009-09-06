@@ -31,46 +31,10 @@ ActiveRecord::Schema.define(:version => 20090501195948) do
     t.datetime "updated_at"
   end
 
-  create_table "netzke_form_panel_fields", :force => true do |t|
-    t.string   "name"
-    t.string   "field_label"
-    t.boolean  "hidden"
-    t.boolean  "disabled"
-    t.string   "xtype"
-    t.string   "ext_config",  :limit => 1024
-    t.integer  "position"
-    t.integer  "layout_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "netzke_grid_panel_columns", :force => true do |t|
-    t.string   "name"
-    t.string   "label"
-    t.boolean  "read_only"
-    t.integer  "position"
-    t.boolean  "hidden"
-    t.integer  "width"
-    t.string   "editor",     :limit => 32
-    t.string   "renderer",   :limit => 32
-    t.string   "ext_config", :limit => 1024
-    t.integer  "layout_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "netzke_layouts", :force => true do |t|
-    t.string   "widget_name"
-    t.string   "items_class"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "netzke_preferences", :force => true do |t|
     t.string   "name"
     t.string   "pref_type"
-    t.string   "value"
+    t.text     "value",       :limit => 16777215
     t.integer  "user_id"
     t.integer  "role_id"
     t.string   "widget_name"

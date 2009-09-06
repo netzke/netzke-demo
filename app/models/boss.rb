@@ -5,8 +5,6 @@ class Boss < ActiveRecord::Base
   
   validates_presence_of :last_name
 
-  # virtual column
-  virtual_column :name
   def name
     "#{last_name}, #{first_name}"
   end
@@ -17,11 +15,4 @@ class Boss < ActiveRecord::Base
     all.detect{|r| r.name == name}
   end
   
-  # expose_columns :id, # id should always be exposed and is by default hidden
-  #   :first_name,
-  #   :last_name,
-  #   :email,
-  #   {:name => :salary, :renderer => 'usMoney'},
-  #   :created_at,
-  #   :updated_at
 end

@@ -38,18 +38,18 @@ module Netzke
     end
     
     def self.js_after_constructor
-      super << <<-JS
+      super << <<-END_OF_JAVASCRIPT
         var setCentralWidgetEvents = function(){
           this.getCenterWidget().on('rowclick', this.onRowClick, this);
         };
         this.getCenterWidget().ownerCt.on('add', setCentralWidgetEvents, this);
         setCentralWidgetEvents.call(this);
-      JS
+      END_OF_JAVASCRIPT
     end
 
     def self.js_extend_properties
       super.merge({
-        :on_row_click => <<-JS.l
+        :on_row_click => <<-END_OF_JAVASCRIPT.l
           function(grid, index, e){
         		// get id of the selected boss
             var id = this.getCenterWidget().getStore().getAt(index).get('id');
@@ -59,7 +59,7 @@ module Netzke
             contentGrid.store.baseParams = {container_id:id};
             contentGrid.store.reload();
           }
-        JS
+        END_OF_JAVASCRIPT
       })
     end
 

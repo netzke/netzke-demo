@@ -28,25 +28,25 @@ module Netzke
     end
 
     def self.js_after_constructor
-      <<-JS
+      <<-END_OF_JAVASCRIPT
         this.items.each(function(tab){
           tab.on('add', function(ct, cmp){
             cmp.on('rowclick', this.rowclickHandler, this);
           }, this);
         }, this)
-      JS
+      END_OF_JAVASCRIPT
     end
 
     def self.js_extend_properties
       super.merge({
-        :rowclick_handler => <<-JS.l
+        :rowclick_handler => <<-END_OF_JAVASCRIPT.l
           function(grid, rowIndex, e){
             var mode = grid.id.split("__").pop();
             var normMode = mode === 'users' ? 'user' : 'role';
             this.masquerade = {};
             this.masquerade[normMode] = grid.store.getAt(rowIndex).get('id');
           }
-        JS
+        END_OF_JAVASCRIPT
       })
     end
 

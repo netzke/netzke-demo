@@ -159,9 +159,9 @@ Now, that we have something working and good looking, notice that we haven't wri
 First, we need to subscribe to the click event of the GridPanel:
 
     def self.js_after_constructor
-      super << <<-JS
+      super << <<-END_OF_JAVASCRIPT
         this.getCenterWidget().on('rowclick', this.onRowClick, this);
-      JS
+      END_OF_JAVASCRIPT
     end
 
 In this function we put the javascript code that gets appended after the super-class' constructor is called in our widget's constructor (for details, see the source code for netzke-core). It's just the right place to subscribe to events. The getCenterWidget function is provided by BorderLayoutPanel, and in this case will return the GridPanel instance (in the Javascript domain, of course).
@@ -170,7 +170,7 @@ Now we need to implement the handler, onRowClick:
 
     def self.js_extend_properties
       super.merge({
-        :on_row_click => <<-JS.l
+        :on_row_click => <<-END_OF_JAVASCRIPT.l
           function(grid, index, e){
             // get id of the selected boss
             var id = this.getCenterWidget().getStore().getAt(index).get('id');
@@ -180,7 +180,7 @@ Now we need to implement the handler, onRowClick:
             contentGrid.store.baseParams = {container_id:id};
             contentGrid.store.reload();
           }
-        JS
+        END_OF_JAVASCRIPT
       })
     end
 
@@ -193,13 +193,13 @@ In the onRowClick function we detect the id of the selected boss and append it t
 > *There's a little caveat here related to the dynamic widget loading. If you press the gear button of the bosses grid, and then click Submit (thus commanding the bosses GridPanel to reload), you'll discover that the clerks grid stopped reacting on the clicks at the bosses. This happens due to that we subscribed to the rowclick event of the GridPanel that is not there anymore. To fix that, slightly modify the way how we do that (we want to subscribe to rowclick every time that a new GridPanel is loaded into the central region):*
 
     def self.js_after_constructor
-      super << <<-JS
+      super << <<-END_OF_JAVASCRIPT
         var setCentralWidgetEvents = function(){
           this.getCenterWidget().on('rowclick', this.onRowClick, this);
         };
         this.getCenterWidget().ownerCt.on('add', setCentralWidgetEvents, this);
         setCentralWidgetEvents.call(this);
-      JS
+      END_OF_JAVASCRIPT
     end
 
 While the clerks grid now gets reloaded on each click in the bosses grid, there's still no filtering of clerks taking place. To fix that, let's do some coding for the server side of our widget.

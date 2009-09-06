@@ -1,0 +1,67 @@
+%head
+  %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-type" }
+  %title
+    Netzke framework demo/tutorial - integrating Ext JS and Rails
+%body
+  %h2 Netzke framework demo/tutorial
+  
+  %h3 BasicApp!
+  
+  =link_to "Introduction", :controller => "basic_app", :action => "intro"
+
+  =link_to "Demo", :controller => "basic_app", :action => "demo"
+  
+  %h3 GridPanel
+  %p
+    = link_to "Demo/Tutorial", :controller => "grid_panel"
+    of GridPanel as a stand-alone widget
+  
+  %p
+    GridPanel integrated into an "application" (Ext.Viewport-based widget):
+    = link_to "here", "basic_app/demo#clerks"
+    and
+    = link_to "here", "basic_app/demo#bosses"
+  %h3 FormPanel
+  See UserManager widget in the
+  = link_to "BasicApp demo", :controller => "basic_app", :action => "intro"
+  
+  %h3 TreePanel
+  Demo (coming soon)
+  
+  %h3 TabPanel
+  Demo (coming soon)
+  
+  %h3 AccordionPanel
+  See the configuration window for Grid/FormPanel
+  
+  %h3 Composite widgets
+  %p
+    UserManager widget in the
+    = link_to "BasicApp demo", :controller => "basic_app", :action => "intro"
+  %p
+    = link_to "OneToManyGridSet", "basic_app/demo#bossesAndClerks"
+    proof-of-concept (see a comprehensive tutorial on how it was built
+    = link_to "here", "http://blog.writelesscode.com/past/2009/3/27/building_rails_extjs_reusable_components_with_netzke_part_2/"
+    )
+
+  %h2 The code, etc
+  %p
+    Source code for this demo:
+    %a{ :href => "http://github.com/skozlov/netzke-demo/tree/master" }
+      http://github.com/skozlov/netzke-demo/tree/master
+  %p
+    Discuss this demo on
+    = link_to "Netzke Google Groups", "http://groups.google.com/group/netzke"
+  %p
+    Netzke framework:
+    %a{ :href => "http://github.com/skozlov/netzke-core/tree/master" }
+      netzke-core
+    ,
+    %a{ :href => "http://github.com/skozlov/netzke-basepack/tree/master" }
+      netzke-basepack
+  %p
+    News about Netzke development and tutorials:
+    %a{ :href => "http://blog.writelesscode.com" }
+      http://blog.writelesscode.com
+
+  = render :partial => "shared/analytics"
