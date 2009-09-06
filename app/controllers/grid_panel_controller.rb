@@ -49,9 +49,11 @@ class GridPanelController < ApplicationController
   end
   
   def regenerate_test_data
+    number_of_bosses = 50
+    
     Boss.delete_all
     bosses_ids = []
-    50.times do
+    number_of_bosses.times do
       first_name = Faker::Name.first_name
       email = "#{first_name.downcase}@#{Faker::Internet.email.split("@").last}"
       a_boss = Boss.create({
@@ -69,7 +71,7 @@ class GridPanelController < ApplicationController
       first_name = Faker::Name.first_name
       email = "#{first_name.downcase}@#{Faker::Internet.email.split("@").last}"
       Clerk.create({
-        :boss_id => bosses_ids[rand(50)],
+        :boss_id => bosses_ids[rand(number_of_bosses)],
         :first_name => first_name,
         :last_name => Faker::Name.last_name,
         :email => email,
@@ -84,7 +86,8 @@ class GridPanelController < ApplicationController
   end
 
   def reset_configs
-    NetzkePreference.delete_all
+    # only delete preferences for the grid demo
+    WIDGETS.each{ |widget| NetzkePreference.delete_all("widget_name LIKE '#{widget}%'") }
     redirect_to :action => "demo"
   end
 end

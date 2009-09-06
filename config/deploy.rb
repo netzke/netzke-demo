@@ -20,7 +20,7 @@ end
 desc "Make symbolic links to shared files"
 task :make_db_link, :roles => [:app] do
   run "ln -s #{shared_path}/ext-2.2.1 #{release_path}/public/extjs"
-  run "ln -s #{shared_path}/production.sqlite3 #{release_path}/db/production.sqlite3"
+  # run "ln -s #{shared_path}/production.sqlite3 #{release_path}/db/production.sqlite3"
 end
 after "deploy:update_code", :make_db_link
 

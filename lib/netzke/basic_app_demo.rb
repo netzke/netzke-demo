@@ -152,12 +152,17 @@ module Netzke
         :users => {
           :widget_class_name => "BorderLayoutPanel",
           :ext_config => {
-            :title => false,
+            :header => false,
             :border => false
           },
           :regions => {
             :center => {
-              :widget_class_name => "UserManager"
+              :widget_class_name => "GridPanel",
+              :data_class_name => "User",
+              :ext_config => {
+                :title => "Users"
+              },
+              :columns => [:id, :login, :role__name, :login_count, :last_login_at, :last_request_at, :active_recently]
             },
             :south => {
               :widget_class_name => "Panel",
