@@ -135,10 +135,13 @@ module Netzke
         },
 
         :bosses_and_clerks => {
-          :widget_class_name    => "OneToManyGridSetPoc",
-          :container_class_name => "Boss",
-          :element_class_name   => "Clerk"
+          :widget_class_name    => "BossesAndClerks"
         },
+        # :bosses_and_clerks => {
+        #   :widget_class_name    => "OneToManyGridSetPoc",
+        #   :container_class_name => "Boss",
+        #   :element_class_name   => "Clerk"
+        # },
 
         :masquerade_selector => {
           :widget_class_name => "MasqueradeSelector"

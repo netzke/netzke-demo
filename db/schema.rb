@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20090501195948) do
   create_table "netzke_preferences", :force => true do |t|
     t.string   "name"
     t.string   "pref_type"
-    t.text     "value",       :limit => 16777215
+    t.text     "value"
     t.integer  "user_id"
     t.integer  "role_id"
     t.string   "widget_name"

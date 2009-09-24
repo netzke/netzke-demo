@@ -1,0 +1,169 @@
+This post continues the series of the tutorials on building Netzke widgets - reusable pieces of code for a Rails/ExtJS  application. It extends the slightly outdated [part 2](http://blog.writelesscode.com/past/2009/3/27/building_rails_extjs_reusable_components_with_netzke_part_2/), and shows off the power of the new server-client communication concept introduced in netzke-core v0.4.0. We will build a composite widget that will nest 2 GridPanels (linked by a one-to-many relationship) and a FormPanel that will display some details about the record that is selected in one of the Grids. You will learn how easy it is to update all aggregated widgets within one single client-server roundtrip - an approach which gives the developer the new level of freedom in building complex composite widgets.
+
+We will do our work in the context of the [netzke-demo](http://github.com/skozlov/netzke-demo) application, where we already have two models related to each other via one-to-many relationship: Boss and Clerk. The previous version of the demo was having a "Bosses and clerks" menu that was demonstrating the result of our previous tutorial - a composite widget that glues 2 GridPanels together in the sense that the clerks panel provides interface to the clerks working under a specific boss. In this tutorial I'll show how the same - and quite a bit more - can be achieved with the latest Netzke release. First, let me tell you what extra functionality will be introduced and the design decisions behind that.
+
+Ok, clicking a boss in one grid triggers another grid to reload the clerks. But what if we need more - say, another panel that shows some information (in HTML) about the selected boss? We could create a Panel-based widget (let's call it "info panel") that would do just that: given a boss id, it would update itself with the data from the server, the same way as the clerk grid does. This may sound fine, but it would cost us an extra request to the server, because the widgets simply don't know anything about each other, and such work independently. This way, another panel in our widget would introduce yet another request... Another unpleasant consequence of this approach is that the sub-widgets wouldn't be getting updated simultaneously (each waiting for the response from its own server part), which is pretty confusing from the user's point of view. And let alone the necessity to write a separate widget for a simple task of displaying some HTML.
+
+Wouldn't it be much better if our composite widget was able to update all its aggregatees itself, just inline with the [composite pattern](http://en.wikipedia.org/wiki/Composite_pattern)? That's graciously possible with the latest release of Netzke, and soon you'll see how simple it is.
+
+## Border layout panel - our widget's layout
+First, let's create our composite widget and call it BossesAndClerks. Because it's going to host 3 panels (2 grids and the info panel), it's BorderLayoutPanel-based:
+
+    module Netzke
+      class BossesAndClerks < BorderLayoutPanel
+      end
+    end
+    
+Let's specify the regions and fill them with an empty Panel - just to see if we like the layout of the future widget:
+
+    def default_config
+      super.merge({
+        :regions => {
+          :center => {
+            :widget_class_name => "Panel"
+          },
+          :east => {
+            :widget_class_name => "Panel",
+            :region_config => {
+              :width => 240,
+              :split => true
+            }
+          },
+          :south => {
+            :widget_class_name => "Panel",
+            :region_config => {
+              :height => 200,
+              :split => true
+            }
+          }
+        }
+      })
+    end
+
+The default titles don't look nice, so let's correct it. We also don't need the top-widget header:
+
+    def default_config
+      super.merge({
+        :regions => {
+          :center => {
+            :widget_class_name => "Panel",
+            :ext_config => {
+              :title => "Bosses"
+            }
+          },
+          :east => {
+            :widget_class_name => "Panel",
+            :ext_config => {
+              :title => "Info"
+            },
+            :region_config => {
+              :width => 240,
+              :split => true
+            }
+          },
+          :south => {
+            :widget_class_name => "Panel",
+            :ext_config => {
+              :title => "Clerks"
+            },
+            :region_config => {
+              :height => 200,
+              :split => true
+            }
+          }
+        },
+        :ext_config => {
+          :header => false
+        }
+      })
+    end
+    
+(You may remember from the previous tutorials that the <tt>ext\_config</tt> option allows us to specify any configuration options understood by Ext.Panel)
+
+## GridPanels
+Now that we like the layout of the future widget, let's introduce 2 GridPanels (GridPanel is a full-featured widget from netzke-basepack), one configured to show bosses, the other - clerks:
+    
+
+    def default_config
+      super.merge({
+        :regions => {
+          :center => {
+            :widget_class_name => "GridPanel",
+            :data_class_name => "Boss",
+            :ext_config => {
+              :title => "Bosses"
+            }
+          },
+          :east => {
+            :widget_class_name => "Panel",
+            :ext_config => {
+              :title => "Info"
+            },
+            :region_config => {
+              :width => 240,
+              :split => true
+            }
+          },
+          :south => {
+            :widget_class_name => "GridPanel",
+            :data_class_name => "Clerk",
+            :ext_config => {
+              :title => "Clerks"
+            },
+            :region_config => {
+              :height => 200,
+              :split => true
+            }
+          }
+        },
+        :ext_config => {
+          :header => false
+        }
+      })
+    end
+  
+## Setting the row click event
+BorderLayoutPanel provides convenient methods to access its regions widgets, like getCenterWidget().
+
+    def self.js_extend_properties
+      super.merge({
+        :init_component => <<-END_OF_JAVASCRIPT.l,
+          function(){
+            Ext.netzke.cache.#{short_widget_class_name}.superclass.initComponent.call(this);
+            
+            // Set the selection changed event
+            this.getCenterWidget().on('rowclick', this.onBossSelectionChanged, this);
+          }
+        END_OF_JAVASCRIPT
+        
+        :on_boss_selection_changed => <<-END_OF_JAVASCRIPT.l,
+          function(self, rowIndex){
+            alert("Boss id: " + self.store.getAt(rowIndex).get('id'));
+          }
+        END_OF_JAVASCRIPT
+      })
+    end
+    
+## Defining the API method
+
+    api :select_boss
+    def select_boss(params)
+      logger.debug "!!! params[:boss_id]: #{params[:boss_id].inspect}\n"
+      {}
+    end
+
+After this calling the server's method and pass it the id of the selected boss from JavaScript is as simple as this:
+
+    this.selectBoss({boss_id: self.store.getAt(rowIndex).get('id')});
+
+    :on_boss_selection_changed => <<-END_OF_JAVASCRIPT.l,
+      function(self, rowIndex){
+        this.selectBoss({boss_id: self.store.getAt(rowIndex).get('id')});
+      }
+    END_OF_JAVASCRIPT
+
+Reload the page and watch this in Rails' log as we click a boss:
+
+    !!! params[:boss_id]: "4"
+    
+## Reload the widget
