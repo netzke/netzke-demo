@@ -29,7 +29,7 @@ module Netzke
               :title => "Clerks"
             },
             :region_config => {
-              :height => 200,
+              :height => 150,
               :split => true
             }
           }
