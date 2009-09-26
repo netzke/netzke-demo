@@ -25,6 +25,7 @@ module Netzke
             :widget_class_name => "GridPanel",
             :data_class_name => "Clerk",
             :scopes => [[:boss_id, widget_session[:selected_boss_id]]],
+            :strong_default_attrs => {:boss_id => widget_session[:selected_boss_id]},
             :ext_config => {
               :title => "Clerks"
             },
@@ -64,21 +65,21 @@ module Netzke
       # store selected boss id in the session for this widget's instance
       widget_session[:selected_boss_id] = params[:boss_id]
       
-      # boss
+      # selected boss
       boss = Boss.find(params[:boss_id])
       
       # instantiate the widget
       clerks_grid = aggregatee_instance(:south)
+      clerks_data = clerks_grid.get_data
 
       # pass 
       {
-        :south => {:load_store_data => clerks_grid.get_data, :set_title => "Clerks for #{boss.name}"}, 
-        :east => {:update_body_html => boss_info_html(params[:boss_id]), :set_title => "#{boss.name}"},
+        :south => {:load_store_data => clerks_data, :set_title => "Clerks for #{boss.name}"}, 
+        :east => {:update_body_html => boss_info_html(boss), :set_title => "#{boss.name}"},
       }
     end
     
-    def boss_info_html(id)
-      boss = Boss.find(id)
+    def boss_info_html(boss)
       res = "<h1>Statistics on clerks</h1>"
       res << "Number: #{boss.clerks.count}<br/>"
       res << "With salary > $5,000: #{boss.clerks.salary_gt(5000).count}<br/>"
