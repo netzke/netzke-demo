@@ -27,11 +27,12 @@ module Netzke
     def actions
       fn = "loadWidgetByAction"
       super.merge({ 
-        :clerks            => {:text => "Clerks",            :fn => fn},
-        :bosses            => {:text => "Bosses",            :fn => fn},
-        :bosses_and_clerks => {:text => "Bosses and clerks", :fn => fn},
-        :users             => {:text => "Users",             :fn => fn},
-        :roles             => {:text => "Roles",             :fn => fn},
+        :clerks                => {:text => "Clerks",                       :fn => fn},
+        :bosses                => {:text => "Bosses",                       :fn => fn},
+        :bosses_and_clerks     => {:text => "Bosses and clerks",            :fn => fn},
+        :bosses_and_clerks_ext => {:text => "Bosses and clerks (extended)", :fn => fn},
+        :users                 => {:text => "Users",                        :fn => fn},
+        :roles                 => {:text => "Roles",                        :fn => fn},
       })
     end
     
@@ -41,7 +42,7 @@ module Netzke
     def menu
       common_menu = [{
         :text => "Go to",
-        :menu => %w{ clerks bosses bosses_and_clerks }
+        :menu => %w{ clerks bosses bosses_and_clerks bosses_and_clerks_ext }
       }]
       
       # only add the Admin menu when the user has role "administrator"
@@ -132,6 +133,10 @@ module Netzke
               }
             }
           }
+        },
+
+        :bosses_and_clerks_ext => {
+          :widget_class_name    => "BossesAndClerks"
         },
 
         :bosses_and_clerks => {

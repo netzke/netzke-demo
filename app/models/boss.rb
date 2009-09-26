@@ -2,6 +2,8 @@ class Boss < ActiveRecord::Base
   # Which columns and in which order to expose.
   # Note the double underscore notation for signaling which column (or instance method) 
   # of the association should be used.
+
+  has_many :clerks
   
   validates_presence_of :last_name
 
