@@ -1,3 +1,6 @@
+2009-09-29
+* Compatibility with Ext 3.0.
+
 2009-09-06
 * Move from sqlite to mysql.
 * Support for netzke-basepack v0.5.

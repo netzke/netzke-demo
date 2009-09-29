@@ -31,7 +31,7 @@ netzke :bosses,
 </code></pre>
 </p>
 <p>Result:</p>
-<div id="bosses"></div>
+<div id="bosses-div"></div>
 
 <h2>Control over columns</h2>
 <p>If you need more control over which columns to display and how, you can provide <tt>:columns</tt> option:</p>
@@ -46,11 +46,11 @@ netzke :bosses,
     },
     :columns => [:id, # id should always be included and is by default hidden
       :last_name, 
-      {:name => :salary, :read_only => true, :label => "$", :renderer => 'usMoney'}, 
+      {:name => :salary, :editable => false, :label => "$", :renderer => 'usMoney'}, 
       {:name => :email, :width => 180}]
 </code></pre>
 <p>Result:</p>
-<div id="bosses-custom-columns"></div>
+<div id="bosses-custom-columns-div"></div>
 
 <h2>Model-wide configuration, associations, Rails validations and "virtual" columns</h2>
 <p>Here's an example that demonstrates:
@@ -117,7 +117,7 @@ netzke :clerks,
   :data_class_name => 'Clerk'
 </code></pre>
 <p>Result:</p>
-<div id="clerks"></div>
+<div id="clerks-div"></div>
 
 <h2>Permissions</h2>
 You can specify which actions are allowed for this grid
@@ -131,7 +131,7 @@ netzke :bosses_with_permissions,
   }
 </code></pre>
 <p>Result:</p>
-<div id="bosses-with-permissions"></div>
+<div id="bosses-with-permissions-div"></div>
 <p class="small">A word about the security: it's not only about disabling buttons. Even if the user manages to submit a prohibited operation, the server side of the widget will block the attempt.
 </p>
 
@@ -150,7 +150,7 @@ netzke :configurable_clerks, :widget_class_name => "Wrapper", :item => {
 </code></pre>
 <p>We wrap the grid up so that after changing its configuration it can be automatically reloaded without the need to reload the page. Btw, this touches another powerful concept behind the Netzke framework: ability to easily nest widgets.</p>
 <p>Result:</p>
-<div id="configurable-clerks"></div>
+<div id="configurable-clerks-div"></div>
 
 <h2>Get the code</h2>
 <p>Netzke framework consists of 2 Rails plugins/Ruby gems: netzke-core and netzke-basepack. Get them on the GitHub along with the source code for this demo: <a href = http://github.com/skozlov>http://github.com/skozlov</a></p>
