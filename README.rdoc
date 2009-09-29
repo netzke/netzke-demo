@@ -2,6 +2,8 @@
 
 This is the source-code for http://netzke-demo.writelesscode.com
 
+! Note: For Ext 3.0 compatibility, check out the "ext30" branch !
+
 = Intstallation (if you want to run it locally)
 
 1. Get the code from github
@@ -23,7 +25,7 @@ This is the source-code for http://netzke-demo.writelesscode.com
 = Prerequesites
 
 1. Rails >= 2.2
-2. Ext >= 2.0
+2. Ext >= 2.0, <3.0
 
 = Feedback
 
