@@ -33,6 +33,7 @@ module Netzke
         :bosses_and_clerks_ext => {:text => "Bosses and clerks (extended)", :fn => fn},
         :users                 => {:text => "Users",                        :fn => fn},
         :roles                 => {:text => "Roles",                        :fn => fn},
+        :custom_actions_grid   => {:text => "Custom actions grid",          :fn => fn},
       })
     end
     
@@ -41,8 +42,8 @@ module Netzke
     #
     def menu
       common_menu = [{
-        :text => "Go to",
-        :menu => %w{ clerks bosses bosses_and_clerks bosses_and_clerks_ext }
+        :text => "Tutorials",
+        :menu => %w{ clerks bosses bosses_and_clerks bosses_and_clerks_ext custom_actions_grid}
       }]
       
       # only add the Admin menu when the user has role "administrator"
@@ -158,6 +159,11 @@ module Netzke
           :widget_class_name => "GridPanel",
           :data_class_name => "User",
           :columns => [:id, :login, :role__name, :login_count, :last_login_at, :last_request_at, :active_recently]
+        },
+        
+        :custom_actions_grid => {
+          :widget_class_name => "CustomActionGrid",
+          :data_class_name => "Boss"
         }
       }
     end
