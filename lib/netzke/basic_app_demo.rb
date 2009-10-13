@@ -163,7 +163,8 @@ module Netzke
         
         :custom_actions_grid => {
           :widget_class_name => "CustomActionGrid",
-          :data_class_name => "Boss"
+          :data_class_name => "Boss",
+          :ext_config => {:title => "Bosses"}
         }
       }
     end
