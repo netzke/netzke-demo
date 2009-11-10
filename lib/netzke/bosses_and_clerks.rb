@@ -45,7 +45,7 @@ module Netzke
       super.merge({
         :init_component => <<-END_OF_JAVASCRIPT.l,
           function(){
-            Ext.netzke.cache.#{short_widget_class_name}.superclass.initComponent.call(this);
+            #{js_full_class_name}.superclass.initComponent.call(this);
             
             // Set the selection changed event
             this.getCenterWidget().on('rowclick', this.onBossSelectionChanged, this);

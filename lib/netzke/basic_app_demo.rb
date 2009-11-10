@@ -25,15 +25,15 @@ module Netzke
     # Specify available actions for the application
     #
     def actions
-      fn = "loadWidgetByAction"
+      fn = :load_widget_by_action
       super.merge({ 
-        :clerks                => {:text => "Clerks",                       :fn => fn},
-        :bosses                => {:text => "Bosses",                       :fn => fn},
-        :bosses_and_clerks     => {:text => "Bosses and clerks",            :fn => fn},
-        :bosses_and_clerks_ext => {:text => "Bosses and clerks (extended)", :fn => fn},
-        :users                 => {:text => "Users",                        :fn => fn},
-        :roles                 => {:text => "Roles",                        :fn => fn},
-        :custom_actions_grid   => {:text => "Custom actions grid",          :fn => fn},
+        :clerks                => {:text => "Clerks",                       :handler => fn},
+        :bosses                => {:text => "Bosses",                       :handler => fn},
+        :bosses_and_clerks     => {:text => "Bosses and clerks",            :handler => fn},
+        :bosses_and_clerks_ext => {:text => "Bosses and clerks (extended)", :handler => fn},
+        :users                 => {:text => "Users",                        :handler => fn},
+        :roles                 => {:text => "Roles",                        :handler => fn},
+        :custom_actions_grid   => {:text => "Custom actions grid",          :handler => fn},
       })
     end
     
@@ -168,5 +168,17 @@ module Netzke
         }
       }
     end
+    
+    # WORKAROUND badly implemented inheritance
+    # Because of the inheritance, we need to reset these methods
+    def self.js_extend_properties
+      {}
+    end
+    
+    def self.include_js
+      []
+    end
+    # end WORKAROUND
+    
   end
 end

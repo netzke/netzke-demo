@@ -18,7 +18,7 @@ module Netzke
       {
         :init_component => <<-END_OF_JAVASCRIPT.l,
           function(){
-            Ext.netzke.cache.#{short_widget_class_name}.superclass.initComponent.call(this);
+            #{js_full_class_name}.superclass.initComponent.call(this);
             
             this.getSelectionModel().on('selectionchange', function(selModel){
               this.actions.showDetails.setDisabled(selModel.getCount() != 1);
