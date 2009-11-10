@@ -1,8 +1,11 @@
+set :ext_version, "3.0.0"
 set :application, "netzke-demo"
-set :domain,      "netzke"
+# set :domain,      "netzke"
+set :domain,      "fl"
 set :repository,  "git://github.com/skozlov/netzke-demo.git"
 set :use_sudo,    false
-set :deploy_to,   "/u/apps/#{application}"
+# set :deploy_to,   "/u/apps/#{application}"
+set :deploy_to,   "/var/rails/#{application}"
 set :scm,         "git"
 
 role :app, domain
@@ -16,6 +19,14 @@ namespace :deploy do
     run "touch #{current_path}/tmp/restart.txt"
   end
 end
+
+desc "Setup shared folder"
+task :setup_shared do
+  puts "Downloading extjs..."
+  run %Q{ cd #{shared_path} && curl -s -o extjs.zip "http://extjs.cachefly.net/ext-#{ext_version}.zip" && unzip -q extjs.zip && rm extjs.zip }
+  upload "config/database.#{server}.yml", "#{shared_path}/config/database.yml"
+end
+after "deploy:setup", :setup_shared
 
 desc "Do all kinds of post-update chores"
 task :after_update_chores, :roles => [:app] do
