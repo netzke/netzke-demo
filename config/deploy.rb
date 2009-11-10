@@ -17,11 +17,12 @@ namespace :deploy do
   end
 end
 
-desc "Make symbolic links to shared files"
-task :make_db_link, :roles => [:app] do
+desc "Do all kinds of post-update chores"
+task :after_update_chores, :roles => [:app] do
+  # symlink to extjs
   run "ln -s #{shared_path}/ext-3.0.0 #{release_path}/public/extjs"
 end
-after "deploy:update_code", :make_db_link
+after "deploy:update_code", :after_update_chores
 
 desc "Recreate the database from migrations"
 task :db_migrate_reset, :roles => [:app] do
