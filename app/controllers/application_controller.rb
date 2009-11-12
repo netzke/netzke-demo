@@ -13,11 +13,9 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
 
-  netzke :feedback_ghost # to provide the feedback
-  
   helper_method :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation
-  
+
   private
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
