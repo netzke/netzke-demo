@@ -1,14 +1,8 @@
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<title>Netzke::GridPanel demo</title>
-	<%= netzke_js_include %>
-	<%= netzke_css_include %>
 	<link rel="stylesheet" href="/stylesheets/demo.css" type="text/css" media="screen" title="no title" charset="utf-8">
-  <script type="text/javascript" charset="utf-8">
-    <%#= feedback_ghost_class_definition %>
-    <%#= feedback_ghost_widget_instance %>
-    <%= yield :javascript %>
-	</script>
+	<%= netzke_init %>
 </head>
 <body>
 	<%= yield %>

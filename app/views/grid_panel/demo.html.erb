@@ -1,13 +1,3 @@
-<%- content_for :javascript do -%>
-Ext.onReady(function(){
-  <%- for widget in @widgets -%>
-  <%= send "#{widget}_class_definition" %>
-	<%= send "#{widget}_widget_instance" %>
-	<%= send "#{widget}_widget_render" %>
-	<%- end -%>
-})
-<%- end -%>
-
 <h1>Meet Netzke::GridPanel</h1>
 
 <p>Here's an instance of GridPanel, which by default provides for: 
@@ -23,7 +13,7 @@ Ext.onReady(function(){
   <li>persistent on-the-fly configuration of the columns ("move", "resize" and "hide"-operations)</li>
 </p>  
 
-<p>Code (in the controller):
+<p>Code (the helper):
 <pre><code>
 netzke :bosses, 
   :widget_class_name => "GridPanel", 
@@ -31,7 +21,9 @@ netzke :bosses,
 </code></pre>
 </p>
 <p>Result:</p>
-<div id="bosses-div"></div>
+<%= netzke :bosses, 
+  :widget_class_name => "GridPanel", 
+  :data_class_name => 'Boss' %>
 
 <h2>Control over columns</h2>
 <p>If you need more control over which columns to display and how, you can provide <tt>:columns</tt> option:</p>
@@ -50,7 +42,17 @@ netzke :bosses,
       {:name => :email, :width => 180}]
 </code></pre>
 <p>Result:</p>
-<div id="bosses-custom-columns-div"></div>
+<%= netzke :bosses_custom_columns, 
+  :widget_class_name => "GridPanel", 
+  :data_class_name => 'Boss', 
+  :ext_config => {
+    :title => "Bosses",
+    :width => 400
+  },
+  :columns => [:id, # id should always be included and is by default hidden
+    :last_name, 
+    {:name => :salary, :editable => false, :label => "$", :renderer => 'usMoney'}, 
+    {:name => :email, :width => 180}] %>
 
 <h2>Model-wide configuration, associations, Rails validations and "virtual" columns</h2>
 <p>Here's an example that demonstrates:
@@ -111,13 +113,15 @@ module Netzke::Helpers::GridPanelClerk
   end
 end
 
-# In the controller:
+# In the view:
 netzke :clerks, 
   :widget_class_name => "GridPanel", 
   :data_class_name => 'Clerk'
 </code></pre>
 <p>Result:</p>
-<div id="clerks-div"></div>
+<%= netzke :clerks, 
+  :widget_class_name => "GridPanel", 
+  :data_class_name => 'Clerk' %>
 
 <h2>Permissions</h2>
 You can specify which actions are allowed for this grid
@@ -131,7 +135,13 @@ netzke :bosses_with_permissions,
   }
 </code></pre>
 <p>Result:</p>
-<div id="bosses-with-permissions-div"></div>
+<%= netzke :bosses_with_permissions, 
+  :widget_class_name => "GridPanel", 
+  :data_class_name => 'Boss', 
+  :ext_config => {
+    :prohibit_update => true,
+    :prohibit_delete => true
+  } %>
 <p class="small">A word about the security: it's not only about disabling buttons. Even if the user manages to submit a prohibited operation, the server side of the widget will block the attempt.
 </p>
 
@@ -150,7 +160,15 @@ netzke :configurable_clerks, :widget_class_name => "Wrapper", :item => {
 </code></pre>
 <p>We wrap the grid up so that after changing its configuration it can be automatically reloaded without the need to reload the page. Btw, this touches another powerful concept behind the Netzke framework: ability to easily nest widgets.</p>
 <p>Result:</p>
-<div id="configurable-clerks-div"></div>
+<%= netzke :configurable_clerks, :widget_class_name => "Wrapper", :item => {
+  :widget_class_name => "GridPanel", 
+  :data_class_name => 'Clerk',
+  :persistent_config => true,
+  :ext_config => {
+    :mode => :config, # here we enable the configuration mode
+    :title => "Configurable clerks"
+  }
+} %>
 
 <h2>Get the code</h2>
 <p>Netzke framework consists of 2 Rails plugins/Ruby gems: netzke-core and netzke-basepack. Get them on the GitHub along with the source code for this demo: <a href = http://github.com/skozlov>http://github.com/skozlov</a></p>

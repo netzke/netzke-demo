@@ -2,43 +2,6 @@ require 'faker'
 class GridPanelController < ApplicationController
   WIDGETS = %w{ bosses clerks bosses_custom_columns bosses_with_permissions configurable_clerks }
   
-  netzke :bosses, 
-    :widget_class_name => "GridPanel", 
-    :data_class_name => 'Boss'
-
-  netzke :bosses_custom_columns, 
-    :widget_class_name => "GridPanel", 
-    :data_class_name => 'Boss', 
-    :ext_config => {
-      :title => "Bosses",
-      :width => 400
-    },
-    :columns => [:id, # id should always be included and is by default hidden
-      :last_name, 
-      {:name => :salary, :editable => false, :label => "$", :renderer => 'usMoney'}, 
-      {:name => :email, :width => 180}]
-
-  netzke :clerks, 
-    :widget_class_name => "GridPanel", 
-    :data_class_name => 'Clerk'
-  
-  netzke :bosses_with_permissions, 
-    :widget_class_name => "GridPanel", 
-    :data_class_name => 'Boss', 
-    :ext_config => {
-      :prohibit_update => true,
-      :prohibit_delete => true
-    }
-  
-  netzke :configurable_clerks, :widget_class_name => "Wrapper", :item => {
-    :widget_class_name => "GridPanel", 
-    :data_class_name => 'Clerk',
-    :persistent_config => true,
-    :ext_config => {
-      :mode => :config, # here we enable the configuration mode
-      :title => "Configurable clerks"
-    }
-  }
   
   def demo
     @widgets = WIDGETS
