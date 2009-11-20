@@ -2,7 +2,7 @@
 
 This is the source-code for http://netzke-demo.writelesscode.com
 
-= Installation (if you want to run it locally)
+= Installation (to run it locally)
 
 1. Get the code from github
 
@@ -11,19 +11,24 @@ This is the source-code for http://netzke-demo.writelesscode.com
 2. Install required gems
 
     rake gems:install
+    
+3. Install Netzke (as plugins)
 
-3. Create the database and do the migrations
+    ./script/plugin install git://github.com/skozlov/netzke-core.git
+    ./script/plugin install git://github.com/skozlov/netzke-basepack.git
+
+4. Create the database and do the migrations
     
     rake db:create && rake db:migrate
     
-4. Link your Ext JS library, e.g.:
+5. Link your Ext JS library (version 3.0.3 is required), e.g.:
     
-    cd public && ln -s ~/code/extjs/ext-3.0 extjs
+    cd public && ln -s ~/code/extjs/ext-3.0.3 extjs
 
 = Prerequisites
 
 1. Rails >= 2.2
-2. Ext >= 3.0
+2. Ext = 3.0.3
 
 = Feedback
 

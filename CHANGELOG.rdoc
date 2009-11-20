@@ -1,3 +1,6 @@
+2009-11-20
+* Compatibility with latest Netzke code ("edge")
+
 2009-09-29
 * Compatibility with Ext 3.0.
 
