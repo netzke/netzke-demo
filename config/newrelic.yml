@@ -31,7 +31,7 @@ common: &default_settings
   # "All UI" then specify a semicolon separated list of up to three
   # distinct names.  This setting does not prevent you from manually
   # defining applications.
-  app_name: My Application
+  app_name: Netzke demo
 
   # When 'enabled' is turned on, the agent collects performance data
   # by inserting lightweight tracers on key methods inside the rails
