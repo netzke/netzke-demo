@@ -21,14 +21,14 @@ This is the source-code for http://netzke-demo.writelesscode.com
     
     rake db:create && rake db:migrate
     
-5. Link your Ext JS library (version 3.0.3 is required), e.g.:
+5. Link your Ext JS library, e.g.:
     
-    cd public && ln -s ~/code/extjs/ext-3.0.3 extjs
+    cd public && ln -s ~/code/extjs/ext-3.1.0 extjs
 
 = Prerequisites
 
 1. Rails >= 2.2
-2. Ext = 3.0.3
+2. Ext = 3.1.0
 
 = Feedback
 
