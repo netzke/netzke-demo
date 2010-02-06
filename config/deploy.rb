@@ -50,7 +50,7 @@ after "deploy:update_code", :update_netzke
 desc "Do all kinds of post-update chores"
 task :after_update_chores, :roles => [:app] do
   # symlink to extjs
-  run "ln -s #{shared_path}/ext-3.0.3 #{release_path}/public/extjs"
+  run "ln -s #{shared_path}/ext-3.1.0 #{release_path}/public/extjs"
   # symlink to netzke
   run "cd #{release_path}/vendor/plugins && ln -s #{shared_path}/netzke-* ."
 end

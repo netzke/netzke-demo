@@ -1,11 +1,11 @@
-<h1>Meet Netzke::AccordionPanel</h1>
+<h1>Netzke::AccordionPanel</h1>
 
 Features:
-<li>Dynamically loads widgets for the panels that get expanded for the first time</li>
-<li>Is loaded along with the active widget - saves a request to the server</li>
+<li>Dynamically loads the nested widget when a panel gets expanded for the first time</li>
+<li>Is loaded along with the "active" widget - saves a request to the server</li>
 
-<h2>Two GridPanels loaded dynamically</h2>
-<p>Two-panel accordion, where panels, at the moment of being expanded, dynamically load two differently configured GridPanels.</p>
+<h2>Example: two GridPanels loaded dynamically</h2>
+<p>A two-panel accordion, where panels, at the moment of being expanded, dynamically load two differently configured GridPanels.</p>
 <p>Code:</p>
 <pre><code>
 netzke :two_grid_panels,
@@ -43,8 +43,8 @@ netzke :two_grid_panels,
             } 
 %>
 
-<h2>A GridPanel and a FormPanel - preloaded</h2>
-<p>Two-panel accordion with GridPanel and FormPanel that get loaded along with the accordion (no dynamic loading takes place)</p>
+<h2>Example: a GridPanel and a FormPanel, preloaded</h2>
+<p>A two-panel accordion nesting a GridPanel and a FormPanel, which get loaded along with the accordion (no dynamic loading takes place)</p>
 Code:
 <pre><code>
 netzke :accordion_panel, 
@@ -88,7 +88,7 @@ Result:
           } 
  %>
  
-<h2>A panel and a BorderLayoutPanel, where the latter is active</h2>
+<h2>Example: a Panel and a BorderLayoutPanel, where the former is active</h2>
 
 <p>The accordion gets loaded with the first panel being "active", i.e. pre-loaded and open. The second panel is a BorderLayoutPanel with two panels - a grid and a form</p>
 
@@ -99,7 +99,7 @@ netzke :border_layout_panel_active,
           :items => [{
             :class_name => "Panel",
             :ext_config => {
-              :html => "First panel is active"
+              :html => "The first panel is active"
             },
             :active => true
           },{
@@ -132,7 +132,7 @@ netzke :border_layout_panel_active,
               :items => [{
                 :class_name => "Panel",
                 :ext_config => {
-                  :html => "First panel is active"
+                  :html => "The first panel is active"
                 },
                 :active => true
               },{
