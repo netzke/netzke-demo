@@ -1,7 +1,159 @@
-<%= netzke :accordion_panel, 
+<h1>Meet Netzke::AccordionPanel</h1>
+
+Features:
+<li>Dynamically loads widgets for the panels that get expanded for the first time</li>
+<li>Is loaded along with the active widget - saves a request to the server</li>
+
+<h2>Two GridPanels loaded dynamically</h2>
+<p>Two-panel accordion, where panels, at the moment of being expanded, dynamically load two differently configured GridPanels.</p>
+<p>Code:</p>
+<pre><code>
+netzke :two_grid_panels,
+          :class_name => "AccordionPanel",
           :items => [{
-            :class_name => "Panel", 
-            :active => true, 
-            :name => "foo"
+            :class_name => "GridPanel",
+            :model => "Boss",
+            :name => "bosses"
           }, {
-            :class_name => "Panel"}], :ext_config => {:width => 300} %>
+            :class_name => "GridPanel",
+            :model => "Clerk",
+            :name => "clerks"
+          }], 
+          :ext_config => {
+            :width => 700,
+            :title => "Two GridPanels loaded dynamically"
+          } 
+</code></pre>
+<p>Result:</p>
+<%= netzke :two_grid_panels,
+            :class_name => "AccordionPanel",
+            :items => [{
+              :class_name => "GridPanel",
+              :model => "Boss",
+              :name => "bosses"
+            }, {
+              :class_name => "GridPanel",
+              :model => "Clerk",
+              :name => "clerks"
+            }], 
+            :ext_config => {
+              :width => 700,
+              :border => true,
+              :title => "Two GridPanels loaded dynamically"
+            } 
+%>
+
+<h2>A GridPanel and a FormPanel - preloaded</h2>
+<p>Two-panel accordion with GridPanel and FormPanel that get loaded along with the accordion (no dynamical loading takes place)</p>
+Code:
+<pre><code>
+netzke :accordion_panel, 
+          :items => [{
+            :class_name => "GridPanel",
+            :model => "Boss",
+            :name => "bosses",
+            :preloaded => true
+          }, {
+            :class_name => "FormPanel",
+            :model => "Clerk",
+            :name => "clerks",
+            :preloaded => true,
+            :record_id => Clerk.first.id
+          }], 
+          :ext_config => {
+            :width => 700,
+            :title => "GridPanel and FormPanel - preloaded",
+            :border => true
+          } 
+</code></pre>
+Result:
+<%= netzke :grid_panel_and_form_panel, 
+          :class_name => "AccordionPanel",
+          :items => [{
+            :class_name => "GridPanel",
+            :model => "Boss",
+            :name => "bosses",
+            :preloaded => true
+          }, {
+            :class_name => "FormPanel",
+            :model => "Clerk",
+            :name => "clerks",
+            :preloaded => true,
+            :record_id => Clerk.first.id
+          }], 
+          :ext_config => {
+            :width => 700,
+            :title => "GridPanel and FormPanel - preloaded",
+            :border => true
+          } 
+ %>
+ 
+<h2>A panel and a BorderLayoutPanel, where the latter is active</h2>
+
+<p>The accordion gets loaded with the first panel being "active", i.e. pre-loaded and open. The second panel is a BorderLayoutPanel with two panels - a grid and a form</p>
+
+<p>Code:</p>
+<pre><code>
+netzke :border_layout_panel_active,
+          :class_name => "AccordionPanel",
+          :items => [{
+            :class_name => "Panel",
+            :ext_config => {
+              :html => "First panel is active"
+            },
+            :active => true
+          },{
+            :class_name => "BorderLayoutPanel",
+            :regions => {
+              :center => {
+                :class_name => "GridPanel",
+                :model => "Boss"
+              },
+              :south => {
+                :class_name => "FormPanel",
+                :model => "Clerk",
+                :record_id => Clerk.first.id,
+                :region_config => {
+                  :height => 150
+                }
+              }
+            }
+          }],
+          :ext_config => {
+            :width => 700,
+            :border => true
+          }
+</code></pre>
+
+<p>Result:</p>
+<%= 
+netzke :border_layout_panel_active,
+              :class_name => "AccordionPanel",
+              :items => [{
+                :class_name => "Panel",
+                :ext_config => {
+                  :html => "First panel is active"
+                },
+                :active => true
+              },{
+                :class_name => "BorderLayoutPanel",
+                :regions => {
+                  :center => {
+                    :class_name => "GridPanel",
+                    :model => "Boss"
+                  },
+                  :south => {
+                    :class_name => "FormPanel",
+                    :model => "Clerk",
+                    :record_id => Clerk.first.id,
+                    :region_config => {
+                      :height => 150
+                    }
+                  }
+                }
+              }],
+              :ext_config => {
+                :width => 700,
+                :border => true
+              }
+%>

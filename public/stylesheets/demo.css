@@ -1,7 +1,8 @@
 body {padding: 10px;}
 .small {font-size: .9em;}
 p {margin-top: 10px;}
-h2 {margin-top: 20px;}
+h1 {font-size: 1.5em;}
+h2 {margin: 20px 0 5px;}
 
 .bulb-on {
 	background: url(/images/icons/lightbulb.png) no-repeat;
