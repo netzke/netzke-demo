@@ -1,0 +1,2 @@
+module WindowHelper
+end

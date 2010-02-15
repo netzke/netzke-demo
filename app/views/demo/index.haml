@@ -2,6 +2,7 @@
   %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-type" }
   %title
     Netzke framework demo/tutorial - integrating Ext JS and Rails
+    
 %body
   %h2 Netzke framework demo/tutorial
   
@@ -15,20 +16,16 @@
   %h3 GridPanel
   %p
     Extensive
-    = link_to "Demo/Tutorial", :controller => "grid_panel"
+    = link_to "demo/tutorial", :controller => "grid_panel"
     of GridPanel as a stand-alone widget
   
   %p
-    GridPanel integrated into an "application" (Ext.Viewport-based widget):
-    = link_to "here", "basic_app/demo#clerks"
-    and
-    = link_to "here", "basic_app/demo#bosses"
+    GridPanel integrated into an "application" (Ext.Viewport-based widget). See it in action in different places through out the
+    = link_to "BasicApp demo", :controller => "basic_app", :action => "intro"
+
   %h3 FormPanel
   See it in action in different places through out the
   = link_to "BasicApp demo", :controller => "basic_app", :action => "intro"
-  
-  %h3 TreePanel
-  Demo coming soon
   
   %h3 TabPanel
   See the configuration window for Grid/FormPanel in the
@@ -36,6 +33,12 @@
   
   %h3 AccordionPanel
   = link_to "Live demo", :controller => "accordion_panel"
+  
+  %h3 Window
+  = link_to "Live demo", :controller => "window"
+
+  %h3 TreePanel
+  Demo coming soon
   
   %h3 Composite widgets
   %p
