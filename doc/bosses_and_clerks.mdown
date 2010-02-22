@@ -20,17 +20,17 @@ Let's specify the regions and fill them with an empty Panel - just to see if we 
       super.merge({
         :regions => {
           :center => {
-            :widget_class_name => "Panel"
+            :class_name => "Panel"
           },
           :east => {
-            :widget_class_name => "Panel",
+            :class_name => "Panel",
             :region_config => {
               :width => 240,
               :split => true
             }
           },
           :south => {
-            :widget_class_name => "Panel",
+            :class_name => "Panel",
             :region_config => {
               :height => 200,
               :split => true
@@ -46,13 +46,13 @@ The default titles don't look nice, so let's correct it. We also don't need the 
       super.merge({
         :regions => {
           :center => {
-            :widget_class_name => "Panel",
+            :class_name => "Panel",
             :ext_config => {
               :title => "Bosses"
             }
           },
           :east => {
-            :widget_class_name => "Panel",
+            :class_name => "Panel",
             :ext_config => {
               :title => "Info"
             },
@@ -62,7 +62,7 @@ The default titles don't look nice, so let's correct it. We also don't need the 
             }
           },
           :south => {
-            :widget_class_name => "Panel",
+            :class_name => "Panel",
             :ext_config => {
               :title => "Clerks"
             },
@@ -88,14 +88,14 @@ Now that we like the layout of the future widget, let's introduce 2 GridPanels (
       super.merge({
         :regions => {
           :center => {
-            :widget_class_name => "GridPanel",
-            :data_class_name => "Boss",
+            :class_name => "GridPanel",
+            :model => "Boss",
             :ext_config => {
               :title => "Bosses"
             }
           },
           :east => {
-            :widget_class_name => "Panel",
+            :class_name => "Panel",
             :ext_config => {
               :title => "Info"
             },
@@ -105,8 +105,8 @@ Now that we like the layout of the future widget, let's introduce 2 GridPanels (
             }
           },
           :south => {
-            :widget_class_name => "GridPanel",
-            :data_class_name => "Clerk",
+            :class_name => "GridPanel",
+            :model => "Clerk",
             :ext_config => {
               :title => "Clerks"
             },

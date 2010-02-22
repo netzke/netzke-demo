@@ -4,14 +4,14 @@ module Netzke
       super.merge({
         :regions => {
           :center => {
-            :widget_class_name => "GridPanel",
-            :data_class_name => "Boss",
+            :class_name => "GridPanel",
+            :model => "Boss",
             :ext_config => {
               :title => "Bosses"
             }
           },
           :east => {
-            :widget_class_name => "Panel",
+            :class_name => "Panel",
             :ext_config => {
               :title => "Info",
               :body_style => {:padding => "5px 5px"}
@@ -22,8 +22,8 @@ module Netzke
             }
           },
           :south => {
-            :widget_class_name => "GridPanel",
-            :data_class_name => "Clerk",
+            :class_name => "GridPanel",
+            :model => "Clerk",
             :scopes => [[:boss_id, widget_session[:selected_boss_id]]],
             :strong_default_attrs => {:boss_id => widget_session[:selected_boss_id]},
             :ext_config => {

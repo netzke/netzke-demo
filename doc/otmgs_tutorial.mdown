@@ -38,8 +38,8 @@ It woudn't work just yet, because we didn't even specify the center-region, whic
         def initial_aggregatees
           {
             :center => {
-              :widget_class_name    => "GridPanel", 
-              :data_class_name      => "Boss"
+              :class_name    => "GridPanel", 
+              :model      => "Boss"
             }
           }
         end
@@ -50,12 +50,12 @@ In Netzke::Base-based classes (which BorderLayoutPanel is), we specify aggregate
 
 Now our widget can be seen working... if we declare it somewhere. We can do this in a Rails controller like this:
 
-    netzke :bosses_and_clerks, :widget_class_name => "OneToManyGridSetPoc"
+    netzke :bosses_and_clerks, :class_name => "OneToManyGridSetPoc"
     
 ... and then access it at the bosses\_and\_clerks\_test action or integrate it into our views (see the details in [netzke-basepack readme](http://github.com/skozlov/netzke-basepack/tree/master)). However, let's integrate our widget into BasicAppDemo - a Netzke::BasicApp-based widget that is already present in netzke-demo and represents our desktop-like web-app. Go to lib/netzke/basic\_app\_demo and add the following to the initial\_late\_aggregatees method (in short, late aggregatees differ from normal aggregatees by that they don't get instantiated along with the aggregator, but can be instantiated on request later):
 
     :bosses_and_clerks => {
-      :widget_class_name    => "OneToManyGridSetPoc"
+      :class_name    => "OneToManyGridSetPoc"
     }
 
 (*yes, it's also there already, as well as the code to add the access to our widget from the BasicAppDemo's menu - we won't talk about this in this tutorial, but you may refer to [this blog post](http://blog.writelesscode.com/past/2009/3/19/netzke_demo_update_actions_menus_and_authentication/)*)
@@ -70,13 +70,13 @@ It hasn't been much coding so far, has it? It doesn't take much more to add the 
     def initial_aggregatees
       {
         :center => {
-          :widget_class_name    => "GridPanel", 
-          :data_class_name      => "Boss"
+          :class_name    => "GridPanel", 
+          :model      => "Boss"
         },
     
         :east => {
-          :widget_class_name    => "GridPanel", 
-          :data_class_name      => "Clerk", 
+          :class_name    => "GridPanel", 
+          :model      => "Clerk", 
           :region_config        => {
             :width  => 300, 
             :split  => true
@@ -100,8 +100,8 @@ After we have seen the result, we immediately may want to tweak some things in t
     def initial_aggregatees
       {
         :center => {
-          :widget_class_name    => "GridPanel", 
-          :data_class_name      => "Boss",
+          :class_name    => "GridPanel", 
+          :model      => "Boss",
           :ext_config => {
             :title         => "Bosses",
             :rows_per_page => 20
@@ -110,8 +110,8 @@ After we have seen the result, we immediately may want to tweak some things in t
         },
     
         :east => {
-          :widget_class_name    => "GridPanel", 
-          :data_class_name      => "Clerk", 
+          :class_name    => "GridPanel", 
+          :model      => "Clerk", 
           :region_config        => {
             :width  => 300, 
             :split  => true
@@ -131,8 +131,8 @@ But when you reload the page, you'll see, that while some things have changed, t
 With other words, the columns you specify in the code are simply the defaults, for the case when those can't be retrieved from the database. What can be done about it? There are 2 ways. First, you may set the persistent\_layout option for the bosses grid to false:
 
     :center => {
-      :widget_class_name    => "GridPanel", 
-      :data_class_name      => "Boss",
+      :class_name    => "GridPanel", 
+      :model      => "Boss",
       :ext_config => {
         :title         => "Bosses",
         :rows_per_page => 20
@@ -226,7 +226,7 @@ I hope you see how we are going to use it in order to override the default behav
       filters = params[:filter] ||= {}
 
       # calculate the foreign key based on container class
-      foreign_key = aggregatees[:center][:data_class_name].
+      foreign_key = aggregatees[:center][:model].
                     constantize.table_name.singularize + "_id"
 
       # add the foreign key filter to the filters
@@ -248,7 +248,7 @@ Similar way we implement east\_\_post\_data method:
       container_id = params[:base_params] && 
         ActiveSupport::JSON.decode(params[:base_params])["container_id"]
 
-      foreign_key = aggregatees[:center][:data_class_name].
+      foreign_key = aggregatees[:center][:model].
                     constantize.table_name.singularize + "_id"
 
       # for new records, merge foreign key in
@@ -270,7 +270,7 @@ Now when we create a clerk, it will be assigned to the currently selected boss (
 For now our widget is not generic, as it has the bosses and clerks model names hard-coded along with some other configuration for the inner widgets. It would be nice to be able to configure OneToManyGridSetPoc widget like this (the simplest way):
 
     netzke :bosses_and_clerks, 
-      :widget_class_name    => "OneToManyGridSetPoc",
+      :class_name    => "OneToManyGridSetPoc",
       :container_class_name => "Boss",
       :element_class_name   => "Clerk"
 
@@ -279,8 +279,8 @@ All we need to do is to replace the hard-coded values with corresponding config 
     def initial_aggregatees
       {
         :center => {
-          :widget_class_name    => "GridPanel", 
-          :data_class_name      => config[:container_class_name],
+          :class_name    => "GridPanel", 
+          :model      => config[:container_class_name],
           :ext_config => {
             :title         => config[:container_class_name].pluralize,
             :rows_per_page => 20
@@ -288,8 +288,8 @@ All we need to do is to replace the hard-coded values with corresponding config 
         },
     
         :east => {
-          :widget_class_name    => "GridPanel", 
-          :data_class_name      => config[:element_class_name],
+          :class_name    => "GridPanel", 
+          :model      => config[:element_class_name],
           :region_config        => {
             :width  => 300, 
             :split  => true
@@ -305,15 +305,15 @@ All we need to do is to replace the hard-coded values with corresponding config 
 And if we want even more configuration freedom? Say, something like this:
 
     netzke :bosses_and_clerks, 
-      :widget_class_name    => "OneToManyGridSetPoc",
+      :class_name    => "OneToManyGridSetPoc",
       :container_config => {
-        :data_class_name => "Boss",
+        :model => "Boss",
         :ext_config      => {
           :rows_per_page => 10
         }
       },
       :element_config => {
-        :data_class_name => "Clerk",
+        :model => "Clerk",
         :columns         => [:id, :name, :salary, :updated],
         :region_config   => {
           :width => 500
@@ -325,16 +325,16 @@ It's also easy: just recursively merge the region widgets configuration with the
     def initial_aggregatees
       {
         :center => {
-          :widget_class_name    => "GridPanel", 
-          :data_class_name      => config[:container_class_name],
+          :class_name    => "GridPanel", 
+          :model      => config[:container_class_name],
           :ext_config => {
             :rows_per_page => 20
           }
         }.recursive_merge(config[:container_config] || {}),
     
         :east => {
-          :widget_class_name    => "GridPanel", 
-          :data_class_name      => config[:element_class_name],
+          :class_name    => "GridPanel", 
+          :model      => config[:element_class_name],
           :region_config        => {
             :width  => 300, 
             :split  => true

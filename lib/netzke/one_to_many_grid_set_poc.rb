@@ -9,16 +9,16 @@ module Netzke
         },
         :regions => {
           :center => {
-            :widget_class_name    => "GridPanel", 
-            :data_class_name      => @passed_config[:container_class_name],
+            :class_name    => "GridPanel", 
+            :model      => @passed_config[:container_class_name],
             :ext_config => {
               :title         => @passed_config[:container_class_name].pluralize
             }
           }.deep_merge(@passed_config[:container_config] || {}),
 
           :east => {
-            :widget_class_name    => "GridPanel",
-            :data_class_name      => @passed_config[:element_class_name],
+            :class_name    => "GridPanel",
+            :model      => @passed_config[:element_class_name],
             :scopes               => [[:boss_id, widget_session[:container_id]]],
             :strong_default_attrs => {:boss_id => widget_session[:container_id]},
             :region_config        => {

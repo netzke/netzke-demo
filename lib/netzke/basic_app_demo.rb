@@ -74,21 +74,21 @@ module Netzke
     def initial_late_aggregatees
       {
         :clerks => {
-          :widget_class_name => "BorderLayoutPanel",
+          :class_name => "BorderLayoutPanel",
           :ext_config => {
             :header => false
           },
           :regions => {
             :center => {
-              :widget_class_name => "GridPanel", 
-              :data_class_name => "Clerk", 
+              :class_name => "GridPanel", 
+              :model => "Clerk", 
               :ext_config => {
                 :title => 'Clerks',
                 :rows_per_page => 20
               }
             },
             :south => {
-              :widget_class_name => "Panel",
+              :class_name => "Panel",
               :region_config => {
                 :height => 190,
                 :split => true,
@@ -106,21 +106,21 @@ module Netzke
         },
 
         :bosses => {
-          :widget_class_name => "BorderLayoutPanel",
+          :class_name => "BorderLayoutPanel",
           :ext_config => {
             :header => false
           },
           :regions => {
             :center => {
-              :widget_class_name => "GridPanel", 
-              :data_class_name => "Boss", 
+              :class_name => "GridPanel", 
+              :model => "Boss", 
               :ext_config => {
                 :title => "Bosses",
                 :rows_per_page => 20
               }
             },
             :south => {
-              :widget_class_name => "Panel",
+              :class_name => "Panel",
               :region_config => {
                 :height => 70,
                 :collapsed => true,
@@ -137,33 +137,33 @@ module Netzke
         },
 
         :bosses_and_clerks_ext => {
-          :widget_class_name    => "BossesAndClerks"
+          :class_name    => "BossesAndClerks"
         },
 
         :bosses_and_clerks => {
-          :widget_class_name    => "OneToManyGridSetPoc",
+          :class_name    => "OneToManyGridSetPoc",
           :container_class_name => "Boss",
           :element_class_name   => "Clerk"
         },
 
         :masquerade_selector => {
-          :widget_class_name => "MasqueradeSelector"
+          :class_name => "MasqueradeSelector"
         },
         
         :roles => {
-          :widget_class_name => "GridPanel",
-          :data_class_name => "Role"
+          :class_name => "GridPanel",
+          :model => "Role"
         },
 
         :users => {
-          :widget_class_name => "GridPanel",
-          :data_class_name => "User",
+          :class_name => "GridPanel",
+          :model => "User",
           :columns => [:id, :login, :role__name, :login_count, :last_login_at, :last_request_at, :active_recently]
         },
         
         :custom_actions_grid => {
-          :widget_class_name => "CustomActionGrid",
-          :data_class_name => "Boss",
+          :class_name => "CustomActionGrid",
+          :model => "Boss",
           :ext_config => {:title => "Bosses"}
         }
       }
