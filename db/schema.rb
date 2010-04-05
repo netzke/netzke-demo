@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(:version => 20090501195948) do
     t.datetime "updated_at"
   end
 
+  create_table "netzke_auto_fields", :force => true do |t|
+    t.boolean "hidden"
+    t.string  "name"
+    t.string  "condition"
+    t.string  "field_label"
+    t.string  "xtype"
+    t.string  "value"
+    t.integer "position"
+  end
+
   create_table "netzke_preferences", :force => true do |t|
     t.string   "name"
     t.string   "pref_type"
