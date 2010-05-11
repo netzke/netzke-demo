@@ -1,4 +1,4 @@
-set :ext_version, "3.1.1"
+set :ext_version, "3.2.1"
 set :application, "netzke-demo"
 # set :domain,      "netzke"
 set :domain,      "fl"
