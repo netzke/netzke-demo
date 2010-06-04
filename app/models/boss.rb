@@ -6,7 +6,8 @@ class Boss < ActiveRecord::Base
   has_many :clerks
   
   validates_presence_of :last_name
-
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  
   def name
     "#{last_name}, #{first_name}"
   end

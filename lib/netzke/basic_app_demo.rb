@@ -13,7 +13,7 @@ module Netzke
             <span style="color:#B32D15">Netzke</span> basic application demo
           </div>
         },
-        :bodyStyle => {"background" => "#FFF url(\"/images/header-deco1.png\") top left repeat-x"}
+        :bodyStyle => {"background" => "#FFF url(\"/images/header-deco.gif\") top left repeat-x"}
       },{
         :region => 'center',
         :layout => 'border',
@@ -169,15 +169,18 @@ module Netzke
       }
     end
     
-    # WORKAROUND badly implemented inheritance
-    # Because of the inheritance, we need to reset these methods
+    # We need to do this, otherwise the panels are taken from the parent class
     def self.js_extend_properties
-      {}
+      {
+        :panels => self.js_panels
+      }
     end
     
-    def self.include_js
-      []
-    end
+    # WORKAROUND badly implemented inheritance
+    # Because of the inheritance, we need to reset these methods
+    # def self.include_js
+    #   []
+    # end
     # end WORKAROUND
     
   end

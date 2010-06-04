@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100602133946) do
+ActiveRecord::Schema.define(:version => 20100602212620) do
 
   create_table "bosses", :force => true do |t|
     t.string   "first_name"
@@ -82,16 +82,11 @@ ActiveRecord::Schema.define(:version => 20100602133946) do
   create_table "netzke_temp_table", :force => true do |t|
     t.integer "position"
     t.string  "attr_type"
-    t.boolean "included",      :default => true
-    t.string  "name"
-    t.string  "header"
-    t.string  "default_value"
-    t.boolean "read_only"
     t.boolean "hidden"
-    t.boolean "with_filters",  :default => true
-    t.integer "width"
-    t.boolean "hideable",      :default => true
-    t.boolean "sortable",      :default => true
+    t.string  "name"
+    t.string  "field_label"
+    t.string  "xtype"
+    t.string  "value"
   end
 
   create_table "roles", :force => true do |t|
@@ -99,6 +94,16 @@ ActiveRecord::Schema.define(:version => 20100602133946) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
     t.string   "login",                              :null => false
