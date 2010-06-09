@@ -87,7 +87,7 @@ module Netzke::ModelExtensions
     netzke_attribute :name, :renderer => "uppercase", :width => 200
     
     # Virtual attribute defined below (thus only to be shown in GridPanels)
-    netzke_attribute :updated_bulb, :width => 40, :label => "<div class='bulb-off' />"
+    netzke_attribute :updated_bulb, :width => 40, :label => "<div class='bulb-off' />", :tooltip => "Recently updated"
     
     # Preconfigure a "real" attribute
     netzke_attribute :salary, :renderer => "usMoney"
