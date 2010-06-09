@@ -1,4 +1,4 @@
-<h1>Netzke::AccordionPanel</h1>
+<% title "Netzke::AccordionPanel" %>
 
 Features:
 <li>Dynamically loads the nested widget when a panel gets expanded for the first time</li>
@@ -7,7 +7,7 @@ Features:
 <h2>Example: two GridPanels loaded dynamically</h2>
 <p>A two-panel accordion, where panels, at the moment of being expanded, dynamically load two differently configured GridPanels.</p>
 <p>Code:</p>
-<pre><code>
+<% coderay do %>
 netzke :two_grid_panels,
           :class_name => "AccordionPanel",
           :items => [{
@@ -23,7 +23,7 @@ netzke :two_grid_panels,
             :width => 700,
             :title => "Two GridPanels loaded dynamically"
           } 
-</code></pre>
+<% end %>
 <p>Result:</p>
 <%= netzke :two_grid_panels,
             :class_name => "AccordionPanel",
@@ -46,7 +46,7 @@ netzke :two_grid_panels,
 <h2>Example: a GridPanel and a FormPanel, preloaded</h2>
 <p>A two-panel accordion nesting a GridPanel and a FormPanel, which get loaded along with the accordion (no dynamic loading takes place)</p>
 Code:
-<pre><code>
+<% coderay do %>
 netzke :accordion_panel, 
           :items => [{
             :class_name => "GridPanel",
@@ -65,7 +65,7 @@ netzke :accordion_panel,
             :title => "GridPanel and FormPanel - preloaded",
             :border => true
           } 
-</code></pre>
+<% end %>
 Result:
 <%= netzke :grid_panel_and_form_panel, 
           :class_name => "AccordionPanel",
@@ -93,7 +93,7 @@ Result:
 <p>The accordion gets loaded with the first panel being "active", i.e. pre-loaded and open. The second panel is a BorderLayoutPanel with two panels - a grid and a form</p>
 
 <p>Code:</p>
-<pre><code>
+<% coderay do %>
 netzke :border_layout_panel_active,
           :class_name => "AccordionPanel",
           :items => [{
@@ -123,7 +123,7 @@ netzke :border_layout_panel_active,
             :width => 700,
             :border => true
           }
-</code></pre>
+<% end %>
 
 <p>Result:</p>
 <%= 

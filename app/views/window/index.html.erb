@@ -1,4 +1,4 @@
-<h1>Netzke::Window</h1>
+<% title "Netzke::Window" %>
 
 Features:
 <li>Straight-forward nesting of any other Netzke widget</li>
@@ -7,9 +7,9 @@ Features:
 <h2>Example 1: an empty window with defaults</h2>
 <p>Just a window that remembers its size and position</p>
 <p>Code:</p>
-<pre><code>
+<% coderay do %>
   netzke :window
-</code></pre>
+<% end %>
 <br>
 <input type="button" value="Show window" onClick="Netzke.page.window.show(); Ext.get(this).hide();" />
 
@@ -17,7 +17,7 @@ Features:
 
 <h2>Example 2: a window nesting a GridPanel</h2>
 <p>Code:</p>
-<pre><code>
+<% coderay do %>
   netzke :window_with_grid_panel, 
     :class_name => "Window", 
     :persistent_config => true, 
@@ -31,7 +31,7 @@ Features:
         :header => false, :border => true
       }
     }
-</code></pre>
+<% end %>
 <br>
 <input type="button" value="Show window" onClick="Netzke.page.windowWithGridPanel.show(); Ext.get(this).hide();" />
 
@@ -53,7 +53,7 @@ Features:
 <h2>Example 3: a window nesting BossesAndClerks widget (from <a href="http://blog.writelesscode.com/blog/2009/09/24/building-rails-extjs-reusable-components-with-netzke-part-3/">this</a> tutorial)</h2>
 <p>Just a window that remembers its size and position</p>
 <p>Code:</p>
-<pre><code>
+<% coderay do %>
   netzke :window_with_bosses_and_clerks, 
     :class_name => "Window", 
     :persistent_config => true, 
@@ -66,7 +66,7 @@ Features:
         :header => false, :border => true
       }
     }
-</code></pre>
+<% end %>
 <br>
 <input type="button" value="Show window" onClick="Netzke.page.windowWithBossesAndClerks.show(); Ext.get(this).hide();" />
 
@@ -87,14 +87,14 @@ Features:
 <h2>Example 4: empty window with predefined dimensions that can be reopened after closing</h2>
 <p>Simply setting the <tt>Ext.Window</tt>'s <tt>closeAction</tt> option to "hide"</p>
 <p>Code:</p>
-<pre><code>
+<% coderay do %>
   netzke :reopenable_window, 
     :class_name => "Window", 
     :ext_config => {
       :close_action => "hide", 
       :width => 200, :height => 100
     }
-</code></pre>
+<% end %>
 <br>
 <input type="button" value="Show window" onClick="Netzke.page.reopenableWindow.show()" />
 <%= netzke :reopenable_window, 

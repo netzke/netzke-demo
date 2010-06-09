@@ -2,13 +2,9 @@ require 'faker'
 class GridPanelController < ApplicationController
   WIDGETS = %w{ bosses clerks bosses_custom_columns bosses_with_permissions configurable_clerks }
   
-  
   def demo
-    @widgets = WIDGETS
-  end
-  
-  def index
-    redirect_to :action => "demo"
+    # Simplify the URL, there was no need for more actions apparently
+    redirect_to :action => "index", :status=>:moved_permanently
   end
   
   def regenerate_test_data

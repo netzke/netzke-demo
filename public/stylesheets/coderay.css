@@ -1,0 +1,31 @@
+.CodeRay {
+  font-family: 'Courier New', 'Terminal', monospace;
+  color: #666;
+  padding: 3px 5px;
+  overflow: auto;
+  font-size: 12px;
+  margin: 12px 0;
+}
+.CodeRay pre {
+  margin: 0px;
+  padding: 0px;
+}
+
+.CodeRay .an { color:#E7BE69 }                      /* html attribute */
+.CodeRay .c  { color:#BC9358; font-style: italic; } /* comment */
+.CodeRay .ch { color:#509E4F }                      /* escaped character */
+.CodeRay .cl { color:#21429c }                         /* class */
+.CodeRay .co { color:#21429c }                         /* constant */
+.CodeRay .fl { color:#DD00DD }                      /* float */
+.CodeRay .fu { color:#FFC56D }                      /* function */
+.CodeRay .gv { color:#D0CFFE }                      /* global variable */
+.CodeRay .i  { color:#DD00DD }                      /* integer */
+/*.CodeRay .il { background:#151515 }                 /* inline code */*/
+.CodeRay .iv { color:#D0CFFE }                      /* instance variable */
+.CodeRay .pp { color:#E7BE69 }                      /* doctype */
+.CodeRay .r  { color:#CB7832 }                      /* keyword */
+.CodeRay .rx { color:#DD00DD }                      /* regex */
+.CodeRay .s  { color:#DD00DD }                      /* string */
+.CodeRay .sy { color:#6C9CBD }                      /* symbol */
+.CodeRay .ta { color:#E7BE69 }                      /* html tag */
+.CodeRay .pc { color:#6C9CBD }                      /* boolean */

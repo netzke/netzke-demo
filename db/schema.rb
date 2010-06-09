@@ -31,32 +31,6 @@ ActiveRecord::Schema.define(:version => 20100602212620) do
     t.datetime "updated_at"
   end
 
-  create_table "netzke_auto_columns", :force => true do |t|
-    t.string  "name"
-    t.boolean "excluded"
-    t.string  "value"
-    t.string  "header"
-    t.boolean "hidden"
-    t.boolean "editable",     :default => true
-    t.string  "editor"
-    t.string  "renderer"
-    t.boolean "with_filters", :default => true
-    t.integer "width"
-    t.boolean "hideable",     :default => true
-    t.boolean "sortable",     :default => true
-    t.integer "position"
-  end
-
-  create_table "netzke_auto_fields", :force => true do |t|
-    t.boolean "hidden"
-    t.string  "name"
-    t.string  "condition"
-    t.string  "field_label"
-    t.string  "xtype"
-    t.string  "value"
-    t.integer "position"
-  end
-
   create_table "netzke_field_lists", :force => true do |t|
     t.string   "name"
     t.text     "value"
@@ -77,16 +51,6 @@ ActiveRecord::Schema.define(:version => 20100602212620) do
     t.string   "widget_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "netzke_temp_table", :force => true do |t|
-    t.integer "position"
-    t.string  "attr_type"
-    t.boolean "hidden"
-    t.string  "name"
-    t.string  "field_label"
-    t.string  "xtype"
-    t.string  "value"
   end
 
   create_table "roles", :force => true do |t|
