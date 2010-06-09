@@ -1,15 +1,18 @@
+# Declare and configure attributes specifically for GridPanel
 module Netzke::ModelExtensions
-  # Declare and configure atttributes specifically for model Clerk and GridPanel
   class ClerkForGridPanel < Clerk
-    netzke_attribute :name, :read_only => true
-    netzke_attribute :salary, :renderer => "usMoney"
-    netzke_attribute :updated_bulb, :width => 40, :label => "<div class='bulb-off' />"
+    # Virtual attribute defined in the model
     netzke_attribute :name, :renderer => "uppercase", :width => 200
     
-    # Specify which columns and in which order we want to see
+    # Virtual attribute defined below (thus only to be shown in GridPanels)
+    netzke_attribute :updated_bulb, :width => 40, :label => "<div class='bulb-off' />"
+    
+    # Preconfigure a "real" attribute
+    netzke_attribute :salary, :renderer => "usMoney"
+    
+    # Specify which columns and in which order to show
     netzke_expose_attributes :id, :name, :first_name, :last_name, :updated_bulb, :email, :salary, :boss__last_name      
     
-    netzke_attribute :updated_bulb
     def updated_bulb
       bulb = updated ? "on" : "off"
       "<div class='bulb-#{bulb}' />"

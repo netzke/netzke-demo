@@ -8,7 +8,7 @@ module ApplicationHelper
 
     out = ::CodeRay.scan(text, lang).div(:css => :class)
 
-    concat(out, block.binding)
+    concat out
     return
   end
   
