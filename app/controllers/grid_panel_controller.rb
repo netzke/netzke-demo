@@ -46,7 +46,10 @@ class GridPanelController < ApplicationController
 
   def reset_configs
     # only delete preferences for the grid demo
-    WIDGETS.each{ |widget| NetzkePreference.delete_all("widget_name LIKE '#{widget}%'") }
+    WIDGETS.each do |widget| 
+      NetzkePreference.delete_all("widget_name LIKE '#{widget}%'")
+      NetzkeFieldList.delete_all(:name => widget)
+    end
     redirect_to :action => "demo"
   end
 end
