@@ -11,6 +11,6 @@ class Clerk < ActiveRecord::Base
 
   # this method will be used by another "virtual column"
   def updated
-    updated_at > 5.minutes.ago
+    self.updated_at > 5.minutes.ago
   end
 end

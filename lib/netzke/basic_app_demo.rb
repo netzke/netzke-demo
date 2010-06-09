@@ -158,7 +158,7 @@ module Netzke
         :users => {
           :class_name => "GridPanel",
           :model => "User",
-          :columns => [:id, :login, :role__name, :login_count, :last_login_at, :last_request_at, :active_recently, :password]
+          :columns => [:id, :login, :role__name, :login_count, :last_login_at, :last_request_at, :active_recently]
         },
         
         :custom_actions_grid => {
