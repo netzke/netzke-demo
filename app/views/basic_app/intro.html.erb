@@ -1,20 +1,10 @@
 <h2>BasicApp demo</h2>
-<p style="color: green"><%= flash[:notice] %></p>
 The BasicApp widget is the basis for your Netzke application. It's a Ext.Viewport-based widget, which currently supports:<br>
 * Dynamic loading of widgets (the same way as any other Netzke widget): when you click a menu item, it does exactly that.<br>
 * Authentication support (see the login/logout button on the right side of the top toolbar): login to get access to users data.<br>
 * Browser history support (by means of the browser's Back/Forward buttons): press the "Back"-button to go to the previously loaded widget ("Forward" works, too...).<br>
-* FeedbackGhost-widget powered feedback for errors, notifications, Rails validation messages, etc.<br>
-* Masquerade support (an administrator may "<a href='http://blog.writelesscode.com/past/2009/5/7/netzke_intuitive_application_configuration_with_help_of_masquerading/'>masquerade</a>" as another user, or even group of users).<br>
+* Masquerading support (an administrator may "<a href='http://blog.writelesscode.com/past/2009/5/7/netzke_intuitive_application_configuration_with_help_of_masquerading/'>masquerade</a>" as another user, or even group of users).<br>
 * AJAX activity indicator (see the status bar below).
 
-<p>Also note that Netzke provides caching for JavaScript classes of its widgets: for instance, once a GridPanel class is loaded from the server by the BaseApp, it will never be requested again, which 1) significantly reduces the traffic, 2) lets the browser to parse the class only once. Also, the caching provides an advantage in case when a compound widget (an example of a compound widget is the one loaded through the "Bosses and Clerks" menu) re-uses another widget whose class has already been loaded.</p>
-<p>And of course, all the goodies of the GridPanel widget (column resize/move/hide, dynamic configuration, etc - see <%= link_to "GridPanel demo", :controller => "grid_panel", :action => "demo" %>) are inherently accessible </p>
-
-<p><%= link_to "Load the BasicApp demo", :action => "demo" %></p>
+<p><%= link_to "Load the BasicApp demo", :action => "index" %></p>
 <p><%= link_to "Back home", root_url %></p>
-<%- if current_user -%>
-<p><%= link_to "Log out #{current_user.login}", user_session_url, :method => :delete %></p>
-<%- end -%>
-
-<p>Authentication is powered by the wonderful authlogic gem</p>
