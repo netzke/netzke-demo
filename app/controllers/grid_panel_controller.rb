@@ -1,4 +1,4 @@
-require 'faker'
+# require 'faker'
 class GridPanelController < ApplicationController
   WIDGETS = %w{ bosses clerks bosses_custom_columns bosses_with_permissions configurable_clerks }
   

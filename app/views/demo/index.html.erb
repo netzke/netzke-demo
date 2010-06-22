@@ -1,0 +1,28 @@
+<%= netzke :border_layout_panel_active,
+              :class_name => "AccordionPanel",
+              :items => [{
+                :class_name => "Panel",
+                :ext_config => {
+                  :html => "The first panel is active"
+                },
+                :active => true
+              },{
+                :class_name => "BorderLayoutPanel",
+                :regions => {
+                  :center => {
+                    :class_name => "Panel",
+                  },
+                  :south => {
+                    :class_name => "Panel",
+                    :region_config => {
+                      :height => 150,
+                      :split => true
+                    }
+                  }
+                }
+              }],
+              :ext_config => {
+                :width => 700,
+                :border => true
+              }
+%>

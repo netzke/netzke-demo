@@ -1,11 +1,16 @@
+<!DOCTYPE html>
+<html>
 <head>
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<title><%= h("#{yield(:title)} - Netzke Demo, integrating Ext JS and Rails") %></title>
-	<%= netzke_init %>
+  <title>NetzkeDemo</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+  <%= netzke_init %>
 	<%= stylesheet_link_tag "demo", "coderay" %>
 </head>
 <body>
-  <h1><%=h yield(:title) %></h1>
-	<%= yield %>
-	<%= render :partial => "shared/analytics" %>
+
+<%= yield %>
+
 </body>
+</html>
