@@ -1,3 +1,6 @@
+2010-06-25
+* Added TabPanel demo page.
+
 2009-11-20
 * Compatibility with latest Netzke code ("edge")
 

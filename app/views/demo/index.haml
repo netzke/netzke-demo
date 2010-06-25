@@ -28,8 +28,7 @@
   = link_to "BasicApp demo", :controller => "basic_app", :action => "intro"
   
   %h3 TabPanel
-  See the configuration window for Grid/FormPanel in the
-  = link_to "BasicApp demo", :controller => "basic_app", :action => "intro"
+  = link_to "Live demo", :controller => "tab_panel"
   
   %h3 AccordionPanel
   = link_to "Live demo", :controller => "accordion_panel"
@@ -37,9 +36,6 @@
   %h3 Window
   = link_to "Live demo", :controller => "window"
 
-  %h3 TreePanel
-  Demo coming soon
-  
   %h3 Composite widgets
   %p
     = link_to "OneToManyGridSet", "basic_app#bossesAndClerks"
@@ -53,11 +49,14 @@
 
   %h2 The code, info, etc
   %p
-    Source code for this demo:
+    Twitter: 
+    = link_to "@skozlov", "http://twitter.com/skozlov"
+  %p
+    Source code for this demo (a good way to learn how to use Netzke):
     %a{ :href => "http://github.com/skozlov/netzke-demo" }
       http://github.com/skozlov/netzke-demo
   %p
-    Discuss this demo on
+    Discuss Netzke on
     = link_to "Netzke Google Groups", "http://groups.google.com/group/netzke"
   %p
     Netzke framework:
@@ -70,10 +69,9 @@
     %a{ :href => "http://github.com/skozlov/netzke-basepack" }
       netzke-basepack
   %p
-    News about Netzke development and tutorials:
+    Many tutorials:
     %a{ :href => "http://blog.writelesscode.com" }
       http://blog.writelesscode.com
-    ,
-    = link_to "@skozlov", "http://twitter.com/skozlov"
+    
 
   = render :partial => "shared/analytics"
