@@ -25,6 +25,10 @@ This is the source-code for http://netzke-demo.writelesscode.com
     
     cd public && ln -s ~/code/extjs/ext-3.1.0 extjs
 
+6. Currently you can (re)generate test data by visiting the following URL (it's linked at the end of the GridPanel demo page):
+
+    http://localhost:3000/grid_panel/regenerate_test_data
+
 = Prerequisites
 
 1. Rails >= 2.2

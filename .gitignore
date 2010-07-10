@@ -5,3 +5,4 @@ public/extjs
 vendor/plugins/netzke-*
 netzke-demo.tmproj
 .bundle
+*.swp
