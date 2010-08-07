@@ -4,7 +4,7 @@ Features:
 <li>Dynamically loads the nested widget when a tab gets activated for the first time</li>
 <li>Is loaded along with the "active" widget - saves a request to the server</li>
 
-<h2>Example: two GridPanels, the second one loads dynamically</h2>
+<h2>Example 1: two GridPanels, the second one loads dynamically</h2>
 <p>A panel with 2 tabs, where the first one contains a preloaded GridPanel, and the second loads another GridPanel dynamically (at the moment of the tab being activated).</p>
 <p>Code:</p>
 <% coderay do %>
@@ -40,5 +40,47 @@ netzke :two_grid_panels,
               :width => 700,
               :border => true,
               :title => "Two GridPanels loaded dynamically"
+            } 
+%>
+
+<h2>Example 2: two GridPanels, the second one is preloaded</h2>
+<p>Same as before, but the second panel is loaded from the beginning</p>
+<p>Code:</p>
+<% coderay do %>
+netzke :two_preloaded_grid_panels,
+          :class_name => "AccordionPanel",
+          :items => [{
+            :class_name => "GridPanel",
+            :model => "Boss",
+            :name => "bosses"
+          }, {
+            :class_name => "GridPanel",
+            :model => "Clerk",
+            :name => "clerks",
+            :preloaded => true
+          }], 
+          :ext_config => {
+            :width => 700,
+            :title => "Two GridPanels loaded dynamically"
+          } 
+<% end %>
+
+<p>Result:</p>
+<%= netzke :two_preloaded_grid_panels,
+            :class_name => "TabPanel",
+            :items => [{
+              :class_name => "GridPanel",
+              :model => "Boss",
+              :name => "bosses"
+            }, {
+              :class_name => "GridPanel",
+              :model => "Clerk",
+              :name => "clerks",
+              :preloaded => true
+            }], 
+            :ext_config => {
+              :width => 700,
+              :border => true,
+              :title => "Two preloaded GridPanels"
             } 
 %>
