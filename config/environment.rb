@@ -36,6 +36,7 @@ Rails::Initializer.run do |config|
   config.gem "searchlogic"
   config.gem "acts_as_list"
   config.gem "will_paginate"
+  config.gem "jsmin"
 
   config.gem "coderay"
   # Only load the plugins named here, in the order given. By default, all plugins 
