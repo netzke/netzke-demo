@@ -1,4 +1,4 @@
-<% title "Netzke::TabPanel" %>
+<% title "Netzke::Component::TabPanel" %>
 
 Features:
 <li>Dynamically loads the nested widget when a tab gets activated for the first time</li>
@@ -9,13 +9,13 @@ Features:
 <p>Code:</p>
 <% coderay do %>
 netzke :two_grid_panels,
-          :class_name => "AccordionPanel",
+          :class_name => "Component::AccordionPanel",
           :items => [{
-            :class_name => "GridPanel",
+            :class_name => "Component::GridPanel",
             :model => "Boss",
             :name => "bosses"
           }, {
-            :class_name => "GridPanel",
+            :class_name => "Component::GridPanel",
             :model => "Clerk",
             :name => "clerks"
           }], 
@@ -26,21 +26,19 @@ netzke :two_grid_panels,
 <% end %>
 <p>Result:</p>
 <%= netzke :two_grid_panels,
-            :class_name => "TabPanel",
+            :class_name => "Component::Component::TabPanel",
             :items => [{
-              :class_name => "GridPanel",
+              :class_name => "Component::Component::GridPanel",
               :model => "Boss",
               :name => "bosses"
             }, {
-              :class_name => "GridPanel",
+              :class_name => "Component::Component::GridPanel",
               :model => "Clerk",
               :name => "clerks"
             }], 
-            :ext_config => {
-              :width => 700,
-              :border => true,
-              :title => "Two GridPanels loaded dynamically"
-            } 
+            :width => 700,
+            :border => true,
+            :title => "Two GridPanels loaded dynamically"
 %>
 
 <h2>Example 2: two GridPanels, the second one is preloaded</h2>
@@ -48,13 +46,13 @@ netzke :two_grid_panels,
 <p>Code:</p>
 <% coderay do %>
 netzke :two_preloaded_grid_panels,
-          :class_name => "AccordionPanel",
+          :class_name => "Component::AccordionPanel",
           :items => [{
-            :class_name => "GridPanel",
+            :class_name => "Component::GridPanel",
             :model => "Boss",
             :name => "bosses"
           }, {
-            :class_name => "GridPanel",
+            :class_name => "Component::GridPanel",
             :model => "Clerk",
             :name => "clerks",
             :preloaded => true
@@ -67,20 +65,18 @@ netzke :two_preloaded_grid_panels,
 
 <p>Result:</p>
 <%= netzke :two_preloaded_grid_panels,
-            :class_name => "TabPanel",
+            :class_name => "Component::Component::TabPanel",
             :items => [{
-              :class_name => "GridPanel",
+              :class_name => "Component::Component::GridPanel",
               :model => "Boss",
               :name => "bosses"
             }, {
-              :class_name => "GridPanel",
+              :class_name => "Component::Component::GridPanel",
               :model => "Clerk",
               :name => "clerks",
               :preloaded => true
             }], 
-            :ext_config => {
-              :width => 700,
-              :border => true,
-              :title => "Two preloaded GridPanels"
-            } 
+            :width => 700,
+            :border => true,
+            :title => "Two preloaded GridPanels"
 %>

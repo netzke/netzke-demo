@@ -31,6 +31,7 @@ GEM
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
+    coderay (0.9.4)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     haml (3.0.4)
@@ -39,6 +40,10 @@ GEM
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
+    meta_where (0.9.3)
+      activerecord (~> 3.0.0)
+      activesupport (~> 3.0.0)
+      arel (~> 1.0.1)
     mime-types (1.16)
     mysql2 (0.2.3)
     polyglot (0.3.1)
@@ -65,11 +70,15 @@ GEM
     treetop (1.4.8)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
+    will_paginate (3.0.pre2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  coderay
   haml
+  meta_where
   mysql2
   rails (= 3.0.0)
+  will_paginate (= 3.0.pre2)

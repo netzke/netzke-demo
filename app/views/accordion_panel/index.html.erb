@@ -1,4 +1,4 @@
-<% title "Netzke::AccordionPanel" %>
+<% title "Netzke::Component::AccordionPanel" %>
 
 Features:
 <li>Dynamically loads the nested widget when a panel gets expanded for the first time</li>
@@ -9,13 +9,13 @@ Features:
 <p>Code:</p>
 <% coderay do %>
 netzke :two_grid_panels,
-          :class_name => "AccordionPanel",
+          :class_name => "Component::AccordionPanel",
           :items => [{
-            :class_name => "GridPanel",
+            :class_name => "Component::GridPanel",
             :model => "Boss",
             :name => "bosses"
           }, {
-            :class_name => "GridPanel",
+            :class_name => "Component::GridPanel",
             :model => "Clerk",
             :name => "clerks"
           }], 
@@ -26,13 +26,13 @@ netzke :two_grid_panels,
 <% end %>
 <p>Result:</p>
 <%= netzke :two_grid_panels,
-            :class_name => "AccordionPanel",
+            :class_name => "Component::AccordionPanel",
             :items => [{
-              :class_name => "GridPanel",
+              :class_name => "Component::GridPanel",
               :model => "Boss",
               :name => "bosses"
             }, {
-              :class_name => "GridPanel",
+              :class_name => "Component::GridPanel",
               :model => "Clerk",
               :name => "clerks"
             }], 
@@ -49,12 +49,12 @@ Code:
 <% coderay do %>
 netzke :accordion_panel, 
           :items => [{
-            :class_name => "GridPanel",
+            :class_name => "Component::GridPanel",
             :model => "Boss",
             :name => "bosses",
             :preloaded => true
           }, {
-            :class_name => "FormPanel",
+            :class_name => "Component::FormPanel",
             :model => "Clerk",
             :name => "clerks",
             :preloaded => true,
@@ -68,14 +68,14 @@ netzke :accordion_panel,
 <% end %>
 Result:
 <%= netzke :grid_panel_and_form_panel, 
-          :class_name => "AccordionPanel",
+          :class_name => "Component::AccordionPanel",
           :items => [{
-            :class_name => "GridPanel",
+            :class_name => "Component::GridPanel",
             :model => "Boss",
             :name => "bosses",
             :preloaded => true
           }, {
-            :class_name => "FormPanel",
+            :class_name => "Component::FormPanel",
             :model => "Clerk",
             :name => "clerks",
             :preloaded => true,
@@ -95,22 +95,22 @@ Result:
 <p>Code:</p>
 <% coderay do %>
 netzke :border_layout_panel_active,
-          :class_name => "AccordionPanel",
+          :class_name => "Component::AccordionPanel",
           :items => [{
-            :class_name => "Panel",
+            :class_name => "Component::Panel",
             :ext_config => {
               :html => "The first panel is active"
             },
             :active => true
           },{
-            :class_name => "BorderLayoutPanel",
+            :class_name => "Component::BorderLayoutPanel",
             :regions => {
               :center => {
-                :class_name => "GridPanel",
+                :class_name => "Component::GridPanel",
                 :model => "Boss"
               },
               :south => {
-                :class_name => "FormPanel",
+                :class_name => "Component::FormPanel",
                 :model => "Clerk",
                 :record_id => Clerk.first.id,
                 :region_config => {
@@ -128,22 +128,22 @@ netzke :border_layout_panel_active,
 <p>Result:</p>
 <%= 
 netzke :border_layout_panel_active,
-              :class_name => "AccordionPanel",
+              :class_name => "Component::AccordionPanel",
               :items => [{
-                :class_name => "Panel",
+                :class_name => "Component::Panel",
                 :ext_config => {
                   :html => "The first panel is active"
                 },
                 :active => true
               },{
-                :class_name => "BorderLayoutPanel",
+                :class_name => "Component::BorderLayoutPanel",
                 :regions => {
                   :center => {
-                    :class_name => "GridPanel",
+                    :class_name => "Component::GridPanel",
                     :model => "Boss"
                   },
                   :south => {
-                    :class_name => "FormPanel",
+                    :class_name => "Component::FormPanel",
                     :model => "Clerk",
                     :record_id => Clerk.first.id,
                     :region_config => {
