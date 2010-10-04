@@ -12,6 +12,7 @@ gem 'haml'
 gem 'meta_where'
 gem 'will_paginate', '3.0.pre2'
 gem 'coderay'
+gem 'faker'
 
 # Use unicorn as the web server
 # gem 'unicorn'

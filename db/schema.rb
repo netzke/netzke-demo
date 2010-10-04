@@ -12,6 +12,26 @@
 
 ActiveRecord::Schema.define(:version => 20100925153708) do
 
+  create_table "bosses", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.integer  "salary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "clerks", :force => true do |t|
+    t.string   "boss_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.integer  "salary"
+    t.boolean  "subject_to_lay_off"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "netzke_preferences", :force => true do |t|
     t.string   "key"
     t.text     "value"
