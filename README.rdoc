@@ -1,5 +1,7 @@
 = netzke-demo
 
+*For Rails 3-compatible version check the rails3 branch*
+
 This is the source-code for http://netzke-demo.writelesscode.com
 
 = Installation (to run it locally)
