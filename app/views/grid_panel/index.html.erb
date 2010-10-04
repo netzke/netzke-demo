@@ -1,6 +1,6 @@
 <% title "Meet Netzke::Component::GridPanel" %>
 
-<p>Here's an instance of GridPanel, which by default provides for: 
+Here's an instance of GridPanel, which by default provides for: 
   <li>multiline CRUD-operations inside the grid itself</li>
   <li>multi-record editing and adding records via a form</li>
   <li>context menu</li>
@@ -11,15 +11,14 @@
   <li>extended search (configurable, see the last widget below)</li>
   <li>automatic column type detection (e.g. "salary" is a number column)</li>
   <li>persistent on-the-fly configuration of the columns ("move", "resize" and "hide"-operations)</li>
-</p>  
 
-<p>Code (in the view):
+Code (in the view):
 <% coderay do %>
 netzke :bosses, 
   :class_name => "Component::GridPanel", 
   :model => 'Boss'
 <% end %>
-</p>
+
 <p>Result:</p>
 <%= netzke :bosses, 
   :class_name => "Component::GridPanel", 
