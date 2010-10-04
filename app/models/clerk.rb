@@ -13,4 +13,7 @@ class Clerk < ActiveRecord::Base
   def updated
     self.updated_at > 5.minutes.ago
   end
+  
+  netzke_attribute :name, :renderer => "uppercase", :width => 200
+  
 end

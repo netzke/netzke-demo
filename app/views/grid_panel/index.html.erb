@@ -28,28 +28,23 @@ netzke :bosses,
 <h2>Control over columns</h2>
 <p>If you need more control over which columns to display and how, you can provide <tt>:columns</tt> option:</p>
 <% coderay do %>
-  netzke :bosses_custom_columns, 
-    :class_name => "Component::GridPanel", 
-    :model => 'Boss', 
-    :ext_config => {
-      :rows_per_page => 20, 
-      :title => "Bosses",
-      :width => 400
-    },
-    :columns => [:id, # id should always be included and is by default hidden
-      :last_name, 
-      {:name => :salary, :editable => false, :label => "$", :renderer => 'usMoney'}, 
-      {:name => :email, :width => 180}]
+netzke :bosses_custom_columns, 
+  :class_name => "Component::GridPanel", 
+  :model => 'Boss', 
+  :title => "Bosses",
+  :width => 400,
+  :columns => [
+    :last_name,
+    {:name => :salary, :read_only => true, :label => "$", :renderer => 'usMoney'}, 
+    {:name => :email, :width => 180}]
 <% end %>
 <p>Result:</p>
 <%= netzke :bosses_custom_columns, 
   :class_name => "Component::GridPanel", 
   :model => 'Boss', 
-  :ext_config => {
-    :title => "Bosses",
-    :width => 400
-  },
-  :columns => [:id, # id should always be included and is by default hidden
+  :title => "Bosses",
+  :width => 400,
+  :columns => [
     :last_name,
     {:name => :salary, :read_only => true, :label => "$", :renderer => 'usMoney'}, 
     {:name => :email, :width => 180}] %>
@@ -111,10 +106,9 @@ netzke :clerks,
   :model => 'Clerk'
 <% end %>
 <p>Result:</p>
-<%= netzke :clerks, 
+<%= netzke :clerks,
   :class_name => "Component::GridPanel",
   :model => 'Clerk' %>
-
 
 <h2>Permissions</h2>
 You can specify which actions are allowed for this grid
@@ -122,19 +116,16 @@ You can specify which actions are allowed for this grid
 netzke :bosses_with_permissions, 
   :class_name => "Component::GridPanel", 
   :model => 'Boss', 
-  :ext_config => {
-    :prohibit_update => true,
-    :prohibit_delete => true
-  }
+  :prohibit_update => true,
+  :prohibit_delete => true
 <% end %>
 <p>Result:</p>
 <%= netzke :bosses_with_permissions, 
   :class_name => "Component::GridPanel", 
   :model => 'Boss', 
-  :ext_config => {
-    :prohibit_update => true,
-    :prohibit_delete => true
-  } %>
+  :prohibit_update => true,
+  :prohibit_delete => true
+%>
 <p class="small">A word about the security: it's not only about disabling buttons. Even if the user manages to submit a prohibited operation, the server side of the widget will block the attempt.
 </p>
 
@@ -145,24 +136,20 @@ netzke :bosses_with_permissions,
 netzke :clerks_with_custom_bottom_bar,
     :class_name => "Component::GridPanel",
     :model => 'Clerk',
-    :ext_config => {
-      :bbar => nil,
-      :tbar => [{
-        :menu => [:add, :edit, :apply, :del], :text => "Edit inline", :icon => "/images/icons/table.png"
-      },{
-        :menu => [:add_in_form, :edit_in_form], :text => "Edit in form", :icon => "/images/icons/application_form.png"
-      }]
-    }
+    :bbar => nil,
+    :tbar => [{
+      :menu => [:add, :edit, :apply, :del], :text => "Edit inline", :icon => "/images/icons/table.png"
+    },{
+      :menu => [:add_in_form, :edit_in_form], :text => "Edit in form", :icon => "/images/icons/application_form.png"
+    }]
 <% end %>
 
 <p>Result:</p>
 <%= netzke :clerks_with_custom_bottom_bar,
     :class_name => "Component::GridPanel",
     :model => 'Clerk',
-    :ext_config => {
-      :bbar => nil,
-      :tbar => [{:menu => [:add, :edit, :apply, :del], :text => "Edit inline", :icon => "/images/icons/table.png"}, {:menu => [:add_in_form, :edit_in_form], :text => "Edit in form", :icon => "/images/icons/application_form.png"}]
-    }
+    :bbar => nil,
+    :tbar => [{:menu => [:add.ext_action, :edit.ext_action, :apply.ext_action, :del.ext_action], :text => "Edit inline", :icon => "/images/icons/table.png"}, {:menu => [:add_in_form.ext_action, :edit_in_form.ext_action], :text => "Edit in form", :icon => "/images/icons/application_form.png"}]
 %>
 
 <h2>Dynamic configuration</h2>
@@ -172,23 +159,19 @@ netzke :clerks_with_custom_bottom_bar,
 netzke :configurable_clerks, :class_name => "Component::Wrapper", :item => {
   :class_name => "Component::GridPanel", 
   :model => 'Clerk',
-  :ext_config => {
-    :mode => :config, # here we enable the configuration mode
-    :title => "Configurable clerks"
-  }
+  :mode => :config, # here we enable the configuration mode
+  :title => "Configurable clerks"
 }
 <% end %>
 <p>We wrap the grid up so that after changing its configuration it can be automatically reloaded without the need to reload the page. Btw, this touches another powerful concept behind the Netzke framework: ability to easily nest widgets.</p>
 <p>Result:</p>
-<%= netzke :configurable_clerks, :class_name => "Component::Wrapper", :item => {
+<%= netzke :configurable_clerks, :class_name => "Component::Wrapper", :items => [{
   :class_name => "Component::GridPanel", 
   :model => 'Clerk',
   :persistent_config => true,
-  :ext_config => {
-    :mode => :config, # here we enable the configuration mode
-    :title => "Configurable clerks"
-  }
-} %>
+  # :mode => :config, # here we enable the configuration mode
+  :title => "Configurable clerks"
+}] %>
 
 <h2>Get the code</h2>
 <p>Netzke framework consists of 2 Rails plugins/Ruby gems: netzke-core and netzke-basepack. Get them on the GitHub along with the source code for this demo: <a href = http://github.com/skozlov>http://github.com/skozlov</a></p>
