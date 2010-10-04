@@ -4,35 +4,41 @@ This is the source-code for http://netzke-demo.writelesscode.com
 
 = Installation (to run it locally)
 
-1. Get the code from github
+1. Get the code from github and checkout the rails3 branch
 
-    git clone git://github.com/skozlov/netzke-demo.git && cd netzke-demo
+    git clone git://github.com/skozlov/netzke-demo.git && cd netzke-demo && git checkout rails3
 
 2. Install required gems
 
-    rake gems:install
+    bundle install
     
-3. Install Netzke (as plugins)
+3. Clone Netzke plugins (the rails3 branch) into vendor/plugins
+    
+    cd vendor/plugins
+    git clone -b rails3 git://github.com/skozlov/netzke-core.git
+    git clone -b rails3 git://github.com/skozlov/netzke-basepack.git
 
-    ./script/plugin install git://github.com/skozlov/netzke-core.git
-    ./script/plugin install git://github.com/skozlov/netzke-basepack.git
+Optionally, symlink them if you already have a local copy, e.g.:
 
-4. Create the database and do the migrations
+    ln -s ~/code/netzke/netzke-core vendor/plugins
+    ln -s ~/code/netzke/netzke-basepack vendor/plugins
+
+4. Link your copy of Ext JS library into "public", e.g.:
+    
+    ln -s ~/code/sencha/ext-3.2.1 public/extjs
+
+5. Create the database and do the migrations
     
     rake db:create && rake db:migrate
-    
-5. Link your Ext JS library, e.g.:
-    
-    cd public && ln -s ~/code/extjs/ext-3.1.0 extjs
-
-6. Currently you can (re)generate test data by visiting the following URL (it's linked at the end of the GridPanel demo page):
+ 
+That's it. Additionally, you can (re)generate test data by visiting the following URL (it's linked at the end of the GridPanel demo page):
 
     http://localhost:3000/grid_panel/regenerate_test_data
 
 = Prerequisites
 
-1. Rails >= 2.2
-2. Ext = 3.1.0
+1. Rails >= 3.0
+2. Ext = 3.2.1
 
 = Feedback
 
