@@ -1,4 +1,4 @@
-<% title "Netzke::Component::Window" %>
+<% title "Netzke::Basepack::Window" %>
 
 Features:
 <li>Straight-forward nesting of any other Netzke widget</li>
@@ -16,7 +16,7 @@ Features:
 
 <input type="button" value="Show window" onClick="Netzke.page.reopenableWindow.show()" />
 <%= netzke :reopenable_window, 
-      :class_name => "Component::Window", 
+      :class_name => "Basepack::Window", 
       :ext_config => {
         :close_action => "hide", 
         :width => 200, :height => 100

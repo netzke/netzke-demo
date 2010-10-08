@@ -1,4 +1,4 @@
-<% title "Meet Netzke::Component::GridPanel" %>
+<% title "Meet Netzke::Basepack::GridPanel" %>
 
 Here's an instance of GridPanel, which by default provides for: 
   <li>multiline CRUD-operations inside the grid itself</li>
@@ -15,20 +15,20 @@ Here's an instance of GridPanel, which by default provides for:
 Code (in the view):
 <% coderay do %>
 netzke :bosses, 
-  :class_name => "Component::GridPanel", 
+  :class_name => "Basepack::GridPanel", 
   :model => 'Boss'
 <% end %>
 
 <p>Result:</p>
 <%= netzke :bosses, 
-  :class_name => "Component::GridPanel", 
+  :class_name => "Basepack::GridPanel", 
   :model => 'Boss' %>
 
 <h2>Control over columns</h2>
 <p>If you need more control over which columns to display and how, you can provide <tt>:columns</tt> option:</p>
 <% coderay do %>
 netzke :bosses_custom_columns, 
-  :class_name => "Component::GridPanel", 
+  :class_name => "Basepack::GridPanel", 
   :model => 'Boss', 
   :title => "Bosses",
   :width => 400,
@@ -39,7 +39,7 @@ netzke :bosses_custom_columns,
 <% end %>
 <p>Result:</p>
 <%= netzke :bosses_custom_columns, 
-  :class_name => "Component::GridPanel", 
+  :class_name => "Basepack::GridPanel", 
   :model => 'Boss', 
   :title => "Bosses",
   :width => 400,
@@ -75,7 +75,7 @@ class Clerk < ActiveRecord::Base
 end
 
 # Declare and configure attributes specifically for GridPanel
-module Netzke::Component::ModelExtensions
+module Netzke::Basepack::ModelExtensions
   class ClerkForGridPanel < Clerk
     # Virtual attribute defined in the model
     netzke_attribute :name, :renderer => "uppercase", :width => 200
@@ -101,26 +101,26 @@ end
 
 # In the view:
 netzke :clerks, 
-  :class_name => "Component::GridPanel", 
+  :class_name => "Basepack::GridPanel", 
   :model => 'Clerk'
 <% end %>
 <p>Result:</p>
 <%= netzke :clerks,
-  :class_name => "Component::GridPanel",
+  :class_name => "Basepack::GridPanel",
   :model => 'Clerk' %>
 
 <h2>Permissions</h2>
 You can specify which actions are allowed for this grid
 <% coderay do %>
 netzke :bosses_with_permissions, 
-  :class_name => "Component::GridPanel", 
+  :class_name => "Basepack::GridPanel", 
   :model => 'Boss', 
   :prohibit_update => true,
   :prohibit_delete => true
 <% end %>
 <p>Result:</p>
 <%= netzke :bosses_with_permissions, 
-  :class_name => "Component::GridPanel", 
+  :class_name => "Basepack::GridPanel", 
   :model => 'Boss', 
   :prohibit_update => true,
   :prohibit_delete => true
@@ -133,7 +133,7 @@ netzke :bosses_with_permissions,
 
 <% coderay do %>
 netzke :clerks_with_custom_bottom_bar,
-    :class_name => "Component::GridPanel",
+    :class_name => "Basepack::GridPanel",
     :model => 'Clerk',
     :bbar => nil,
     :tbar => [{
@@ -145,18 +145,18 @@ netzke :clerks_with_custom_bottom_bar,
 
 <p>Result:</p>
 <%= netzke :clerks_with_custom_bottom_bar,
-    :class_name => "Component::GridPanel",
+    :class_name => "Basepack::GridPanel",
     :model => 'Clerk',
     :bbar => nil,
-    :tbar => [{:menu => [:add.ext_action, :edit.ext_action, :apply.ext_action, :del.ext_action], :text => "Edit inline", :icon => "/images/icons/table.png"}, {:menu => [:add_in_form.ext_action, :edit_in_form.ext_action], :text => "Edit in form", :icon => "/images/icons/application_form.png"}]
+    :tbar => [{:menu => [:add.action, :edit.action, :apply.action, :del.action], :text => "Edit inline", :icon => "/images/icons/table.png"}, {:menu => [:add_in_form.action, :edit_in_form.action], :text => "Edit in form", :icon => "/images/icons/application_form.png"}]
 %>
 
 <h2>Dynamic configuration</h2>
 <p>Real power of the Netzke framework lies in its baked-in dynamic configurability. GridPanel and FormPanel from netzke-basepack provide interface to its configuration options. In real-life application these options are automatically stored per user/role, and can be quickly changed by the administrator with the help of masquerading. GridPanel below is configured to provide access to its configuration panel (click the "gear" tool on the right top of it) - use it to change different functional and representational aspects of this GridPanel instance. Besides that, the FormPanel-based forms for creating/editing records inherit the configuration mode, hence they are also configurable. And, finally, the search form is configurable as well: you can specify which criteria for search as you wish.</p>
 <p>Code:</p>
 <% coderay do %>
-netzke :configurable_clerks, :class_name => "Component::Wrapper", :item => {
-  :class_name => "Component::GridPanel", 
+netzke :configurable_clerks, :class_name => "Basepack::Wrapper", :item => {
+  :class_name => "Basepack::GridPanel", 
   :model => 'Clerk',
   :mode => :config, # here we enable the configuration mode
   :title => "Configurable clerks"
@@ -164,8 +164,8 @@ netzke :configurable_clerks, :class_name => "Component::Wrapper", :item => {
 <% end %>
 <p>We wrap the grid up so that after changing its configuration it can be automatically reloaded without the need to reload the page. Btw, this touches another powerful concept behind the Netzke framework: ability to easily nest widgets.</p>
 <p>Result:</p>
-<%= netzke :configurable_clerks, :class_name => "Component::Wrapper", :items => [{
-  :class_name => "Component::GridPanel", 
+<%= netzke :configurable_clerks, :class_name => "Basepack::Wrapper", :items => [{
+  :class_name => "Basepack::GridPanel", 
   :model => 'Clerk',
   :persistent_config => true,
   # :mode => :config, # here we enable the configuration mode
