@@ -18,24 +18,24 @@ netzke :two_grid_panels,
             :class_name => "Basepack::GridPanel",
             :model => "Clerk",
             :name => "clerks"
-          }], 
+          }],
           :ext_config => {
             :width => 700,
             :title => "Two GridPanels loaded dynamically"
-          } 
+          }
 <% end %>
 <p>Result:</p>
 <%= netzke :two_grid_panels,
-            :class_name => "Basepack::Basepack::TabPanel",
+            :class_name => "Netzke::Basepack::TabPanel",
             :items => [{
-              :class_name => "Basepack::Basepack::GridPanel",
+              :class_name => "Netzke::Basepack::GridPanel",
               :model => "Boss",
               :name => "bosses"
             }, {
-              :class_name => "Basepack::Basepack::GridPanel",
+              :class_name => "Netzke::Basepack::GridPanel",
               :model => "Clerk",
               :name => "clerks"
-            }], 
+            }],
             :width => 700,
             :border => true,
             :title => "Two GridPanels loaded dynamically"
@@ -56,26 +56,26 @@ netzke :two_preloaded_grid_panels,
             :model => "Clerk",
             :name => "clerks",
             :preloaded => true
-          }], 
+          }],
           :ext_config => {
             :width => 700,
             :title => "Two GridPanels loaded dynamically"
-          } 
+          }
 <% end %>
 
 <p>Result:</p>
 <%= netzke :two_preloaded_grid_panels,
-            :class_name => "Basepack::Basepack::TabPanel",
+            :class_name => "Netzke::Basepack::TabPanel",
             :items => [{
-              :class_name => "Basepack::Basepack::GridPanel",
+              :class_name => "Netzke::Basepack::GridPanel",
               :model => "Boss",
               :name => "bosses"
             }, {
-              :class_name => "Basepack::Basepack::GridPanel",
+              :class_name => "Netzke::Basepack::GridPanel",
               :model => "Clerk",
               :name => "clerks",
               :preloaded => true
-            }], 
+            }],
             :width => 700,
             :border => true,
             :title => "Two preloaded GridPanels"
