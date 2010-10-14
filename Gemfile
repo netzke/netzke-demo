@@ -14,6 +14,11 @@ gem 'will_paginate', '3.0.pre2'
 gem 'coderay'
 gem 'faker'
 
+gem 'netzke-core', :git => "git://github.com/skozlov/netzke-core.git", :branch => "rails3"
+gem 'netzke-basepack', :git => "git://github.com/skozlov/netzke-basepack.git", :branch => "rails3"
+
+# Use unicorn as the web server
+# Use unicorn as the web server
 # Use unicorn as the web server
 # gem 'unicorn'
 
