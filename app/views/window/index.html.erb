@@ -9,18 +9,18 @@ Features:
 
 <input type="button" value="Show window" onClick="Netzke.page.window.show(); Ext.get(this).hide();" />
 
-<%= netzke :window %>
+<%= netzke :window, :class_name => "Netzke::Basepack::Window" %>
 
 <h2>Example 4: empty window with predefined dimensions that can be reopened after closing</h2>
 <p>Simply setting the <tt>Ext.Window</tt>'s <tt>closeAction</tt> option to "hide"</p>
 
 <input type="button" value="Show window" onClick="Netzke.page.reopenableWindow.show()" />
-<%= netzke :reopenable_window, 
-      :class_name => "Basepack::Window", 
+<%= netzke :reopenable_window,
+      :class_name => "Netzke::Basepack::Window",
       :ext_config => {
-        :close_action => "hide", 
+        :close_action => "hide",
         :width => 200, :height => 100
-      } 
+      }
 %>
 <br>
 <%= link_to "Back", :root %>
