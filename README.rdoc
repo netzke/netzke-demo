@@ -1,6 +1,6 @@
 = netzke-demo
 
-*For Rails 3-compatible version check the rails3 branch*
+*For Rails 3-compatible version (still WIP!) check the rails3 branch*
 
 This is the source-code for http://netzke-demo.writelesscode.com
 
@@ -18,6 +18,8 @@ This is the source-code for http://netzke-demo.writelesscode.com
 
     ./script/plugin install git://github.com/skozlov/netzke-core.git
     ./script/plugin install git://github.com/skozlov/netzke-basepack.git
+    
+    (you'll probably need to checkout the rails2 branch in each plugin)
 
 4. Create the database and do the migrations
     
