@@ -1,2 +1,2 @@
-module LooseComponentsHelper
+module ComponentsHelper
 end

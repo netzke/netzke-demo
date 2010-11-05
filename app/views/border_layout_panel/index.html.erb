@@ -1,0 +1,53 @@
+<% title "BorderLayoutPanel" %>
+<b>Basepack::BorderLayoutPanel</b>, besides easy nesting of other components, keeps track of its regions sizes and collapsed/expanded states. Try to resize or collapse regions, then refresh the page. Note, that the state is stored in the database, <i>not</i> in the cookies.<br>
+Also not, that It's a very stupid component, which simply puts together several GridPanel's with different configuration. See the <%= link_to "source code", "https://github.com/skozlov/netzke-demo/tree/master/app/views/border_layout_panel/index.html.erb" %>.
+<%= netzke :simple_border_layout_panel,
+    :header => false,
+    :border => true,
+    :height => 600,
+    :persistence => true,
+    :class_name => "Basepack::BorderLayoutPanel",
+    :items => [{
+      :region => :center,
+      :title => "All bosses",
+      :class_name => "Basepack::GridPanel",
+      :model => "Boss",
+    },{
+      :region => :west,
+      :width => 250,
+      :split => true,
+      :collapsible => true,
+      :title => "Recently updated bosses",
+      :class_name => "Basepack::GridPanel",
+      :model => "Boss",
+      :columns => [:first_name, :last_name],
+      :scope => {:updated_at.gt => 1.days.ago}
+    },{
+      :region => :east,
+      :width => 250,
+      :split => true,
+      :collapsible => true,
+      :title => "Lowest paid bosses",
+      :class_name => "Basepack::GridPanel",
+      :model => "Boss",
+      :columns => [:name, :salary],
+      :scope => {:salary.lt => 30000}
+    },{
+      :region => :north,
+      :height => 150,
+      :split => true,
+      :title => "All clerks",
+      :collapsible => true,
+      :class_name => "Basepack::GridPanel",
+      :model => "Clerk"
+    },{
+      :region => :south,
+      :height => 150,
+      :split => true,
+      :collapsible => true,
+      :title => "Clerks to lay off",
+      :class_name => "Basepack::GridPanel",
+      :model => "Clerk",
+      :scope => {:subject_to_lay_off => true}
+    }]
+%>
