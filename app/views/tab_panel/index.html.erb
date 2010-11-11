@@ -8,7 +8,7 @@ Features:
 <li>Is loaded along with the component in the active tab - saves a request to the server</li>
 </ol>
 
-<h2>Example 1: two GridPanels, the second one loads dynamically</h2>
+<h2>Example 1: a tab panel with two GridPanels as tabs</h2>
 <p>A tab panel with 2 tabs, each containing a GridPanel.</p>
 <%= netzke :two_grid_panels,
             :class_name => "Basepack::TabPanel",
@@ -26,7 +26,7 @@ Features:
             :active_tab => 0
 %>
 
-<h2>Example 2: two GridPanels, the second one is preloaded</h2>
+<h2>Example 2: second GridPanel loads dynamically</h2>
 <p>Same as before, but the second panel gets loaded dynamically at the moment its tab gets activated.</p>
 <%= netzke :with_dynamic_loading,
             :class_name => "Basepack::TabPanel",
@@ -38,7 +38,7 @@ Features:
               :class_name => "Basepack::GridPanel",
               :model => "Clerk",
               :title => "Clerks",
-              :lazy_loading => true # this is what makes a component to load dynamically
+              :lazy_loading => true # this is what makes a component load dynamically
             }],
             :width => 700,
             :border => true,
