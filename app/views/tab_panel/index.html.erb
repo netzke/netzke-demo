@@ -1,82 +1,46 @@
 <% title "Netzke::Basepack::TabPanel" %>
+<%= link_to_code %>
 
 Features:
-<li>Dynamically loads the nested widget when a tab gets activated for the first time</li>
-<li>Is loaded along with the "active" widget - saves a request to the server</li>
+<ol>
+<li>Easy nesting of components</li>
+<li>Dynamically loads the nested component when a tab gets activated for the first time</li>
+<li>Is loaded along with the component in the active tab - saves a request to the server</li>
+</ol>
 
 <h2>Example 1: two GridPanels, the second one loads dynamically</h2>
-<p>A panel with 2 tabs, where the first one contains a preloaded GridPanel, and the second loads another GridPanel dynamically (at the moment of the tab being activated).</p>
-<p>Code:</p>
-<% coderay do %>
-netzke :two_grid_panels,
-          :class_name => "Basepack::AccordionPanel",
-          :items => [{
-            :class_name => "Basepack::GridPanel",
-            :model => "Boss",
-            :name => "bosses"
-          }, {
-            :class_name => "Basepack::GridPanel",
-            :model => "Clerk",
-            :name => "clerks"
-          }],
-          :ext_config => {
-            :width => 700,
-            :title => "Two GridPanels loaded dynamically"
-          }
-<% end %>
-<p>Result:</p>
+<p>A tab panel with 2 tabs, each containing a GridPanel.</p>
 <%= netzke :two_grid_panels,
-            :class_name => "Netzke::Basepack::TabPanel",
+            :class_name => "Basepack::TabPanel",
             :items => [{
-              :class_name => "Netzke::Basepack::GridPanel",
+              :class_name => "Basepack::GridPanel",
               :model => "Boss",
-              :name => "bosses"
-            }, {
-              :class_name => "Netzke::Basepack::GridPanel",
+              :title => "Bosses"
+            },{
+              :class_name => "Basepack::GridPanel",
               :model => "Clerk",
-              :name => "clerks"
+              :title => "Clerks"
             }],
             :width => 700,
             :border => true,
-            :title => "Two GridPanels loaded dynamically"
+            :active_tab => 0
 %>
 
 <h2>Example 2: two GridPanels, the second one is preloaded</h2>
-<p>Same as before, but the second panel is loaded from the beginning</p>
-<p>Code:</p>
-<% coderay do %>
-netzke :two_preloaded_grid_panels,
-          :class_name => "Basepack::AccordionPanel",
-          :items => [{
-            :class_name => "Basepack::GridPanel",
-            :model => "Boss",
-            :name => "bosses"
-          }, {
-            :class_name => "Basepack::GridPanel",
-            :model => "Clerk",
-            :name => "clerks",
-            :preloaded => true
-          }],
-          :ext_config => {
-            :width => 700,
-            :title => "Two GridPanels loaded dynamically"
-          }
-<% end %>
-
-<p>Result:</p>
-<%= netzke :two_preloaded_grid_panels,
-            :class_name => "Netzke::Basepack::TabPanel",
+<p>Same as before, but the second panel gets loaded dynamically at the moment its tab gets activated.</p>
+<%= netzke :with_dynamic_loading,
+            :class_name => "Basepack::TabPanel",
             :items => [{
-              :class_name => "Netzke::Basepack::GridPanel",
+              :class_name => "Basepack::GridPanel",
               :model => "Boss",
-              :name => "bosses"
-            }, {
-              :class_name => "Netzke::Basepack::GridPanel",
+              :title => "Bosses"
+            },{
+              :class_name => "Basepack::GridPanel",
               :model => "Clerk",
-              :name => "clerks",
-              :preloaded => true
+              :title => "Clerks",
+              :lazy_loading => true # this is what makes a component to load dynamically
             }],
             :width => 700,
             :border => true,
-            :title => "Two preloaded GridPanels"
+            :active_tab => 0
 %>

@@ -17,4 +17,10 @@ module ApplicationHelper
   def show_title?
     @show_title
   end
+
+  def link_to_code(args={})
+    file = caller.first.split(":").first
+    args[:style] ||= "float:right;"
+    link_to("Code for this view", [NetzkeDemo::Application.config.repo_root, file.sub(Rails.root.to_s, "")].join, args)
+  end
 end

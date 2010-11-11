@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.1)
       activesupport (= 3.0.1)
     activesupport (3.0.1)
+    acts_as_list (0.1.2)
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
@@ -48,6 +49,14 @@ GEM
       arel (~> 1.0.1)
     mime-types (1.16)
     mysql2 (0.2.6)
+    netzke-basepack (0.6.3)
+      acts_as_list
+      meta_where (>= 0.9.3)
+      netzke-core (~> 0.6.4)
+      will_paginate (~> 3.0.pre2)
+    netzke-core (0.6.5)
+      activesupport (>= 3.0.1)
+    netzke-persistence (0.1.1)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -81,7 +90,9 @@ DEPENDENCIES
   coderay
   faker
   haml
-  meta_where
   mysql2
+  netzke-basepack
+  netzke-core
+  netzke-persistence
   rails (~> 3.0.1)
-  will_paginate (= 3.0.pre2)
+  will_paginate (~> 3.0.pre2)
