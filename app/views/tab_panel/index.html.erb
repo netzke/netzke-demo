@@ -4,8 +4,7 @@
 Features:
 <ol>
 <li>Easy nesting of components</li>
-<li>Dynamically loads the nested component when a tab gets activated for the first time</li>
-<li>Is loaded along with the component in the active tab - saves a request to the server</li>
+<li>When configured so, dynamically loads nested components when its tab gets activated for the first time</li>
 </ol>
 
 <h2>Example 1: a tab panel with two GridPanels as tabs</h2>
@@ -27,7 +26,7 @@ Features:
 %>
 
 <h2>Example 2: second GridPanel loads dynamically</h2>
-<p>Same as before, but the second panel gets loaded dynamically at the moment its tab gets activated.</p>
+<p>Same as before, but the second grid gets loaded dynamically at the moment its tab gets activated.</p>
 <%= netzke :with_dynamic_loading,
             :class_name => "Basepack::TabPanel",
             :items => [{

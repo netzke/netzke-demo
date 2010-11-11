@@ -1,159 +1,78 @@
 <% title "Netzke::Basepack::AccordionPanel" %>
+<%= link_to_code %>
 
 Features:
-<li>Dynamically loads the nested widget when a panel gets expanded for the first time</li>
-<li>Is loaded along with the "active" widget - saves a request to the server</li>
+<ul>
+<li>Provides for easy nesting of components</li>
+<li>When configured so, dynamically loads nested components when its panel gets activated for the first time</li>
+</ul>
 
-<h2>Example: two GridPanels loaded dynamically</h2>
-<p>A two-panel accordion, where panels, at the moment of being expanded, dynamically load two differently configured GridPanels.</p>
-<p>Code:</p>
-<% coderay do %>
-netzke :two_grid_panels,
-          :class_name => "Basepack::AccordionPanel",
-          :items => [{
-            :class_name => "Basepack::GridPanel",
-            :model => "Boss",
-            :name => "bosses"
-          }, {
-            :class_name => "Basepack::GridPanel",
-            :model => "Clerk",
-            :name => "clerks"
-          }], 
-          :ext_config => {
-            :width => 700,
-            :title => "Two GridPanels loaded dynamically"
-          } 
-<% end %>
-<p>Result:</p>
+<h2>Example 1: an accordion with two GridPanels as panels</h2>
+<p>An accordion with 2 panels, each containing a (preloaded) GridPanel.</p>
 <%= netzke :two_grid_panels,
             :class_name => "Basepack::AccordionPanel",
             :items => [{
               :class_name => "Basepack::GridPanel",
               :model => "Boss",
-              :name => "bosses"
-            }, {
+              :title => "Bosses"
+            },{
               :class_name => "Basepack::GridPanel",
               :model => "Clerk",
-              :name => "clerks"
-            }], 
-            :ext_config => {
-              :width => 700,
-              :border => true,
-              :title => "Two GridPanels loaded dynamically"
-            } 
+              :title => "Clerks"
+            }],
+            :width => 700,
+            :border => true,
+            :active_tab => 0
 %>
 
-<h2>Example: a GridPanel and a FormPanel, preloaded</h2>
-<p>A two-panel accordion nesting a GridPanel and a FormPanel, which get loaded along with the accordion (no dynamic loading takes place)</p>
-Code:
-<% coderay do %>
-netzke :accordion_panel, 
-          :items => [{
-            :class_name => "Basepack::GridPanel",
-            :model => "Boss",
-            :name => "bosses",
-            :preloaded => true
-          }, {
-            :class_name => "Basepack::FormPanel",
-            :model => "Clerk",
-            :name => "clerks",
-            :preloaded => true,
-            :record_id => Clerk.first.id
-          }], 
-          :ext_config => {
-            :width => 700,
-            :title => "GridPanel and FormPanel - preloaded",
-            :border => true
-          } 
-<% end %>
-Result:
-<%= netzke :grid_panel_and_form_panel, 
-          :class_name => "Basepack::AccordionPanel",
-          :items => [{
-            :class_name => "Basepack::GridPanel",
-            :model => "Boss",
-            :name => "bosses",
-            :preloaded => true
-          }, {
-            :class_name => "Basepack::FormPanel",
-            :model => "Clerk",
-            :name => "clerks",
-            :preloaded => true,
-            :record_id => Clerk.first.id
-          }], 
-          :ext_config => {
-            :width => 700,
-            :title => "GridPanel and FormPanel - preloaded",
-            :border => true
-          } 
- %>
+<h2>Example 2: second GridPanel loads dynamically</h2>
+<p>Same as before, but the second grid gets first loaded at the moment its tab panel gets expanded.</p>
+<%= netzke :with_dynamic_loading,
+  :class_name => "Basepack::AccordionPanel",
+  :items => [{
+    :class_name => "Basepack::GridPanel",
+    :model => "Boss",
+    :title => "Bosses"
+  },{
+    :class_name => "Basepack::GridPanel",
+    :model => "Clerk",
+    :title => "Clerks",
+    :lazy_loading => true # this is what makes a component load dynamically
+  }],
+  :width => 700,
+  :border => true,
+  :active_tab => 0
+%>
  
-<h2>Example: a Panel and a BorderLayoutPanel, where the former is active</h2>
+<h2>Example: a simple Ext panel (not a Netzke component) and a primitive compound component</h2>
+<p>The first panel is a simple Ext.Panel. The second panel is a BorderLayoutPanel with two nested Netzke components - a grid and a form</p>
 
-<p>The accordion gets loaded with the first panel being "active", i.e. pre-loaded and open. The second panel is a BorderLayoutPanel with two panels - a grid and a form</p>
-
-<p>Code:</p>
-<% coderay do %>
-netzke :border_layout_panel_active,
-          :class_name => "Basepack::AccordionPanel",
-          :items => [{
-            :class_name => "Basepack::Panel",
-            :ext_config => {
-              :html => "The first panel is active"
-            },
-            :active => true
-          },{
-            :class_name => "Basepack::BorderLayoutPanel",
-            :regions => {
-              :center => {
-                :class_name => "Basepack::GridPanel",
-                :model => "Boss"
-              },
-              :south => {
-                :class_name => "Basepack::FormPanel",
-                :model => "Clerk",
-                :record_id => Clerk.first.id,
-                :region_config => {
-                  :height => 150
-                }
-              }
-            }
-          }],
-          :ext_config => {
-            :width => 700,
-            :border => true
-          }
-<% end %>
-
-<p>Result:</p>
-<%= 
-netzke :border_layout_panel_active,
-              :class_name => "Basepack::AccordionPanel",
-              :items => [{
-                :class_name => "Basepack::Panel",
-                :ext_config => {
-                  :html => "The first panel is active"
-                },
-                :active => true
-              },{
-                :class_name => "Basepack::BorderLayoutPanel",
-                :regions => {
-                  :center => {
-                    :class_name => "Basepack::GridPanel",
-                    :model => "Boss"
-                  },
-                  :south => {
-                    :class_name => "Basepack::FormPanel",
-                    :model => "Clerk",
-                    :record_id => Clerk.first.id,
-                    :region_config => {
-                      :height => 150
-                    }
-                  }
-                }
-              }],
-              :ext_config => {
-                :width => 700,
-                :border => true
-              }
+<%= netzke :border_layout_panel_active,
+  :class_name => "Basepack::AccordionPanel",
+  :items => [{
+    :html => "Some content",
+    :title => "A simple Ext panel"
+  },{
+    :class_name => "Basepack::BorderLayoutPanel",
+    :title => "A compound component",
+    :header => false,
+    :lazy_loading => true,
+    :items => [{
+      :region => :center,
+      :title => "A grid",
+      :class_name => "Basepack::GridPanel",
+      :model => "Boss",
+      :columns => [:name, :salary]
+    },{
+      :region => :east,
+      :title => "A form",
+      :split => true,
+      :class_name => "Basepack::FormPanel",
+      :model => "Clerk",
+      :record_id => Clerk.first.id,
+      :width => 350
+    }]
+  }],
+  :width => 700,
+  :border => true
 %>
