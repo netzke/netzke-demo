@@ -1,5 +1,5 @@
 class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
-  config :default, :persistence => true
+  #config :default, :persistence => true
 
   config  :header => false,
           :items => [
@@ -75,6 +75,14 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
     res << "With salary > $5,000: #{boss.clerks.where(:salary.gt => 5000).count}<br/>"
     res << "To lay off: #{boss.clerks.where(:subject_to_lay_off => true).count}<br/>"
     res
+  end
+
+  # Updating Statistics on clerks after modifying the clerks grid
+  def clerks__get_data(params)
+    boss = Boss.find(component_session[:selected_boss_id])
+    clerks_grid = component_instance(:clerks)
+    clerks_data = clerks_grid.get_data
+    clerks_data.merge(:parent => {:info => {:update_body_html => boss_info_html(boss)}}).to_nifty_json
   end
 
 end
