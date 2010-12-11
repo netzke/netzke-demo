@@ -2,23 +2,28 @@
   %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-type" }
   %title
     Netzke framework demo/tutorial - integrating Ext JS and Rails
-    
+
 %body
   %h2 Netzke framework demo/tutorial
-  
+
+  %p
+    Note, that this demo still uses Rails 2.3.5 (Netzke v0.5.x). For the latest (incomplete) implementation of this demo for Rails 3, refer to
+    = link_to "rails3 branch", "https://github.com/skozlov/netzke-demo/tree/rails3"
+    of the project on GitHub.
+
   %h3 BasicApp
-  
+
   %p
     =link_to "Introduction", :controller => "basic_app", :action => "intro"
   %p
     =link_to "Live demo", :controller => "basic_app", :action => "demo"
-  
+
   %h3 GridPanel
   %p
     Extensive
     = link_to "demo/tutorial", :controller => "grid_panel"
     of GridPanel as a stand-alone widget
-  
+
   %p
     GridPanel integrated into an "application" (Ext.Viewport-based widget). See it in action in different places through out the
     = link_to "BasicApp demo", :controller => "basic_app", :action => "intro"
@@ -26,13 +31,13 @@
   %h3 FormPanel
   See it in action in different places through out the
   = link_to "BasicApp demo", :controller => "basic_app", :action => "intro"
-  
+
   %h3 TabPanel
   = link_to "Live demo", :controller => "tab_panel"
-  
+
   %h3 AccordionPanel
   = link_to "Live demo", :controller => "accordion_panel"
-  
+
   %h3 Window
   = link_to "Live demo", :controller => "window"
 
@@ -49,7 +54,7 @@
 
   %h2 The code, info, etc
   %p
-    Twitter: 
+    Twitter:
     = link_to "@skozlov", "http://twitter.com/skozlov"
   %p
     Source code for this demo (a good way to learn how to use Netzke):
@@ -72,6 +77,6 @@
     Many tutorials:
     %a{ :href => "http://blog.writelesscode.com" }
       http://blog.writelesscode.com
-    
+
 
   = render :partial => "shared/analytics"
