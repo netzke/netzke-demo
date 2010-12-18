@@ -1,30 +1,35 @@
 class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
   #config :default, :persistence => true
 
-  config  :header => false,
-          :items => [
-            {
-              :region => :center,
-              :title => "Bosses",
-              :name => "bosses",
-              :class_name => "Basepack::GridPanel",
-              :model => "Boss"
-            },{
-              :region => :east,
-              :title => "Info",
-              :name => "info",
-              :class_name => "Basepack::Panel",
-              :padding => 5,
-              :width => 240,
-              :split => true
-            },
-            :clerks.component(
-              :region => :south,
-              :title => "Clerks",
-              :height => 150,
-              :split => true
-            )
-          ]
+  js_property :header, false
+
+  def configuration
+    super.merge(
+      :items => [
+        {
+          :region => :center,
+          :title => "Bosses",
+          :name => "bosses",
+          :class_name => "Basepack::GridPanel",
+          :model => "Boss"
+        },{
+          :region => :east,
+          :title => "Info",
+          :name => "info",
+          :class_name => "Basepack::Panel",
+          :padding => 5,
+          :width => 240,
+          :split => true
+        },
+        :clerks.component(
+          :region => :south,
+          :title => "Clerks",
+          :height => 150,
+          :split => true
+        )
+      ]
+    )
+  end
 
   # Overriding initComponent
   js_method :init_component, <<-JS
@@ -78,7 +83,7 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
   end
 
   # Updating Statistics on clerks after modifying the clerks grid
-  def clerks__get_data(params)
+  def clerks__get_data_endpoint(params)
     boss = Boss.find(component_session[:selected_boss_id])
     clerks_grid = component_instance(:clerks)
     clerks_data = clerks_grid.get_data
