@@ -1,44 +1,31 @@
-class SimpleApp < Netzke::Base
-  js_base_class "Ext.Viewport"
+class SomeSimpleApp < Netzke::Basepack::SimpleApp
 
-  js_properties(
-    :layout => :border
-  )
+  def menu
+    [
+      {:text => "Simple components", :icon => uri_to_icon(:application), :menu => [:clerks.action, :bosses.action, :custom_action_grid.action]},
+      {:text => "Composite components", :icon => uri_to_icon(:application_tile_horizontal), :menu => [:bosses_and_clerks.action]}
+    ]
+  end
 
   def configuration
-    super.merge(
+    sup = super
+    sup.merge(
       :items => [{
         :region => :north,
         :height => 35,
         :html => %Q{
           <div style="margin:10px; color:#333; text-align:center; font-family: Helvetica;">
-            <span style="color:#B32D15">Netzke</span> Simple App
+            Simple <span style="color:#B32D15">Netzke</span> App
           </div>
         },
-        :bodyStyle => {"background" => "#FFF url(\"/images/header-deco.gif\") top left repeat-x"}
+        :bodyStyle => {:background => %Q(#FFF url("/images/header-deco.gif") top left repeat-x)}
       },{
         :region => :center,
-        :id => "components_container",
-        :tbar => [
-          {:text => "Simple components", :menu => [
-            :bosses.action,
-            :clerks.action,
-            :custom_action_grid.action
-          ]},
-          {:text => "Composite components", :menu => [
-            :bosses_and_clerks.action
-          ]}
-        ]
-
+        :layout => :border,
+        :items => sup[:items]
       }]
     )
   end
-
-  js_method :load_component_by_action, <<-JS
-    function(a){
-      this.loadComponent({name: a.name, container: "components_container"});
-    }
-  JS
 
   # Components
   component :clerks, :class_name => "Basepack::GridPanel", :model => "Clerk", :lazy_loading => true
