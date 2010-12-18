@@ -1,6 +1,7 @@
 class ComponentsController < ApplicationController
   def index
     component_name = params[:component].gsub("::", "__").underscore
-    render :inline => "<% title #{params[:component]}, false %><%= netzke :#{component_name}, :class_name => '#{params[:component]}' %>", :layout => true
+    # render :inline => "<% title #{params[:component]}, false %>", :layout => true
+    render :text => "text to render..."
   end
 end
