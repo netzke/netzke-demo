@@ -1,6 +1,7 @@
 class CustomActionGrid < Netzke::Basepack::GridPanel
   action :show_details, :text => "Show details", :disabled => true
 
+  # For stand-alone testing
   def default_config
     super.merge(:model => "Clerk")
   end
