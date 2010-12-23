@@ -1,16 +1,20 @@
 <% title "BorderLayoutPanel" %>
-<b>Basepack::BorderLayoutPanel</b>, besides easy nesting of other components, keeps track of its regions sizes and collapsed/expanded states. Try to resize or collapse regions, then refresh the page. Note, that the state is stored in the database, <i>not</i> in the cookies.<br>
-Also note, that it's a very stupid component, which simply puts together several GridPanel's with different configuration. See the <%= link_to "source code", "https://github.com/skozlov/netzke-demo/tree/master/app/views/border_layout_panel/index.html.erb" %>.
+
+<%= link_to_code %>
+
+<b>Basepack::BorderLayoutPanel</b>, besides easy nesting of other components, keeps track of its regions' sizes and collapsed/expanded states. Try to resize or collapse regions, then refresh the page. Note, that the state is stored in the database, <i>not</i> in the session.<br>
+Also note, that it's a very simple component, which simply puts together several GridPanel's with different configuration, without implementing any interaction between them (unlike in <%= link_to "this", "http://blog.writelesscode.com/blog/2009/09/24/building-rails-extjs-reusable-components-with-netzke-part-3/" %> tutorial).
+
 <%= netzke :simple_border_layout_panel,
     :header => false,
     :border => true,
     :height => 600,
     :persistence => true,
-    :class_name => "Basepack::BorderLayoutPanel",
+    :class_name => "Netzke::Basepack::BorderLayoutPanel",
     :items => [{
       :region => :center,
       :title => "All bosses",
-      :class_name => "Basepack::GridPanel",
+      :class_name => "Netzke::Basepack::GridPanel",
       :model => "Boss",
     },{
       :region => :west,
@@ -18,7 +22,7 @@ Also note, that it's a very stupid component, which simply puts together several
       :split => true,
       :collapsible => true,
       :title => "Recently updated bosses",
-      :class_name => "Basepack::GridPanel",
+      :class_name => "Netzke::Basepack::GridPanel",
       :model => "Boss",
       :columns => [:first_name, :last_name],
       :scope => {:updated_at.gt => 1.days.ago}
@@ -28,7 +32,7 @@ Also note, that it's a very stupid component, which simply puts together several
       :split => true,
       :collapsible => true,
       :title => "Lowest paid bosses",
-      :class_name => "Basepack::GridPanel",
+      :class_name => "Netzke::Basepack::GridPanel",
       :model => "Boss",
       :columns => [:name, :salary],
       :scope => {:salary.lt => 30000}
@@ -38,7 +42,7 @@ Also note, that it's a very stupid component, which simply puts together several
       :split => true,
       :title => "All clerks",
       :collapsible => true,
-      :class_name => "Basepack::GridPanel",
+      :class_name => "Netzke::Basepack::GridPanel",
       :model => "Clerk"
     },{
       :region => :south,
@@ -46,7 +50,7 @@ Also note, that it's a very stupid component, which simply puts together several
       :split => true,
       :collapsible => true,
       :title => "Clerks to lay off",
-      :class_name => "Basepack::GridPanel",
+      :class_name => "Netzke::Basepack::GridPanel",
       :model => "Clerk",
       :scope => {:subject_to_lay_off => true}
     }]

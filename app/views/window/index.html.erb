@@ -1,8 +1,11 @@
 <% title "Netzke::Basepack::Window" %>
+<%= link_to_code %>
 
-Features:
+<h2>Features:</h2>
+<ol>
 <li>Straight-forward nesting of any other Netzke widget</li>
 <li>Persistent resize and position</li>
+</ol>
 
 <h2>Example 1: an empty window with defaults</h2>
 <p>Just a window that remembers its size and position</p>
@@ -12,23 +15,7 @@ Features:
 <%= netzke :window, :class_name => "Basepack::Window" %>
 
 <h2>Example 2: a window nesting a GridPanel</h2>
-<p>Code:</p>
-<% coderay do %>
-  netzke :window_with_grid_panel,
-    :class_name => "Window",
-    :persistent_config => true,
-    :ext_config => {
-      :width => 700, :height => 400
-    },
-    :item => {
-      :class_name => "GridPanel",
-      :model => "Boss",
-      :ext_config => {
-        :header => false, :border => true
-      }
-    }
-<% end %>
-<br>
+
 <input type="button" value="Show window" onClick="Netzke.page.windowWithGridPanel.show(); Ext.get(this).hide();" />
 
 <%= netzke :window_with_grid_panel,
@@ -41,30 +28,14 @@ Features:
       }]
 %>
 
-<h2>Example 3: a window nesting BossesAndClerks widget (from <a href="http://blog.writelesscode.com/blog/2009/09/24/building-rails-extjs-reusable-components-with-netzke-part-3/">this</a> tutorial)</h2>
-<p>Just a window that remembers its size and position</p>
-<p>Code:</p>
-<% coderay do %>
-  netzke :window_with_bosses_and_clerks,
-    :class_name => "Window",
-    :persistent_config => true,
-    :ext_config => {
-      :width => "70%", :height => 400
-    },
-    :item => {
-      :class_name => "BossesAndClerks",
-      :ext_config => {
-        :header => false, :border => true
-      }
-    }
-<% end %>
-<br>
+<h2>Example 3: a window nesting the BossesAndClerks component (from <a href="http://blog.writelesscode.com/blog/2009/09/24/building-rails-extjs-reusable-components-with-netzke-part-3/">this</a> tutorial)</h2>
+
 <input type="button" value="Show window" onClick="Netzke.page.windowWithBossesAndClerks.show(); Ext.get(this).hide();" />
 
 <%= netzke :window_with_bosses_and_clerks,
       :class_name => "Basepack::Window",
       :width => "70%", :height => 400,
-      :item => [{
+      :items => [{
         :class_name => "BossesAndClerks",
         :header => false, :border => true
       }]
