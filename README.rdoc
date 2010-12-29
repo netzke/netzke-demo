@@ -8,7 +8,7 @@ This is the source-code for http://demo.netzke.org
 
 2. Install required gems
 
-    bundle install
+    bundle
 
 3. Link your copy of Ext JS library into "public", e.g.:
 

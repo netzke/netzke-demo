@@ -1,15 +1,15 @@
 # require 'faker'
 class GridPanelController < ApplicationController
-  WIDGETS = %w{ bosses clerks bosses_custom_columns bosses_with_permissions configurable_clerks }
-  
+  COMPONENTS = %w{ bosses clerks bosses_custom_columns bosses_with_permissions configurable_clerks }
+
   def demo
     # Simplify the URL, there was no need for more actions apparently
     redirect_to :action => "index", :status=>:moved_permanently
   end
-  
+
   def regenerate_test_data
     number_of_bosses = 50
-    
+
     Boss.delete_all
     bosses_ids = []
     number_of_bosses.times do
@@ -23,8 +23,8 @@ class GridPanelController < ApplicationController
       })
       bosses_ids << a_boss.id
     end
-    
-    
+
+
     Clerk.delete_all
     200.times do
       first_name = Faker::Name.first_name
@@ -40,17 +40,18 @@ class GridPanelController < ApplicationController
         :updated_at => 15.minutes.ago
       })
     end
-    
+
     redirect_to :action => "demo"
   end
 
   def reset_configs
+    NetzkeComponentState.delete_all
     # only delete preferences for the grid demo
-    WIDGETS.each do |widget| 
-      NetzkePreference.delete_all("widget_name LIKE '#{widget}%'")
-      NetzkeFieldList.delete_all("name LIKE '#{widget}%'")
-    end
-    
+    # COMPONENTS.each do |widget|
+    #   NetzkePreference.delete_all("widget_name LIKE '#{widget}%'")
+    #   NetzkeFieldList.delete_all("name LIKE '#{widget}%'")
+    # end
+
     redirect_to :action => "demo"
   end
 end
