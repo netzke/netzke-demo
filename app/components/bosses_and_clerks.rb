@@ -1,10 +1,9 @@
 class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
-  #config :default, :persistence => true
-
   js_property :header, false
 
   def configuration
     super.merge(
+      :persistence => true,
       :items => [
         {
           :region => :center,
