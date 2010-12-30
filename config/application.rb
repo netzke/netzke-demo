@@ -43,6 +43,6 @@ module NetzkeDemo
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
-    config.repo_root = "https://github.com/skozlov/netzke-demo/tree/rails3"
+    config.repo_root = "https://github.com/skozlov/netzke-demo/blob/master"
   end
 end
