@@ -61,6 +61,7 @@ GEM
       i18n (~> 0.4)
     haml (3.0.25)
     i18n (0.5.0)
+    inploy (1.8)
     mail (2.2.13)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -111,6 +112,7 @@ DEPENDENCIES
   coderay
   faker
   haml
+  inploy
   mysql2
   netzke-basepack!
   netzke-core!
