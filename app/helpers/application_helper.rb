@@ -21,7 +21,7 @@ module ApplicationHelper
   def link_to_code(args={})
     file = caller.first.split(":").first
     args[:style] ||= "float:right; border: 1px solid lightgrey; padding: 5px; margin-left: 10px;"
-    link_to("Code for this view", [NetzkeDemo::Application.config.repo_root, file.sub(Rails.root.to_s, "")].join, args)
+    link_to("Code of this view", [NetzkeDemo::Application.config.repo_root, file.sub(Rails.root.to_s, "")].join, args)
   end
 
   def new_window_link_to(*args)
