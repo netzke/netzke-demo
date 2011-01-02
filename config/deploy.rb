@@ -1,6 +1,6 @@
-application = "netzke-demo-test"
-repository = 'git://github.com/skozlov/netzke-demo.git'
-hosts = ['flora']
+@application = "netzke-demo"
+@repository = 'git://github.com/skozlov/netzke-demo.git'
+@hosts = ['flora']
 
 # OPTIONALS
 
@@ -9,8 +9,8 @@ hosts = ['flora']
 #   run "important_command"
 # end
 
-path = '/var/rails'                                # default /var/local/apps
-# user = 'deploy'                              # default deploy
+@path = '/var/rails'                                # default /var/local/apps
+@user = 'skozlov'                               # default deploy
 # ssh_opts = '-A'                              # default empty
 # branch = 'production'                        # default master
 # sudo = true                                  # default false
