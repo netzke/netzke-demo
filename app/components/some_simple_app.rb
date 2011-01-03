@@ -39,15 +39,20 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
                 :text => "Simple Components",
                 :expanded => true,
                 :children => [{
+                  :text => "Bosses",
+                  :icon => uri_to_icon(:user_suit),
+                  :leaf => true,
+                  :component => "bosses"
+                },{
                   :text => "Clerks",
                   :icon => uri_to_icon(:user),
                   :leaf => true,
                   :component => "clerks"
                 },{
-                  :text => "Bosses",
-                  :icon => uri_to_icon(:user_suit),
+                  :text => "Customized Clerks",
+                  :icon => uri_to_icon(:user),
                   :leaf => true,
-                  :component => "bosses"
+                  :component => "customized_clerks"
                 },{
                   :text => "Custom Action Grid",
                   :leaf => true,
@@ -75,10 +80,11 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
   end
 
   # Components
-  component :clerks, :class_name => "Basepack::GridPanel", :model => "Clerk", :lazy_loading => true
-  component :bosses, :class_name => "Basepack::GridPanel", :model => "Boss", :lazy_loading => true
-  component :custom_action_grid, :model => "Boss", :lazy_loading => true
-  component :bosses_and_clerks, :lazy_loading => true
+  component :bosses, :class_name => "Basepack::GridPanel", :model => "Boss", :lazy_loading => true, :title => "Bosses"
+  component :clerks, :class_name => "Basepack::GridPanel", :model => "Clerk", :lazy_loading => true, :title => "Clerks"
+  component :customized_clerks, :class_name => "ClerkGrid", :lazy_loading => true, :title => "Customized Clerks"
+  component :custom_action_grid, :model => "Boss", :lazy_loading => true, :title => "Custom Action Grid"
+  component :bosses_and_clerks, :lazy_loading => true, :title => "Bosses and Clerks"
 
   # A simple panel thit will render a page with links to different Rails views that have embedded widgets in them
   component :embedded, :class_name => "Basepack::Panel", :auto_load => "demo/embedded", :padding => 15, :title => "Components embedded into Rails views", :auto_scroll => true

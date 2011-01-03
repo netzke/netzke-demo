@@ -51,11 +51,12 @@ netzke :bosses_custom_columns,
     {:name => :salary, :read_only => true, :label => "$", :renderer => 'usMoney'},
     {:name => :email, :width => 180}] %>
 
-<h2>Model-wide configuration, associations, Rails validations and "virtual" columns</h2>
+<h2>Associations, Rails validations, "virtual" columns, and more</h2>
 <p>Here's an example that demonstrates:
   <li>how GridPanel handles one-to-many associations</li>
   <li>usage of "virtual" attributes (model's instance methods)</li>
-  <li>how to specify per model which columns should be picked up by grid, and how to preconfigure them</li>
+  <li>usage of the <tt>getter</tt> column configuration option</li>
+  <li>usage of the <tt>scope</tt> column configuration option (for filtering combobox options)</li>
   <li>Rails' validations in action</li>
 
 <% coderay do %>
@@ -71,46 +72,54 @@ class Clerk < ActiveRecord::Base
     "#{last_name}, #{first_name}"
   end
 
-  # another virtual attribute
   def updated
     updated_at > 5.minutes.ago
   end
 end
 
-# Declare and configure attributes specifically for GridPanel
-module Netzke::Basepack::ModelExtensions
-  class ClerkForGridPanel < Clerk
-    # Virtual attribute defined in the model
-    netzke_attribute :name, :renderer => "uppercase", :width => 200
+# Extend GridPanel to be specific about the model and columns we want to display
+class ClerkGrid < Netzke::Basepack::GridPanel
+  css_include :main
 
-    # Preconfigure a "real" attribute
-    netzke_attribute :salary, :renderer => "usMoney"
+  def configuration
+    super.merge({
+      :model => "Clerk",
 
-    # Set the scopes for bosses listed in the association column
-    netzke_attribute :boss__last_name, :editor => {:xtype => :combobox, :scopes => [["salary_greater_than", 95000]]}, :header => "Boss"
-
-    # Specify which columns and in which order to show
-    netzke_expose_attributes :id, :name, :first_name, :last_name, :updated_bulb, :email, :salary, :boss__last_name
-
-    # Virtual attribute defined below (thus only to be shown in GridPanels)
-    netzke_attribute :updated_bulb, :width => 40, :label => "<div class='bulb-off' />", :tooltip => "Recently updated"
-
-    def updated_bulb
-      bulb = updated ? "on" : "off"
-      "<div class='bulb-#{bulb}' />"
-    end
+      # Declaring columns
+      :columns => [
+        {
+          :name => :name,
+          :renderer => "uppercase",
+          :width => 200
+        },
+        :first_name,
+        :last_name,
+        {
+          :name => :updated_bulb,
+          :width => 40,
+          :label => "<div class='bulb-off' />",
+          :tooltip => "Recently updated",
+          :getter => lambda { |r|
+            bulb = r.updated ? "on" : "off"
+            "<div class='bulb-#{bulb}' />"
+          }
+        },
+        :email,
+        {
+          :name => :boss__last_name,
+          :scope => {:salary.gt => 95000},
+          :header => "Boss"
+        }
+      ]
+    })
   end
 end
 
 # In the view:
-netzke :clerks,
-  :class_name => "Basepack::GridPanel",
-  :model => 'Clerk'
+netzke :clerk_grid
 <% end %>
 <p>Result:</p>
-<%= netzke :clerks,
-  :class_name => "Basepack::GridPanel",
-  :model => 'Clerk' %>
+<%= netzke :clerk_grid %>
 
 <h2>Permissions</h2>
 You can specify which actions are allowed for this grid
