@@ -1,0 +1,107 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.5.4	//
+BossesAndClerks	/Users/skozlov/code/rails/netzke-demo/app/components/bosses_and_clerks.rb	/^class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel$/;"	class	line:1
+configuration	/Users/skozlov/code/rails/netzke-demo/app/components/bosses_and_clerks.rb	/^  def configuration$/;"	method	line:4
+boss_info_html	/Users/skozlov/code/rails/netzke-demo/app/components/bosses_and_clerks.rb	/^  def boss_info_html(boss)$/;"	method	line:76
+clerks__get_data_endpoint	/Users/skozlov/code/rails/netzke-demo/app/components/bosses_and_clerks.rb	/^  def clerks__get_data_endpoint(params)$/;"	method	line:85
+ClerkGrid	/Users/skozlov/code/rails/netzke-demo/app/components/clerk_grid.rb	/^class ClerkGrid < Netzke::Basepack::GridPanel$/;"	class	line:2
+configuration	/Users/skozlov/code/rails/netzke-demo/app/components/clerk_grid.rb	/^  def configuration$/;"	method	line:6
+CustomActionGrid	/Users/skozlov/code/rails/netzke-demo/app/components/custom_action_grid.rb	/^class CustomActionGrid < Netzke::Basepack::GridPanel$/;"	class	line:1
+default_config	/Users/skozlov/code/rails/netzke-demo/app/components/custom_action_grid.rb	/^  def default_config$/;"	method	line:5
+default_bbar	/Users/skozlov/code/rails/netzke-demo/app/components/custom_action_grid.rb	/^  def default_bbar$/;"	method	line:10
+default_context_menu	/Users/skozlov/code/rails/netzke-demo/app/components/custom_action_grid.rb	/^  def default_context_menu$/;"	method	line:14
+SomeSimpleApp	/Users/skozlov/code/rails/netzke-demo/app/components/some_simple_app.rb	/^class SomeSimpleApp < Netzke::Basepack::SimpleApp$/;"	class	line:1
+configuration	/Users/skozlov/code/rails/netzke-demo/app/components/some_simple_app.rb	/^  def configuration$/;"	method	line:5
+menu	/Users/skozlov/code/rails/netzke-demo/app/components/some_simple_app.rb	/^  def menu$/;"	method	line:95
+Touch	/Users/skozlov/code/rails/netzke-demo/app/components/touch/simple_list.rb	/^module Touch$/;"	mixin	line:1
+SimpleList	/Users/skozlov/code/rails/netzke-demo/app/components/touch/simple_list.rb	/^  class SimpleList < Netzke::Base$/;"	class	line:2
+configuration	/Users/skozlov/code/rails/netzke-demo/app/components/touch/simple_list.rb	/^    def configuration$/;"	method	line:7
+extract_attrs	/Users/skozlov/code/rails/netzke-demo/app/components/touch/simple_list.rb	/^      def extract_attrs(config)$/;"	method	line:23
+Touch	/Users/skozlov/code/rails/netzke-demo/app/components/touch/simple_tab_panel.rb	/^module Touch$/;"	mixin	line:1
+SimpleTabPanel	/Users/skozlov/code/rails/netzke-demo/app/components/touch/simple_tab_panel.rb	/^  class SimpleTabPanel < Netzke::Base$/;"	class	line:2
+configuration	/Users/skozlov/code/rails/netzke-demo/app/components/touch/simple_tab_panel.rb	/^    def configuration$/;"	method	line:10
+AccordionPanelController	/Users/skozlov/code/rails/netzke-demo/app/controllers/accordion_panel_controller.rb	/^class AccordionPanelController < ApplicationController$/;"	class	line:1
+index	/Users/skozlov/code/rails/netzke-demo/app/controllers/accordion_panel_controller.rb	/^  def index$/;"	method	line:2
+ApplicationController	/Users/skozlov/code/rails/netzke-demo/app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	class	line:1
+BorderLayoutPanelController	/Users/skozlov/code/rails/netzke-demo/app/controllers/border_layout_panel_controller.rb	/^class BorderLayoutPanelController < ApplicationController$/;"	class	line:2
+ComponentsController	/Users/skozlov/code/rails/netzke-demo/app/controllers/components_controller.rb	/^class ComponentsController < ApplicationController$/;"	class	line:1
+index	/Users/skozlov/code/rails/netzke-demo/app/controllers/components_controller.rb	/^  def index$/;"	method	line:2
+DemoController	/Users/skozlov/code/rails/netzke-demo/app/controllers/demo_controller.rb	/^class DemoController < ApplicationController$/;"	class	line:1
+index	/Users/skozlov/code/rails/netzke-demo/app/controllers/demo_controller.rb	/^  def index$/;"	method	line:3
+GridPanelController	/Users/skozlov/code/rails/netzke-demo/app/controllers/grid_panel_controller.rb	/^class GridPanelController < ApplicationController$/;"	class	line:2
+demo	/Users/skozlov/code/rails/netzke-demo/app/controllers/grid_panel_controller.rb	/^  def demo$/;"	method	line:5
+regenerate_test_data	/Users/skozlov/code/rails/netzke-demo/app/controllers/grid_panel_controller.rb	/^  def regenerate_test_data$/;"	method	line:10
+reset_configs	/Users/skozlov/code/rails/netzke-demo/app/controllers/grid_panel_controller.rb	/^  def reset_configs$/;"	method	line:47
+TabPanelController	/Users/skozlov/code/rails/netzke-demo/app/controllers/tab_panel_controller.rb	/^class TabPanelController < ApplicationController$/;"	class	line:1
+index	/Users/skozlov/code/rails/netzke-demo/app/controllers/tab_panel_controller.rb	/^  def index$/;"	method	line:2
+TouchComponentsController	/Users/skozlov/code/rails/netzke-demo/app/controllers/touch_components_controller.rb	/^class TouchComponentsController < ApplicationController$/;"	class	line:1
+index	/Users/skozlov/code/rails/netzke-demo/app/controllers/touch_components_controller.rb	/^  def index$/;"	method	line:2
+WindowController	/Users/skozlov/code/rails/netzke-demo/app/controllers/window_controller.rb	/^class WindowController < ApplicationController$/;"	class	line:1
+index	/Users/skozlov/code/rails/netzke-demo/app/controllers/window_controller.rb	/^  def index$/;"	method	line:2
+ApplicationHelper	/Users/skozlov/code/rails/netzke-demo/app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	mixin	line:1
+coderay	/Users/skozlov/code/rails/netzke-demo/app/helpers/application_helper.rb	/^  def coderay( lang = :ruby, &block )$/;"	method	line:2
+title	/Users/skozlov/code/rails/netzke-demo/app/helpers/application_helper.rb	/^  def title(page_title, show_title = true)$/;"	method	line:12
+show_title?	/Users/skozlov/code/rails/netzke-demo/app/helpers/application_helper.rb	/^  def show_title?$/;"	method	line:17
+link_to_code	/Users/skozlov/code/rails/netzke-demo/app/helpers/application_helper.rb	/^  def link_to_code(args={})$/;"	method	line:21
+new_window_link_to	/Users/skozlov/code/rails/netzke-demo/app/helpers/application_helper.rb	/^  def new_window_link_to(*args)$/;"	method	line:27
+BorderLayoutPanelHelper	/Users/skozlov/code/rails/netzke-demo/app/helpers/border_layout_panel_helper.rb	/^module BorderLayoutPanelHelper$/;"	mixin	line:1
+ComponentsHelper	/Users/skozlov/code/rails/netzke-demo/app/helpers/components_helper.rb	/^module ComponentsHelper$/;"	mixin	line:1
+TabPanelHelper	/Users/skozlov/code/rails/netzke-demo/app/helpers/tab_panel_helper.rb	/^module TabPanelHelper$/;"	mixin	line:1
+Boss	/Users/skozlov/code/rails/netzke-demo/app/models/boss.rb	/^class Boss < ActiveRecord::Base$/;"	class	line:1
+name	/Users/skozlov/code/rails/netzke-demo/app/models/boss.rb	/^  def name$/;"	method	line:11
+find_by_name	/Users/skozlov/code/rails/netzke-demo/app/models/boss.rb	/^  def self.find_by_name(name)$/;"	singleton method	line:16
+Clerk	/Users/skozlov/code/rails/netzke-demo/app/models/clerk.rb	/^class Clerk < ActiveRecord::Base$/;"	class	line:1
+name	/Users/skozlov/code/rails/netzke-demo/app/models/clerk.rb	/^  def name$/;"	method	line:8
+updated	/Users/skozlov/code/rails/netzke-demo/app/models/clerk.rb	/^  def updated$/;"	method	line:13
+Role	/Users/skozlov/code/rails/netzke-demo/app/models/role.rb	/^class Role < ActiveRecord::Base$/;"	class	line:1
+User	/Users/skozlov/code/rails/netzke-demo/app/models/user.rb	/^class User < ActiveRecord::Base$/;"	class	line:1
+active_recently?	/Users/skozlov/code/rails/netzke-demo/app/models/user.rb	/^  def active_recently?$/;"	method	line:5
+NetzkeDemo	/Users/skozlov/code/rails/netzke-demo/config/application.rb	/^module NetzkeDemo$/;"	mixin	line:9
+Application	/Users/skozlov/code/rails/netzke-demo/config/application.rb	/^  class Application < Rails::Application$/;"	class	line:10
+CreateBosses	/Users/skozlov/code/rails/netzke-demo/db/migrate/20090106231015_create_bosses.rb	/^class CreateBosses < ActiveRecord::Migration$/;"	class	line:1
+up	/Users/skozlov/code/rails/netzke-demo/db/migrate/20090106231015_create_bosses.rb	/^  def self.up$/;"	singleton method	line:2
+down	/Users/skozlov/code/rails/netzke-demo/db/migrate/20090106231015_create_bosses.rb	/^  def self.down$/;"	singleton method	line:13
+CreateClerks	/Users/skozlov/code/rails/netzke-demo/db/migrate/20090106231709_create_clerks.rb	/^class CreateClerks < ActiveRecord::Migration$/;"	class	line:1
+up	/Users/skozlov/code/rails/netzke-demo/db/migrate/20090106231709_create_clerks.rb	/^  def self.up$/;"	singleton method	line:2
+down	/Users/skozlov/code/rails/netzke-demo/db/migrate/20090106231709_create_clerks.rb	/^  def self.down$/;"	singleton method	line:15
+AddSessionsTable	/Users/skozlov/code/rails/netzke-demo/db/migrate/20101008122627_add_sessions_table.rb	/^class AddSessionsTable < ActiveRecord::Migration$/;"	class	line:1
+up	/Users/skozlov/code/rails/netzke-demo/db/migrate/20101008122627_add_sessions_table.rb	/^  def self.up$/;"	singleton method	line:2
+down	/Users/skozlov/code/rails/netzke-demo/db/migrate/20101008122627_add_sessions_table.rb	/^  def self.down$/;"	singleton method	line:13
+CreateNetzkeComponentStates	/Users/skozlov/code/rails/netzke-demo/db/migrate/20101105153544_create_netzke_component_states.rb	/^class CreateNetzkeComponentStates < ActiveRecord::Migration$/;"	class	line:1
+up	/Users/skozlov/code/rails/netzke-demo/db/migrate/20101105153544_create_netzke_component_states.rb	/^  def self.up$/;"	singleton method	line:2
+down	/Users/skozlov/code/rails/netzke-demo/db/migrate/20101105153544_create_netzke_component_states.rb	/^  def self.down$/;"	singleton method	line:17
+Netzke	/Users/skozlov/code/rails/netzke-demo/lib/netzke/model_extensions/clerk_for_grid_panel.rb	/^module Netzke::ModelExtensions$/;"	mixin	line:2
+ClerkForGridPanel	/Users/skozlov/code/rails/netzke-demo/lib/netzke/model_extensions/clerk_for_grid_panel.rb	/^  class ClerkForGridPanel < Clerk$/;"	class	line:3
+updated_bulb	/Users/skozlov/code/rails/netzke-demo/lib/netzke/model_extensions/clerk_for_grid_panel.rb	/^    def updated_bulb$/;"	method	line:19
+fly	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^	function fly(el) {$/;"	function	line:1228
+checkRelatedTarget	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function checkRelatedTarget(e) {$/;"	function	line:1459
+elContains	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function elContains(parent, child) {$/;"	function	line:1463
+_tryPreloadAttach	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function _tryPreloadAttach() {$/;"	function	line:1479
+startInterval	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function startInterval() {$/;"	function	line:1517
+getScroll	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function getScroll() {$/;"	function	line:1527
+getPageCoord	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function getPageCoord (ev, xy) {$/;"	function	line:1540
+setHeader	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function setHeader(o) {$/;"	function	line:1755
+setTheHeaders	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^        function setTheHeaders(conn, headers){$/;"	function	line:1760
+createExceptionObject	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function createExceptionObject(tId, callbackArg, isAbort, isTimeout) {$/;"	function	line:1774
+initHeader	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function initHeader(label, value) {$/;"	function	line:1786
+createResponseObject	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function createResponseObject(o, callbackArg) {$/;"	function	line:1791
+releaseObject	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function releaseObject(o) {$/;"	function	line:1828
+handleTransactionResponse	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function handleTransactionResponse(o, callback, isAbort, isTimeout) {$/;"	function	line:1837
+checkResponse	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function checkResponse(o, callback, conn, tId, poll, cbTimeout){$/;"	function	line:1903
+checkTimeout	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function checkTimeout(o, callback){$/;"	function	line:1916
+handleReadyState	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function handleReadyState(o, callback){$/;"	function	line:1922
+asyncRequest	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function asyncRequest(method, uri, callback, postData) {$/;"	function	line:1937
+getConnectionObject	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function getConnectionObject() {$/;"	function	line:1962
+createXhrObject	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function createXhrObject(transactionId) {$/;"	function	line:1976
+parseColor	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function parseColor(s) {$/;"	function	line:2729
+fnCleanUp	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^        function fnCleanUp() {$/;"	function	line:2874
+fly	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/jquery/ext-jquery-adapter-debug.js	/^function fly(el){$/;"	function	line:1370
+fnCleanUp	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/jquery/ext-jquery-adapter-debug.js	/^    function fnCleanUp() {$/;"	function	line:1785
+fly	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/prototype/ext-prototype-adapter-debug.js	/^function fly(el){$/;"	function	line:1721
+fnCleanUp	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/prototype/ext-prototype-adapter-debug.js	/^    function fnCleanUp() {$/;"	function	line:1814
+fly	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/yui/ext-yui-adapter-debug.js	/^function fly(el){$/;"	function	line:1519
+fnCleanUp	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/yui/ext-yui-adapter-debug.js	/^    function fnCleanUp() {$/;"	function	line:1529
