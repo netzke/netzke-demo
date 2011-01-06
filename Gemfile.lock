@@ -1,3 +1,26 @@
+GIT
+  remote: git://github.com/skozlov/netzke-basepack.git
+  revision: 12db339e0e3f6ff03112b4cd6eb1137a4feefe26
+  specs:
+    netzke-basepack (0.6.3)
+      acts_as_list
+      meta_where (>= 0.9.3)
+      netzke-core (~> 0.6.4)
+      will_paginate (~> 3.0.pre2)
+
+GIT
+  remote: git://github.com/skozlov/netzke-core.git
+  revision: 57a8680b0a650501399212224ee1384375253eda
+  specs:
+    netzke-core (0.6.5)
+      activesupport (>= 3.0.1)
+
+GIT
+  remote: git://github.com/skozlov/netzke-persistence.git
+  revision: 9ec27e397661989cff0d765b5849452c77ca0036
+  specs:
+    netzke-persistence (0.1.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -50,14 +73,6 @@ GEM
       arel (~> 2.0.2)
     mime-types (1.16)
     mysql2 (0.2.6)
-    netzke-basepack (0.6.3)
-      acts_as_list
-      meta_where (>= 0.9.3)
-      netzke-core (~> 0.6.4)
-      will_paginate (~> 3.0.pre2)
-    netzke-core (0.6.5)
-      activesupport (>= 3.0.1)
-    netzke-persistence (0.1.1)
     open4 (1.0.1)
     perftools.rb (0.5.4)
     polyglot (0.3.1)
@@ -99,9 +114,9 @@ DEPENDENCIES
   haml
   inploy
   mysql2
-  netzke-basepack
-  netzke-core
-  netzke-persistence
+  netzke-basepack!
+  netzke-core!
+  netzke-persistence!
   rack-perftools_profiler (~> 0.1)
   rails (~> 3.0.3)
   will_paginate (~> 3.0.pre2)

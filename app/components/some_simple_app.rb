@@ -26,7 +26,7 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
 
             # Navigation
             :region => :west,
-            :width => 200,
+            :width => 250,
             :split => true,
             :xtype => :treepanel,
             :title => "Navigation",
@@ -39,24 +39,42 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
                 :text => "Simple Components",
                 :expanded => true,
                 :children => [{
-                  :text => "Bosses",
-                  :icon => uri_to_icon(:user_suit),
-                  :leaf => true,
-                  :component => "bosses"
+                  :text => "GridPanel",
+                  :expanded => true,
+                  :children => [{
+                    :text => "Bosses",
+                    :icon => uri_to_icon(:user_suit),
+                    :leaf => true,
+                    :component => "bosses"
+                  },{
+                    :text => "Clerks",
+                    :icon => uri_to_icon(:user),
+                    :leaf => true,
+                    :component => "clerks"
+                  },{
+                    :text => "Customized Clerks",
+                    :icon => uri_to_icon(:user),
+                    :leaf => true,
+                    :component => "customized_clerks"
+                  },{
+                    :text => "Custom Action Grid",
+                    :leaf => true,
+                    :component => "custom_action_grid"
+                  }]
                 },{
-                  :text => "Clerks",
-                  :icon => uri_to_icon(:user),
-                  :leaf => true,
-                  :component => "clerks"
-                },{
-                  :text => "Customized Clerks",
-                  :icon => uri_to_icon(:user),
-                  :leaf => true,
-                  :component => "customized_clerks"
-                },{
-                  :text => "Custom Action Grid",
-                  :leaf => true,
-                  :component => "custom_action_grid"
+                  :text => "FormPanel",
+                  :expanded => true,
+                  :children => [{
+                    :text => "Clerks Paging Form",
+                    :icon => uri_to_icon(:user),
+                    :leaf => true,
+                    :component => "clerk_paging_form"
+                  },{
+                    :text => "Clerks Paging Lockable Form",
+                    :icon => uri_to_icon(:user),
+                    :leaf => true,
+                    :component => "clerk_paging_lockable_form"
+                  }]
                 }]
               },{
                 :text => "Composite Components",
@@ -85,6 +103,8 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
   component :customized_clerks, :class_name => "ClerkGrid", :lazy_loading => true, :title => "Customized Clerks"
   component :custom_action_grid, :model => "Boss", :lazy_loading => true, :title => "Custom Action Grid"
   component :bosses_and_clerks, :lazy_loading => true, :title => "Bosses and Clerks"
+  component :clerk_paging_form, :lazy_loading => true, :title => "Clerk Paging Form", :model => "Clerk", :class_name => "Netzke::Basepack::PagingFormPanel"
+  component :clerk_paging_lockable_form, :lazy_loading => true, :title => "Clerk Paging Lockable Form", :model => "Clerk", :class_name => "Netzke::Basepack::PagingFormPanel", :mode => :lockable
 
   # A simple panel thit will render a page with links to different Rails views that have embedded widgets in them
   component :embedded, :class_name => "Basepack::Panel", :auto_load => "demo/embedded", :padding => 15, :title => "Components embedded into Rails views", :auto_scroll => true
