@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/skozlov/netzke-basepack.git
-  revision: 12db339e0e3f6ff03112b4cd6eb1137a4feefe26
+  revision: 11a84b71e142ede92fb8905f9a7a4dabe0eae9f3
   specs:
     netzke-basepack (0.6.3)
       acts_as_list
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/skozlov/netzke-core.git
-  revision: 57a8680b0a650501399212224ee1384375253eda
+  revision: de2591adcd0b8d6d8a1c899c19b19a5873eb1199
   specs:
     netzke-core (0.6.5)
       activesupport (>= 3.0.1)
@@ -67,7 +67,7 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    meta_where (0.9.9.2)
+    meta_where (0.9.10)
       activerecord (~> 3.0.2)
       activesupport (~> 3.0.2)
       arel (~> 2.0.2)
