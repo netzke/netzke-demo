@@ -2,19 +2,31 @@ This is the source-code for http://demo.netzke.org
 
 == Installation (to run it locally)
 
-1. Get the code from github and checkout the rails3 branch
+1. Get the code from github
 
     git clone git://github.com/skozlov/netzke-demo.git && cd netzke-demo
 
-2. Install required gems
+2. Checkout or symlink Netzke gems (core, basepack, and persistence) into vendor/gems
+
+    git clone git://github.com/skozlov/netzke-core.git vendor/gems/netzke-core
+    git clone git://github.com/skozlov/netzke-basepack.git vendor/gems/netzke-basepack
+    git clone git://github.com/skozlov/netzke-persistence.git vendor/gems/netzke-persistence
+
+3. Install required gems
 
     bundle
 
-3. Link your copy of Ext JS library into "public", e.g.:
+4. Link your copy of Sencha libraries into "public".
+
+Sencha Ext JS must be linked to <tt>public/extjs</tt>, e.g.:
 
     ln -s ~/code/sencha/ext-3.3.1 public/extjs
 
-4. Create the database and do the migrations
+Sencha Touch must be linked to <tt>public/sencha-touch</tt>, e.g.:
+
+    ln -s ~/code/sencha/sencha-touch-1.0.1 public/sencha-touch
+
+5. Create the database and do the migrations
 
     rake db:create && rake db:migrate
 
