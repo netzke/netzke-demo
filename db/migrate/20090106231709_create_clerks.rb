@@ -1,7 +1,7 @@
 class CreateClerks < ActiveRecord::Migration
   def self.up
     create_table :clerks do |t|
-      t.string :boss_id
+      t.integer :boss_id
       t.string :first_name
       t.string :last_name
       t.string :email

@@ -7,4 +7,4 @@ public/sencha-touch
 db/*.sqlite3
 log/*.log
 tmp/**/*
-vendor/plugins/netzke-*
+vendor/gems/netzke-*

@@ -1,7 +1,7 @@
 PATH
   remote: vendor/gems/netzke-basepack
   specs:
-    netzke-basepack (0.6.3)
+    netzke-basepack (0.6.4)
       acts_as_list
       meta_where (>= 0.9.3)
       netzke-core (~> 0.6.4)
@@ -10,7 +10,7 @@ PATH
 PATH
   remote: vendor/gems/netzke-core
   specs:
-    netzke-core (0.6.5)
+    netzke-core (0.6.6)
       activesupport (>= 3.0.1)
 
 PATH

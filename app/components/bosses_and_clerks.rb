@@ -3,7 +3,7 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
 
   def configuration
     super.merge(
-      :persistence => true,
+      # :persistence => true,
       :items => [
         {
           :region => :center,
