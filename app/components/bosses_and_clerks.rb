@@ -44,7 +44,9 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
   # Event handler
   js_method :on_boss_selection_changed, <<-JS
     function(self, rowIndex){
+      // The beauty of Ext.Direct: calling two endpoints in a row. Results in 1 call to the server!
       this.selectBoss({boss_id: self.store.getAt(rowIndex).get('id')});
+      this.getChildComponent('clerks').getStore().reload();
     }
   JS
 
@@ -55,10 +57,7 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
     # selected boss
     boss = Boss.find(params[:boss_id])
 
-    clerks_grid = component_instance(:clerks)
-    clerks_data = clerks_grid.get_data
     {
-      :clerks => {:load_store_data => clerks_data, :set_title => "Clerks for #{boss.name}"},
       :info => {:update_body_html => boss_info_html(boss), :set_title => "#{boss.name}"}
     }
   end
