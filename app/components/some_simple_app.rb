@@ -98,16 +98,55 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
   end
 
   # Components
-  component :bosses, :class_name => "Basepack::GridPanel", :model => "Boss", :lazy_loading => true, :title => "Bosses"
-  component :clerks, :class_name => "Basepack::GridPanel", :model => "Clerk", :lazy_loading => true, :title => "Clerks"
-  component :customized_clerks, :class_name => "ClerkGrid", :lazy_loading => true, :title => "Customized Clerks"
-  component :custom_action_grid, :model => "Boss", :lazy_loading => true, :title => "Custom Action Grid"
-  component :bosses_and_clerks, :lazy_loading => true, :title => "Bosses and Clerks"
-  component :clerk_paging_form, :lazy_loading => true, :title => "Clerk Paging Form", :model => "Clerk", :class_name => "Netzke::Basepack::PagingFormPanel"
-  component :clerk_paging_lockable_form, :lazy_loading => true, :title => "Clerk Paging Lockable Form", :model => "Clerk", :class_name => "Netzke::Basepack::PagingFormPanel", :mode => :lockable
+  component :bosses,
+    :class_name => "Basepack::GridPanel",
+    :model => "Boss",
+    :lazy_loading => true,
+    :title => "Bosses",
+    :persistence => true
+
+  component :clerks,
+    :class_name => "Basepack::GridPanel",
+    :model => "Clerk",
+    :lazy_loading => true,
+    :title => "Clerks",
+    :persistence => true
+
+  component :customized_clerks,
+    :class_name => "ClerkGrid",
+    :lazy_loading => true,
+    :title => "Customized Clerks"
+
+  component :custom_action_grid,
+    :model => "Boss",
+    :lazy_loading => true,
+    :title => "Custom Action Grid",
+    :persistence => true
+
+  component :bosses_and_clerks,
+    :lazy_loading => true,
+    :title => "Bosses and Clerks"
+
+  component :clerk_paging_form,
+    :lazy_loading => true,
+    :title => "Clerk Paging Form",
+    :model => "Clerk",
+    :class_name => "Netzke::Basepack::PagingFormPanel"
+
+  component :clerk_paging_lockable_form,
+    :lazy_loading => true,
+    :title => "Clerk Paging Lockable Form",
+    :model => "Clerk",
+    :class_name => "Netzke::Basepack::PagingFormPanel",
+    :mode => :lockable
 
   # A simple panel thit will render a page with links to different Rails views that have embedded widgets in them
-  component :embedded, :class_name => "Basepack::Panel", :auto_load => "demo/embedded", :padding => 15, :title => "Components embedded into Rails views", :auto_scroll => true
+  component :embedded,
+    :class_name => "Basepack::Panel",
+    :auto_load => "demo/embedded",
+    :padding => 15,
+    :title => "Components embedded into Rails views",
+    :auto_scroll => true
 
   action :about, :icon => :information
 
@@ -134,7 +173,6 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
       });
     }
   JS
-
 
   # Overrides Ext.Component#initComponent to set the click event on the nodes
   js_method :init_component, <<-JS

@@ -6,6 +6,7 @@ class ClerkGrid < Netzke::Basepack::GridPanel
   def configuration
     super.merge({
       :model => "Clerk",
+      :persistence => true,
 
       # Declaring columns
       :columns => [
