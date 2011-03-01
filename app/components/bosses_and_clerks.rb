@@ -3,7 +3,6 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
 
   def configuration
     super.merge(
-      :persistence => true,
       :items => [
         {
           :region => :center,
@@ -21,7 +20,7 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
         :clerks.component(
           :region => :south,
           :title => "Clerks",
-          :height => 150,
+          :height => 250,
           :split => true
         )
       ]
