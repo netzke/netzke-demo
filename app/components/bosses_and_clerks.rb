@@ -11,15 +11,13 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
           :name => "bosses",
           :class_name => "Basepack::GridPanel",
           :model => "Boss"
-        },{
+        },
+        :boss_details.component(
           :region => :east,
-          :title => "Info",
           :name => "info",
-          :class_name => "Basepack::Panel",
-          :padding => 5,
           :width => 240,
           :split => true
-        },
+        ),
         :clerks.component(
           :region => :south,
           :title => "Clerks",
@@ -37,29 +35,18 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
       #{js_full_class_name}.superclass.initComponent.call(this);
 
       // setting the 'rowclick' event
-      this.getChildComponent("bosses").on('rowclick', this.onBossSelectionChanged, this);
-    }
-  JS
-
-  # Event handler
-  js_method :on_boss_selection_changed, <<-JS
-    function(self, rowIndex){
-      // The beauty of Ext.Direct: calling two endpoints in a row. Results in 1 call to the server!
-      this.selectBoss({boss_id: self.store.getAt(rowIndex).get('id')});
-      this.getChildComponent('clerks').getStore().reload();
+      this.getChildComponent("bosses").on('rowclick', function(self, rowIndex){
+        // The beauty of using Ext.Direct: calling 3 endpoints in a row, which results in a single call to the server!
+        this.selectBoss({boss_id: self.store.getAt(rowIndex).get('id')});
+        this.getChildComponent('clerks').getStore().reload();
+        this.getChildComponent('boss_details').updateStats();
+      }, this);
     }
   JS
 
   endpoint :select_boss do |params|
     # store selected boss id in the session for this component's instance
     component_session[:selected_boss_id] = params[:boss_id]
-
-    # selected boss
-    boss = Boss.find(params[:boss_id])
-
-    {
-      :info => {:update_body_html => boss_info_html(boss), :set_title => "#{boss.name}"}
-    }
   end
 
   component :clerks do
@@ -72,20 +59,11 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
     }
   end
 
-  def boss_info_html(boss)
-    res = "<h1>Statistics on clerks</h1>"
-    res << "Number: #{boss.clerks.count}<br/>"
-    res << "With salary > $5,000: #{boss.clerks.where(:salary.gt => 5000).count}<br/>"
-    res << "To lay off: #{boss.clerks.where(:subject_to_lay_off => true).count}<br/>"
-    res
-  end
-
-  # Updating Statistics on clerks after modifying the clerks grid
-  def clerks__get_data_endpoint(params)
-    boss = Boss.find(component_session[:selected_boss_id])
-    clerks_grid = component_instance(:clerks)
-    clerks_data = clerks_grid.get_data
-    clerks_data.merge(:parent => {:info => {:update_body_html => boss_info_html(boss)}}).to_nifty_json
+  component :boss_details do
+    {
+      :class_name => "BossDetails",
+      :boss_id => component_session[:selected_boss_id]
+    }
   end
 
 end
