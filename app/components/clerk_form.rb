@@ -1,4 +1,5 @@
 class ClerkForm < Netzke::Basepack::PagingFormPanel
+  js_property :title, "Clerk Paging Form With Custom Layout"
 
   def default_config
     super.merge(:model => "Clerk")
@@ -24,7 +25,7 @@ class ClerkForm < Netzke::Basepack::PagingFormPanel
         ]},
         {:name => :boss__name},
         {:xtype => :fieldset, :title => "Boss info", :items => [
-          {:xtype => :tabpanel, :padding => 5, :plain => true, :active_tab => 0, :items => [{:title => "Basic info", :layout => :form, :label_align => :left, :items => boss_basic_info}, {:title => "Details", :layout => :form, :items => boss_extra_info}]}
+          {:xtype => :tabpanel, :padding => 5, :plain => true, :active_tab => 0, :items => [{:title => "Contact", :layout => :form, :label_align => :left, :items => boss_basic_info}, {:title => "Details", :layout => :form, :items => boss_extra_info}]}
         ]}
       ]
     end
