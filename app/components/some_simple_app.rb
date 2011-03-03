@@ -74,6 +74,11 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
                     :icon => uri_to_icon(:user),
                     :leaf => true,
                     :component => "clerk_paging_lockable_form"
+                  },{
+                    :text => "Clerks Paging Form, custom layout",
+                    :icon => uri_to_icon(:user),
+                    :leaf => true,
+                    :component => "clerk_form_custom_layout"
                   }]
                 }]
               },{
@@ -139,6 +144,9 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
     :model => "Clerk",
     :class_name => "Netzke::Basepack::PagingFormPanel",
     :mode => :lockable
+
+  component :clerk_form_custom_layout,
+    :class_name => "ClerkForm"
 
   # A simple panel thit will render a page with links to different Rails views that have embedded widgets in them
   component :embedded,
