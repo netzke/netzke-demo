@@ -1,5 +1,5 @@
 class ClerkForm < Netzke::Basepack::PagingFormPanel
-  js_property :title, "Clerk Paging Form With Custom Layout"
+  js_property :title, "Clerk Paging Form With Custom Layout And File Upload"
 
   def default_config
     super.merge(:model => "Clerk")
@@ -18,17 +18,24 @@ class ClerkForm < Netzke::Basepack::PagingFormPanel
     ]
 
     super.tap do |s|
+      s[:file_upload] = true
       s[:items] = [
         {
           :layout => :hbox, :border => false,
           :items => [
-            {:flex => 1, :layout => :form, :border => false, :defaults => {:anchor => "-8"}, :items => [:first_name, :email]},
-            {:flex => 1, :layout => :form, :border => false, :defaults => {:anchor => "100%"}, :items => [:last_name, :salary]}
+            {:flex => 1, :layout => :form, :border => false, :defaults => {:anchor => "-8"}, :items => [
+              :first_name,
+              :email,
+              {:name => :image_link, :xtype => :displayfield, :display_only => true, :getter => lambda {|r| %Q(<a href='#{r.image.url}'>Download</a>) if r.image.url}},
+              {:name => :image, :field_label => "Upload image", :xtype => :fileuploadfield, :getter => lambda {|r| ""}, :display_only => true}
+            ]},
+            {:flex => 1, :layout => :form, :border => false, :defaults => {:anchor => "100%"}, :items => [
+              :last_name,
+              :salary,
+              :boss__name
+            ]}
           ]
         },
-
-        :boss__name,
-
         {
           :xtype => :fieldset, :title => "Boss info",
           :items => [
@@ -43,5 +50,10 @@ class ClerkForm < Netzke::Basepack::PagingFormPanel
         }
       ]
     end
+  end
+
+  def netzke_submit_endpoint(params)
+    # ::Rails.logger.debug "!!! params: #{params.inspect}\n"
+    super
   end
 end

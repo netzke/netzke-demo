@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101105153544) do
+ActiveRecord::Schema.define(:version => 20110306181243) do
 
   create_table "bosses", :force => true do |t|
     t.string   "first_name"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20101105153544) do
   end
 
   create_table "clerks", :force => true do |t|
-    t.string   "boss_id"
+    t.integer  "boss_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20101105153544) do
     t.boolean  "subject_to_lay_off"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
   end
 
   create_table "netzke_component_states", :force => true do |t|
@@ -52,6 +53,9 @@ ActiveRecord::Schema.define(:version => 20101105153544) do
     t.integer  "role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "netzke_temp_table", :force => true do |t|
   end
 
   create_table "sessions", :force => true do |t|

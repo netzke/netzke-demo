@@ -1,4 +1,4 @@
-NetzkeDemo::Application.routes.draw do |map|
+NetzkeDemo::Application.routes.draw do
   get "loose_components/index"
 
   netzke

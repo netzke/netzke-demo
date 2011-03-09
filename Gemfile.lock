@@ -51,6 +51,8 @@ GEM
     acts_as_list (0.1.2)
     arel (2.0.8)
     builder (2.1.2)
+    carrierwave (0.5.2)
+      activesupport (~> 3.0)
     coderay (0.9.7)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -106,6 +108,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  carrierwave
   coderay
   faker
   haml

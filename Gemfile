@@ -13,6 +13,8 @@ gem 'netzke-core',        :path => File.expand_path('../vendor/gems/netzke-core'
 gem 'netzke-basepack',    :path => File.expand_path('../vendor/gems/netzke-basepack', __FILE__)
 gem 'netzke-persistence', :path => File.expand_path('../vendor/gems/netzke-persistence', __FILE__)
 
+gem 'carrierwave'
+
 gem 'inploy'
 
 gem 'will_paginate', '~>3.0.pre2'
