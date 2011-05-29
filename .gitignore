@@ -1,6 +1,5 @@
 .DS_Store
-public/extjs
-public/sencha-touch
+public/extjs*
 *.tmproj
 *.swp
 .bundle
