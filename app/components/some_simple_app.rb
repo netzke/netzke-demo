@@ -22,7 +22,7 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
         :items => [status_bar_config, {
           :region => :center,
           :layout => :border,
-          :items => [menu_bar_config, main_panel_config(:ref => "../../mainPanel"), {
+          :items => [menu_bar_config, main_panel_config, {
 
             # Navigation
             :region => :west,
@@ -31,7 +31,7 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
             :xtype => :treepanel,
             :title => "Navigation",
             :root_visible => false,
-            :ref => "../../navigation",
+            :itemId => "navigation",
             :root => {
               :text => "Navigation",
               :expanded => true,
@@ -185,10 +185,11 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
   # Overrides Ext.Component#initComponent to set the click event on the nodes
   js_method :init_component, <<-JS
     function(){
-      Netzke.classes.SomeSimpleApp.superclass.initComponent.call(this);
-      this.navigation.on('click', function(e){
-        if (e.attributes.component) {
-          this.appLoadComponent(e.attributes.component);
+      this.callParent();
+      this.navigation = this.query('panel[itemId="navigation"]')[0];
+      this.navigation.getView().on('itemclick', function(e,r,i){
+        if (r.raw.component) {
+          this.appLoadComponent(r.raw.component);
         }
       }, this);
     }
@@ -198,10 +199,14 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
   js_method :process_history, <<-JS
     function(token){
       if (token) {
-        var node = this.navigation.root.findChild("component", token, true);
-        if (node) node.select();
+        var node = this.navigation.getStore().getRootNode().findChildBy(function(n){
+          return n.raw.component == token;
+        }, this, true);
+
+        if (node) this.navigation.getView().select(node);
       }
-      #{js_full_class_name}.superclass.processHistory.call(this, token);
+
+      this.callParent([token]);
     }
   JS
 
