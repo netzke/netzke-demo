@@ -1,5 +1,6 @@
-PATH
-  remote: vendor/gems/netzke-basepack
+GIT
+  remote: git://github.com/skozlov/netzke-basepack.git
+  revision: 996e78f243675b3eb935ba1161b42d90068a11de
   specs:
     netzke-basepack (0.6.5)
       acts_as_list
@@ -7,14 +8,16 @@ PATH
       netzke-core (~> 0.6.7)
       will_paginate (~> 3.0.pre2)
 
-PATH
-  remote: vendor/gems/netzke-core
+GIT
+  remote: git://github.com/skozlov/netzke-core.git
+  revision: 78584ecd9cd6f721f0378ec72a231bafc4d5949a
   specs:
     netzke-core (0.6.7)
       activesupport (>= 3.0.1)
 
-PATH
-  remote: vendor/gems/netzke-persistence
+GIT
+  remote: git://github.com/skozlov/netzke-persistence.git
+  revision: 9ec27e397661989cff0d765b5849452c77ca0036
   specs:
     netzke-persistence (0.1.1)
 
