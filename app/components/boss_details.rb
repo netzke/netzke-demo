@@ -1,5 +1,5 @@
 class BossDetails < Netzke::Basepack::Panel
-  js_property :padding, 5
+  js_property :body_padding, 5
 
   js_property :title, "Info"
 

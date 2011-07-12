@@ -3,17 +3,14 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
 
   def configuration
     super.merge(
+      :persistence => true,
       :items => [
-        {
+        :bosses.component(
           :region => :center,
-          :title => "Bosses",
-          :name => "bosses",
-          :class_name => "Basepack::GridPanel",
-          :model => "Boss"
-        },
+          :title => "Bosses"
+        ),
         :boss_details.component(
           :region => :east,
-          :name => "info",
           :width => 240,
           :split => true
         ),
@@ -31,14 +28,15 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
   js_method :init_component, <<-JS
     function(){
       // calling superclass's initComponent
-      #{js_full_class_name}.superclass.initComponent.call(this);
+      this.callParent();
 
       // setting the 'rowclick' event
-      this.getChildComponent("bosses").on('rowclick', function(self, rowIndex){
+      var view = this.getComponent('bosses').getView();
+      view.on('itemclick', function(view, record){
         // The beauty of using Ext.Direct: calling 3 endpoints in a row, which results in a single call to the server!
-        this.selectBoss({boss_id: self.store.getAt(rowIndex).get('id')});
-        this.getChildComponent('clerks').getStore().reload();
-        this.getChildComponent('boss_details').updateStats();
+        this.selectBoss({boss_id: record.get('id')});
+        this.getComponent('clerks').getStore().load();
+        this.getComponent('boss_details').updateStats();
       }, this);
     }
   JS
@@ -46,6 +44,13 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
   endpoint :select_boss do |params|
     # store selected boss id in the session for this component's instance
     component_session[:selected_boss_id] = params[:boss_id]
+  end
+
+  component :bosses do
+    {
+      :class_name => "Basepack::GridPanel",
+      :model => "Boss"
+    }
   end
 
   component :clerks do

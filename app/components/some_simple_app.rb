@@ -31,7 +31,7 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
             :xtype => :treepanel,
             :title => "Navigation",
             :root_visible => false,
-            :itemId => "navigation",
+            :item_id => :navigation,
             :root => {
               :text => "Navigation",
               :expanded => true,
