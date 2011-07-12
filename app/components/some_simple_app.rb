@@ -10,7 +10,7 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
         :border => false,
         :height => 35,
         :html => %Q{
-          <div style="margin:10px; color:#333; text-align:center; font-family: Helvetica;">
+          <div style="margin:10px; color:#333; text-align:center; font-family: Helvetica; font-size: 150%;">
             <a style="color:#B32D15; text-decoration: none" href="http://netzke.org">Netzke</a> Demo
           </div>
         },

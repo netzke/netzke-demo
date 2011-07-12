@@ -23,13 +23,13 @@ class ClerkForm < Netzke::Basepack::PagingFormPanel
         {
           :layout => :hbox, :border => false,
           :items => [
-            {:flex => 1, :layout => :form, :border => false, :defaults => {:anchor => "-8"}, :items => [
+            {:flex => 1, :border => false, :defaults => {:anchor => "-8"}, :items => [
               :first_name,
               :email,
               {:name => :image_link, :xtype => :displayfield, :display_only => true, :getter => lambda {|r| %Q(<a href='#{r.image.url}'>Download</a>) if r.image.url}},
               {:name => :image, :field_label => "Upload image", :xtype => :fileuploadfield, :getter => lambda {|r| ""}, :display_only => true}
             ]},
-            {:flex => 1, :layout => :form, :border => false, :defaults => {:anchor => "100%"}, :items => [
+            {:flex => 1, :border => false, :defaults => {:anchor => "100%"}, :items => [
               :last_name,
               :salary,
               :boss__name
@@ -40,10 +40,10 @@ class ClerkForm < Netzke::Basepack::PagingFormPanel
           :xtype => :fieldset, :title => "Boss info",
           :items => [
             {
-              :xtype => :tabpanel, :padding => 5, :plain => true, :active_tab => 0,
+              :xtype => :tabpanel, :body_padding => 5, :plain => true, :active_tab => 0,
               :items => [
-                {:title => "Contact", :layout => :form, :items => boss_contact},
-                {:title => "Details", :layout => :form, :items => boss_details}
+                {:title => "Contact", :items => boss_contact},
+                {:title => "Details", :items => boss_details}
               ]
             }
           ]
