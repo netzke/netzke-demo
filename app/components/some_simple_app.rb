@@ -152,7 +152,7 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
   component :embedded,
     :class_name => "Basepack::Panel",
     :auto_load => "demo/embedded",
-    :padding => 15,
+    :body_padding => 15,
     :title => "Components embedded into Rails views",
     :auto_scroll => true
 
