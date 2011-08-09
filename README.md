@@ -1,12 +1,12 @@
-This is the source-code for http://demo.netzke.org
+This is the source-code for http://demo.netzke.org - the [Netzke](http://netzke.org) live-demo.
 
-== Installation (to run it locally)
+## Installation (to run it locally)
 
 1. Get the code from github
 
     git clone git://github.com/skozlov/netzke-demo.git && cd netzke-demo
 
-2. Checkout or symlink Netzke gems (core, basepack, and persistence) into vendor/gems
+2. Checkout or symlink Netzke gems (Core, Basepack, and Persistence) into vendor/gems
 
     git clone git://github.com/skozlov/netzke-core.git vendor/gems/netzke-core
     git clone git://github.com/skozlov/netzke-basepack.git vendor/gems/netzke-basepack
@@ -16,15 +16,9 @@ This is the source-code for http://demo.netzke.org
 
     bundle
 
-4. Link your copy of Sencha libraries into "public".
+4. Link your copy of Ext JS library into `public` as `extjs`.
 
-Sencha Ext JS must be linked to <tt>public/extjs</tt>, e.g.:
-
-    ln -s ~/code/sencha/ext-3.3.1 public/extjs
-
-Sencha Touch must be linked to <tt>public/sencha-touch</tt>, e.g.:
-
-    ln -s ~/code/sencha/sencha-touch-1.0.1 public/sencha-touch
+    ln -s ~/code/sencha/ext-4.0.0 public/extjs
 
 5. Create the database and do the migrations
 
@@ -34,15 +28,18 @@ That's it. Additionally, you can (re)generate test data by visiting the followin
 
     http://localhost:3000/grid_panel/regenerate_test_data
 
-== Prerequisites
+## Prerequisites
 
-1. Rails >= 3.0
-2. Ext => 3.3
+* Rails ~> 3.0
+* Ext JS ~> 4.0
 
-== Feedback
+## Feedback
 
 Google groups:
 http://groups.google.com/group/netzke
 
 Twitter:
+http://twitter.com/netzke
+
+Author's twitter:
 http://twitter.com/nomadcoder
