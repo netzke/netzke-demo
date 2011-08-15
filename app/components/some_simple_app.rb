@@ -88,7 +88,12 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
                   :text => "Bosses And Clerks",
                   :icon => uri_to_icon(:user_user_suit),
                   :leaf => true,
-                  :component => "bosses_and_clerks"
+                  :component => "bosses_and_clerks",
+                },{
+                  :text => "Simple Clerk Inspector",
+                  :icon => uri_to_icon(:user),
+                  :leaf => true,
+                  :component => "clerk_inspector"
                 }]
               },{
                 :text => "Stand-alone Components",
@@ -147,6 +152,8 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
 
   component :clerk_form_custom_layout,
     :class_name => "ClerkForm"
+
+  component :clerk_inspector, :border => false, :title => "Simple Clerk Inspector"
 
   # A simple panel thit will render a page with links to different Rails views that have embedded widgets in them
   component :embedded,
