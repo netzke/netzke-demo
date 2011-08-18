@@ -9,37 +9,37 @@
 
 <h2>Example 1: a tab panel with two GridPanels as tabs</h2>
 <p>A tab panel with 2 tabs, each containing a GridPanel.</p>
-<%= netzke :two_grid_panels,
-            :class_name => "Basepack::TabPanel",
-            :items => [{
-              :class_name => "Basepack::GridPanel",
-              :model => "Boss",
-              :title => "Bosses"
-            },{
-              :class_name => "Basepack::GridPanel",
-              :model => "Clerk",
-              :title => "Clerks"
-            }],
-            :width => 700,
-            :border => true,
-            :active_tab => 0
-%>
+<%= netzke :two_grid_panels, {
+  :class_name => "Netzke::Basepack::TabPanel",
+  :items => [{
+    :class_name => "Netzke::Basepack::GridPanel",
+    :model => "Boss",
+    :title => "Bosses"
+  },{
+    :class_name => "Netzke::Basepack::GridPanel",
+    :model => "Clerk",
+    :title => "Clerks"
+  }],
+  :width => 700,
+  :border => true,
+  :active_tab => 0
+} %>
 
 <h2>Example 2: second GridPanel loads dynamically</h2>
 <p>Same as before, but the second grid gets loaded dynamically at the moment its tab gets activated.</p>
-<%= netzke :with_dynamic_loading,
-            :class_name => "Basepack::TabPanel",
-            :items => [{
-              :class_name => "Basepack::GridPanel",
-              :model => "Boss",
-              :title => "Bosses"
-            },{
-              :class_name => "Basepack::GridPanel",
-              :model => "Clerk",
-              :title => "Clerks",
-              :lazy_loading => true # this is what makes a component load dynamically
-            }],
-            :width => 700,
-            :border => true,
-            :active_tab => 0
-%>
+<%= netzke :with_dynamic_loading, {
+  :class_name => "Netzke::Basepack::TabPanel",
+  :items => [{
+    :class_name => "Netzke::Basepack::GridPanel",
+    :model => "Boss",
+    :title => "Bosses"
+  },{
+    :class_name => "Netzke::Basepack::GridPanel",
+    :model => "Clerk",
+    :title => "Clerks",
+    :lazy_loading => true # this is what makes a component load dynamically
+  }],
+  :width => 700,
+  :border => true,
+  :active_tab => 0
+} %>
