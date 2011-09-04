@@ -107,7 +107,7 @@ class ClerkGrid < Netzke::Basepack::GridPanel
         :email,
         {
           :name => :boss__last_name,
-          :scope => {:salary.gt => 95000},
+          :scope => ["salary >= ?", 95000],
           :header => "Boss"
         }
       ]

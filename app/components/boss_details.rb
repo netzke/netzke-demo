@@ -27,7 +27,7 @@ class BossDetails < Netzke::Basepack::Panel
     %Q(
       <h1>Statistics on clerks</h1>
       Number: #{boss.clerks.count}<br/>
-      With salary > $5,000: #{boss.clerks.where(:salary.gt => 5000).count}<br/>
+      With salary > $5,000: #{boss.clerks.where(["salary >= ?", 5000]).count}<br/>
       To lay off: #{boss.clerks.where(:subject_to_lay_off => true).count}
     ) if boss
   end
