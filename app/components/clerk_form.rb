@@ -1,9 +1,9 @@
 class ClerkForm < Netzke::Basepack::PagingFormPanel
-  js_property :title, "Clerk Paging Form With Custom Layout And File Upload"
+  title "Clerk Paging Form With Custom Layout And File Upload"
 
-  def default_config
-    super.merge(:model => "Clerk")
-  end
+  model "Clerk"
+
+  add_source_code_tool
 
   def configuration
     boss_contact = [

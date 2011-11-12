@@ -1,5 +1,5 @@
 class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
-  js_property :header, false
+  add_source_code_tool
 
   def configuration
     super.merge(
