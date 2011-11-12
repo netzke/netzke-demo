@@ -2,9 +2,7 @@ class CustomActionGrid < Netzke::Basepack::GridPanel
   action :show_details, :text => "Show details", :disabled => true
 
   # For stand-alone testing
-  def default_config
-    super.merge(:model => "Clerk")
-  end
+  model "Clerk"
 
   # overriding 2 GridPanel's methods
   def default_bbar
@@ -17,7 +15,7 @@ class CustomActionGrid < Netzke::Basepack::GridPanel
 
   js_method :init_component, <<-JS
     function(){
-      #{js_full_class_name}.superclass.initComponent.call(this);
+      this.callParent();
 
       this.getSelectionModel().on('selectionchange', function(selModel){
         this.actions.showDetails.setDisabled(selModel.getCount() != 1);
@@ -27,15 +25,16 @@ class CustomActionGrid < Netzke::Basepack::GridPanel
 
   js_method :on_show_details, <<-JS
     function(){
-      var tmpl = new Ext.Template("<b>{0}</b>: {1}<br/>"), html = "";
-      Ext.iterate(this.getSelectionModel().getSelected().data, function(key, value){
-        html += tmpl.apply([key.humanize(), value]);
-      }, this);
+      var tmpl = new Ext.Template("<b>{0}</b>: {1}<br/>"), html = "",
+          record = this.getSelectionModel().getSelection()[0];
 
+      Ext.iterate(record.data, function(key, value){
+        if (key != '_meta') html += tmpl.apply([key.humanize(), value]);
+      }, this);
 
       Ext.Msg.show({
         title: "Details",
-        width: 300,
+        width: 400,
         msg: html
       });
     }
