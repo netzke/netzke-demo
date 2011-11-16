@@ -9,9 +9,10 @@ gem 'haml'
 gem 'coderay'
 gem 'faker'
 
-gem 'netzke-core'
-gem 'netzke-basepack'
-gem 'netzke-persistence'
+gem 'netzke-core', :path => "../netzke-core"
+gem 'netzke-basepack'#, :path => "../netzke-basepack"
+# gem 'netzke-basepack'
+# gem 'netzke-persistence'
 
 gem 'carrierwave'
 

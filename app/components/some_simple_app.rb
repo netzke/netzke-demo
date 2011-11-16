@@ -94,6 +94,10 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
                   :icon => uri_to_icon(:user),
                   :leaf => true,
                   :component => "clerk_inspector"
+                },{
+                  :text => "Simple Portal",
+                  :leaf => true,
+                  :component => "simple_portal"
                 }]
               },{
                 :text => "Stand-alone Components",
@@ -162,6 +166,8 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
     :body_padding => 15,
     :title => "Components embedded into Rails views",
     :auto_scroll => true
+
+  component :simple_portal, :lazy_loading => true
 
   action :about, :icon => :information
 

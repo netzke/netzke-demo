@@ -4,6 +4,7 @@ class ClerkGrid < Netzke::Basepack::GridPanel
   css_include :main
 
   def configuration
+    ::Rails.logger.debug "!!!3 Netzke::Core.session: #{Netzke::Core.session.inspect}\n"
     super.merge({
       :model => "Clerk",
       :persistence => true,
