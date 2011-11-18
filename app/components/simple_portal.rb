@@ -3,29 +3,32 @@ class SimplePortal < Netzke::Base
 
   js_mixin
 
-  portal_path = Netzke::Core.ext_path.join("examples/portal")
-
-  # js_include(portal_path.join("classes.js")) # Bad, bad, keep off! Component not in session???
-
-  js_include(portal_path.join("classes/PortalColumn.js"))
-  js_include(portal_path.join("classes/PortalDropZone.js"))
-  js_include(portal_path.join("classes/PortalPanel.js"))
-
-  css_include(portal_path.join("portal.css"))
-
-  action :one_column_layout
-  action :reset_layout
-
-  action :add_server_stats_widget
+  title "My Portal"
 
   js_property :tbar, [:add_server_stats_widget.action, "-", :reset_layout.action]
   js_property :prevent_header, false
 
+  # Override original Portal setting in order to look like a panel - e.g. have the header, toolbars, etc
   js_property :component_layout, "dock"
 
-  title "My Portal"
+  # Portal-related Ext JS javascripts
+  portal_path = Netzke::Core.ext_path.join("examples/portal")
 
-  # Initial portlets
+  # js_include(portal_path.join("classes.js")) # Bad, bad, keep off! Component not in session???
+  js_include(portal_path.join("classes/PortalColumn.js"))
+  js_include(portal_path.join("classes/PortalDropZone.js"))
+  js_include(portal_path.join("classes/PortalPanel.js"))
+
+  # ... and styles
+  css_include(portal_path.join("portal.css"))
+
+
+  # Actions
+  action :one_column_layout
+  action :reset_layout
+  action :add_server_stats_widget
+
+  # Initial portlets.
   items [{
     items: [
       {:class_name => "Portlet::CpuChart"}
@@ -39,20 +42,42 @@ class SimplePortal < Netzke::Base
       {:class_name => "Portlet::ServerStats"},
     {
       title: "Portlet 3,1",
-      height: 200,
-      # items: [{class_name: "ClerkGrid"}]
+      item_id: 'ext_portlet1',
+      height: 200
     }]
   }]
 
-  def configuration
+  def js_config
     super.tap do |c|
-      # Uncomment to enable storing in session
-      # c[:items] = component_session[:portlets] ||= c[:items]
+      # we'll store the items in persistence storage
+      c[:items] = component_session[:layout] ||= c[:items]
     end
   end
 
+  def components
+    # we'll store components in persistence storage
+    component_session[:components] ||= super
+  end
+
   endpoint :server_update_layout do |params|
-    component_session[:portlets] = params[:layout]
+    # we will extend the received layout (containing only item_ids) with full-config hashes
+    new_layout = params[:layout]
+
+    # all currently used items
+    flatten_items = []
+    iterate_items(js_config[:items]){ |item| flatten_items << item }
+
+    # replace hashes in receved layout with full-config hashes from flatten_items
+    iterate_items(new_layout) do |current_item|
+      # detect full-config by item_id
+      full_config_item = flatten_items.detect{ |item| item[:netzke_component].to_s == current_item["item_id"] || item[:item_id] == current_item["item_id"] }
+
+      current_item.merge!(full_config_item)
+    end
+
+    # store new layout
+    component_session[:layout] = new_layout
+
     {}
   end
 
@@ -68,10 +93,21 @@ class SimplePortal < Netzke::Base
     }
   JS
 
+  # Reset to use initial items
   endpoint :server_reset_layout do |params|
     component_session[:portlets] = nil
+    component_session[:components] = nil
+    component_session[:layout] = nil
   end
 
-  component :server_stats_widget, :lazy_loading => true, :prevent_header => true, :auto_update => false, :title => "Server stats"
+  protected
+
+    # iterates through provided items recursively and yields each found hash
+    def iterate_items(items_array, &block)
+      items_array.each do |item|
+        items = item[:items] || item["items"]
+        items.is_a?(Array) ? iterate_items(items, &block) : yield(item)
+      end
+    end
 
 end

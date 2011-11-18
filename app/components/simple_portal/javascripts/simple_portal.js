@@ -14,10 +14,10 @@
         var columnPortlets = [];
         column.items.each(function(portlet){
           columnPortlets.push({
-            item_id: portlet.id,
-            name: portlet.name,
-            title: portlet.title,
-            height: portlet.getHeight()
+            item_id: portlet.itemId,
+            // name: portlet.name,
+            // title: portlet.title,
+            // height: portlet.getHeight()
           });
         });
         portlets.push({items: columnPortlets});
