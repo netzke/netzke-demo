@@ -10,7 +10,6 @@ class SimplePortal < Netzke::Base
   js_include(portal_path.join("classes/PortalColumn.js"))
   js_include(portal_path.join("classes/PortalDropZone.js"))
   js_include(portal_path.join("classes/PortalPanel.js"))
-  js_include(portal_path.join("classes/Portlet.js"))
 
   css_include(portal_path.join("portal.css"))
 
@@ -28,27 +27,17 @@ class SimplePortal < Netzke::Base
 
   # Initial portlets
   items [{
-    items: [{
-      title: "Portlet 1,1",
-      height: 300,
-      # items: [{class_name: "BossDetails"}]
-    },{
-      title: "Portlet 1,2",
-      height: 200,
-      # items: [{class_name: "ClerkGrid"}]
-    }]
-  },{
-    items: [{
-      title: "Portlet 2,1",
-      height: 200,
-      # items: [{class_name: "ClerkGrid"}]
-    },{
-      title: "Portlet 2,2",
-      height: 150,
-      # items: [{class_name: "ClerkGrid"}]
-    }]
-  },{
-    items: [{
+    items: [
+      {:class_name => "Portlet::CpuChart"}
+    ]
+  }, {
+    items: [
+      {:class_name => "Portlet::ClerkForm"}
+    ]
+  }, {
+    items: [
+      {:class_name => "Portlet::ServerStats"},
+    {
       title: "Portlet 3,1",
       height: 200,
       # items: [{class_name: "ClerkGrid"}]
@@ -57,7 +46,8 @@ class SimplePortal < Netzke::Base
 
   def configuration
     super.tap do |c|
-      c[:items] = component_session[:portlets] ||= c[:items]
+      # Uncomment to enable storing in session
+      # c[:items] = component_session[:portlets] ||= c[:items]
     end
   end
 

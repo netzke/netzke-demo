@@ -35,6 +35,9 @@
     Ext.each(this.allPortlets(), function(portlet) {
       var netzkeWidget = portlet.items.first();
       if (netzkeWidget && Ext.isFunction(netzkeWidget.refresh)) netzkeWidget.refresh();
+
+      // Also try 1 level up...
+      if (Ext.isFunction(portlet.refresh)) portlet.refresh();
     });
   },
 
