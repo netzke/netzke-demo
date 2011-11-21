@@ -5,7 +5,7 @@ class SimplePortal < Netzke::Base
 
   title "My Portal"
 
-  js_property :tbar, [:add_server_stats_widget.action, "-", :reset_layout.action]
+  js_property :tbar, [:add_server_stats_portlet.action, :add_cpu_chart_portlet.action, "-", :reset_layout.action]
   js_property :prevent_header, false
 
   # Override original Portal setting in order to look like a panel - e.g. have the header, toolbars, etc
@@ -26,25 +26,27 @@ class SimplePortal < Netzke::Base
   # Actions
   action :one_column_layout
   action :reset_layout
-  action :add_server_stats_widget
+  action :add_server_stats_portlet
+  action :add_cpu_chart_portlet
 
   # Initial portlets.
   items [{
     items: [
-      {:class_name => "Portlet::CpuChart"}
+      # {:class_name => "Portlet::CpuChart"}
     ]
   }, {
     items: [
-      {:class_name => "Portlet::ClerkForm"}
+      # {:class_name => "Portlet::ClerkForm"}
     ]
   }, {
     items: [
       {:class_name => "Portlet::ServerStats"},
-    {
-      title: "Portlet 3,1",
-      item_id: 'ext_portlet1',
-      height: 200
-    }]
+      {
+        title: "Portlet 3,1",
+        item_id: 'ext_portlet1',
+        height: 200
+      }
+    ]
   }]
 
   def js_config
@@ -98,6 +100,19 @@ class SimplePortal < Netzke::Base
     component_session[:portlets] = nil
     component_session[:components] = nil
     component_session[:layout] = nil
+  end
+
+  def deliver_component_endpoint(params)
+    cmp_name = params[:name]
+    cmp_index = cmp_name.sub("cmp", "").to_i
+
+    # add new component to components hash first
+    component_session[:components].merge!(cmp_name.to_sym => {:class_name => "Portlet::#{params[:class_name]}"})
+
+    # add it also into the layout
+    component_session[:layout].last[:items] << cmp_name.to_sym.component
+
+    super
   end
 
   protected

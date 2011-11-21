@@ -5,6 +5,13 @@
     this.setDropEvent();
 
     this.setRefreshEvent();
+
+  },
+
+  afterRender: function() {
+    this.callParent(arguments);
+    // incremented index for dynamically added components
+    this.netzkePortletIndex = this.allPortlets().length;
   },
 
   setDropEvent: function() {
@@ -55,23 +62,40 @@
   //
   // },
 
+
+  // Returns all Netzke portlets
+  // protected
   allPortlets: function() {
-    var portlets = [];
+    return this.query("portlet[isNetzke=true]");
 
-    this.items.each(function(column) {
-      column.items.each(function(portlet) {
-        portlets.push(portlet);
-        // portlet.on('resize', function() {console.info("arguments: ", arguments);;});
-      });
-    });
-
-    return portlets;
+    // var portlets = [];
+    //
+    // this.items.each(function(column) {
+    //   column.items.each(function(portlet) {
+    //     portlets.push(portlet);
+    //     // portlet.on('resize', function() {console.info("arguments: ", arguments);;});
+    //   });
+    // });
+    //
+    // return portlets;
   },
 
-  onAddServerStatsWidget: function() {
-    var newPortlet = this.items.last().add({title: "Loading", height: 200});
-    this.loadNetzkeComponent({name: "server_stats_widget", container: newPortlet, callback: function(cmp) {
-      newPortlet.setTitle(cmp.title);
+  onAddServerStatsPortlet: function() {
+    this.addPortlet("ServerStats");
+  },
+
+  onAddCpuChartPortlet: function() {
+    this.addPortlet("CpuChart");
+  },
+
+  /*
+  Params:
+  * className
+  * config - extra config for the portlet
+  */
+  addPortlet: function(className, config) {
+    this.loadNetzkeComponent({name: "netzke_" + this.netzkePortletIndex, params: {class_name: className}, callback: function(c){
+      this.items.last().add(c);
     }});
   }
 }

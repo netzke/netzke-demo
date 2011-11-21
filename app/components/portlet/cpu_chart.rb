@@ -19,7 +19,7 @@ module Portlet
         type: :gauge,
         position: :gauge,
         minimum: 0,
-        maximum: 200,
+        maximum: 400,
         steps: 10,
         margin: 10
       }],
