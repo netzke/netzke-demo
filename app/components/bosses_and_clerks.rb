@@ -1,8 +1,9 @@
 class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
   add_source_code_tool
 
-  def configuration
-    super.merge(
+  def configure
+    super
+    config.merge!(
       :persistence => true,
       :items => [
         :bosses.component(
@@ -48,7 +49,7 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
 
   component :bosses do
     {
-      :class_name => "Basepack::GridPanel",
+      :class_name => "Netzke::Basepack::GridPanel",
       :model => "Boss"
     }
   end

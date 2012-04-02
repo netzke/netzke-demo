@@ -3,13 +3,12 @@ class ClerkInspector < Netzke::Basepack::BorderLayoutPanel
   component :clerk_grid, :class_name => "Netzke::Basepack::GridPanel", :model => "Clerk", :columns => [:name]
   component :clerk_form, :class_name => "Netzke::Basepack::FormPanel", :model => "Clerk"
 
-  def default_config
-    super.tap do |c|
-      c[:items] = [
-        :clerk_grid.component(:region => :west, :width => 250, :split => true, :title => "List"),
-        :clerk_form.component(:region => :center, :title => "Details")
-      ]
-    end
+  def configure
+    super
+    config.items = [
+      :clerk_grid.component(:region => :west, :width => 250, :split => true, :title => "List"),
+      :clerk_form.component(:region => :center, :title => "Details")
+    ]
   end
 
   js_method :init_component, <<-JS

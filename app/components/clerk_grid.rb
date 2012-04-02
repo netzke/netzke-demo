@@ -3,9 +3,9 @@ class ClerkGrid < Netzke::Basepack::GridPanel
   # Include CSS for displaying the light bulb (see the source code)
   css_include :main
 
-  def configuration
-    ::Rails.logger.debug "!!!3 Netzke::Core.session: #{Netzke::Core.session.inspect}\n"
-    super.merge({
+  def configure
+    super
+    config.merge!({
       :model => "Clerk",
       :persistence => true,
 

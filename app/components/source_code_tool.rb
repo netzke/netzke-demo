@@ -3,9 +3,8 @@ class SourceCodeTool < Netzke::Base
   js_base_class "Ext.Component"
 
   def configuration
-    super.tap do |c|
-      c[:link] = [NetzkeDemo::Application.config.repo_root, c[:file].sub(Rails.root.to_s, "")].join
-    end
+    super
+    config.link = [NetzkeDemo::Application.config.repo_root, c[:file].sub(Rails.root.to_s, "")].join
   end
 
   js_method :init, <<-JS
