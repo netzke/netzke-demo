@@ -1,26 +1,15 @@
-class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
-  add_source_code_tool
+class BossesAndClerks < Netzke::Base
+  #add_source_code_tool
+
+  js_property :layout, :border
 
   def configure
     super
     config.merge!(
-      :persistence => true,
       :items => [
-        :bosses.component(
-          :region => :center,
-          :title => "Bosses"
-        ),
-        :boss_details.component(
-          :region => :east,
-          :width => 240,
-          :split => true
-        ),
-        :clerks.component(
-          :region => :south,
-          :title => "Clerks",
-          :height => 250,
-          :split => true
-        )
+        { netzke_component: :bosses, region: :center },
+        { netzke_component: :boss_details, region: :east, width: 240, split: true },
+        { netzke_component: :clerks, region: :south, height: 250, split: true }
       ]
     )
   end
@@ -47,28 +36,21 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
     component_session[:selected_boss_id] = params[:boss_id]
   end
 
-  component :bosses do
-    {
-      :class_name => "Netzke::Basepack::GridPanel",
-      :model => "Boss"
-    }
+  component :bosses do |c|
+    c.klass = Netzke::Basepack::GridPanel
+    c.model = "Boss"
   end
 
-  component :clerks do
-    {
-      :class_name => "Netzke::Basepack::GridPanel",
-      :model => "Clerk",
-      :load_inline_data => false,
-      :scope => {:boss_id => component_session[:selected_boss_id]},
-      :strong_default_attrs => {:boss_id => component_session[:selected_boss_id]}
-    }
+  component :clerks do |c|
+    c.klass = Netzke::Basepack::GridPanel
+    c.model = "Clerk"
+    c.load_inline_data = false
+    c.scope = {:boss_id => component_session[:selected_boss_id]}
+    c.strong_default_attrs = {:boss_id => component_session[:selected_boss_id]}
   end
 
-  component :boss_details do
-    {
-      :class_name => "BossDetails",
-      :boss_id => component_session[:selected_boss_id]
-    }
+  component :boss_details do |c|
+    c.klass = BossDetails
+    c.boss_id = component_session[:selected_boss_id]
   end
-
 end
