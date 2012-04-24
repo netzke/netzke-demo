@@ -1,5 +1,5 @@
 class BossesAndClerks < Netzke::Base
-  #add_source_code_tool
+  add_source_code_tool
 
   js_property :layout, :border
 
