@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails', '3.2.3'
 
 gem 'mysql2'
 
@@ -10,9 +10,7 @@ gem 'coderay'
 gem 'faker'
 
 gem 'netzke-core', :path => "../netzke-core"
-gem 'netzke-basepack'#, :path => "../netzke-basepack"
-# gem 'netzke-basepack'
-# gem 'netzke-persistence'
+gem 'netzke-basepack', :path => "../netzke-basepack"
 
 gem 'carrierwave'
 
