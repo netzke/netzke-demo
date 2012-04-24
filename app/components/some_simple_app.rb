@@ -1,6 +1,6 @@
 class SomeSimpleApp < Netzke::Basepack::SimpleApp
 
-  # Initial layout of the app.
+  # Application layout
   # <tt>status_bar_config</tt>, <tt>menu_bar_config</tt>, and <tt>main_panel_config</tt> are defined in SimpleApp.
   def configure
     super
@@ -110,68 +110,75 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
   end
 
   # Components
-  component :bosses,
-    :class_name => "Netzke::Basepack::GridPanel",
-    :model => "Boss",
-    :lazy_loading => true,
-    :title => "Bosses",
-    :persistence => true
+  component :bosses do |c|
+    c.klass = Netzke::Basepack::GridPanel
+    c.model  = "Boss"
+    c.title  = "Bosses"
+    c.persistence  = true
+  end
 
-  component :clerks,
-    :class_name => "Netzke::Basepack::GridPanel",
-    :model => "Clerk",
-    :lazy_loading => true,
-    :title => "Clerks",
-    :persistence => true
+  component :clerks do |c|
+    c.klass = Netzke::Basepack::GridPanel
+    c.model  = "Clerk"
+    c.title  = "Clerks"
+    c.persistence  = true
+  end
 
-  component :customized_clerks,
-    :class_name => "ClerkGrid",
-    :lazy_loading => true,
-    :title => "Customized Clerks"
+  component :customized_clerks do |c|
+    c.klass = ClerkGrid
+    c.title  = "Customized Clerks"
+  end
 
-  component :custom_action_grid,
-    :model => "Boss",
-    :lazy_loading => true,
-    :title => "Custom Action Grid",
-    :persistence => true
+  component :custom_action_grid do |c|
+    c.model  = "Boss"
+    c.title  = "Custom Action Grid",
+    c.persistence  = true
+  end
 
-  component :bosses_and_clerks,
-    :lazy_loading => true,
-    :title => "Bosses and Clerks"
+  component :bosses_and_clerks do |c|
+    c.title  = "Bosses and Clerks"
+  end
 
-  component :clerk_paging_form,
-    :lazy_loading => true,
-    :title => "Clerk Paging Form",
-    :model => "Clerk",
-    :class_name => "Netzke::Basepack::PagingFormPanel"
+  component :clerk_paging_form do |c|
+    c.title  = "Clerk Paging Form",
+    c.model  = "Clerk"
+    c.class_name  = "Netzke::Basepack::PagingFormPanel"
+  end
 
-  component :clerk_paging_lockable_form,
-    :lazy_loading => true,
-    :title => "Clerk Paging Lockable Form",
-    :model => "Clerk",
-    :class_name => "Netzke::Basepack::PagingFormPanel",
-    :mode => :lockable
+  component :clerk_paging_lockable_form do |c|
+    c.title  = "Clerk Paging Lockable Form",
+    c.model  = "Clerk"
+    c.klass = Netzke::Basepack::PagingFormPanel
+    c.mode  = :lockable
+  end
 
-  component :clerk_form_custom_layout,
-    :class_name => "ClerkForm"
+  component :clerk_form_custom_layout do |c|
+    c.class_name  = "ClerkForm"
+  end
 
-  component :clerk_inspector, :border => false, :title => "Simple Clerk Inspector"
+  component :clerk_inspecto do |c|
+    c.border  = false
+    c.title  = "Simple Clerk Inspector"
+  end
 
   # A simple panel thit will render a page with links to different Rails views that have embedded widgets in them
-  component :embedded,
-    :class_name => "Netzke::Basepack::Panel",
-    :auto_load => "demo/embedded",
-    :body_padding => 15,
-    :title => "Components embedded into Rails views",
-    :auto_scroll => true
+  component :embedded do |c|
+    c.klass = Netzke::Basepack::Panel
+    c.auto_load  = "demo/embedded",
+    c.body_padding  = 15
+    c.title  = "Components embedded into Rails views",
+    c.auto_scroll  = true
+  end
 
-  component :simple_portal, :lazy_loading => true
+  component :simple_portal
 
-  action :about, :icon => :information
+  action :about do |c|
+    c.icon  = :information
+  end
 
   # Overrides SimpleApp#menu
   def menu
-    ["->", :about.action]
+    ["->", :about]
   end
 
   js_method :on_about, <<-JS
