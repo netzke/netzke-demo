@@ -1,4 +1,6 @@
 class CustomActionGrid < Netzke::Basepack::GridPanel
+  add_source_code_tool
+
   action :show_details do |c|
     c.text = "Show details"
     c.disabled = true
@@ -6,10 +8,6 @@ class CustomActionGrid < Netzke::Basepack::GridPanel
 
   # For stand-alone testing
   model "Clerk"
-
-  # Add 2 Ext tools that open source code and tutorial links for this component
-  add_source_code_tool
-  add_tutorial_tool :link => "http://writelesscode.com"
 
   # overriding 2 GridPanel's methods
   def default_bbar

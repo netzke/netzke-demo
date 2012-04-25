@@ -5,7 +5,7 @@ class SimplePortal < Netzke::Base
 
   title "My Portal"
 
-  js_property :tbar, [:add_server_stats_portlet.action, :add_cpu_chart_portlet.action, "-", :reset_layout.action]
+  js_property :tbar, [:add_server_stats_portlet, :add_cpu_chart_portlet, "-", :reset_layout]
   js_property :prevent_header, false
 
   # Override original Portal setting in order to look like a panel - e.g. have the header, toolbars, etc
@@ -30,24 +30,27 @@ class SimplePortal < Netzke::Base
   action :add_cpu_chart_portlet
 
   # Initial portlets.
-  items [{
-    items: [
-      # {:class_name => "Portlet::CpuChart"}
-    ]
-  }, {
-    items: [
-      # {:class_name => "Portlet::ClerkForm"}
-    ]
-  }, {
-    items: [
-      {:class_name => "Portlet::ServerStats"},
-      {
-        title: "Portlet 3,1",
-        item_id: 'ext_portlet1',
-        height: 200
-      }
-    ]
-  }]
+
+  def items
+    [{
+      items: [
+        # {:class_name => "Portlet::CpuChart"}
+      ]
+    }, {
+      items: [
+        # {:class_name => "Portlet::ClerkForm"}
+      ]
+    }, {
+      items: [
+        {:class_name => "Portlet::ServerStats"},
+        {
+          title: "Portlet 3,1",
+          item_id: 'ext_portlet1',
+          height: 200
+        }
+      ]
+    }]
+  end
 
   def js_config
     super.tap do |c|

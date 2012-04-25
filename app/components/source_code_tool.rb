@@ -9,7 +9,7 @@ class SourceCodeTool < Netzke::Plugin
     function(cmp){
       this.callParent(arguments);
       if (!cmp.tools) cmp.tools = [];
-      cmp.tools.push({type: 'right', handler: this.onSourceCode, tooltip: "Source code", scope: this});
+      cmp.tools.push({type: 'help', handler: this.onSourceCode, tooltip: "Source code", scope: this});
     }
   JS
 

@@ -29,7 +29,7 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
           :width => 250,
           :split => true,
           items: [
-            { region: :south, height: 150, title: "Info", body_padding: 5, html: "Info on selected component" },
+            { region: :south, height: 200, title: "Info", body_padding: 5, html: "Info on selected component" },
             {
               region: :center,
 
