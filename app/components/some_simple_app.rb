@@ -23,82 +23,91 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
         :layout => :border,
         :items => [menu_bar_config, main_panel_config, {
 
-          # Navigation
-          :region => :west,
+          layout: :border,
+          border: false,
+          region: :west,
           :width => 250,
           :split => true,
-          :xtype => :treepanel,
-          :title => "Navigation",
-          :root_visible => false,
-          :item_id => :navigation,
-          :root => {
-            :text => "Navigation",
-            :expanded => true,
-            :children => [{
-              :text => "Simple Components",
-              :expanded => true,
-              :children => [{
-                :text => "GridPanel",
+          items: [
+            { region: :south, height: 150, title: "Info", body_padding: 5, html: "Info on selected component" },
+            {
+              region: :center,
+
+              # Navigation
+              :xtype => :treepanel,
+              :title => "Navigation",
+              :root_visible => false,
+              :item_id => :navigation,
+              :root => {
+                :text => "Navigation",
                 :expanded => true,
                 :children => [{
-                  :text => "Bosses",
-                  :icon => uri_to_icon(:user_suit),
-                  :leaf => true,
-                  :component => "bosses"
+                  :text => "Simple Components",
+                  :expanded => true,
+                  :children => [{
+                    :text => "GridPanel",
+                    :expanded => true,
+                    :children => [{
+                      :text => "Bosses",
+                      :icon => uri_to_icon(:user_suit),
+                      :leaf => true,
+                      :component => "bosses"
+                    },{
+                      :text => "Clerks",
+                      :icon => uri_to_icon(:user),
+                      :leaf => true,
+                      :component => "clerks"
+                    },{
+                      :text => "Customized Clerks",
+                      :icon => uri_to_icon(:user),
+                      :leaf => true,
+                      :component => "customized_clerks"
+                    },{
+                      :text => "Custom Action Grid",
+                      :leaf => true,
+                      :component => "custom_action_grid"
+                    }]
+                  },{
+                    :text => "FormPanel",
+                    :expanded => true,
+                    :children => [{
+                      :text => "Clerks Paging Form",
+                      :icon => uri_to_icon(:user),
+                      :leaf => true,
+                      :component => "clerk_paging_form"
+                    },{
+                      :text => "Clerks Paging Lockable Form",
+                      :icon => uri_to_icon(:user),
+                      :leaf => true,
+                      :component => "clerk_paging_lockable_form"
+                    },{
+                      :text => "Clerks Paging Form, custom layout",
+                      :icon => uri_to_icon(:user),
+                      :leaf => true,
+                      :component => "clerk_form_custom_layout"
+                    }]
+                  }]
                 },{
-                  :text => "Clerks",
-                  :icon => uri_to_icon(:user),
-                  :leaf => true,
-                  :component => "clerks"
+                  :text => "Composite Components",
+                  :expanded => true,
+                  :children => [{
+                    :text => "Bosses And Clerks",
+                    :icon => uri_to_icon(:user_user_suit),
+                    :leaf => true,
+                    :component => "bosses_and_clerks",
+                  },{
+                    :text => "Simple Portal",
+                    :leaf => true,
+                    :component => "simple_portal"
+                  }]
                 },{
-                  :text => "Customized Clerks",
-                  :icon => uri_to_icon(:user),
+                  :text => "Stand-alone Components",
                   :leaf => true,
-                  :component => "customized_clerks"
-                },{
-                  :text => "Custom Action Grid",
-                  :leaf => true,
-                  :component => "custom_action_grid"
+                  :component => "embedded"
                 }]
-              },{
-                :text => "FormPanel",
-                :expanded => true,
-                :children => [{
-                  :text => "Clerks Paging Form",
-                  :icon => uri_to_icon(:user),
-                  :leaf => true,
-                  :component => "clerk_paging_form"
-                },{
-                  :text => "Clerks Paging Lockable Form",
-                  :icon => uri_to_icon(:user),
-                  :leaf => true,
-                  :component => "clerk_paging_lockable_form"
-                },{
-                  :text => "Clerks Paging Form, custom layout",
-                  :icon => uri_to_icon(:user),
-                  :leaf => true,
-                  :component => "clerk_form_custom_layout"
-                }]
-              }]
-            },{
-              :text => "Composite Components",
-              :expanded => true,
-              :children => [{
-                :text => "Bosses And Clerks",
-                :icon => uri_to_icon(:user_user_suit),
-                :leaf => true,
-                :component => "bosses_and_clerks",
-              },{
-                :text => "Simple Portal",
-                :leaf => true,
-                :component => "simple_portal"
-              }]
-            },{
-              :text => "Stand-alone Components",
-              :leaf => true,
-              :component => "embedded"
-            }]
-          }
+              }
+            }
+          ]
         }]
       }]
     }]
