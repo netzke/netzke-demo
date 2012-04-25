@@ -89,11 +89,6 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
                 :leaf => true,
                 :component => "bosses_and_clerks",
               },{
-                :text => "Simple Clerk Inspector",
-                :icon => uri_to_icon(:user),
-                :leaf => true,
-                :component => "clerk_inspector"
-              },{
                 :text => "Simple Portal",
                 :leaf => true,
                 :component => "simple_portal"
@@ -131,7 +126,7 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
 
   component :custom_action_grid do |c|
     c.model  = "Boss"
-    c.title  = "Custom Action Grid",
+    c.title  = "Custom Action Grid"
     c.persistence  = true
   end
 
@@ -140,20 +135,20 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
   end
 
   component :clerk_paging_form do |c|
-    c.title  = "Clerk Paging Form",
+    c.title  = "Clerk Paging Form"
     c.model  = "Clerk"
-    c.class_name  = "Netzke::Basepack::PagingFormPanel"
+    c.klass  = Netzke::Basepack::PagingFormPanel
   end
 
   component :clerk_paging_lockable_form do |c|
-    c.title  = "Clerk Paging Lockable Form",
+    c.title  = "Clerk Paging Lockable Form"
     c.model  = "Clerk"
     c.klass = Netzke::Basepack::PagingFormPanel
     c.mode  = :lockable
   end
 
   component :clerk_form_custom_layout do |c|
-    c.class_name  = "ClerkForm"
+    c.klass  = ClerkForm
   end
 
   component :clerk_inspecto do |c|
@@ -164,9 +159,9 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
   # A simple panel thit will render a page with links to different Rails views that have embedded widgets in them
   component :embedded do |c|
     c.klass = Netzke::Basepack::Panel
-    c.auto_load  = "demo/embedded",
+    c.auto_load  = "demo/embedded"
     c.body_padding  = 15
-    c.title  = "Components embedded into Rails views",
+    c.title  = "Components embedded into Rails views"
     c.auto_scroll  = true
   end
 
@@ -187,7 +182,7 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
         '',
         'Source code for this demo: <a href="https://github.com/skozlov/netzke-demo">GitHub</a>.',
         '', '',
-        '<div style="text-align:right;">Why follow <a href="http://twitter.com/nomadcoder">NomadCoder</a>?</div>'
+        '<div style="text-align:right;">Why follow <a href="http://twitter.com/nomadcoder">@NomadCoder</a>?</div>'
       ].join("<br/>");
 
       Ext.Msg.show({
