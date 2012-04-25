@@ -8,7 +8,9 @@ module Netzke
     end
 
     def self.add_tutorial_tool(*args)
-      plugin :tutorial_tool, *args
+      plugin :tutorial_tool do |c|
+        c.merge! args.first
+      end
     end
   end
 end

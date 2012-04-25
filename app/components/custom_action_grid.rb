@@ -1,5 +1,8 @@
 class CustomActionGrid < Netzke::Basepack::GridPanel
-  action :show_details, :text => "Show details", :disabled => true
+  action :show_details do |c|
+    c.text = "Show details"
+    c.disabled = true
+  end
 
   # For stand-alone testing
   model "Clerk"
@@ -10,11 +13,11 @@ class CustomActionGrid < Netzke::Basepack::GridPanel
 
   # overriding 2 GridPanel's methods
   def default_bbar
-    [:show_details.action, "-", *super]
+    [:show_details, "-", *super]
   end
 
   def default_context_menu
-    [:show_details.action, "-", *super]
+    [:show_details, "-", *super]
   end
 
   js_method :init_component, <<-JS
