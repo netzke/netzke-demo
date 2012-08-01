@@ -48,7 +48,7 @@ class BossesAndClerks < Netzke::Basepack::BorderLayoutPanel
 
   component :bosses do
     {
-      :class_name => "Basepack::GridPanel",
+      :class_name => "Netzke::Basepack::GridPanel",
       :model => "Boss"
     }
   end

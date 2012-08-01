@@ -109,14 +109,14 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
 
   # Components
   component :bosses,
-    :class_name => "Basepack::GridPanel",
+    :class_name => "Netzke::Basepack::GridPanel",
     :model => "Boss",
     :lazy_loading => true,
     :title => "Bosses",
     :persistence => true
 
   component :clerks,
-    :class_name => "Basepack::GridPanel",
+    :class_name => "Netzke::Basepack::GridPanel",
     :model => "Clerk",
     :lazy_loading => true,
     :title => "Clerks",
@@ -157,7 +157,7 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
 
   # A simple panel thit will render a page with links to different Rails views that have embedded widgets in them
   component :embedded,
-    :class_name => "Basepack::Panel",
+    :class_name => "Netzke::Basepack::Panel",
     :auto_load => "demo/embedded",
     :body_padding => 15,
     :title => "Components embedded into Rails views",
