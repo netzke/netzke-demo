@@ -10,13 +10,13 @@
 <h2>Example 1: an accordion with two GridPanels as panels</h2>
 <p>An accordion with 2 panels, each containing a (preloaded) GridPanel.</p>
 <%= netzke :two_grid_panels,
-            :class_name => "Basepack::AccordionPanel",
+            :class_name => "Netzke::Basepack::AccordionPanel",
             :items => [{
-              :class_name => "Basepack::GridPanel",
+              :class_name => "Netzke::Basepack::GridPanel",
               :model => "Boss",
               :title => "Bosses"
             },{
-              :class_name => "Basepack::GridPanel",
+              :class_name => "Netzke::Basepack::GridPanel",
               :model => "Clerk",
               :title => "Clerks"
             }],
@@ -28,13 +28,13 @@
 <h2>Example 2: second GridPanel loads dynamically</h2>
 <p>Same as before, but the second grid gets first loaded at the moment its tab panel gets expanded.</p>
 <%= netzke :with_dynamic_loading,
-  :class_name => "Basepack::AccordionPanel",
+  :class_name => "Netzke::Basepack::AccordionPanel",
   :items => [{
-    :class_name => "Basepack::GridPanel",
+    :class_name => "Netzke::Basepack::GridPanel",
     :model => "Boss",
     :title => "Bosses"
   },{
-    :class_name => "Basepack::GridPanel",
+    :class_name => "Netzke::Basepack::GridPanel",
     :model => "Clerk",
     :title => "Clerks",
     :lazy_loading => true # this is what makes a component load dynamically
@@ -48,26 +48,26 @@
 <p>The first panel is a simple Ext.Panel. The second panel is a BorderLayoutPanel with two nested Netzke components - a grid and a form</p>
 
 <%= netzke :border_layout_panel_active,
-  :class_name => "Basepack::AccordionPanel",
+  :class_name => "Netzke::Basepack::AccordionPanel",
   :items => [{
     :html => "Some content",
     :title => "A simple Ext panel"
   },{
-    :class_name => "Basepack::BorderLayoutPanel",
+    :class_name => "Netzke::Basepack::BorderLayoutPanel",
     :title => "A compound component",
     :header => false,
     :lazy_loading => true,
     :items => [{
       :region => :center,
       :title => "A grid",
-      :class_name => "Basepack::GridPanel",
+      :class_name => "Netzke::Basepack::GridPanel",
       :model => "Boss",
       :columns => [:name, :salary]
     },{
       :region => :east,
       :title => "A form",
       :split => true,
-      :class_name => "Basepack::FormPanel",
+      :class_name => "Netzke::Basepack::FormPanel",
       :model => "Clerk",
       :record_id => Clerk.first.id,
       :width => 350

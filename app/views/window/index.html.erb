@@ -12,18 +12,18 @@
 
 <input type="button" value="Show window" onClick="Netzke.page.window.show(); Ext.get(this).hide();" />
 
-<%= netzke :window, :class_name => "Basepack::Window", :width => 200, :height => 100, :persistence => true %>
+<%= netzke :window, :class_name => "Netzke::Basepack::Window", :width => 200, :height => 100, :persistence => true %>
 
 <h2>Example 2: a window nesting a GridPanel</h2>
 
 <input type="button" value="Show window" onClick="Netzke.page.windowWithGridPanel.show(); Ext.get(this).hide();" />
 
 <%= netzke :window_with_grid_panel,
-      :class_name => "Basepack::Window",
+      :class_name => "Netzke::Basepack::Window",
       :width => 700, :height => 400,
       :persistence => true,
       :items => [{
-        :class_name => "Basepack::GridPanel",
+        :class_name => "Netzke::Basepack::GridPanel",
         :model => "Boss",
         :header => false, :border => true
       }]
@@ -34,7 +34,7 @@
 <input type="button" value="Show window" onClick="Netzke.page.windowWithBossesAndClerks.show(); Ext.get(this).hide();" />
 
 <%= netzke :window_with_bosses_and_clerks,
-      :class_name => "Basepack::Window",
+      :class_name => "Netzke::Basepack::Window",
       :width => "80%", :height => 600,
       :persistence => true,
       :items => [{
@@ -48,7 +48,7 @@
 
 <input type="button" value="Show window" onClick="Netzke.page.reopenableWindow.show()" />
 <%= netzke :reopenable_window,
-      :class_name => "Basepack::Window",
+      :class_name => "Netzke::Basepack::Window",
       :persistence => true,
       :close_action => "hide",
       :width => 200, :height => 100
