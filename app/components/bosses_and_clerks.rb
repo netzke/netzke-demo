@@ -4,37 +4,37 @@ class BossesAndClerks < Netzke::Base
   # Remember regions collapse state and size
   include Netzke::Basepack::ItemsPersistence
 
-  js_property :layout, :border
-
-  def configure
+  def configure(c)
     super
-    config.merge!(
-      :items => [
-        { netzke_component: :bosses, region: :center },
-        { netzke_component: :boss_details, region: :east, width: 240, split: true },
-        { netzke_component: :clerks, region: :south, height: 250, split: true }
-      ]
-    )
+    c.items = [
+      { netzke_component: :bosses, region: :center },
+      { netzke_component: :boss_details, region: :east, width: 240, split: true },
+      { netzke_component: :clerks, region: :south, height: 250, split: true }
+    ]
   end
 
-  # Overriding initComponent
-  js_method :init_component, <<-JS
-    function(){
-      // calling superclass's initComponent
-      this.callParent();
+  js_configure do |c|
+    c.layout = :border
 
-      // setting the 'rowclick' event
-      var view = this.getComponent('bosses').getView();
-      view.on('itemclick', function(view, record){
-        // The beauty of using Ext.Direct: calling 3 endpoints in a row, which results in a single call to the server!
-        this.selectBoss({boss_id: record.get('id')});
-        this.getComponent('clerks').getStore().load();
-        this.getComponent('boss_details').updateStats();
-      }, this);
-    }
-  JS
+    # Overriding initComponent
+    c.init_component = <<-JS
+      function(){
+        // calling superclass's initComponent
+        this.callParent();
 
-  endpoint :select_boss do |params|
+        // setting the 'rowclick' event
+        var view = this.getComponent('bosses').getView();
+        view.on('itemclick', function(view, record){
+          // The beauty of using Ext.Direct: calling 3 endpoints in a row, which results in a single call to the server!
+          this.selectBoss({boss_id: record.get('id')});
+          this.getComponent('clerks').getStore().load();
+          this.getComponent('boss_details').updateStats();
+        }, this);
+      }
+    JS
+  end
+
+  endpoint :select_boss do |params, this|
     # store selected boss id in the session for this component's instance
     component_session[:selected_boss_id] = params[:boss_id]
   end
