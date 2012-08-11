@@ -2,9 +2,9 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
 
   # Application layout
   # <tt>status_bar_config</tt>, <tt>menu_bar_config</tt>, and <tt>main_panel_config</tt> are defined in SimpleApp.
-  def configure
+  def configure(c)
     super
-    config.items = [{
+    c.items = [{
       :region => :north,
       :border => false,
       :height => 35,
@@ -185,51 +185,52 @@ class SomeSimpleApp < Netzke::Basepack::SimpleApp
     ["->", :about]
   end
 
-  js_method :on_about, <<-JS
-    function(e){
-      var msg = [
-        '',
-        'Source code for this demo: <a href="https://github.com/skozlov/netzke-demo">GitHub</a>.',
-        '', '',
-        '<div style="text-align:right;">Why follow <a href="http://twitter.com/nomadcoder">@NomadCoder</a>?</div>'
-      ].join("<br/>");
+  js_configure do |c|
+    c.on_about = <<-JS
+      function(e){
+        var msg = [
+          '',
+          'Source code for this demo: <a href="https://github.com/skozlov/netzke-demo">GitHub</a>.',
+          '', '',
+          '<div style="text-align:right;">Why follow <a href="http://twitter.com/nomadcoder">@NomadCoder</a>?</div>'
+        ].join("<br/>");
 
-      Ext.Msg.show({
-        width: 300,
-         title:'About',
-         msg: msg,
-         buttons: Ext.Msg.OK,
-         animEl: e.getId()
-      });
-    }
-  JS
-
-  # Overrides Ext.Component#initComponent to set the click event on the nodes
-  js_method :init_component, <<-JS
-    function(){
-      this.callParent();
-      this.navigation = this.query('panel[itemId="navigation"]')[0];
-      this.navigation.getView().on('itemclick', function(e,r,i){
-        if (r.raw.component) {
-          this.appLoadComponent(r.raw.component);
-        }
-      }, this);
-    }
-  JS
-
-  # Overrides SimpleApp#process_history, to initially select the node in the navigation tree
-  js_method :process_history, <<-JS
-    function(token){
-      if (token) {
-        var node = this.navigation.getStore().getRootNode().findChildBy(function(n){
-          return n.raw.component == token;
-        }, this, true);
-
-        if (node) this.navigation.getView().select(node);
+        Ext.Msg.show({
+          width: 300,
+           title:'About',
+           msg: msg,
+           buttons: Ext.Msg.OK,
+           animEl: e.getId()
+        });
       }
+    JS
 
-      this.callParent([token]);
-    }
-  JS
+    # Overrides Ext.Component#initComponent to set the click event on the nodes
+    c.init_component = <<-JS
+      function(){
+        this.callParent();
+        this.navigation = this.query('panel[itemId="navigation"]')[0];
+        this.navigation.getView().on('itemclick', function(e,r,i){
+          if (r.raw.component) {
+            this.appLoadComponent(r.raw.component);
+          }
+        }, this);
+      }
+    JS
 
+    # Overrides SimpleApp#process_history, to initially select the node in the navigation tree
+    c.process_history = <<-JS
+      function(token){
+        if (token) {
+          var node = this.navigation.getStore().getRootNode().findChildBy(function(n){
+            return n.raw.component == token;
+          }, this, true);
+
+          if (node) this.navigation.getView().select(node);
+        }
+
+        this.callParent([token]);
+      }
+    JS
+  end
 end

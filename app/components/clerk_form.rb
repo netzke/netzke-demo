@@ -1,12 +1,9 @@
 class ClerkForm < Netzke::Basepack::PagingFormPanel
-  title "Clerk Paging Form With Custom Layout And File Upload"
-
-  model "Clerk"
-
   add_source_code_tool
 
-  def configure
-    super
+  def configure(c)
+    c.title = "Clerk Paging Form With Custom Layout And File Upload"
+    c.model = "Clerk"
 
     boss_contact = [
       {:field_label => "First name", :name => :boss__first_name, :read_only => true},
@@ -19,8 +16,8 @@ class ClerkForm < Netzke::Basepack::PagingFormPanel
       {:field_label => "Amount of clerks", :name => :boss__clerks_number, :read_only => true}
     ]
 
-    config.file_upload = true
-    config.items = [
+    c.file_upload = true
+    c.items = [
       {
         :layout => :hbox, :border => false,
         :items => [
@@ -50,10 +47,7 @@ class ClerkForm < Netzke::Basepack::PagingFormPanel
         ]
       }
     ]
-  end
 
-  def netzke_submit_endpoint(params)
-    # ::Rails.logger.debug "!!! params: #{params.inspect}\n"
     super
   end
 end

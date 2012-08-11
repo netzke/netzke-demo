@@ -3,41 +3,39 @@ class ClerkGrid < Netzke::Basepack::GridPanel
   add_source_code_tool
 
   # Include CSS for displaying the light bulb (see the source code)
-  css_include :main
+  # css_include :main
 
-  def configure
+  def configure(c)
+    c.model = "Clerk"
+    c.persistence = true
+
+    # Declaring columns
+    c.columns = [
+      {
+        :name => :name,
+        :renderer => "uppercase",
+        :width => 200
+      },
+      :first_name,
+      :last_name,
+      {
+        :name => :updated_bulb,
+        :width => 40,
+        # :label => "<div class='bulb-off' />",
+        :tooltip => "Recently updated",
+        :getter => lambda { |r|
+          bulb = r.updated ? "on" : "off"
+          "<div class='bulb-#{bulb}' />"
+        }
+      },
+      :email,
+      {
+        :name => :boss__last_name,
+        :scope => ["salary >= ?", 95000],
+        :header => "Boss"
+      },
+      {:name => :image, :getter => lambda{ |r| "<a href='#{r.image.url}'>Download</a>" if r.image.url }}
+    ]
     super
-    config.merge!({
-      :model => "Clerk",
-      :persistence => true,
-
-      # Declaring columns
-      :columns => [
-        {
-          :name => :name,
-          :renderer => "uppercase",
-          :width => 200
-        },
-        :first_name,
-        :last_name,
-        {
-          :name => :updated_bulb,
-          :width => 40,
-          :label => "<div class='bulb-off' />",
-          :tooltip => "Recently updated",
-          :getter => lambda { |r|
-            bulb = r.updated ? "on" : "off"
-            "<div class='bulb-#{bulb}' />"
-          }
-        },
-        :email,
-        {
-          :name => :boss__last_name,
-          :scope => ["salary >= ?", 95000],
-          :header => "Boss"
-        },
-        {:name => :image, :getter => lambda{ |r| "<a href='#{r.image.url}'>Download</a>" if r.image.url }}
-      ]
-    })
   end
 end
