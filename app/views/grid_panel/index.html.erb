@@ -18,20 +18,20 @@
 <p>Code (in the view):</p>
 <% coderay do %>
 netzke :bosses,
-  :class_name => "Basepack::GridPanel",
+  :class_name => "Netzke::Basepack::GridPanel",
   :model => 'Boss'
 <% end %>
 
 <p>Result:</p>
 <%= netzke :bosses,
-  :class_name => "Basepack::GridPanel",
+  :class_name => "Netzke::Basepack::GridPanel",
   :model => 'Boss' %>
 
 <h2>Control over columns</h2>
 <p>If you need more control over which columns to display and how, you can provide <tt>:columns</tt> option:</p>
 <% coderay do %>
 netzke :bosses_custom_columns,
-  :class_name => "Basepack::GridPanel",
+  :class_name => "Netzke::Basepack::GridPanel",
   :model => 'Boss',
   :title => "Bosses",
   :width => 400,
@@ -42,7 +42,7 @@ netzke :bosses_custom_columns,
 <% end %>
 <p>Result:</p>
 <%= netzke :bosses_custom_columns,
-  :class_name => "Basepack::GridPanel",
+  :class_name => "Netzke::Basepack::GridPanel",
   :model => 'Boss',
   :title => "Bosses",
   :width => 400,
@@ -125,14 +125,14 @@ netzke :clerk_grid
 You can specify which actions are allowed for this grid
 <% coderay do %>
 netzke :bosses_with_permissions,
-  :class_name => "Basepack::GridPanel",
+  :class_name => "Netzke::Basepack::GridPanel",
   :model => 'Boss',
   :prohibit_update => true,
   :prohibit_delete => true
 <% end %>
 <p>Result:</p>
 <%= netzke :bosses_with_permissions,
-  :class_name => "Basepack::GridPanel",
+  :class_name => "Netzke::Basepack::GridPanel",
   :model => 'Boss',
   :prohibit_update => true,
   :prohibit_delete => true
@@ -145,15 +145,15 @@ netzke :bosses_with_permissions,
 
 <% coderay do %>
 netzke :clerks_with_custom_bottom_bar,
-    :class_name => "Basepack::GridPanel",
+    :class_name => "Netzke::Basepack::GridPanel",
     :model => 'Clerk',
     :bbar => nil,
     :tbar => [{
-      :menu => [:add.action, :edit.action, :apply.action, :del.action],
+      :menu => [:add, :edit, :apply, :del],
       :text => "Edit inline",
       :icon =>"/images/icons/table.png"
     },{
-      :menu => [:add_in_form.action, :edit_in_form.action],
+      :menu => [:add_in_form, :edit_in_form],
       :text => "Edit in form",
       :icon => "/images/icons/application_form.png"
     }]
@@ -161,15 +161,15 @@ netzke :clerks_with_custom_bottom_bar,
 
 <p>Result:</p>
 <%= netzke :clerks_with_custom_bottom_bar,
-    :class_name => "Basepack::GridPanel",
+    :class_name => "Netzke::Basepack::GridPanel",
     :model => 'Clerk',
     :bbar => nil,
     :tbar => [{
-      :menu => [:add.action, :edit.action, :apply.action, :del.action],
+      :menu => [:add, :edit, :apply, :del],
       :text => "Edit inline",
       :icon =>"/images/icons/table.png"
     },{
-      :menu => [:add_in_form.action, :edit_in_form.action],
+      :menu => [:add_in_form, :edit_in_form],
       :text => "Edit in form",
       :icon => "/images/icons/application_form.png"
     }]
