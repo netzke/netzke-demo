@@ -28,7 +28,7 @@ class CustomActionGrid < Netzke::Basepack::GridPanel
   js_method :on_show_details, <<-JS
     function(){
       var tmpl = new Ext.Template("<b>{0}</b>: {1}<br/>"), html = "";
-      Ext.iterate(this.getSelectionModel().getSelected().data, function(key, value){
+      Ext.iterate(this.getSelectionModel().getSelection()[0].data, function(key, value){
         html += tmpl.apply([key.humanize(), value]);
       }, this);
 
