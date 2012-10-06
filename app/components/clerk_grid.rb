@@ -1,9 +1,9 @@
 # Extend GridPanel to be specific about the model and columns we want to display
 class ClerkGrid < Netzke::Basepack::GridPanel
-  add_source_code_tool
-
-  # Include CSS for displaying the light bulb (see the source code)
-  # css_include :main
+  css_configure do |c|
+    # include CSS for displaying the light bulb (see the source code)
+    c.include :main
+  end
 
   def configure(c)
     c.model = "Clerk"
@@ -20,8 +20,8 @@ class ClerkGrid < Netzke::Basepack::GridPanel
       :last_name,
       {
         :name => :updated_bulb,
-        :width => 40,
-        # :label => "<div class='bulb-off' />",
+        :width => 30,
+        :header => "",
         :tooltip => "Recently updated",
         :getter => lambda { |r|
           bulb = r.updated ? "on" : "off"
