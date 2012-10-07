@@ -53,11 +53,6 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "A grid from #{link('this', '/')} tutorial. " + source_code_link(c)
   end
 
-  component :bosses_and_clerks do |c|
-    c.title  = "Bosses and Clerks"
-    c.desc = "A compound component from #{link("this", "https://github.com/nomadcoder/netzke/wiki/Building-a-composite-component")} tutorial. The component is a sample implementation of the one-to-many relationship UI. " + source_code_link(c)
-  end
-
   component :clerk_paging_form do |c|
     c.title  = "Clerk Paging Form"
     c.desc = "A paging form panel configured with just a model. Browse through the records by clicking on the paging toobar. " + source_code_link(c)
@@ -73,9 +68,21 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "A paging form panel with custom layout. " + source_code_link(c)
   end
 
-  component :clerk_inspector do |c|
-    c.border  = false
-    c.title  = "Simple Clerk Inspector"
+  #
+  # Composite components
+  #
+
+  component :bosses_and_clerks do |c|
+    c.title  = "Bosses and Clerks"
+    c.desc = "A compound component from #{link("this", "https://github.com/nomadcoder/netzke/wiki/Building-a-composite-component")} tutorial. The component is a sample implementation of the one-to-many relationship UI. " + source_code_link(c)
+  end
+
+  component :static_tab_panel do |c|
+    c.desc = "A TabPanel with pre-loaded tabs (as opposed to dynamically loaded components). " + source_code_link(c)
+  end
+
+  component :dynamic_tab_panel do |c|
+    c.desc = "A TabPanel with dynamically loaded tab components. " + source_code_link(c)
   end
 
 protected
@@ -105,13 +112,22 @@ protected
     }
   end
 
+  def leaf(text, component, icon = nil)
+    {
+      text: text,
+      icon: icon && uri_to_icon(icon),
+      component: component,
+      leaf: true
+    }
+  end
+
   def menu
     {
       :text => "Navigation",
       :expanded => true,
       :children => [{
 
-        :text => "Simple Components",
+        :text => "Atomic Components",
         :expanded => true,
         :children => [{
 
@@ -158,7 +174,10 @@ protected
           :icon => uri_to_icon(:user_user_suit),
           :leaf => true,
           :component => "bosses_and_clerks",
-        }]
+        },
+        leaf("Static TabPanel", :static_tab_panel),
+        leaf("Dynamic TabPanel", :dynamic_tab_panel),
+        ]
       }]
     }
   end
