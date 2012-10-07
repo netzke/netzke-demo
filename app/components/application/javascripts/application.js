@@ -19,5 +19,28 @@
 
   updateInfo: function(html) {
     this.infoPanel.body.update("<img style='position: relative; top: 3px; margin-right: 3px;' src='/images/icons/information.png' />" + html);
+  },
+
+  onAbout: function() {
+    this.aboutWin = this.aboutWin || Ext.create('Ext.window.Window', {
+      width: 400,
+      height: 180,
+      modal: true,
+      title: "About",
+      layout: 'fit',
+      items: {
+        border: false,
+        bodyPadding: 5,
+        html: '<h1>Netzke Demo</h2> <br/> \
+        Explore demo <a target="_blank" href="http://netzke.org">Netzke</a> components along with their source code. <br/> \
+        Follow <a target="_blank" href="http://twitter.com/netzke">@netzke</a> on Twitter for the latest news on the framework. <br/> \
+        The source code for this app is on <a target="_blank" href="https://github.com/nomadcoder/netzke-demo">GitHub</a>. <br/> \
+        <br/> \
+        Copyright <a target="_blank" href="http://twitter.com/nomadcoder">Denis Gorin</a> 2012. \
+        '
+      }
+    });
+
+    this.aboutWin.show();
   }
 }
