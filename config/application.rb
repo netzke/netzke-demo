@@ -13,7 +13,7 @@ module NetzkeDemo
     # -- all .rb files in that directory are automatically loaded.
 
     # Add additional load paths for your own custom dirs
-    config.autoload_paths += %W( #{config.root}/lib )
+    # config.autoload_paths += %W( #{config.root}/lib )
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named
@@ -43,8 +43,6 @@ module NetzkeDemo
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
-    config.repo_root = "https://github.com/skozlov/netzke-demo/blob/master"
+    config.repo_root = "https://github.com/nomadcoder/netzke-demo/blob/master"
   end
 end
-
-require 'netzke/base_extensions'

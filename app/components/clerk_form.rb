@@ -1,6 +1,4 @@
 class ClerkForm < Netzke::Basepack::PagingFormPanel
-  add_source_code_tool
-
   def configure(c)
     c.title = "Clerk Paging Form With Custom Layout And File Upload"
     c.model = "Clerk"

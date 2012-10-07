@@ -1,14 +1,11 @@
 class CustomActionGrid < Netzke::Basepack::GridPanel
-  add_source_code_tool
-
   action :show_details do |c|
     c.text = "Show details"
     c.disabled = true
   end
 
   def configure(c)
-    # For stand-alone testing
-    c.model = "Clerk"
+    c.model = "Clerk" # For stand-alone testing
 
     super
 

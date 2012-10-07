@@ -1,6 +1,4 @@
 class BossesAndClerks < Netzke::Base
-  add_source_code_tool
-
   # Remember regions collapse state and size
   include Netzke::Basepack::ItemsPersistence
 
@@ -15,6 +13,7 @@ class BossesAndClerks < Netzke::Base
 
   js_configure do |c|
     c.layout = :border
+    c.border = false
 
     # Overriding initComponent
     c.init_component = <<-JS

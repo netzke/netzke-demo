@@ -1,5 +1,4 @@
 class Application < Netzke::Basepack::Viewport
-  GITHUB_URI = "https://github.com/nomadcoder/netzke-demo/blob/master"
 
   action :about do |c|
     c.icon = :information
@@ -23,7 +22,7 @@ class Application < Netzke::Basepack::Viewport
           { region: :west, item_id: :navigation, width: 300, split: true, xtype: :treepanel, root: menu, root_visible: false, title: "Navigation" },
           { region: :center, layout: :border, border: false, items: [
             { item_id: :info_panel, region: :north, height: 40, body_padding: 5, split: true, html: initial_html },
-            { item_id: :main_panel, region: :center, layout: :fit }
+            { item_id: :main_panel, region: :center, layout: :fit, border: false, items: [{}] } # items is only needed here for cosmetic reasons (initial border)
           ]}
         ]
       }
@@ -56,7 +55,7 @@ class Application < Netzke::Basepack::Viewport
 
   component :bosses_and_clerks do |c|
     c.title  = "Bosses and Clerks"
-    c.desc = "A compound component from #{link("this", "https://github.com/nomadcoder/netzke/wiki/Building-a-composite-component")} tutorial. The component is a sample implementation of one-to-many relationship UI. " + source_code_link(c)
+    c.desc = "A compound component from #{link("this", "https://github.com/nomadcoder/netzke/wiki/Building-a-composite-component")} tutorial. The component is a sample implementation of the one-to-many relationship UI. " + source_code_link(c)
   end
 
   component :clerk_paging_form do |c|
@@ -86,7 +85,7 @@ protected
   end
 
   def source_code_link(c)
-    uri = [GITHUB_URI, "app/components", c.klass.name.underscore + '.rb'].join('/')
+    uri = [NetzkeDemo::Application.config.repo_root, "app/components", c.klass.name.underscore + '.rb'].join('/')
     "<a href='#{uri}' target='_blank'>Source code</a>"
   end
 
