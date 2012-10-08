@@ -85,6 +85,14 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "A TabPanel with dynamically loaded tab components. " + source_code_link(c)
   end
 
+  component :static_accordion do |c|
+    c.desc = "An Accordion with pre-loaded tabs (as opposed to dynamically loaded components). " + source_code_link(c)
+  end
+
+  component :dynamic_accordion do |c|
+    c.desc = "An Accordion with dynamically loaded tab components. " + source_code_link(c)
+  end
+
 protected
 
   def link(text, uri)
@@ -175,8 +183,10 @@ protected
           :leaf => true,
           :component => "bosses_and_clerks",
         },
-        leaf("Static TabPanel", :static_tab_panel),
-        leaf("Dynamic TabPanel", :dynamic_tab_panel),
+        leaf("TabPanel (static)", :static_tab_panel),
+        leaf("TabPanel (dynamic)", :dynamic_tab_panel),
+        leaf("Accordion (static)", :static_accordion),
+        leaf("Accordion (dynamic)", :dynamic_accordion),
         ]
       }]
     }

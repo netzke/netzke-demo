@@ -1,4 +1,4 @@
-class DynamicTabPanel < Netzke::Basepack::TabPanel
+class DynamicAccordion < Netzke::Basepack::AccordionPanel
   component :clerks
   component :bosses
   component :bosses_and_clerks
