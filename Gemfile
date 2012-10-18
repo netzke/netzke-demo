@@ -3,7 +3,6 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.8'
 
 gem 'haml'
-gem 'sqlite3'
 
 gem 'coderay'
 gem 'faker'
