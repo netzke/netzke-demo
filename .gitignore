@@ -9,3 +9,4 @@ vendor/gems/netzke-*
 public/uploads
 .vimrc
 .powrc
+config/database.yml
