@@ -31,7 +31,6 @@ class Clerks < Netzke::Basepack::GridPanel
       :email,
       {
         :name => :boss__last_name,
-        :scope => ["salary >= ?", 95000],
         :header => "Boss"
       },
       {:name => :image, :getter => lambda{ |r| "<a href='#{r.image.url}'>Download</a>" if r.image.url }}
