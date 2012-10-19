@@ -56,7 +56,6 @@ GEM
     haml (3.1.7)
     hike (1.2.1)
     i18n (0.6.1)
-    inploy (1.9.5)
     journey (1.0.4)
     json (1.7.5)
     mail (2.4.4)
@@ -111,7 +110,6 @@ DEPENDENCIES
   coderay
   faker
   haml
-  inploy
   netzke-basepack!
   netzke-core!
   pg
