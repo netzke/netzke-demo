@@ -22,25 +22,18 @@
   },
 
   onAbout: function() {
-    this.aboutWin = this.aboutWin || Ext.create('Ext.window.Window', {
-      width: 400,
+    Ext.Msg.show({
+      width: 450,
       height: 180,
-      modal: true,
-      title: "About",
-      layout: 'fit',
-      items: {
-        border: false,
-        bodyPadding: 5,
-        html: '<h1>Netzke Demo</h2> <br/> \
-        Explore demo <a target="_blank" href="http://netzke.org">Netzke</a> components along with their source code. <br/> \
+      title: "Netzke Demo",
+      buttons: Ext.Msg.OK,
+      icon: Ext.MessageBox.INFO,
+      msg: 'Explore demo <a target="_blank" href="http://netzke.org">Netzke</a> components along with their source code. <br/> \
         Follow <a target="_blank" href="http://twitter.com/netzke">@netzke</a> on Twitter for the latest news on the framework. <br/> \
         The source code for this app is on <a target="_blank" href="https://github.com/nomadcoder/netzke-demo">GitHub</a>. <br/> \
         <br/> \
-        Copyright <a target="_blank" href="http://twitter.com/nomadcoder">nomadcoder</a> 2011-' + (new Date()).getFullYear() + ' \
+        <div style="text-align: right">By <a target="_blank" href="http://twitter.com/nomadcoder">nomadcoder</a>, ' + (new Date()).getFullYear() + '</div> \
         '
-      }
     });
-
-    this.aboutWin.show();
   }
 }
