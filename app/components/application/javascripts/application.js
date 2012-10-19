@@ -36,7 +36,7 @@
         Follow <a target="_blank" href="http://twitter.com/netzke">@netzke</a> on Twitter for the latest news on the framework. <br/> \
         The source code for this app is on <a target="_blank" href="https://github.com/nomadcoder/netzke-demo">GitHub</a>. <br/> \
         <br/> \
-        Copyright <a target="_blank" href="http://twitter.com/nomadcoder">Denis Gorin</a> 2012. \
+        Copyright <a target="_blank" href="http://twitter.com/nomadcoder">nomadcoder</a> 2011-' + (new Date()).getFullYear() + ' \
         '
       }
     });
