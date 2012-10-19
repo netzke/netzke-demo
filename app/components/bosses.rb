@@ -3,4 +3,6 @@ class Bosses < Netzke::Basepack::GridPanel
     super
     c.model = "Boss"
   end
+
+  include PgGridTweaks
 end

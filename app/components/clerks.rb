@@ -11,15 +11,13 @@ class Clerks < Netzke::Basepack::GridPanel
 
     # Declaring columns
     c.columns = [
-      {
-        :name => :name,
+      { :name => :name,
         :renderer => "uppercase",
         :width => 200
       },
       :first_name,
       :last_name,
-      {
-        :name => :updated_bulb,
+      { :name => :updated_bulb,
         :width => 30,
         :header => "",
         :tooltip => "Recently updated",
@@ -29,12 +27,13 @@ class Clerks < Netzke::Basepack::GridPanel
         }
       },
       :email,
-      {
-        :name => :boss__last_name,
+      { :name => :boss__last_name,
         :header => "Boss"
       },
       {:name => :image, :getter => lambda{ |r| "<a href='#{r.image.url}'>Download</a>" if r.image.url }}
     ]
     super
   end
+
+  include PgGridTweaks
 end

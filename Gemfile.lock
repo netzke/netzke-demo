@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/nomadcoder/netzke-basepack
-  revision: 43f8c0a8c9012dea0a3f6da0e3e0885c45b5ba48
+  revision: 397c363e434e1c3eb159ced15ade9a6980b1b577
   branch: 0-8
   specs:
     netzke-basepack (0.8.0)
