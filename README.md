@@ -1,6 +1,6 @@
 This is the source-code for [http://netzke-demo.herokuapp.com](http://netzke-demo.herokuapp.com) - the [Netzke](http://netzke.org) live-demo.
 
-## Installation (to run it locally)
+## To run locally
 
 1. Get the code from github
 
@@ -10,18 +10,17 @@ This is the source-code for [http://netzke-demo.herokuapp.com](http://netzke-dem
 
     bundle install
 
-3. Create the database and do the migrations
+3. Create your config/database.yml or use the included database.yml.sample (postgres)
 
-    rake db:create && rake db:migrate
+4. Create the database, do the migrations, and seed the demo data
 
-That's it. Additionally, you can (re)generate test data by visiting the following URL (it's linked at the end of the GridPanel demo page):
+    rake db:create && rake db:migrate && rake db:seed
 
-    http://localhost:3000/grid_panel/regenerate_test_data
-
-## Prerequisites
+## Dependencies
 
 * Rails ~> 3.2.0
-* Ext JS ~> 4.1
+* Ext JS ~> 4.1.0
+* Netzke ~> 0.8.0
 
 ## Feedback
 

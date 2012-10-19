@@ -13,9 +13,3 @@ gem 'netzke-basepack', git: "git://github.com/nomadcoder/netzke-basepack", branc
 gem 'pg'
 
 gem 'carrierwave'
-
-gem 'inploy'
-
-group :profiling do
-  # gem 'rack-perftools_profiler', '~> 0.1', :require => 'rack/perftools_profiler'
-end
