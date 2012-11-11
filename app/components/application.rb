@@ -1,7 +1,28 @@
 class Application < Netzke::Basepack::Viewport
 
+  # A simple mockup of the User model
+  class User < Struct.new(:email, :password)
+    def initialize
+      self.email = "demo@netzke.org"
+      self.password = "netzke"
+    end
+    def self.authenticate_with?(email, password)
+      instance = self.new
+      [email, password] == [instance.email, instance.password]
+    end
+  end
+
   action :about do |c|
     c.icon = :information
+  end
+
+  action :sign_in do |c|
+    c.icon = :door_in
+  end
+
+  action :sign_out do |c|
+    c.icon = :door_out
+    c.text = "Sign out #{current_user.email}" if current_user
   end
 
   js_configure do |c|
@@ -11,13 +32,11 @@ class Application < Netzke::Basepack::Viewport
 
   def configure(c)
     super
+    tbar = [header_html, '->', :about, current_user ? :sign_out : :sign_in]
 
     c.items = [
       { layout: :border,
-        docked_items: [
-          { dock: :top, xtype: :toolbar, items: [header_html, '->', :about] },
-        ],
-
+        tbar: tbar,
         items: [
           { region: :west, item_id: :navigation, width: 300, split: true, xtype: :treepanel, root: menu, root_visible: false, title: "Navigation" },
           { region: :center, layout: :border, border: false, items: [
@@ -93,7 +112,31 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "An Accordion with dynamically loaded tab components. " + source_code_link(c)
   end
 
+  # Endpoints
+  #
+  #
+  endpoint :sign_in do |params,this|
+    user = User.new
+    if User.authenticate_with?(params[:email], params[:password])
+      session[:user_id] = 1 # anything; this is what you'd normally do in a real-life case
+      this.set_result(true)
+    else
+      this.set_result(false)
+      this.netzkeFeedback("Wrong credentials")
+    end
+  end
+
+  endpoint :sign_out do |params,this|
+    session[:user_id] = nil
+    ::Rails.logger.debug "!!! session:: #{session.inspect}\n"
+    this.set_result(true)
+  end
+
 protected
+
+  def current_user
+    @current_user ||= session[:user_id] && User.new
+  end
 
   def link(text, uri)
     "<a href='#{uri}'>#{text}</a>"
@@ -135,7 +178,7 @@ protected
       :expanded => true,
       :children => [{
 
-        :text => "Atomic Components",
+        :text => "Plain components",
         :expanded => true,
         :children => [{
 
@@ -175,7 +218,7 @@ protected
         }]
       },{
 
-        :text => "Composite Components",
+        :text => "Composite components",
         :expanded => true,
         :children => [{
           :text => "Bosses And Clerks",
