@@ -11,7 +11,7 @@
     }, this);
 
     this.navigation.on('select', function(m, r) {
-      this.loadNetzkeComponent({name: r.raw.component, container: this.mainPanel, callback: function(cmp) {
+      this.loadNetzkeComponent({name: r.raw.cmp, container: this.mainPanel, callback: function(cmp) {
         this.updateInfo(cmp.desc);
       }, scope: this});
     }, this);

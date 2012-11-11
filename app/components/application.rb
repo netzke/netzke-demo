@@ -32,25 +32,19 @@ class Application < Netzke::Basepack::Viewport
 
   def configure(c)
     super
-    tbar = [header_html, '->', :about, current_user ? :sign_out : :sign_in]
-
+    c.intro_html = "Click on a demo component in the navigation tree"
     c.items = [
       { layout: :border,
-        tbar: tbar,
+        tbar: [header_html, '->', :about, current_user ? :sign_out : :sign_in],
         items: [
-          { region: :west, item_id: :navigation, width: 300, split: true, xtype: :treepanel, root: menu, root_visible: false, title: "Navigation" },
           { region: :center, layout: :border, border: false, items: [
-            { item_id: :info_panel, region: :north, height: 40, body_padding: 5, split: true, html: initial_html },
+            { region: :west, item_id: :navigation, width: 300, split: true, xtype: :treepanel, root: menu, root_visible: false, title: "Navigation" },
+            { item_id: :info_panel, region: :north, height: 35, body_padding: 5, split: true, html: initial_html },
             { item_id: :main_panel, region: :center, layout: :fit, border: false, items: [{}] } # items is only needed here for cosmetic reasons (initial border)
           ]}
         ]
       }
     ]
-  end
-
-  def js_configure(c)
-    super
-    c.intro_html = "Click on a demo component in the navigation tree"
   end
 
   #
@@ -167,7 +161,7 @@ protected
     {
       text: text,
       icon: icon && uri_to_icon(icon),
-      component: component,
+      cmp: component,
       leaf: true
     }
   end
@@ -188,12 +182,12 @@ protected
             :text => "Bosses",
             :icon => uri_to_icon(:user_suit),
             :leaf => true,
-            :component => "bosses"
+            :cmp => "bosses"
           },{
             :text => "Clerks",
             :icon => uri_to_icon(:user),
             :leaf => true,
-            :component => "clerks"
+            :cmp => "clerks"
           }]
         },{
 
@@ -203,17 +197,17 @@ protected
             :text => "Paging Form",
             :icon => uri_to_icon(:user),
             :leaf => true,
-            :component => "clerk_paging_form"
+            :cmp => "clerk_paging_form"
           },{
             :text => "Paging Form, custom layout",
             :icon => uri_to_icon(:user),
             :leaf => true,
-            :component => "clerk_form_custom_layout"
+            :cmp => "clerk_form_custom_layout"
           },{
             :text => "Paging Lockable Form",
             :icon => uri_to_icon(:user),
             :leaf => true,
-            :component => "clerk_paging_lockable_form"
+            :cmp => "clerk_paging_lockable_form"
           }]
         }]
       },{
@@ -224,7 +218,7 @@ protected
           :text => "Bosses And Clerks",
           :icon => uri_to_icon(:user_user_suit),
           :leaf => true,
-          :component => "bosses_and_clerks",
+          :cmp => "bosses_and_clerks",
         },
         leaf("TabPanel (static)", :static_tab_panel),
         leaf("TabPanel (dynamic)", :dynamic_tab_panel),
