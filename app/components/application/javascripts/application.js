@@ -13,6 +13,9 @@
     this.navigation.on('select', function(m, r) {
       this.loadNetzkeComponent({name: r.raw.cmp, container: this.mainPanel, callback: function(cmp) {
         this.updateInfo(cmp.desc);
+        if (cmp.isXType('window')) {
+          cmp.show();
+        }
       }, scope: this});
     }, this);
   },

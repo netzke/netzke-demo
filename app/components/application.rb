@@ -37,8 +37,8 @@ class Application < Netzke::Basepack::Viewport
       { layout: :border,
         tbar: [header_html, '->', :about, current_user ? :sign_out : :sign_in],
         items: [
+          { region: :west, item_id: :navigation, width: 300, split: true, xtype: :treepanel, root: menu, root_visible: false, title: "Navigation" },
           { region: :center, layout: :border, border: false, items: [
-            { region: :west, item_id: :navigation, width: 300, split: true, xtype: :treepanel, root: menu, root_visible: false, title: "Navigation" },
             { item_id: :info_panel, region: :north, height: 35, body_padding: 5, split: true, html: initial_html },
             { item_id: :main_panel, region: :center, layout: :fit, border: false, items: [{}] } # items is only needed here for cosmetic reasons (initial border)
           ]}
@@ -106,6 +106,18 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "An Accordion with dynamically loaded tab components. " + source_code_link(c)
   end
 
+  component :simple_window do |c|
+    c.desc = "A simple window with persistent dimensions, position, and state. " + source_code_link(c)
+  end
+
+  component :window_with_grid_panel do |c|
+    c.desc = "A window that nests a GridPanel. #{source_code_link(c)}"
+  end
+
+  component :window_nesting_bosses_and_clerks do |c|
+    c.desc = "A window that nests a compound component (see the 'Bosses and Clerks' example). #{source_code_link(c)}"
+  end
+
   # Endpoints
   #
   #
@@ -122,7 +134,6 @@ class Application < Netzke::Basepack::Viewport
 
   endpoint :sign_out do |params,this|
     session[:user_id] = nil
-    ::Rails.logger.debug "!!! session:: #{session.inspect}\n"
     this.set_result(true)
   end
 
@@ -172,7 +183,7 @@ protected
       :expanded => true,
       :children => [{
 
-        :text => "Plain components",
+        :text => "Basic components",
         :expanded => true,
         :children => [{
 
@@ -209,6 +220,14 @@ protected
             :leaf => true,
             :cmp => "clerk_paging_lockable_form"
           }]
+        },{
+          text: "Window",
+          expanded: true,
+          children: [
+            leaf("Simple window", :simple_window),
+            leaf("Window nesting a grid", :window_with_grid_panel),
+            leaf("Window nesting a compound component", :window_nesting_bosses_and_clerks)
+          ]
         }]
       },{
 
