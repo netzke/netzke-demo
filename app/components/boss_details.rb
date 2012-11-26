@@ -1,4 +1,4 @@
-class BossDetails < Netzke::Basepack::Panel
+class BossDetails < Netzke::Base
 
   js_configure do |c|
     c.body_padding = 5
@@ -10,7 +10,7 @@ class BossDetails < Netzke::Basepack::Panel
         this.maskCmp.show();
 
         // Call endpoint
-        this.update({}, function(){
+        this.serverUpdate({}, function(){
           // Hide mask (we're in the callback function)
           this.maskCmp.hide();
         }, this);
@@ -18,10 +18,10 @@ class BossDetails < Netzke::Basepack::Panel
     JS
   end
 
-  endpoint :update do |params, this|
+  endpoint :server_update do |params, this|
     # updateBodyHtml is a JS-side method we inherit from Netkze::Basepack::Panel
 
-    this.update_body_html body_content(boss)
+    this[:update] = [body_content(boss)]
     this.set_title boss.name
   end
 
