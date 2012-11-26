@@ -198,7 +198,7 @@ protected
             :text => "Clerks",
             :icon => uri_to_icon(:user),
             :leaf => true,
-            :cmp => "clerks"
+            :cmp => "clers"
           }]
         },{
 
