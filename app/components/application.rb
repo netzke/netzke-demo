@@ -169,8 +169,7 @@ protected
   end
 
   def leaf(text, component, icon = nil)
-    {
-      text: text,
+    { text: text,
       icon: icon && uri_to_icon(icon),
       cmp: component,
       leaf: true
@@ -178,73 +177,53 @@ protected
   end
 
   def menu
-    {
-      :text => "Navigation",
+    { :text => "Navigation",
       :expanded => true,
-      :children => [{
+      :children => [
 
-        :text => "Basic components",
-        :expanded => true,
-        :children => [{
-
-          :text => "GridPanel",
+        { :text => "Basic components",
           :expanded => true,
-          :children => [{
-            :text => "Bosses",
-            :icon => uri_to_icon(:user_suit),
-            :leaf => true,
-            :cmp => "bosses"
-          },{
-            :text => "Clerks",
-            :icon => uri_to_icon(:user),
-            :leaf => true,
-            :cmp => "clers"
-          }]
-        },{
+          :children => [
 
-          :text => "FormPanel",
-          :expanded => true,
-          :children => [{
-            :text => "Paging Form",
-            :icon => uri_to_icon(:user),
-            :leaf => true,
-            :cmp => "clerk_paging_form"
-          },{
-            :text => "Paging Form, custom layout",
-            :icon => uri_to_icon(:user),
-            :leaf => true,
-            :cmp => "clerk_form_custom_layout"
-          },{
-            :text => "Paging Lockable Form",
-            :icon => uri_to_icon(:user),
-            :leaf => true,
-            :cmp => "clerk_paging_lockable_form"
-          }]
-        },{
-          text: "Window",
-          expanded: true,
-          children: [
-            leaf("Simple window", :simple_window),
-            leaf("Window nesting a grid", :window_with_grid_panel),
-            leaf("Window nesting a compound component", :window_nesting_bosses_and_clerks)
+            { :text => "GridPanel",
+              :expanded => true,
+              :children => [
+                leaf("Bosses", :bosses, :user_suit),
+                leaf("Clerks", :clerks, :user)
+              ]
+            },
+
+            { :text => "FormPanel",
+              :expanded => true,
+              :children => [
+                leaf("Paging Form", :clerk_paging_form, :user),
+                leaf("Paging Form, custom layout", :clerk_form_custom_layout, :user),
+                leaf("Paging Lockable Form", :clerk_paging_lockable_form, :user),
+              ]
+            },
+
+            { text: "Window",
+              expanded: true,
+              children: [
+                leaf("Simple window", :simple_window),
+                leaf("Window nesting a grid", :window_with_grid_panel),
+                leaf("Window nesting a compound component", :window_nesting_bosses_and_clerks)
+              ]
+            }
           ]
-        }]
-      },{
-
-        :text => "Composite components",
-        :expanded => true,
-        :children => [{
-          :text => "Bosses And Clerks",
-          :icon => uri_to_icon(:user_user_suit),
-          :leaf => true,
-          :cmp => "bosses_and_clerks",
         },
-        leaf("TabPanel (static)", :static_tab_panel),
-        leaf("TabPanel (dynamic)", :dynamic_tab_panel),
-        leaf("Accordion (static)", :static_accordion),
-        leaf("Accordion (dynamic)", :dynamic_accordion),
-        ]
-      }]
+
+        { :text => "Composite components",
+          :expanded => true,
+          :children => [
+            leaf("Bosses and Clerks", :bosses_and_clerks, :user_user_suit),
+            leaf("TabPanel (static)", :static_tab_panel),
+            leaf("TabPanel (dynamic)", :dynamic_tab_panel),
+            leaf("Accordion (static)", :static_accordion),
+            leaf("Accordion (dynamic)", :dynamic_accordion),
+          ]
+        }
+      ]
     }
   end
 end
