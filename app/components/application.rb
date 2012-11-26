@@ -40,7 +40,7 @@ class Application < Netzke::Basepack::Viewport
           { region: :west, item_id: :navigation, width: 300, split: true, xtype: :treepanel, root: menu, root_visible: false, title: "Navigation" },
           { region: :center, layout: :border, border: false, items: [
             { item_id: :info_panel, region: :north, height: 35, body_padding: 5, split: true, html: initial_html },
-            { item_id: :main_panel, region: :center, layout: :fit, border: false, items: [{}] } # items is only needed here for cosmetic reasons (initial border)
+            { item_id: :main_panel, region: :center, layout: :fit, border: false, items: [{body_padding: 5, html: "Components will be loaded in this area"}] } # items is only needed here for cosmetic reasons (initial border)
           ]}
         ]
       }
@@ -118,6 +118,12 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "A window that nests a compound component (see the 'Bosses and Clerks' example). #{source_code_link(c)}"
   end
 
+  component :for_authenticated do |c|
+    c.desc = "A simple panel that can only be loaded when the user is authenticated. It's defined inline in components/application.rb, there's no separate class for it."
+    c.html = "You cannot load this component even by tweaking the URI, because it's configured with authorization in mind."
+    c.body_padding = 5
+  end
+
   # Endpoints
   #
   #
@@ -125,16 +131,16 @@ class Application < Netzke::Basepack::Viewport
     user = User.new
     if User.authenticate_with?(params[:email], params[:password])
       session[:user_id] = 1 # anything; this is what you'd normally do in a real-life case
-      this.set_result(true)
+      this.netzke_set_result(true)
     else
-      this.set_result(false)
-      this.netzkeFeedback("Wrong credentials")
+      this.netzke_set_result(false)
+      this.netzke_feedback("Wrong credentials")
     end
   end
 
   endpoint :sign_out do |params,this|
     session[:user_id] = nil
-    this.set_result(true)
+    this.netzke_set_result(true)
   end
 
 protected
@@ -177,7 +183,7 @@ protected
   end
 
   def menu
-    { :text => "Navigation",
+    out = { :text => "Navigation",
       :expanded => true,
       :children => [
 
@@ -225,5 +231,11 @@ protected
         }
       ]
     }
+
+    if current_user
+      out[:children] << { text: "Private components", expanded: true, children: [ leaf("For authenticated users", :for_authenticated, :lock) ]}
+    end
+
+    out
   end
 end

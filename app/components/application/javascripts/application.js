@@ -70,7 +70,7 @@
         xtype: 'form', bodyPadding: 10,
         defaultType: 'textfield',
         items: [{
-          xtype: 'displayfield', value: '<img src="/images/icons/information.png">&nbsp;Signing in will simply add a logout button to the menu bar.</img>'
+          xtype: 'displayfield', value: '<img src="/images/icons/information.png">&nbsp;Signing in will add a logout button to the menu bar and an extra component.</img>'
         },{
           xtype: 'displayfield'
         },{
