@@ -1,6 +1,6 @@
 class BossesAndClerks < Netzke::Base
   # Remember regions collapse state and size
-  include Netzke::Basepack::ItemsPersistence
+  include Netzke::Basepack::ItemPersistence
 
   def configure(c)
     super
@@ -39,12 +39,12 @@ class BossesAndClerks < Netzke::Base
   end
 
   component :bosses do |c|
-    c.klass = Netzke::Basepack::GridPanel
+    c.klass = Netzke::Basepack::Grid
     c.model = "Boss"
   end
 
   component :clerks do |c|
-    c.klass = Netzke::Basepack::GridPanel
+    c.klass = Netzke::Basepack::Grid
     c.model = "Clerk"
     c.data_store = {auto_load: false}
     c.scope = {:boss_id => component_session[:selected_boss_id]}

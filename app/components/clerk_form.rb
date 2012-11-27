@@ -1,4 +1,4 @@
-class ClerkForm < Netzke::Basepack::PagingFormPanel
+class ClerkForm < Netzke::Basepack::PagingForm
   def configure(c)
     c.title = "Clerk Paging Form With Custom Layout And File Upload"
     c.model = "Clerk"

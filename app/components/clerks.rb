@@ -1,8 +1,8 @@
-# Extend GridPanel to be specific about the model and columns we want to display
-class Clerks < Netzke::Basepack::GridPanel
+# Extend Grid to be specific about the model and columns we want to display
+class Clerks < Netzke::Basepack::Grid
   css_configure do |c|
     # include CSS for displaying the light bulb (see the source code)
-    c.include :main
+    c.require :main
   end
 
   def configure(c)

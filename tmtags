@@ -8,9 +8,9 @@ BossesAndClerks	/Users/skozlov/code/rails/netzke-demo/app/components/bosses_and_
 configuration	/Users/skozlov/code/rails/netzke-demo/app/components/bosses_and_clerks.rb	/^  def configuration$/;"	method	line:4
 boss_info_html	/Users/skozlov/code/rails/netzke-demo/app/components/bosses_and_clerks.rb	/^  def boss_info_html(boss)$/;"	method	line:76
 clerks__get_data_endpoint	/Users/skozlov/code/rails/netzke-demo/app/components/bosses_and_clerks.rb	/^  def clerks__get_data_endpoint(params)$/;"	method	line:85
-ClerkGrid	/Users/skozlov/code/rails/netzke-demo/app/components/clerk_grid.rb	/^class ClerkGrid < Netzke::Basepack::GridPanel$/;"	class	line:2
+ClerkGrid	/Users/skozlov/code/rails/netzke-demo/app/components/clerk_grid.rb	/^class ClerkGrid < Netzke::Basepack::Grid$/;"	class	line:2
 configuration	/Users/skozlov/code/rails/netzke-demo/app/components/clerk_grid.rb	/^  def configuration$/;"	method	line:6
-CustomActionGrid	/Users/skozlov/code/rails/netzke-demo/app/components/custom_action_grid.rb	/^class CustomActionGrid < Netzke::Basepack::GridPanel$/;"	class	line:1
+CustomActionGrid	/Users/skozlov/code/rails/netzke-demo/app/components/custom_action_grid.rb	/^class CustomActionGrid < Netzke::Basepack::Grid$/;"	class	line:1
 default_config	/Users/skozlov/code/rails/netzke-demo/app/components/custom_action_grid.rb	/^  def default_config$/;"	method	line:5
 default_bbar	/Users/skozlov/code/rails/netzke-demo/app/components/custom_action_grid.rb	/^  def default_bbar$/;"	method	line:10
 default_context_menu	/Users/skozlov/code/rails/netzke-demo/app/components/custom_action_grid.rb	/^  def default_context_menu$/;"	method	line:14
@@ -32,7 +32,7 @@ ComponentsController	/Users/skozlov/code/rails/netzke-demo/app/controllers/compo
 index	/Users/skozlov/code/rails/netzke-demo/app/controllers/components_controller.rb	/^  def index$/;"	method	line:2
 DemoController	/Users/skozlov/code/rails/netzke-demo/app/controllers/demo_controller.rb	/^class DemoController < ApplicationController$/;"	class	line:1
 index	/Users/skozlov/code/rails/netzke-demo/app/controllers/demo_controller.rb	/^  def index$/;"	method	line:3
-GridPanelController	/Users/skozlov/code/rails/netzke-demo/app/controllers/grid_panel_controller.rb	/^class GridPanelController < ApplicationController$/;"	class	line:2
+GridController	/Users/skozlov/code/rails/netzke-demo/app/controllers/grid_panel_controller.rb	/^class GridController < ApplicationController$/;"	class	line:2
 demo	/Users/skozlov/code/rails/netzke-demo/app/controllers/grid_panel_controller.rb	/^  def demo$/;"	method	line:5
 regenerate_test_data	/Users/skozlov/code/rails/netzke-demo/app/controllers/grid_panel_controller.rb	/^  def regenerate_test_data$/;"	method	line:10
 reset_configs	/Users/skozlov/code/rails/netzke-demo/app/controllers/grid_panel_controller.rb	/^  def reset_configs$/;"	method	line:47
@@ -75,7 +75,7 @@ CreateNetzkeComponentStates	/Users/skozlov/code/rails/netzke-demo/db/migrate/201
 up	/Users/skozlov/code/rails/netzke-demo/db/migrate/20101105153544_create_netzke_component_states.rb	/^  def self.up$/;"	singleton method	line:2
 down	/Users/skozlov/code/rails/netzke-demo/db/migrate/20101105153544_create_netzke_component_states.rb	/^  def self.down$/;"	singleton method	line:17
 Netzke	/Users/skozlov/code/rails/netzke-demo/lib/netzke/model_extensions/clerk_for_grid_panel.rb	/^module Netzke::ModelExtensions$/;"	mixin	line:2
-ClerkForGridPanel	/Users/skozlov/code/rails/netzke-demo/lib/netzke/model_extensions/clerk_for_grid_panel.rb	/^  class ClerkForGridPanel < Clerk$/;"	class	line:3
+ClerkForGrid	/Users/skozlov/code/rails/netzke-demo/lib/netzke/model_extensions/clerk_for_grid_panel.rb	/^  class ClerkForGrid < Clerk$/;"	class	line:3
 updated_bulb	/Users/skozlov/code/rails/netzke-demo/lib/netzke/model_extensions/clerk_for_grid_panel.rb	/^    def updated_bulb$/;"	method	line:19
 fly	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^	function fly(el) {$/;"	function	line:1228
 checkRelatedTarget	/Users/skozlov/code/rails/netzke-demo/public/extjs/adapter/ext/ext-base-debug.js	/^    function checkRelatedTarget(e) {$/;"	function	line:1459

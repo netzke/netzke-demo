@@ -1,4 +1,4 @@
-class ClerkPagingLockableForm < Netzke::Basepack::PagingFormPanel
+class ClerkPagingLockableForm < Netzke::Basepack::PagingForm
   def configure(c)
     super
     c.mode = :lockable

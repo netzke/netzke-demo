@@ -110,8 +110,8 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "A simple window with persistent dimensions, position, and state. " + source_code_link(c)
   end
 
-  component :window_with_grid_panel do |c|
-    c.desc = "A window that nests a GridPanel. #{source_code_link(c)}"
+  component :window_with_grid do |c|
+    c.desc = "A window that nests a Grid. #{source_code_link(c)}"
   end
 
   component :window_nesting_bosses_and_clerks do |c|
@@ -119,6 +119,7 @@ class Application < Netzke::Basepack::Viewport
   end
 
   component :for_authenticated do |c|
+    c.klass = Netzke::Core::Panel
     c.desc = "A simple panel that can only be loaded when the user is authenticated. It's defined inline in components/application.rb, there's no separate class for it."
     c.html = "You cannot load this component even by tweaking the URI, because it's configured with authorization in mind."
     c.body_padding = 5
@@ -154,7 +155,8 @@ protected
   end
 
   def source_code_link(c)
-    uri = [NetzkeDemo::Application.config.repo_root, "app/components", c.klass.name.underscore + '.rb'].join('/')
+    comp_file_name = c.klass.nil? ? c.name.underscore : c.klass.name.underscore
+    uri = [NetzkeDemo::Application.config.repo_root, "app/components", comp_file_name + '.rb'].join('/')
     "<a href='#{uri}' target='_blank'>Source code</a>"
   end
 
@@ -191,7 +193,7 @@ protected
           :expanded => true,
           :children => [
 
-            { :text => "GridPanel",
+            { :text => "Grid",
               :expanded => true,
               :children => [
                 leaf("Bosses", :bosses, :user_suit),
@@ -199,7 +201,7 @@ protected
               ]
             },
 
-            { :text => "FormPanel",
+            { :text => "Form",
               :expanded => true,
               :children => [
                 leaf("Paging Form", :clerk_paging_form, :user),
@@ -212,7 +214,7 @@ protected
               expanded: true,
               children: [
                 leaf("Simple window", :simple_window),
-                leaf("Window nesting a grid", :window_with_grid_panel),
+                leaf("Window nesting a grid", :window_with_grid),
                 leaf("Window nesting a compound component", :window_nesting_bosses_and_clerks)
               ]
             }

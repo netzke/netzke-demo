@@ -10,7 +10,7 @@
 2009-09-06
 * Move from sqlite to mysql.
 * Support for netzke-basepack v0.5.
-* UserManager replaced with GridPanel.
+* UserManager replaced with Grid.
 * Minor visual improvements.
 
 2009-05-12

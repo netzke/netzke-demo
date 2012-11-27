@@ -1,6 +1,6 @@
 # Displays a grid panel on the left, and the form on the right. When a row in the grid panel is clicked, the form panel dynamically loads the corresponding record.
 class ClerkInspector < Netzke::Basepack::BorderLayoutPanel
-  component :clerk_grid, :class_name => "Netzke::Basepack::GridPanel", :model => "Clerk", :columns => [:name]
+  component :clerk_grid, :class_name => "Netzke::Basepack::Grid", :model => "Clerk", :columns => [:name]
   component :clerk_form, :class_name => "Netzke::Basepack::FormPanel", :model => "Clerk"
 
   def configure

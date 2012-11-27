@@ -1,4 +1,4 @@
-class StaticAccordion < Netzke::Basepack::AccordionPanel
+class StaticAccordion < Netzke::Basepack::Accordion
   component :clerks do |c|
     c.eager_loading = true
   end

@@ -1,4 +1,4 @@
-class ClerkPagingForm < Netzke::Basepack::PagingFormPanel
+class ClerkPagingForm < Netzke::Basepack::PagingForm
   def configure(c)
     super
     c.model = "Clerk"

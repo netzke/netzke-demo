@@ -1,4 +1,4 @@
-class DynamicAccordion < Netzke::Basepack::AccordionPanel
+class DynamicAccordion < Netzke::Basepack::Accordion
   component :clerks
   component :bosses
   component :bosses_and_clerks

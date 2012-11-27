@@ -1,7 +1,7 @@
-<% title "Meet Netzke::Basepack::GridPanel" %>
+<% title "Meet Netzke::Basepack::Grid" %>
 <%= link_to_code %>
 
-<p>Below is an instance of GridPanel, which by default provides for:</p>
+<p>Below is an instance of Grid, which by default provides for:</p>
 <ul>
   <li>multiline CRUD-operations inside the grid itself</li>
   <li>multi-record editing and adding records via a form</li>
@@ -18,20 +18,20 @@
 <p>Code (in the view):</p>
 <% coderay do %>
 netzke :bosses,
-  :class_name => "Netzke::Basepack::GridPanel",
+  :class_name => "Netzke::Basepack::Grid",
   :model => 'Boss'
 <% end %>
 
 <p>Result:</p>
 <%= netzke :bosses,
-  :class_name => "Netzke::Basepack::GridPanel",
+  :class_name => "Netzke::Basepack::Grid",
   :model => 'Boss' %>
 
 <h2>Control over columns</h2>
 <p>If you need more control over which columns to display and how, you can provide <tt>:columns</tt> option:</p>
 <% coderay do %>
 netzke :bosses_custom_columns,
-  :class_name => "Netzke::Basepack::GridPanel",
+  :class_name => "Netzke::Basepack::Grid",
   :model => 'Boss',
   :title => "Bosses",
   :width => 400,
@@ -42,7 +42,7 @@ netzke :bosses_custom_columns,
 <% end %>
 <p>Result:</p>
 <%= netzke :bosses_custom_columns,
-  :class_name => "Netzke::Basepack::GridPanel",
+  :class_name => "Netzke::Basepack::Grid",
   :model => 'Boss',
   :title => "Bosses",
   :width => 400,
@@ -53,7 +53,7 @@ netzke :bosses_custom_columns,
 
 <h2>Associations, Rails validations, "virtual" columns, and more</h2>
 <p>Here's an example that demonstrates:
-  <li>how GridPanel handles one-to-many associations</li>
+  <li>how Grid handles one-to-many associations</li>
   <li>usage of "virtual" attributes (model's instance methods)</li>
   <li>usage of the <tt>getter</tt> column configuration option</li>
   <li>usage of the <tt>scope</tt> column configuration option (for filtering combobox options)</li>
@@ -77,8 +77,8 @@ class Clerk < ActiveRecord::Base
   end
 end
 
-# Extend GridPanel to be specific about the model and columns we want to display
-class ClerkGrid < Netzke::Basepack::GridPanel
+# Extend Grid to be specific about the model and columns we want to display
+class ClerkGrid < Netzke::Basepack::Grid
   css_include :main
 
   def configuration
@@ -125,14 +125,14 @@ netzke :clerk_grid
 You can specify which actions are allowed for this grid
 <% coderay do %>
 netzke :bosses_with_permissions,
-  :class_name => "Netzke::Basepack::GridPanel",
+  :class_name => "Netzke::Basepack::Grid",
   :model => 'Boss',
   :prohibit_update => true,
   :prohibit_delete => true
 <% end %>
 <p>Result:</p>
 <%= netzke :bosses_with_permissions,
-  :class_name => "Netzke::Basepack::GridPanel",
+  :class_name => "Netzke::Basepack::Grid",
   :model => 'Boss',
   :prohibit_update => true,
   :prohibit_delete => true
@@ -145,7 +145,7 @@ netzke :bosses_with_permissions,
 
 <% coderay do %>
 netzke :clerks_with_custom_bottom_bar,
-    :class_name => "Netzke::Basepack::GridPanel",
+    :class_name => "Netzke::Basepack::Grid",
     :model => 'Clerk',
     :bbar => nil,
     :tbar => [{
@@ -161,7 +161,7 @@ netzke :clerks_with_custom_bottom_bar,
 
 <p>Result:</p>
 <%= netzke :clerks_with_custom_bottom_bar,
-    :class_name => "Netzke::Basepack::GridPanel",
+    :class_name => "Netzke::Basepack::Grid",
     :model => 'Clerk',
     :bbar => nil,
     :tbar => [{

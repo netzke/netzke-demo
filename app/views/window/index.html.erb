@@ -14,16 +14,16 @@
 
 <%= netzke :window, :class_name => "Basepack::Window", :width => 200, :height => 100, :persistence => true %>
 
-<h2>Example 2: a window nesting a GridPanel</h2>
+<h2>Example 2: a window nesting a Grid</h2>
 
-<input type="button" value="Show window" onClick="Netzke.page.windowWithGridPanel.show(); Ext.get(this).hide();" />
+<input type="button" value="Show window" onClick="Netzke.page.windowWithGrid.show(); Ext.get(this).hide();" />
 
 <%= netzke :window_with_grid_panel,
       :class_name => "Basepack::Window",
       :width => 700, :height => 400,
       :persistence => true,
       :items => [{
-        :class_name => "Basepack::GridPanel",
+        :class_name => "Basepack::Grid",
         :model => "Boss",
         :header => false, :border => true
       }]

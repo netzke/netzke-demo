@@ -1,4 +1,4 @@
-class Bosses < Netzke::Basepack::GridPanel
+class Bosses < Netzke::Basepack::Grid
   def configure(c)
     super
     c.model = "Boss"
