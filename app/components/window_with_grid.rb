@@ -5,7 +5,7 @@ class WindowWithGrid < Netzke::Basepack::Window
     c.title = "Window nesting a grid"
     c.width = 800
     c.height = 400
-    c.items = [{component: :bosses, header: false}]
+    c.items = [:bosses]
   end
 
   component :bosses

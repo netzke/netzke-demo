@@ -71,11 +71,6 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "A paging form panel configured with just a model. Browse through the records by clicking on the paging toobar. " + source_code_link(c)
   end
 
-  component :clerk_paging_lockable_form do |c|
-    c.title  = "Clerk Paging Lockable Form"
-    c.desc = "A paging form panel that is configured to be lockable. " + source_code_link(c)
-  end
-
   component :clerk_form_custom_layout do |c|
     c.klass  = ClerkForm
     c.desc = "A paging form panel with custom layout. " + source_code_link(c)
@@ -204,18 +199,17 @@ protected
             { :text => "Form",
               :expanded => true,
               :children => [
-                leaf("Paging Form", :clerk_paging_form, :user),
-                leaf("Paging Form, custom layout", :clerk_form_custom_layout, :user),
-                leaf("Paging Lockable Form", :clerk_paging_lockable_form, :user),
+                leaf("Paging Form", :clerk_paging_form, :application_form),
+                leaf("Paging Form, custom layout", :clerk_form_custom_layout, :application_form_edit)
               ]
             },
 
             { text: "Window",
               expanded: true,
               children: [
-                leaf("Simple window", :simple_window),
-                leaf("Window nesting a grid", :window_with_grid),
-                leaf("Window nesting a compound component", :window_nesting_bosses_and_clerks)
+                leaf("Simple window", :simple_window, :application),
+                leaf("Window nesting a grid", :window_with_grid, :application_view_detail),
+                leaf("Window nesting a compound component", :window_nesting_bosses_and_clerks, :application_tile_horizontal)
               ]
             }
           ]
@@ -225,10 +219,10 @@ protected
           :expanded => true,
           :children => [
             leaf("Bosses and Clerks", :bosses_and_clerks, :user_user_suit),
-            leaf("TabPanel (static)", :static_tab_panel),
-            leaf("TabPanel (dynamic)", :dynamic_tab_panel),
-            leaf("Accordion (static)", :static_accordion),
-            leaf("Accordion (dynamic)", :dynamic_accordion),
+            leaf("TabPanel (static)", :static_tab_panel, :bullet_black),
+            leaf("TabPanel (dynamic)", :dynamic_tab_panel, :bullet_black),
+            leaf("Accordion (static)", :static_accordion, :bullet_black),
+            leaf("Accordion (dynamic)", :dynamic_accordion, :bullet_black)
           ]
         }
       ]
