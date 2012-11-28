@@ -11,12 +11,9 @@
     }, this);
 
     this.navigation.on('select', function(m, r) {
-      this.netzkeLoadComponent(r.raw.cmp, function(cmp){}, this);
-      this.netzkeLoadComponent({name: r.raw.cmp, container: this.mainPanel, callback: function(cmp) {
+      this.netzkeLoadComponent(r.raw.cmp, {container: this.mainPanel, callback: function(cmp) {
         this.updateInfo(cmp.desc);
-        if (cmp.isXType('window')) {
-          cmp.show();
-        }
+        if (cmp.isFloating()) { cmp.show(); }
       }, scope: this});
     }, this);
   },

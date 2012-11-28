@@ -94,7 +94,7 @@
   * config - extra config for the portlet
   */
   addPortlet: function(className, config) {
-    this.netzkeLoadComponent({name: "netzke_" + this.netzkePortletIndex, params: {class_name: className}, callback: function(c){
+    this.netzkeLoadComponent("netzke_" + this.netzkePortletIndex, {params: {class_name: className}, callback: function(c){
       this.items.last().add(c);
     }});
   }
