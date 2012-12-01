@@ -1,4 +1,4 @@
-This is the source-code for [http://netzke-demo.herokuapp.com](http://netzke-demo.herokuapp.com) - the [Netzke](http://netzke.org) live-demo.
+This is the source-code for [http://netzke-demo.herokuapp.com](http://netzke-demo.herokuapp.com) - the official [Netzke](http://netzke.org) demo.
 
 ## To run locally
 
@@ -20,7 +20,7 @@ This is the source-code for [http://netzke-demo.herokuapp.com](http://netzke-dem
 
 * Rails ~> 3.2.0
 * Ext JS ~> 4.1.0
-* Netzke ~> 0.8.0
+* Netzke Core/Basepack ~> 0.8.0
 
 ## Feedback
 
