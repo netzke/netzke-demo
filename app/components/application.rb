@@ -56,7 +56,6 @@ class Application < Netzke::Basepack::Viewport
   end
 
   component :clerks do |c|
-    c.title = "Clerks"
     c.desc = "A grid with customized columns. " + source_code_link(c)
   end
 
@@ -199,8 +198,8 @@ protected
             { :text => "Grid",
               :expanded => true,
               :children => [
-                leaf("Bosses", :bosses, :user_suit),
-                leaf("Clerks", :clerks, :user),
+                leaf("Grid with defaults", :bosses, :user_suit),
+                leaf("Grid with customized columns", :clerks, :user),
                 leaf("Grid with action column", :grid_with_action_column, :user),
                 leaf("Grid with persistent columns", :grid_with_persistent_columns, :user_suit)
               ]
