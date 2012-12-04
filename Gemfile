@@ -10,6 +10,7 @@ gem 'carrierwave'
 # gem 'netzke-basepack', path: '~/code/netzke/netzke-basepack'
 gem 'netzke-core', git: "git://github.com/nomadcoder/netzke-core"
 gem 'netzke-basepack', git: "git://github.com/nomadcoder/netzke-basepack"
+gem 'netzke-communitypack', github: "nomadcoder/netzke-communitypack"
 
 group :development, :test do
   gem 'pry'

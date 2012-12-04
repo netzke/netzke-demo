@@ -1,13 +1,21 @@
 GIT
   remote: git://github.com/nomadcoder/netzke-basepack
-  revision: 76af771d56b2ed63100cd8aa7a10cc98162f51ce
+  revision: 83bd6c2287981c149a0de4bb350f0dc03d7f67ba
   specs:
     netzke-basepack (0.8.0)
       netzke-core (~> 0.8.0)
 
 GIT
+  remote: git://github.com/nomadcoder/netzke-communitypack.git
+  revision: 1a44f9b0adf22ce8546288c2c0fd56b46376fc66
+  specs:
+    netzke-communitypack (0.8.0)
+      netzke-basepack (~> 0.8.0)
+      rails (>= 3.0.0)
+
+GIT
   remote: git://github.com/nomadcoder/netzke-core
-  revision: 19477096edb11257d4ce13588f4790ab6353255c
+  revision: cd17e244287da570796d81f12b654646fe90336f
   specs:
     netzke-core (0.8.0)
       activesupport (>= 3.0.0)
@@ -78,7 +86,8 @@ GEM
     json (1.7.5)
     launchy (2.1.2)
       addressable (~> 2.3)
-    libwebsocket (0.1.6.1)
+    libwebsocket (0.1.7.1)
+      addressable
       websocket
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -86,7 +95,7 @@ GEM
       treetop (~> 1.4.8)
     method_source (0.8.1)
     mime-types (1.19)
-    multi_json (1.3.7)
+    multi_json (1.4.0)
     nokogiri (1.5.5)
     pg (0.14.1)
     polyglot (0.3.3)
@@ -119,7 +128,7 @@ GEM
     rake (10.0.2)
     rdoc (3.12)
       json (~> 1.4)
-    rspec-core (2.12.0)
+    rspec-core (2.12.1)
     rspec-expectations (2.12.0)
       diff-lcs (~> 1.1.3)
     rspec-mocks (2.12.0)
@@ -170,6 +179,7 @@ DEPENDENCIES
   faker
   launchy
   netzke-basepack!
+  netzke-communitypack!
   netzke-core!
   pg
   pry
