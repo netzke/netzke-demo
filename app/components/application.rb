@@ -60,6 +60,10 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "A grid with customized columns. " + source_code_link(c)
   end
 
+  component :grid_with_action_column do |c|
+    c.desc = "A grid where you can delet rows by clicking a column action. Uses netzke-communitypack" + source_code_link(c)
+  end
+
   component :custom_action_grid do |c|
     c.model  = "Boss"
     c.title  = "Bosses"
@@ -192,7 +196,8 @@ protected
               :expanded => true,
               :children => [
                 leaf("Bosses", :bosses, :user_suit),
-                leaf("Clerks", :clerks, :user)
+                leaf("Clerks", :clerks, :user),
+                leaf("Grid with action column", :grid_with_action_column, :user)
               ]
             },
 
