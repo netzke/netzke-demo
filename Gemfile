@@ -10,6 +10,8 @@ gem 'netzke-core', github: "nomadcoder/netzke-core"
 gem 'netzke-basepack', github: "nomadcoder/netzke-basepack"
 gem 'netzke-communitypack', github: "nomadcoder/netzke-communitypack"
 
+gem 'thin'
+
 group :development, :test do
   gem 'pry'
   gem 'capybara'
