@@ -12,6 +12,7 @@ gem 'netzke-communitypack', github: "nomadcoder/netzke-communitypack"
 
 gem 'thin'
 
+
 group :development, :test do
   gem 'pry'
   gem 'capybara'
