@@ -44,8 +44,7 @@ class BossesAndClerks < Netzke::Base
   end
 
   component :clerks do |c|
-    c.klass = Netzke::Basepack::Grid
-    c.model = "Clerk"
+    c.klass = Clerks
     c.data_store = {auto_load: false}
     c.scope = {:boss_id => component_session[:selected_boss_id]}
     c.strong_default_attrs = {:boss_id => component_session[:selected_boss_id]}
