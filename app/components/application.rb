@@ -61,7 +61,11 @@ class Application < Netzke::Basepack::Viewport
   end
 
   component :grid_with_action_column do |c|
-    c.desc = "A grid where you can delet rows by clicking a column action. Uses netzke-communitypack" + source_code_link(c)
+    c.desc = "A grid where you can delet rows by clicking a column action. Uses <a href='https://github.com/nomadcoder/netzke-communitypack'>netzke-communitypack</a>. " + source_code_link(c)
+  end
+
+  component :grid_with_persistent_columns do |c|
+    c.desc = "Columns size, order, and hidden status will be remembered for this grid - play with that! " + source_code_link(c)
   end
 
   component :custom_action_grid do |c|
@@ -197,7 +201,8 @@ protected
               :children => [
                 leaf("Bosses", :bosses, :user_suit),
                 leaf("Clerks", :clerks, :user),
-                leaf("Grid with action column", :grid_with_action_column, :user)
+                leaf("Grid with action column", :grid_with_action_column, :user),
+                leaf("Grid with persistent columns", :grid_with_persistent_columns, :user_suit)
               ]
             },
 
