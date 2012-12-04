@@ -1,20 +1,17 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '~>3.2.0'
 
 gem 'faker'
 gem 'pg'
 gem 'carrierwave'
 
-# gem 'netzke-core', path: '~/code/netzke/netzke-core'
-# gem 'netzke-basepack', path: '~/code/netzke/netzke-basepack'
-gem 'netzke-core', git: "git://github.com/nomadcoder/netzke-core"
-gem 'netzke-basepack', git: "git://github.com/nomadcoder/netzke-basepack"
+gem 'netzke-core', github: "nomadcoder/netzke-core"
+gem 'netzke-basepack', github: "nomadcoder/netzke-basepack"
 gem 'netzke-communitypack', github: "nomadcoder/netzke-communitypack"
 
 group :development, :test do
   gem 'pry'
-  gem 'thin'
   gem 'capybara'
   gem 'capybara-screenshot'
   gem 'selenium-webdriver'
