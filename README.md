@@ -4,17 +4,17 @@ This is the source-code for [http://netzke-demo.herokuapp.com](http://netzke-dem
 
 1. Get the code from github
 
-    git clone git://github.com/nomadcoder/netzke-demo.git && cd netzke-demo
+    $ git clone git://github.com/nomadcoder/netzke-demo.git && cd netzke-demo
 
 2. Install required gems
 
-    bundle install
+    $ bundle install
 
 3. Create your config/database.yml or use the included database.yml.sample (postgres)
 
 4. Create the database, do the migrations, and seed the demo data
 
-    rake db:create && rake db:migrate && rake db:seed
+    $ rake db:create && rake db:migrate && rake db:seed
 
 ## Dependencies
 
@@ -24,11 +24,8 @@ This is the source-code for [http://netzke-demo.herokuapp.com](http://netzke-dem
 
 ## Feedback
 
-Google groups:
-http://groups.google.com/group/netzke
+Google groups: http://groups.google.com/group/netzke
 
-Twitter:
-http://twitter.com/netzke
+Twitter: http://twitter.com/netzke
 
-Author's twitter:
-http://twitter.com/nomadcoder
+Author's twitter: http://twitter.com/nomadcoder
