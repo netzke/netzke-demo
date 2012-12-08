@@ -30,8 +30,8 @@
       buttons: Ext.Msg.OK,
       icon: Ext.MessageBox.INFO,
       msg: '<p>Explore demo <a target="_blank" href="http://netzke.org">Netzke</a> components along with their source code. <p/> \
+        <br/> \
         <p>Follow <a target="_blank" href="http://twitter.com/netzke">@netzke</a> on Twitter for the latest news on the framework. <p/> \
-        <p>The source code for this app is on <a target="_blank" href="https://github.com/nomadcoder/netzke-demo">GitHub</a>. <p/> \
         <br/> \
         <div style="text-align: right">By <a target="_blank" href="http://twitter.com/nomadcoder">nomadcoder</a>, ' + (new Date()).getFullYear() + '</div> \
         '
