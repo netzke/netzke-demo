@@ -1,12 +1,12 @@
 GIT
-  remote: git://github.com/nomadcoder/netzke-basepack.git
-  revision: 83bd6c2287981c149a0de4bb350f0dc03d7f67ba
+  remote: git://github.com/netzke/netzke-basepack.git
+  revision: 4245842956d9fa634e2f8c2942023d60e77fd1ba
   specs:
     netzke-basepack (0.8.0)
       netzke-core (~> 0.8.0)
 
 GIT
-  remote: git://github.com/nomadcoder/netzke-communitypack.git
+  remote: git://github.com/netzke/netzke-communitypack.git
   revision: 1a44f9b0adf22ce8546288c2c0fd56b46376fc66
   specs:
     netzke-communitypack (0.8.0)
@@ -14,8 +14,8 @@ GIT
       rails (>= 3.0.0)
 
 GIT
-  remote: git://github.com/nomadcoder/netzke-core.git
-  revision: cd17e244287da570796d81f12b654646fe90336f
+  remote: git://github.com/netzke/netzke-core.git
+  revision: 74e19672cd7c270415714f1805f09b3262e577bc
   specs:
     netzke-core (0.8.0)
       activesupport (>= 3.0.0)

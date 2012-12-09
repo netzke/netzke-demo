@@ -4,7 +4,7 @@ This is the source-code for [http://netzke-demo.herokuapp.com](http://netzke-dem
 
 1. Get the code from github
 
-    $ git clone git://github.com/nomadcoder/netzke-demo.git && cd netzke-demo
+    $ git clone git://github.com/netzke/netzke-demo.git && cd netzke-demo
 
 2. Install required gems
 

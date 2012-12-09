@@ -60,7 +60,7 @@ class Application < Netzke::Basepack::Viewport
   end
 
   component :grid_with_action_column do |c|
-    c.desc = "A grid where you can delet rows by clicking a column action. Uses <a href='https://github.com/nomadcoder/netzke-communitypack'>netzke-communitypack</a>. " + source_code_link(c)
+    c.desc = "A grid where you can delet rows by clicking a column action. Uses <a href='https://github.com/netzke/netzke-communitypack'>netzke-communitypack</a>. " + source_code_link(c)
   end
 
   component :grid_with_persistent_columns do |c|
@@ -89,7 +89,7 @@ class Application < Netzke::Basepack::Viewport
 
   component :bosses_and_clerks do |c|
     c.title  = "Bosses and Clerks"
-    c.desc = "A compound component from #{link("this", "https://github.com/nomadcoder/netzke/wiki/Building-a-composite-component")} tutorial. The component is a sample implementation of the one-to-many relationship UI. " + source_code_link(c)
+    c.desc = "A compound component from #{link("this", "https://github.com/netzke/netzke/wiki/Building-a-composite-component")} tutorial. The component is a sample implementation of the one-to-many relationship UI. " + source_code_link(c)
   end
 
   component :static_tab_panel do |c|
