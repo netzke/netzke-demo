@@ -6,6 +6,8 @@ gem 'faker'
 gem 'pg'
 gem 'carrierwave'
 
+gem 'thin'
+
 gem 'netzke-core', github: "netzke/netzke-core"
 gem 'netzke-basepack', github: "netzke/netzke-basepack"
 gem 'netzke-communitypack', github: "netzke/netzke-communitypack"
