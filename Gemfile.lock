@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/netzke/netzke-core.git
-  revision: 043fa04db247b4487b0faea1cc77237edc5b101e
+  revision: 619daa9f5aa225ecd6a57001a116064c27f439bf
   branch: ext42
   specs:
     netzke-core (0.9.0)
