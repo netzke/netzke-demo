@@ -5,7 +5,7 @@ Ext.require([
     'Ext.grid.*',
     'Ext.data.*',
     'Ext.util.*',
-    'Ext.grid.PagingScroller'
+    'Ext.grid.plugin.BufferedRenderer'
 ]);
 
 Ext.onReady(function(){
@@ -13,12 +13,12 @@ Ext.onReady(function(){
         extend: 'Ext.data.Model',
         fields: [
             'title', 'forumtitle', 'forumid', 'username', {
-                name: 'replycount',
+                name: 'replycount', 
                 type: 'int'
             }, {
-                name: 'lastpost',
-                mapping: 'lastpost',
-                type: 'date',
+                name: 'lastpost', 
+                mapping: 'lastpost', 
+                type: 'date', 
                 dateFormat: 'timestamp'
             },
             'lastposter', 'excerpt', 'threadid'

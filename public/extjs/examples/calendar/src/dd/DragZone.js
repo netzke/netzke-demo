@@ -9,7 +9,7 @@ Ext.define('Ext.calendar.dd.DragZone', {
         'Ext.calendar.dd.StatusProxy',
         'Ext.calendar.data.EventMappings'
     ],
-
+    
     ddGroup: 'CalendarDD',
     eventSelector: '.ext-cal-evt',
 

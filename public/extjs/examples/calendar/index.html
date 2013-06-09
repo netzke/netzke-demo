@@ -1,14 +1,13 @@
 <html>
 <head>
     <title>Ext JS Calendar Sample</title>
-    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
     <link rel="stylesheet" type="text/css" href="resources/css/calendar.css" />
     <link rel="stylesheet" type="text/css" href="resources/css/examples.css" />
 
     <!-- GC -->
-
-
-    <script type="text/javascript" src="../../ext-all.js"></script>
+    
+    <script type="text/javascript" src="../../examples/shared/include-ext.js"></script>
+    <script type="text/javascript" src="../../examples/shared/options-toolbar.js"></script>
 
     <script type="text/javascript">
         Ext.Loader.setConfig({
@@ -25,7 +24,7 @@
         Ext.onReady(function(){
             // launch the app:
             Ext.create('Ext.calendar.App');
-
+            
             // update the header logo date:
             document.getElementById('logo-body').innerHTML = new Date().getDate();
         });

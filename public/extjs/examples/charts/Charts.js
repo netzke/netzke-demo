@@ -14,7 +14,6 @@ Ext.onReady(function() {
     };
 
     var chart1 = Ext.create('Ext.chart.Chart',{
-            xtype: 'chart',
             animate: false,
             store: store1,
             insetPadding: 30,
@@ -49,7 +48,7 @@ Ext.onReady(function() {
                 listeners: {
                   itemmouseup: function(item) {
                       Ext.example.msg('Item Selected', item.value[1] + ' visits on ' + Ext.Date.monthNames[item.value[0]]);
-                  }
+                  }  
                 },
                 tips: {
                     trackMouse: true,
@@ -75,7 +74,7 @@ Ext.onReady(function() {
                 }
             }]
         });
-
+ 
 
     var panel1 = Ext.create('widget.panel', {
         width: 600,
@@ -89,9 +88,8 @@ Ext.onReady(function() {
         }],
         items: chart1
     });
-
+    
     var chart2 = Ext.create('Ext.chart.Chart',{
-            xtype: 'chart',
             animate: false,
             store: store1,
             insetPadding: 30,
@@ -146,7 +144,7 @@ Ext.onReady(function() {
                 }
             }]
         });
-
+ 
 
     var panel2 = Ext.create('widget.panel', {
         width: 600,
@@ -160,9 +158,8 @@ Ext.onReady(function() {
         }],
         items: chart2
     });
-
+    
     var chart3 = Ext.create('Ext.chart.Chart', {
-            xtype: 'chart',
             animate: false,
             store: store1,
             insetPadding: 30,
@@ -250,7 +247,7 @@ Ext.onReady(function() {
                     stroke: '#18428E'
                 }
             }]
-        });
+        }); 
 
     var panel3 = Ext.create('widget.panel', {
         width: 600,

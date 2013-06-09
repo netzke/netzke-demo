@@ -13,7 +13,7 @@ Ext.onReady(function(){
             Ext.example.msg('Click', 'You clicked on "Action 1".');
         }
     });
-
+    
      var panel = Ext.create('Ext.panel.Panel', {
         title: 'Actions',
         renderTo: document.body,
@@ -33,7 +33,7 @@ Ext.onReady(function(){
         },
         items: Ext.create('Ext.button.Button', action)       // Add the action as a button
     });
-
+    
     /*
      * Add toolbar items dynamically after creation
      */

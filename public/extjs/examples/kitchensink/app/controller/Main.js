@@ -1,128 +1,330 @@
 Ext.define('KitchenSink.controller.Main', {
     extend: 'Ext.app.Controller',
-
-    stores: [
-        'Examples',
-        'Companies',
-        'Restaurants',
-        'States',
-        'TreeStore'
+    requires: [
+        'KitchenSink.view.*',
+        'Ext.window.Window'
     ],
 
-    views: [
-        'Viewport',
-        'Header'
+    stores: [
+        'Companies',
+        'Restaurants',
+        'Files',
+        'States',
+        'BigData'
     ],
 
     refs: [
         {
-            ref: 'examplePanel',
-            selector: '#examplePanel'
+            ref: 'viewport',
+            selector: 'viewport'
         },
         {
-            ref: 'exampleList',
-            selector: 'exampleList'
+            ref: 'navigation',
+            selector: 'navigation'
+        },
+        {
+            ref: 'contentPanel',
+            selector: 'contentPanel'
+        },
+        {
+            ref: 'descriptionPanel',
+            selector: 'descriptionPanel'
+        },
+        {
+            ref: 'codePreview',
+            selector: 'codePreview'
         }
     ],
 
+    exampleRe: /^\s*\/\/\s*(\<\/?example>)\s*$/,
+
     init: function() {
         this.control({
-            'viewport exampleList': {
-                'select': function(me, record, item, index, e) {
-                    if (!record.isLeaf()) {
-                        return;
+            'navigation': {
+                selectionchange: 'onNavSelectionChange'
+            },
+            'viewport': {
+                afterlayout: 'afterViewportLayout'
+            },
+            'codePreview tool[type=maximize]': {
+                click: 'onMaximizeClick'
+            },
+            'contentPanel': {
+                resize: 'centerContent'
+            },
+            'tool[regionTool]': {
+                click: 'onSetRegion'
+            }
+        });
+    },
+            
+    onSetRegion: function (tool) {
+        var panel = tool.toolOwner;
+
+        var regionMenu = panel.regionMenu || (panel.regionMenu =
+                Ext.widget({
+                    xtype: 'menu',
+                    items: [{
+                        text: 'North',
+                        checked: panel.region === 'north',
+                        group: 'mainregion',
+                        handler: function () {
+                            panel.setBorderRegion('north');
+                        }
+                    },{
+                        text: 'South',
+                        checked: panel.region === 'south',
+                        group: 'mainregion',
+                        handler: function () {
+                            panel.setBorderRegion('south');
+                        }
+                    },{
+                        text: 'East',
+                        checked: panel.region === 'east',
+                        group: 'mainregion',
+                        handler: function () {
+                            panel.setBorderRegion('east');
+                        }
+                    },{
+                        text: 'West',
+                        checked: panel.region === 'west',
+                        group: 'mainregion',
+                        handler: function () {
+                            panel.setBorderRegion('west');
+                        }
+                    }]
+                }));
+
+        regionMenu.showBy(tool.el);
+    },
+
+    afterViewportLayout: function() {
+        if (!this.navigationSelected) {
+            var id = location.hash.substring(1),
+                navigation = this.getNavigation(),
+                store = navigation.getStore(),
+                node;
+
+            node = id ? store.getNodeById(id) : store.getRootNode().firstChild.firstChild;
+
+            navigation.getSelectionModel().select(node);
+            navigation.getView().focusNode(node);
+            this.navigationSelected = true;
+        }
+    },
+
+    onNavSelectionChange: function(selModel, records) {
+        var record = records[0],
+            text = record.get('text'),
+            xtype = record.get('id'),
+            alias = 'widget.' + xtype,
+            contentPanel = this.getContentPanel(),
+            themeName = Ext.themeName,
+            cmp;
+
+        if (xtype) { // only leaf nodes have ids
+            contentPanel.removeAll(true);
+
+            var className = Ext.ClassManager.getNameByAlias(alias);
+            var ViewClass = Ext.ClassManager.get(className);
+            var clsProto = ViewClass.prototype;
+            if (clsProto.themes) {
+                clsProto.themeInfo = clsProto.themes[themeName];
+                if (themeName === 'gray' || themeName === 'access') {
+                    clsProto.themeInfo = Ext.applyIf(clsProto.themeInfo || {}, clsProto.themes.classic);
+                }
+            }
+
+            cmp = new ViewClass();
+            contentPanel.add(cmp);
+            if (cmp.floating) {
+                cmp.show();
+            } else {
+                this.centerContent();
+            }
+
+            contentPanel.setTitle(text);
+
+            document.title = document.title.split(' - ')[0] + ' - ' + text;
+            location.hash = xtype;
+
+            this.updateDescription(clsProto);
+
+            if (clsProto.exampleCode) {
+                this.updateCodePreview(clsProto.exampleCode);
+            } else {
+                this.updateCodePreviewAsync(clsProto, xtype);
+            }
+        }
+    },
+
+    onMaximizeClick: function(){
+        var preview = this.getCodePreview(),
+            code = preview.getEl().down('.prettyprint').dom.innerHTML;
+
+        var w = new Ext.window.Window({
+            rtl: false,
+            baseCls: 'x-panel',
+            maximized: true,
+            title: 'Code Preview',
+            plain: true,
+            cls: 'preview-container',
+            autoScroll: true,
+            bodyStyle: 'background-color:white',
+            html: '<pre class="prettyprint">' + code + '</pre>',
+            closable: false,
+            tools: [{
+                type: 'close',
+                handler: function() {
+                    w.hide(preview, function() {
+                        w.destroy();
+                    });
+                }
+            }]
+        });
+        w.show(preview);
+    },
+
+    processCodePreview: function (clsProto, text) {
+        var me = this,
+            lines = text.split('\n'),
+            removing = false,
+            keepLines = [],
+            tempLines = [],
+            n = lines.length,
+            i, line;
+
+        // Remove all "example" blocks as they are fluff.
+        //
+        for (i = 0; i < n; ++i) {
+            line = lines[i];
+            if (removing) {
+                if (me.exampleRe.test(line)) {
+                    removing = false;
+                }
+            } else if (me.exampleRe.test(line)) {
+                removing = true;
+            } else {
+                tempLines.push(line);
+            }
+        }
+
+        // Inline any themeInfo values to clarify the code.
+        //
+        if (clsProto.themeInfo) {
+            var path = ['this', 'themeInfo'];
+
+            function process (obj) {
+                for (var name in obj) {
+                    var value = obj[name];
+
+                    path.push(name);
+
+                    if (Ext.isPrimitive(value)) {
+                        if (Ext.isString(value)) {
+                            value = "'" + value + "'";
+                        }
+                        me.replaceValues(tempLines, path.join('.'), value);
+                    } else {
+                        process(value);
                     }
 
-                    this.setActiveExample(this.classNameFromRecord(record), record.get('text'));
-                },
-                afterrender: function(){
-                    var me = this,
-                        className, exampleList, name, record;
-
-                    setTimeout(function(){
-                        className = location.hash.substring(1);
-                        exampleList = me.getExampleList();
-
-                        if (className) {
-                            name = className.replace('-', ' ');
-                            record = exampleList.view.store.find('text', name);
-                        } else {
-							record = exampleList.view.store.find('text', 'grouped header grid');
-						}
-
-                        exampleList.view.select(record);
-                    }, 0);
+                    path.pop();
                 }
+            }
+
+            process(clsProto.themeInfo);
+        }
+
+        // Remove any lines with remaining (unused) themeInfo. These properties will
+        // be "undefined" for this theme and so are useless to the example.
+        //
+        for (i = 0, n = tempLines.length; i < n; ++i) {
+            line = tempLines[i];
+            if (line.indexOf('themeInfo') < 0) {
+                keepLines.push(line);
+            }
+        }
+
+        var code = keepLines.join('\n');
+        code = Ext.htmlEncode(code);
+        clsProto.exampleCode = code;
+    },
+
+    replaceValues: function (lines, text, value) {
+        var n = lines.length,
+            i, pos, line;
+
+        for (i = 0; i < n; ++i) {
+            line = lines[i];
+            pos = line.indexOf(text);
+            if (pos >= 0) {
+                lines[i] = line.split(text).join(String(value));
+            }
+        }
+    },
+
+    updateCodePreview: function (text) {
+        this.getCodePreview().update(
+            '<pre id="code-preview-container" class="prettyprint">' + text + '</pre>'
+        );
+        prettyPrint();
+    },
+
+    updateCodePreviewAsync: function(clsProto, xtype) {
+        var me = this,
+            className = Ext.ClassManager.getNameByAlias('widget.' + xtype),
+            path = className.replace(/\./g, '/').replace('KitchenSink', 'app') + '.js';
+
+        if (!Ext.repoDevMode) {
+            path = '../../../kitchensink/' + path;
+        }
+
+        Ext.Ajax.request({
+            url: path,
+            success: function(response) {
+                me.processCodePreview(clsProto, response.responseText);
+                me.updateCodePreview(clsProto.exampleCode);
             }
         });
     },
 
-    setActiveExample: function(className, title) {
-        var examplePanel = this.getExamplePanel(),
-            path, example, className;
+    updateDescription: function (clsProto) {
+        var description = clsProto.exampleDescription,
+            descriptionPanel = this.getDescriptionPanel();
 
-        if (!title) {
-            title = className.split('.').reverse()[0];
+        if (Ext.isArray(description)) {
+            clsProto.exampleDescription = description = description.join('');
         }
 
-        //update the title on the panel
-        examplePanel.setTitle(title);
-
-        //remember the className so we can load up this example next time
-        location.hash = title.toLowerCase().replace(' ', '-');
-
-        //set the browser window title
-        document.title = document.title.split(' - ')[0] + ' - ' + title;
-
-        //create the example
-        example = Ext.create(className);
-
-        //remove all items from the example panel and add new example
-        examplePanel.removeAll();
-        examplePanel.add(example);
+        descriptionPanel.update(description);
     },
 
-    // Will be used for source file code
-    // loadExample: function(path) {
-    //     Ext.Ajax.request({
-    //         url: path,
-    //         success: function() {
-    //             console.log(Ext.htmlEncode(response.responseText));
-    //         }
-    //     });
-    // },
+    centerContent: function() {
+        var contentPanel = this.getContentPanel(),
+            body = contentPanel.body,
+            item = contentPanel.items.getAt(0),
+            align = 'c-c',
+            overflowX,
+            overflowY,
+            offsets;
 
-    filePathFromRecord: function(record) {
-        var parentNode = record.parentNode,
-            path = record.get('text');
+        if (item) {
+            overflowX = (body.getWidth() < (item.getWidth() + 40));
+            overflowY = (body.getHeight() < (item.getHeight() + 40));
 
-        while (parentNode && parentNode.get('text') != "Root") {
-            path = parentNode.get('text') + '/' + Ext.String.capitalize(path);
+            if (overflowX && overflowY) {
+                align = 'tl-tl';
+                offsets = [20, 20];
+            } else if (overflowX) {
+                align = 'l-l';
+                offsets = [20, 0];
+            } else if (overflowY) {
+                align = 't-t';
+                offsets = [0, 20];
+            }
 
-            parentNode = parentNode.parentNode;
+            item.alignTo(contentPanel.body, align, offsets);
         }
-
-        return this.formatPath(path);
-    },
-
-    classNameFromRecord: function(record) {
-        var path = this.filePathFromRecord(record);
-
-        path = 'KitchenSink.view.examples.' + path.replace('/', '.');
-
-        return path;
-    },
-
-    formatPath: function(string) {
-        var result = string.split(' ')[0].charAt(0).toLowerCase() + string.split(' ')[0].substr(1),
-            paths = string.split(' '),
-            ln = paths.length,
-            i;
-
-        for (i = 1; i < ln; i++) {
-            result = result + Ext.String.capitalize(paths[i]);
-        }
-
-        return result;
     }
 });

@@ -12,9 +12,9 @@
         <dc:rights>Copyright 2011</dc:rights>
         <dc:date>2011-11-22T19:00:31+00:00</dc:date>
         <admin:generatorAgent rdf:resource="http://expressionengine.com/" />
+        
 
-
-
+        
         <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/extblog" /><feedburner:info uri="extblog" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /><item>
         <title>Sencha.io Src Update</title>
         <author>James Pearce</author>
@@ -23,7 +23,7 @@
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/S2wACRJigyY/</link>
         <content><![CDATA[
-
+            
                 <figure class="aligncenter">
     <img src="http://img1.sencha.com/files/misc/sencha-io-devices-2.jpg" alt="Photo of an astronaut out for a spacewalk, shown on an iPad and an iPod touch" height="400" width="636">
     <figcaption>Sencha.io offers an API for smart resizing of images on many devices with different-sized screens.</figcaption>
@@ -191,14 +191,14 @@
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=S2wACRJigyY:qVRFP-mFkE8:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=S2wACRJigyY:qVRFP-mFkE8:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=S2wACRJigyY:qVRFP-mFkE8:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=S2wACRJigyY:qVRFP-mFkE8:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=S2wACRJigyY:qVRFP-mFkE8:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=S2wACRJigyY:qVRFP-mFkE8:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=S2wACRJigyY:qVRFP-mFkE8:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=S2wACRJigyY:qVRFP-mFkE8:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=S2wACRJigyY:qVRFP-mFkE8:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=S2wACRJigyY:qVRFP-mFkE8:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Tue, 22 Nov 2011 19:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/sencha-io-src-update/#date:19:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/sencha-io-src-update/#date:19:00</feedburner:origLink></item>
-
+        
         <item>
         <title>Sencha Touch Spotlight: Viewbeat</title>
         <author>Burc Sade</author>
@@ -207,7 +207,7 @@
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/Tf32sPAbTaI/</link>
         <content><![CDATA[
-
+            
                 <p><a class="alignright" href="http://www.sencha.com/apps/viewbeat"><img src="http://img1.sencha.com/files/misc/viewbeat-icon.png" alt="Viewbeat app icon" height="114" width="114"></a> <a href="http://www.viewbeat.com">Viewbeat</a> is an application that makes it fast and simple to ask questions and get answers from your friends and other people, with rankings! Built using Sencha Touch and wrapped with PhoneGap, it features a simple user interface that lets you see the most popular answers at a glance (based on the rating system), so you don&#8217;t have to go through all of the answers every time.</p>
 
     <blockquote class="pullquote right">
@@ -250,14 +250,14 @@
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=Tf32sPAbTaI:HW4evmDo9hk:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Tf32sPAbTaI:HW4evmDo9hk:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Tf32sPAbTaI:HW4evmDo9hk:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=Tf32sPAbTaI:HW4evmDo9hk:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Tf32sPAbTaI:HW4evmDo9hk:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Tf32sPAbTaI:HW4evmDo9hk:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=Tf32sPAbTaI:HW4evmDo9hk:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Tf32sPAbTaI:HW4evmDo9hk:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Tf32sPAbTaI:HW4evmDo9hk:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=Tf32sPAbTaI:HW4evmDo9hk:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Fri, 18 Nov 2011 17:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/sencha-touch-spotlight-viewbeat/#date:17:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/sencha-touch-spotlight-viewbeat/#date:17:00</feedburner:origLink></item>
-
+        
         <item>
         <title>HTML5 Scorecard: Amazon Kindle Fire</title>
         <author>Michael Mullany</author>
@@ -266,7 +266,7 @@
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/dxgDuAZ7Fuc/</link>
         <content><![CDATA[
-
+            
                 <figure class="aligncenter">
         <img src="http://img1.sencha.com/files/misc/Sencha-Amazon-Kindle-Fire.jpg" alt=""height="390" width="636">
         <figcaption>As part of <a href="http://www.sencha.com/blog/category/html5-developer-scorecard">our continuing series</a>, we ran the new Amazon Kindle Fire through our tests to see how it stacks up as an HTML5 app platform.</figcaption>
@@ -344,14 +344,14 @@
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=dxgDuAZ7Fuc:tDL9ok1EGRA:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=dxgDuAZ7Fuc:tDL9ok1EGRA:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=dxgDuAZ7Fuc:tDL9ok1EGRA:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=dxgDuAZ7Fuc:tDL9ok1EGRA:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=dxgDuAZ7Fuc:tDL9ok1EGRA:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=dxgDuAZ7Fuc:tDL9ok1EGRA:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=dxgDuAZ7Fuc:tDL9ok1EGRA:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=dxgDuAZ7Fuc:tDL9ok1EGRA:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=dxgDuAZ7Fuc:tDL9ok1EGRA:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=dxgDuAZ7Fuc:tDL9ok1EGRA:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Thu, 17 Nov 2011 14:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/html5-scorecard-amazon-kindle-fire/#date:14:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/html5-scorecard-amazon-kindle-fire/#date:14:00</feedburner:origLink></item>
-
+        
         <item>
         <title>Sencha Touch Spotlight: Dyad Communications</title>
         <author>Guest</author>
@@ -360,7 +360,7 @@
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/JynwtABf-8g/</link>
         <content><![CDATA[
-
+            
                 <figure class="aligncenter">
       <img src="http://img1.sencha.com/files/misc/ppapc-hero.jpg" alt="iPad Screenshots" height="436" width="636"  />
       <figcaption>
@@ -416,14 +416,14 @@ Click through to view these Sencha Touch apps in the App Gallery.</figcaption>
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=JynwtABf-8g:JcyaevvnB9s:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=JynwtABf-8g:JcyaevvnB9s:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=JynwtABf-8g:JcyaevvnB9s:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=JynwtABf-8g:JcyaevvnB9s:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=JynwtABf-8g:JcyaevvnB9s:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=JynwtABf-8g:JcyaevvnB9s:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=JynwtABf-8g:JcyaevvnB9s:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=JynwtABf-8g:JcyaevvnB9s:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=JynwtABf-8g:JcyaevvnB9s:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=JynwtABf-8g:JcyaevvnB9s:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Fri, 11 Nov 2011 16:59 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/dyad-communications-spotlight/#date:16:59</guid>
         <feedburner:origLink>http://www.sencha.com/blog/dyad-communications-spotlight/#date:16:59</feedburner:origLink></item>
-
+        
         <item>
         <title>Sencha Touch Roadshow Coming to a City Near You</title>
         <author>Aditya Bansod</author>
@@ -432,7 +432,7 @@ Click through to view these Sencha Touch apps in the App Gallery.</figcaption>
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/ycUMBKot9R8/</link>
         <content><![CDATA[
-
+            
                 <figure class="aligncenter"><a href="http://www.sencha.com/products/touch/tour"><img src="http://img1.sencha.com/files/misc/sencha-touch-on-the-road.jpg" alt=""height="362" width="633"></a><figcaption>Catch up with Sencha Touch experts in 5 cities this December at <a class="more-icon" href="http://www.sencha.com/products/touch/tour">our free mobile HTML5 workshops</a>.</figcaption></figure>
 
     <p>It&#8217;s been a really exciting month of news in the mobile app development space. HTML5 is coming in to its own as the premier application platform for building mobile apps. And while it&#8217;s been around for a while, it&#8217;s still new and unfamiliar to a lot of developers. There are folks looking at HTML5 for the first time, as well as people who are looking to take their HTML5 skills to mobile.</p>
@@ -454,14 +454,14 @@ Click through to view these Sencha Touch apps in the App Gallery.</figcaption>
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=ycUMBKot9R8:SKUua6nvwro:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=ycUMBKot9R8:SKUua6nvwro:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=ycUMBKot9R8:SKUua6nvwro:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=ycUMBKot9R8:SKUua6nvwro:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=ycUMBKot9R8:SKUua6nvwro:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=ycUMBKot9R8:SKUua6nvwro:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=ycUMBKot9R8:SKUua6nvwro:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=ycUMBKot9R8:SKUua6nvwro:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=ycUMBKot9R8:SKUua6nvwro:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=ycUMBKot9R8:SKUua6nvwro:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Thu, 10 Nov 2011 12:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/sencha-touch-roadshow-coming-to-a-city-near-you/#date:12:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/sencha-touch-roadshow-coming-to-a-city-near-you/#date:12:00</feedburner:origLink></item>
-
+        
         <item>
         <title>Apple iOS 5: HTML5 Developer Scorecard</title>
         <author>Aditya Bansod</author>
@@ -470,7 +470,7 @@ Click through to view these Sencha Touch apps in the App Gallery.</figcaption>
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/PqoO3_eIHB0/</link>
         <content><![CDATA[
-
+            
                 <p><img class="alignleft" src="http://img1.sencha.com/files/misc/iPhone-4S-Sencha.png" alt="Apple iPhone 4S with Sencha logo" width="250"> Whenever a new device or mobile operating system comes out, we do our HTML5 Developer Scorecard to help folks who are building mobile web apps understand how to take advantage of these new devices. In early October, iOS 5 (and the iPhone 4S) was released. In our last few reviews, iOS has come head and shoulders above other device platforms as the best platform for HTML5 developers. High performance, hardware accelerated rendering, super quick JavaScript, and speed of adoption of new HTML5 features, it&#8217;s been the best platform to build modern web apps on.</p>
 
 <blockquote class="pullquote">
@@ -516,14 +516,14 @@ Click through to view these Sencha Touch apps in the App Gallery.</figcaption>
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=PqoO3_eIHB0:irKfBWvbLYA:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=PqoO3_eIHB0:irKfBWvbLYA:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=PqoO3_eIHB0:irKfBWvbLYA:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=PqoO3_eIHB0:irKfBWvbLYA:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=PqoO3_eIHB0:irKfBWvbLYA:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=PqoO3_eIHB0:irKfBWvbLYA:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=PqoO3_eIHB0:irKfBWvbLYA:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=PqoO3_eIHB0:irKfBWvbLYA:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=PqoO3_eIHB0:irKfBWvbLYA:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=PqoO3_eIHB0:irKfBWvbLYA:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Fri, 04 Nov 2011 16:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/apple-ios-5-html5-developer-scorecard/#date:16:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/apple-ios-5-html5-developer-scorecard/#date:16:00</feedburner:origLink></item>
-
+        
         <item>
         <title>The Sencha Hackathon Recap</title>
         <author>James Pearce</author>
@@ -532,7 +532,7 @@ Click through to view these Sencha Touch apps in the App Gallery.</figcaption>
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/r594fgyN5oU/</link>
         <content><![CDATA[
-
+            
                 <p><img class="alignright rounded shadow" src="http://src.sencha.io/240/http://img1.sencha.com/files/misc/senchacon-hackathon-slide.jpg" alt="The Sencha Hackathon Recap"> There are hackthons. And then there is the SenchaCon hackathon.</p>
 
     <p>Day three of our awesome conference in Austin last week really reaffirmed our belief in the strength of the Sencha community. I&#8217;ve rarely seen such a concentration of talent, enthusiasm, and friendship&#8212;not mention amazing productivity&#8212;come together so well.</p>
@@ -597,14 +597,14 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=r594fgyN5oU:fVqlGBelXvg:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=r594fgyN5oU:fVqlGBelXvg:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=r594fgyN5oU:fVqlGBelXvg:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=r594fgyN5oU:fVqlGBelXvg:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=r594fgyN5oU:fVqlGBelXvg:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=r594fgyN5oU:fVqlGBelXvg:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=r594fgyN5oU:fVqlGBelXvg:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=r594fgyN5oU:fVqlGBelXvg:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=r594fgyN5oU:fVqlGBelXvg:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=r594fgyN5oU:fVqlGBelXvg:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Wed, 02 Nov 2011 17:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/the-sencha-hackathon-recap/#date:17:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/the-sencha-hackathon-recap/#date:17:00</feedburner:origLink></item>
-
+        
         <item>
         <title>SenchaCon 2011—The Mega Recap</title>
         <author>Michael Mullany</author>
@@ -613,7 +613,7 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/LKH7gKvjFEg/</link>
         <content><![CDATA[
-
+            
                 <p><img class="aligncenter" src="http://img1.sencha.com/files/misc/SenchaCon-Thank-You-blog-image.jpg" alt="SenchaCon 2011" height="292" width="636"></p>
 
     <p>We had a fantastic time last week in Austin, hosting the Sencha Community for SenchaCon 2011! Once again, we had record attendance, with over 600 developers attending more than 50 sessions over two days, and a full day hackathon that produced some pretty impressive apps. We were incredibly humbled by the huge commitment that so many of the community made to spend three days engaging with the Sencha team and sharing their experiences with us and with each other. </p>
@@ -661,14 +661,14 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=LKH7gKvjFEg:OYnNeTAPfxY:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=LKH7gKvjFEg:OYnNeTAPfxY:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=LKH7gKvjFEg:OYnNeTAPfxY:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=LKH7gKvjFEg:OYnNeTAPfxY:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=LKH7gKvjFEg:OYnNeTAPfxY:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=LKH7gKvjFEg:OYnNeTAPfxY:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=LKH7gKvjFEg:OYnNeTAPfxY:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=LKH7gKvjFEg:OYnNeTAPfxY:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=LKH7gKvjFEg:OYnNeTAPfxY:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=LKH7gKvjFEg:OYnNeTAPfxY:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Tue, 01 Nov 2011 17:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/senchacon-2011-recap/#date:17:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/senchacon-2011-recap/#date:17:00</feedburner:origLink></item>
-
+        
         <item>
         <title>SenchaCon 2011 Contest Winners</title>
         <author>James Pearce</author>
@@ -677,7 +677,7 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/p2ukcC1IWxQ/</link>
         <content><![CDATA[
-
+            
                 <p><figure class="aligncenter">
     <img src="http://img1.sencha.com/files/misc/share-contest-hero.jpg" alt="Share Contest winners" height="418" width="636">
     <figcaption>Congrats to Getographer, WikPic, and Wrike—winners of our SenchaCon Share Contest!</figcaption><br />
@@ -706,14 +706,14 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=p2ukcC1IWxQ:L0ZsaZW87w0:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=p2ukcC1IWxQ:L0ZsaZW87w0:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=p2ukcC1IWxQ:L0ZsaZW87w0:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=p2ukcC1IWxQ:L0ZsaZW87w0:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=p2ukcC1IWxQ:L0ZsaZW87w0:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=p2ukcC1IWxQ:L0ZsaZW87w0:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=p2ukcC1IWxQ:L0ZsaZW87w0:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=p2ukcC1IWxQ:L0ZsaZW87w0:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=p2ukcC1IWxQ:L0ZsaZW87w0:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=p2ukcC1IWxQ:L0ZsaZW87w0:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Thu, 27 Oct 2011 12:02 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/senchacon-2011-contest-winners/#date:12:02</guid>
         <feedburner:origLink>http://www.sencha.com/blog/senchacon-2011-contest-winners/#date:12:02</feedburner:origLink></item>
-
+        
         <item>
         <title>Ext JS 4.1 Performance Preview</title>
         <author>Ed Spencer</author>
@@ -722,7 +722,7 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/Fx-WV1x_Bos/</link>
         <content><![CDATA[
-
+            
                 <p><img class="alignright" src="http://img1.sencha.com/files/misc/ext-js-4-1-developer-preview-thumb.png" alt="Ext JS 4.1 Performance Preview" height="90" width="120"> Today we&#8217;re excited to release a preview of the performance improvements coming in Ext JS 4.1. We&#8217;ve been working hard over the last several months to dramatically improve load time, render and layout performance across the entire framework. For the last several months we&#8217;ve been benchmarking and performance tuning with our own examples as well as a number of your apps across a range of browsers, and we&#8217;ve made some significant improvements.</p>
 
 <p>Today we&#8217;d like to open the current build up to everyone so you can see the speed increase in your own apps. We&#8217;d like you to test this release out with your own apps, but want to be very upfront about the nature of this build. This is a <strong>pre-beta performance preview</strong> and has known issues with some components. We don&#8217;t recommend using this in production but we would love to hear its impact on loading, rendering and layout performance in your apps.</p>
@@ -816,14 +816,14 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=Fx-WV1x_Bos:xZtNR-ilDMk:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Fx-WV1x_Bos:xZtNR-ilDMk:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Fx-WV1x_Bos:xZtNR-ilDMk:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=Fx-WV1x_Bos:xZtNR-ilDMk:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Fx-WV1x_Bos:xZtNR-ilDMk:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Fx-WV1x_Bos:xZtNR-ilDMk:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=Fx-WV1x_Bos:xZtNR-ilDMk:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Fx-WV1x_Bos:xZtNR-ilDMk:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Fx-WV1x_Bos:xZtNR-ilDMk:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=Fx-WV1x_Bos:xZtNR-ilDMk:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Mon, 24 Oct 2011 21:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/ext-js-4-1-developer-preview/#date:21:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/ext-js-4-1-developer-preview/#date:21:00</feedburner:origLink></item>
-
+        
         <item>
         <title>Introducing Sencha.io—The First Mobile HTML5 Cloud</title>
         <author>Aditya Bansod</author>
@@ -832,7 +832,7 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/FgkCm2rtPRM/</link>
         <content><![CDATA[
-
+            
                 <p><img class="alignright" src="http://img1.sencha.com/files/misc/sencha-io-badge.png" alt="Sencha.io" height="230" width="240"> Today we’re very excited to announce the beta availability of Sencha.io, the first cloud built for the mobile web developer. Sencha.io makes it easy for you to build applications that deliver shared experiences. </p>
 
     <p>The Sencha.io platform provides a set of cloud services that make it easier for mobile web app developers to deliver robust web functionality to users. Your mobile apps goes well beyond just the client itself and your apps need to be able to create, store, and share data and messages with the app’s users. </p>
@@ -872,14 +872,14 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=FgkCm2rtPRM:N6Lah107X2E:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=FgkCm2rtPRM:N6Lah107X2E:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=FgkCm2rtPRM:N6Lah107X2E:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=FgkCm2rtPRM:N6Lah107X2E:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=FgkCm2rtPRM:N6Lah107X2E:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=FgkCm2rtPRM:N6Lah107X2E:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=FgkCm2rtPRM:N6Lah107X2E:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=FgkCm2rtPRM:N6Lah107X2E:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=FgkCm2rtPRM:N6Lah107X2E:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=FgkCm2rtPRM:N6Lah107X2E:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Mon, 24 Oct 2011 14:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/introducing-sencha-io-the-first-mobile-html5-cloud/#date:14:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/introducing-sencha-io-the-first-mobile-html5-cloud/#date:14:00</feedburner:origLink></item>
-
+        
         <item>
         <title>Doc Center Updates: User Commenting and More</title>
         <author>Nick Poulden</author>
@@ -888,7 +888,7 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/Q8AJUGhOTKE/</link>
         <content><![CDATA[
-
+            
                 <p>We <a href="http://www.sencha.com/blog/new-ext-js-4-documentation-center/">recently blogged</a> about the brand new documentation center created for Ext JS 4. Great documentation is one of the pillars of Ext JS 4 and Sencha Touch 2 so today I&#8217;d like to share a few updates we&#8217;ve been making to take our docs to the next level. </p>
 
     <p>While we put enormous amounts of effort into our docs, there&#8217;s often a snippet of information invaluable to a newcomer or a gotcha that may be missing from the official documentation. </p>
@@ -947,14 +947,14 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=Q8AJUGhOTKE:IrQ0MfdmlM0:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Q8AJUGhOTKE:IrQ0MfdmlM0:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Q8AJUGhOTKE:IrQ0MfdmlM0:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=Q8AJUGhOTKE:IrQ0MfdmlM0:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Q8AJUGhOTKE:IrQ0MfdmlM0:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Q8AJUGhOTKE:IrQ0MfdmlM0:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=Q8AJUGhOTKE:IrQ0MfdmlM0:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Q8AJUGhOTKE:IrQ0MfdmlM0:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=Q8AJUGhOTKE:IrQ0MfdmlM0:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=Q8AJUGhOTKE:IrQ0MfdmlM0:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Fri, 21 Oct 2011 15:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/commenting-on-documentation/#date:15:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/commenting-on-documentation/#date:15:00</feedburner:origLink></item>
-
+        
         <item>
         <title>Introducing the SenchaCon Mobile App</title>
         <author>James Pearce</author>
@@ -963,7 +963,7 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/9jtsh3oiFTk/</link>
         <content><![CDATA[
-
+            
                 <p><figure class="aligncenter">
     <a class="more-icon" href="/apps/senchacon-2011/"><img src="http://img1.sencha.com/files/misc/senchacon-2011-app-hero.jpg" alt="SenchaCon 2011 web app, built with Sencha Touch" height="436" width="636"></a>
     <figcaption>SenchaCon 2011 app has session details, favorites, and more. Thanks to ModusCreate for helping us build it!<br />
@@ -996,14 +996,14 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=9jtsh3oiFTk:WUniaOppp-o:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=9jtsh3oiFTk:WUniaOppp-o:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=9jtsh3oiFTk:WUniaOppp-o:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=9jtsh3oiFTk:WUniaOppp-o:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=9jtsh3oiFTk:WUniaOppp-o:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=9jtsh3oiFTk:WUniaOppp-o:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=9jtsh3oiFTk:WUniaOppp-o:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=9jtsh3oiFTk:WUniaOppp-o:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=9jtsh3oiFTk:WUniaOppp-o:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=9jtsh3oiFTk:WUniaOppp-o:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Wed, 19 Oct 2011 21:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/introducing-the-senchacon-mobile-app/#date:21:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/introducing-the-senchacon-mobile-app/#date:21:00</feedburner:origLink></item>
-
+        
         <item>
         <title>Ext GWT 3.0 Developer Preview 5</title>
         <author>Darrell Meyer</author>
@@ -1012,13 +1012,13 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/2FYwl8rggRg/</link>
         <content><![CDATA[
-
+            
                 <p><img class="alignright" src="http://img1.sencha.com/files/misc/ext-gwt-3-dp5.png" alt="Ext GWT 3.0 Developer Preview 5" height="180" width="240"> The Ext GWT team has been hard at work on Ext GWT 3.0 and we’re happy to announce the availability of Ext GWT 3.0 PR5. This will be the last developer preview release as we move toward our 3.0 beta releases. There are a tremendous number of improvements and features added since PR4. As a result, we are closing in on being feature complete.</p>
 
 <p>Now is a great time to grab the SDK and to get familiar with the API. All major changes to the public API are complete so this release is a good representation of how the final API will work. As with any developer preview release, keep in mind there are still bugs, missing features, and rendering issues, some of which may pop up as you explore the API.</p>
 
 <p class="button-group">
-    <a class="button-link inline small arrow" href="http://cdn.sencha.io/extgwt/gxt-3.0.0-dp5.zip" title="Download Ext GWT 3.0 Developer Preview 5"><span>Download Ext GWT 3.0</span></a>
+    <a class="button-link inline small arrow" href="http://cdn.sencha.io/extgwt/gxt-3.0.0-dp5.zip" title="Download Ext GWT 3.0 Developer Preview 5"><span>Download Ext GWT 3.0</span></a> 
     <a class="button-link inline small blue" href="http://dev.sencha.com/deploy/gxt-3.0.0-dp5/javadoc/gxt/" title="View Docs for Ext GWT 3.0 Developer Preview 5">View Documentation</a>
 </p>
 
@@ -1346,7 +1346,7 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
 <p>Thanks for reading this article and for trying Ext GWT 3.0 PR5. We’re very excited about Ext GWT 3.0, and we hope this release will show you the potential of this next major update to Ext GWT.</p>
 
 <p class="button-group">
-    <a class="button-link inline small arrow" href="http://cdn.sencha.io/extgwt/gxt-3.0.0-dp5.zip" title="Download Ext GWT 3.0 Developer Preview 5"><span>Download Ext GWT 3.0</span></a>
+    <a class="button-link inline small arrow" href="http://cdn.sencha.io/extgwt/gxt-3.0.0-dp5.zip" title="Download Ext GWT 3.0 Developer Preview 5"><span>Download Ext GWT 3.0</span></a> 
     <a class="button-link inline small blue" href="http://dev.sencha.com/deploy/gxt-3.0.0-dp5/javadoc/gxt/" title="View Docs for Ext GWT 3.0 Developer Preview 5">View Documentation</a>
 </p>
 
@@ -1356,14 +1356,14 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=2FYwl8rggRg:ZBRi2x5yIOc:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=2FYwl8rggRg:ZBRi2x5yIOc:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=2FYwl8rggRg:ZBRi2x5yIOc:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=2FYwl8rggRg:ZBRi2x5yIOc:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=2FYwl8rggRg:ZBRi2x5yIOc:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=2FYwl8rggRg:ZBRi2x5yIOc:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=2FYwl8rggRg:ZBRi2x5yIOc:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=2FYwl8rggRg:ZBRi2x5yIOc:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=2FYwl8rggRg:ZBRi2x5yIOc:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=2FYwl8rggRg:ZBRi2x5yIOc:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Wed, 19 Oct 2011 16:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/ext-gwt-3-developer-preview-5/#date:16:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/ext-gwt-3-developer-preview-5/#date:16:00</feedburner:origLink></item>
-
+        
         <item>
         <title>Sencha Touch 2 Developer Preview</title>
         <author>Ed Spencer</author>
@@ -1372,13 +1372,13 @@ A screen-sharing application to allow games such as Charades and Pictionary on m
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/tdzdKy-5-iw/</link>
         <content><![CDATA[
-
+            
                 <p><img class="alignright" src="http://img1.sencha.com/files/misc/sencha-touch-2.png" alt="Sencha Touch 2.0: Developer Preview" height="100" width="100"> Today we&#8217;re thrilled to share with you the <strong>first developer preview of Sencha Touch 2</strong>. Sencha Touch 1.0 launched just one year ago and has become the leading framework to build mobile HTML5 apps. Today, we&#8217;re delivering a preview of our biggest update to the framework yet. We&#8217;ve focused on three key areas: Performance, Ease of Use, and Native Packaging. We&#8217;d like to share with you the details of each of these.</p>
 
     <p class="button-group">
-        <a class="button-link inline small arrow" href="http://cdn.sencha.io/touch/sencha-touch-2-pr2.zip" title="Download Sencha Touch 2.0.0 Developer Preview"><span>Download Touch</span></a>
+        <a class="button-link inline small arrow" href="http://cdn.sencha.io/touch/sencha-touch-2-pr2.zip" title="Download Sencha Touch 2.0.0 Developer Preview"><span>Download Touch</span></a> 
         <a class="button-link inline small blue" href="http://docs.sencha.com/touch/2-0/" title="View Docs for Sencha Touch 2.0.0 Developer Preview">View Documentation</a>
-        <a class="button-link inline small blue" href="http://cdn.sencha.io/sdk-tools/SenchaSDKTools-2.0.0-Developer-Preview.tar.gz" title="Download Sencha SDK Tools 2.0.0 Developer Preview">Download <span class="caps">SDK</span> Tools (Mac-only)</a>
+        <a class="button-link inline small blue" href="http://cdn.sencha.io/sdk-tools/SenchaSDKTools-2.0.0-Developer-Preview.tar.gz" title="Download Sencha SDK Tools 2.0.0 Developer Preview">Download <span class="caps">SDK</span> Tools (Mac-only)</a> 
     </p>
 
     <h3>Performance First</h3>
@@ -1500,22 +1500,22 @@ text.<span class="me1">setLabel</span><span class="br0">&#40;</span><span class=
     <p>And of course, if you want to meet the folks behind Touch, join us at <a href="http://www.sencha.com/senchacon2011">SenchaCon</a> in Austin, Texas!</p>
 
     <p class="button-group">
-        <a class="button-link inline small arrow" href="http://cdn.sencha.io/touch/sencha-touch-2-pr2.zip" title="Download Sencha Touch 2.0.0 Developer Preview"><span>Download Touch</span></a>
+        <a class="button-link inline small arrow" href="http://cdn.sencha.io/touch/sencha-touch-2-pr2.zip" title="Download Sencha Touch 2.0.0 Developer Preview"><span>Download Touch</span></a> 
         <a class="button-link inline small blue" href="http://docs.sencha.com/touch/2-0/" title="View Docs for Sencha Touch 2.0.0 Developer Preview">View Documentation</a>
-        <a class="button-link inline small blue" href="http://cdn.sencha.io/sdk-tools/SenchaSDKTools-2.0.0-Developer-Preview.tar.gz" title="Download Sencha SDK Tools 2.0.0 Developer Preview">Download <span class="caps">SDK</span> Tools (Mac-only)</a>
+        <a class="button-link inline small blue" href="http://cdn.sencha.io/sdk-tools/SenchaSDKTools-2.0.0-Developer-Preview.tar.gz" title="Download Sencha SDK Tools 2.0.0 Developer Preview">Download <span class="caps">SDK</span> Tools (Mac-only)</a> 
     </p>
                 <style>
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=tdzdKy-5-iw:r4oblFaLZ4Q:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=tdzdKy-5-iw:r4oblFaLZ4Q:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=tdzdKy-5-iw:r4oblFaLZ4Q:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=tdzdKy-5-iw:r4oblFaLZ4Q:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=tdzdKy-5-iw:r4oblFaLZ4Q:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=tdzdKy-5-iw:r4oblFaLZ4Q:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=tdzdKy-5-iw:r4oblFaLZ4Q:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=tdzdKy-5-iw:r4oblFaLZ4Q:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=tdzdKy-5-iw:r4oblFaLZ4Q:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=tdzdKy-5-iw:r4oblFaLZ4Q:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Tue, 11 Oct 2011 16:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/sencha-touch-2-developer-preview/#date:16:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/sencha-touch-2-developer-preview/#date:16:00</feedburner:origLink></item>
-
+        
         <item>
         <title>Ext JS 4.1 Update</title>
         <author>Michael Mullany</author>
@@ -1524,7 +1524,7 @@ text.<span class="me1">setLabel</span><span class="br0">&#40;</span><span class=
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/PF8RkWPL3Rg/</link>
         <content><![CDATA[
-
+            
                 <p><img class="alignright" src="http://img1.sencha.com/files/misc/Ext-JS-4-1.png" alt="Ext JS 4.1 Update" height="90" width="120"> In August, we did a preview blog on Ext JS 4.1. In it, we explained that we were going to concentrate on Performance and Documentation for our release. We also said that we expected to ship it in “mid-to-late September”. To our disappointment, we haven’t been able to make that date, and now I wanted to update you on our new product delivery schedule.</p>
 
     <h4>Update: Ext JS 4.0.7 is now available <a href="http://www.sencha.com/products/extjs/download" class="button-link inline small arrow">Download Ext JS 4.0.7</a></h4>
@@ -1558,14 +1558,14 @@ text.<span class="me1">setLabel</span><span class="br0">&#40;</span><span class=
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=PF8RkWPL3Rg:cpH4pog2WKM:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=PF8RkWPL3Rg:cpH4pog2WKM:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=PF8RkWPL3Rg:cpH4pog2WKM:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=PF8RkWPL3Rg:cpH4pog2WKM:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=PF8RkWPL3Rg:cpH4pog2WKM:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=PF8RkWPL3Rg:cpH4pog2WKM:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=PF8RkWPL3Rg:cpH4pog2WKM:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=PF8RkWPL3Rg:cpH4pog2WKM:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=PF8RkWPL3Rg:cpH4pog2WKM:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=PF8RkWPL3Rg:cpH4pog2WKM:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Mon, 10 Oct 2011 20:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/ext-js-4-1-update/#date:20:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/ext-js-4-1-update/#date:20:00</feedburner:origLink></item>
-
+        
         <item>
         <title>Sencha Touch Spotlight: Group Commerce</title>
         <author>Eric Entin</author>
@@ -1574,7 +1574,7 @@ text.<span class="me1">setLabel</span><span class="br0">&#40;</span><span class=
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/JFBhN8IEv60/</link>
         <content><![CDATA[
-
+            
                 <p><figure class="aligncenter">
     <img src="http://img1.sencha.com/files/misc/boston-deals-hero.jpg" alt="Boston Deals, a Sencha Touch app built by Group Commerce for Boston.com" height="380" width="636">
     <figcaption>
@@ -1635,14 +1635,14 @@ text.<span class="me1">setLabel</span><span class="br0">&#40;</span><span class=
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=JFBhN8IEv60:5baTZpXD2aE:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=JFBhN8IEv60:5baTZpXD2aE:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=JFBhN8IEv60:5baTZpXD2aE:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=JFBhN8IEv60:5baTZpXD2aE:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=JFBhN8IEv60:5baTZpXD2aE:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=JFBhN8IEv60:5baTZpXD2aE:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=JFBhN8IEv60:5baTZpXD2aE:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=JFBhN8IEv60:5baTZpXD2aE:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=JFBhN8IEv60:5baTZpXD2aE:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=JFBhN8IEv60:5baTZpXD2aE:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Fri, 07 Oct 2011 18:30 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/sencha-touch-spotlight-group-commerce-boston-com-deals/#date:18:30</guid>
         <feedburner:origLink>http://www.sencha.com/blog/sencha-touch-spotlight-group-commerce-boston-com-deals/#date:18:30</feedburner:origLink></item>
-
+        
         <item>
         <title>Sencha Touch Spotlight: Freescale</title>
         <author>Jay Robinson</author>
@@ -1651,7 +1651,7 @@ text.<span class="me1">setLabel</span><span class="br0">&#40;</span><span class=
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/XqtAKe99sHk/</link>
         <content><![CDATA[
-
+            
                 <p><figure class="aligncenter">
     <img src="http://img1.sencha.com/files/misc/freescale-hero.jpg" alt="Freescale iPad app, built with Sencha Touch" height="436" width="636">
     <figcaption>Pentagram Austin and Ponticlaro partnered to produce the Freescale iPad app.<br>
@@ -1727,14 +1727,14 @@ text.<span class="me1">setLabel</span><span class="br0">&#40;</span><span class=
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=XqtAKe99sHk:EnyEo685miM:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=XqtAKe99sHk:EnyEo685miM:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=XqtAKe99sHk:EnyEo685miM:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=XqtAKe99sHk:EnyEo685miM:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=XqtAKe99sHk:EnyEo685miM:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=XqtAKe99sHk:EnyEo685miM:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=XqtAKe99sHk:EnyEo685miM:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=XqtAKe99sHk:EnyEo685miM:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=XqtAKe99sHk:EnyEo685miM:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=XqtAKe99sHk:EnyEo685miM:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Wed, 05 Oct 2011 17:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/sencha-touch-spotlight-freescale/#date:17:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/sencha-touch-spotlight-freescale/#date:17:00</feedburner:origLink></item>
-
+        
         <item>
         <title>Sencha Animator Released: A Revolution in Mobile Animation</title>
         <author>Luca Candela</author>
@@ -1743,7 +1743,7 @@ text.<span class="me1">setLabel</span><span class="br0">&#40;</span><span class=
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/ZCwlAbhfGHk/</link>
         <content><![CDATA[
-
+            
                 <p><a href="http://www.sencha.com/products/animator/"><img class="aligncenter" src="http://img1.sencha.com/files/misc/20110930-animator-hero-blog.jpg" alt="Sencha Animator Released: A Revolution in Mobile Animation" height="353" width="636"></a></p>
 
     <h3>Introducing Sencha Animator 1.0</h3>
@@ -1853,14 +1853,14 @@ text.<span class="me1">setLabel</span><span class="br0">&#40;</span><span class=
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=ZCwlAbhfGHk:R_JRtoA38Ac:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=ZCwlAbhfGHk:R_JRtoA38Ac:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=ZCwlAbhfGHk:R_JRtoA38Ac:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=ZCwlAbhfGHk:R_JRtoA38Ac:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=ZCwlAbhfGHk:R_JRtoA38Ac:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=ZCwlAbhfGHk:R_JRtoA38Ac:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=ZCwlAbhfGHk:R_JRtoA38Ac:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=ZCwlAbhfGHk:R_JRtoA38Ac:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=ZCwlAbhfGHk:R_JRtoA38Ac:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=ZCwlAbhfGHk:R_JRtoA38Ac:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Mon, 03 Oct 2011 12:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/sencha-animator-released/#date:12:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/sencha-animator-released/#date:12:00</feedburner:origLink></item>
-
+        
         <item>
         <title>Using Sencha.io Sync</title>
         <author>Aditya Bansod</author>
@@ -1869,7 +1869,7 @@ text.<span class="me1">setLabel</span><span class="br0">&#40;</span><span class=
         </description>
         <link>http://feedproxy.google.com/~r/extblog/~3/zhGep1X8B8Y/</link>
         <content><![CDATA[
-
+            
                 <p><img class="alignright" src="http://www.sencha.com/files/misc/20110918-sencha-io-sync.png" alt="Sencha.io"> <a href="http://www.sencha.com/products/io/">Sencha.io Sync</a> was made available as an open beta last week, so we wanted to give a more detailed look at how to use Sync. We announced Sencha.io Sync in the early summer and have spent time honing and tuning the service based on feedback from our private beta customers, and we&#8217;re excited to invite the Sencha community to try their hands at our Sync service.</p>
 
 <p>Since Sync is now in open beta, feel free to use it, but it&#8217;s still a beta. There are a few things that we suggest you be careful of during the beta. Particularly, please don&#8217;t run any production applications against Sync yet. While we don&#8217;t expect any data loss (and by its nature, you have a whole replica in your local browser!), it&#8217;s still a beta so there may be some edge cases or behaviors we haven&#8217;t yet tested. It&#8217;s also likely that after the beta period is over we&#8217;ll reset the stores, so there may be a migration of your data at the end of the beta before the service goes v1. Of course, we&#8217;ll communicate anything that we do here and in the Sencha Forums.</p>
@@ -1909,13 +1909,13 @@ Ext.regModel("Contact", &#123;
                     .right, .alignright { float: right; margin: 0 0 10px 10px; }
                     .left, .alignleft { float: left; margin: 0 10px 10px 0; }
                 </style>
-
+            
         <div class="feedflare">
 <a href="http://feeds.feedburner.com/~ff/extblog?a=zhGep1X8B8Y:V2To-WwUg3g:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/extblog?d=yIl2AUoC8zA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=zhGep1X8B8Y:V2To-WwUg3g:dnMXMwOfBR0"><img src="http://feeds.feedburner.com/~ff/extblog?d=dnMXMwOfBR0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=zhGep1X8B8Y:V2To-WwUg3g:F7zBnMyn0Lo"><img src="http://feeds.feedburner.com/~ff/extblog?i=zhGep1X8B8Y:V2To-WwUg3g:F7zBnMyn0Lo" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=zhGep1X8B8Y:V2To-WwUg3g:7Q72WNTAKBA"><img src="http://feeds.feedburner.com/~ff/extblog?d=7Q72WNTAKBA" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=zhGep1X8B8Y:V2To-WwUg3g:V_sGLiPBpWU"><img src="http://feeds.feedburner.com/~ff/extblog?i=zhGep1X8B8Y:V2To-WwUg3g:V_sGLiPBpWU" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=zhGep1X8B8Y:V2To-WwUg3g:l6gmwiTKsz0"><img src="http://feeds.feedburner.com/~ff/extblog?d=l6gmwiTKsz0" border="0"></img></a> <a href="http://feeds.feedburner.com/~ff/extblog?a=zhGep1X8B8Y:V2To-WwUg3g:gIN9vFwOqvQ"><img src="http://feeds.feedburner.com/~ff/extblog?i=zhGep1X8B8Y:V2To-WwUg3g:gIN9vFwOqvQ" border="0"></img></a>
 </div>]]></content>
         <pubDate>Fri, 30 Sep 2011 07:00 GMT</pubDate>
         <guid isPermaLink="false">http://www.sencha.com/blog/using-sencha-io-sync/#date:07:00</guid>
         <feedburner:origLink>http://www.sencha.com/blog/using-sencha-io-sync/#date:07:00</feedburner:origLink></item>
-
+        
     </channel>
 </rss>

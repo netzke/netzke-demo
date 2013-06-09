@@ -2,14 +2,14 @@ Ext.define('Pandora.view.SongControls', {
     extend: 'Ext.Container',
     alias: 'widget.songcontrols',
     height: 70,
-
+    
     initComponent: function() {
         this.layout = {
             type: 'vbox',
             align: 'center',
             pack: 'center'
         };
-
+        
         this.items = [{
             xtype: 'container',
             defaultType: 'button',
@@ -46,13 +46,13 @@ Ext.define('Pandora.view.SongControls', {
             }, {
                 xtype: 'progressbar',
                 value: 0.5,
-                flex: 1
+                flex: 1           
             }, {
                 xtype: 'component',
                 html: '4:00'
             }]
         }];
-
+        
         this.callParent();
     }
 });

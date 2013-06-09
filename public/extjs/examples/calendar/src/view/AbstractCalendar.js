@@ -13,6 +13,10 @@
 Ext.define('Ext.calendar.view.AbstractCalendar', {
     extend: 'Ext.Component',
     alias: 'widget.calendarview',
+    requires: [
+        'Ext.calendar.util.Date',
+        'Ext.calendar.data.EventMappings'
+    ],
     /**
      * @cfg {Number} startDay
      * The 0-based index for the day on which the calendar week begins (0=Sunday, which is the default)
@@ -21,8 +25,8 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
     /**
      * @cfg {Boolean} spansHavePriority
      * Allows switching between two different modes of rendering events that span multiple days. When true,
-     * span events are always sorted first, possibly at the expense of start dates being out of order (e.g.,
-     * a span event that starts at 11am one day and spans into the next day would display before a non-spanning
+     * span events are always sorted first, possibly at the expense of start dates being out of order (e.g., 
+     * a span event that starts at 11am one day and spans into the next day would display before a non-spanning 
      * event that starts at 10am, even though they would not be in date order). This can lead to more compact
      * layouts when there are many overlapping events. If false (the default), events will always sort by start date
      * first which can result in a less compact, but chronologically consistent layout.
@@ -43,21 +47,21 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
     enableFx: true,
     /**
      * @cfg {Boolean} enableAddFx
-     * True to enable a visual effect on adding a new event (the default), false to disable it. Note that if
+     * True to enable a visual effect on adding a new event (the default), false to disable it. Note that if 
      * {@link #enableFx} is false it will override this value. The specific effect that runs is defined in the
      * {@link #doAddFx} method.
      */
     enableAddFx: true,
     /**
      * @cfg {Boolean} enableUpdateFx
-     * True to enable a visual effect on updating an event, false to disable it (the default). Note that if
+     * True to enable a visual effect on updating an event, false to disable it (the default). Note that if 
      * {@link #enableFx} is false it will override this value. The specific effect that runs is defined in the
      * {@link #doUpdateFx} method.
      */
     enableUpdateFx: false,
     /**
      * @cfg {Boolean} enableRemoveFx
-     * True to enable a visual effect on removing an event (the default), false to disable it. Note that if
+     * True to enable a visual effect on removing an event (the default), false to disable it. Note that if 
      * {@link #enableFx} is false it will override this value. The specific effect that runs is defined in the
      * {@link #doRemoveFx} method.
      */
@@ -70,27 +74,27 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
     /**
      * @cfg {Boolean} monitorResize
      * True to monitor the browser's resize event (the default), false to ignore it. If the calendar view is rendered
-     * into a fixed-size container this can be set to false. However, if the view can change dimensions (e.g., it's in
+     * into a fixed-size container this can be set to false. However, if the view can change dimensions (e.g., it's in 
      * fit layout in a viewport or some other resizable container) it is very important that this config is true so that
      * any resize event propagates properly to all subcomponents and layouts get recalculated properly.
      */
     monitorResize: true,
     /**
      * @cfg {String} ddCreateEventText
-     * The text to display inside the drag proxy while dragging over the calendar to create a new event (defaults to
+     * The text to display inside the drag proxy while dragging over the calendar to create a new event (defaults to 
      * 'Create event for {0}' where {0} is a date range supplied by the view)
      */
     ddCreateEventText: 'Create event for {0}',
     /**
      * @cfg {String} ddMoveEventText
-     * The text to display inside the drag proxy while dragging an event to reposition it (defaults to
+     * The text to display inside the drag proxy while dragging an event to reposition it (defaults to 
      * 'Move event to {0}' where {0} is the updated event start date/time supplied by the view)
      */
     ddMoveEventText: 'Move event to {0}',
     /**
      * @cfg {String} ddResizeEventText
-     * The string displayed to the user in the drag proxy while dragging the resize handle of an event (defaults to
-     * 'Update event to {0}' where {0} is the updated event start-end range supplied by the view). Note that
+     * The string displayed to the user in the drag proxy while dragging the resize handle of an event (defaults to 
+     * 'Update event to {0}' where {0} is the updated event start-end range supplied by the view). Note that 
      * this text is only used in views
      * that allow resizing of events.
      */
@@ -120,7 +124,7 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
      * This method can be overridden as needed to customize the markup generated.</p>
      * <p>Note that this method calls {@link #getEventBodyMarkup} to retrieve the body markup for events separately
      * from the surrounding container markup.  This provdes the flexibility to customize what's in the body without
-     * having to override the entire XTemplate. If you do override this method, you should make sure that your
+     * having to override the entire XTemplate. If you do override this method, you should make sure that your 
      * overridden version also does the same.</p>
      * @return {Ext.XTemplate} The event XTemplate
      */
@@ -136,7 +140,7 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
             /**
              * @event eventsrendered
              * Fires after events are finished rendering in the view
-             * @param {Ext.calendar.view.AbstractCalendar} this
+             * @param {Ext.calendar.view.AbstractCalendar} this 
              */
             eventsrendered: true,
             /**
@@ -199,7 +203,7 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
             initdrag: true,
             /**
              * @event dayover
-             * Fires while the mouse is over a day element
+             * Fires while the mouse is over a day element 
              * @param {Ext.calendar.view.AbstractCalendar} this
              * @param {Date} dt The date that is being moused over
              * @param {Ext.core.Element} el The day Element that is being moused over
@@ -207,7 +211,7 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
             dayover: true,
             /**
              * @event dayout
-             * Fires when the mouse exits a day element
+             * Fires when the mouse exits a day element 
              * @param {Ext.calendar.view.AbstractCalendar} this
              * @param {Date} dt The date that is exited
              * @param {Ext.core.Element} el The day Element that is exited
@@ -215,7 +219,7 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
             dayout: true
             /*
              * @event eventdelete
-             * Fires after an event element is deleted by the user. Not currently implemented directly at the view level -- currently
+             * Fires after an event element is deleted by the user. Not currently implemented directly at the view level -- currently 
              * deletes only happen from one of the forms.
              * @param {Ext.calendar.view.AbstractCalendar} this
              * @param {Ext.calendar.EventRecord} rec The {@link Ext.calendar.EventRecord record} for the event that was deleted
@@ -233,8 +237,6 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
         if (this.store) {
             this.setStore(this.store, true);
         }
-
-        this.on('resize', this.onResize, this);
 
         this.el.on({
             'mouseover': this.onMouseOver,
@@ -259,14 +261,14 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
         if (this.el && this.el.down) {
             var hd = this.el.down('.ext-cal-hd-ct'),
                 bd = this.el.down('.ext-cal-body-ct');
-
+                
             if (bd==null || hd==null) {
                 return;
             }
-
+                
             var headerHeight = hd.getHeight(),
                 sz = this.el.parent().getSize();
-
+                   
             bd.setHeight(sz.height-headerHeight);
         }
     },
@@ -285,15 +287,14 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
     // private
     prepareData: function() {
         var lastInMonth = Ext.Date.getLastDateOfMonth(this.startDate),
-        w = 0,
-        row = 0,
-        dt = Ext.Date.clone(this.viewStart),
-        weeks = this.weekCount < 1 ? 6: this.weekCount;
+            w = 0, d,
+            dt = Ext.Date.clone(this.viewStart),
+            weeks = this.weekCount < 1 ? 6: this.weekCount;
 
         this.eventGrid = [[]];
         this.allDayGrid = [[]];
         this.evtMaxCount = [];
-
+        
         var evtsInView = this.store.queryBy(function(rec) {
             return this.isEventVisible(rec.data);
         },
@@ -314,7 +315,7 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
                         var startDt = Ext.Date.clearTime(rec.data[Ext.calendar.data.EventMappings.StartDate.name], true),
                             startsOnDate = dt.getTime() == startDt.getTime(),
                             spansFromPrevView = (w == 0 && d == 0 && (dt > rec.data[Ext.calendar.data.EventMappings.StartDate.name]));
-
+                            
                         return startsOnDate || spansFromPrevView;
                     },
                     this);
@@ -330,37 +331,36 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
 
     // private
     prepareEventGrid: function(evts, w, d) {
-        var row = 0,
-        dt = Ext.Date.clone(this.viewStart),
-        max = this.maxEventsPerDay ? this.maxEventsPerDay: 999;
+        var me = this,
+            row = 0,
+            max = me.maxEventsPerDay ? me.maxEventsPerDay: 999;
 
         evts.each(function(evt) {
             var M = Ext.calendar.data.EventMappings,
             days = Ext.calendar.util.Date.diffDays(
-            Ext.calendar.util.Date.max(this.viewStart, evt.data[M.StartDate.name]),
-            Ext.calendar.util.Date.min(this.viewEnd, evt.data[M.EndDate.name])) + 1;
+            Ext.calendar.util.Date.max(me.viewStart, evt.data[M.StartDate.name]),
+            Ext.calendar.util.Date.min(me.viewEnd, evt.data[M.EndDate.name])) + 1;
 
             if (days > 1 || Ext.calendar.util.Date.diffDays(evt.data[M.StartDate.name], evt.data[M.EndDate.name]) > 1) {
-                this.prepareEventGridSpans(evt, this.eventGrid, w, d, days);
-                this.prepareEventGridSpans(evt, this.allDayGrid, w, d, days, true);
+                me.prepareEventGridSpans(evt, me.eventGrid, w, d, days);
+                me.prepareEventGridSpans(evt, me.allDayGrid, w, d, days, true);
             } else {
-                row = this.findEmptyRowIndex(w, d);
-                this.eventGrid[w][d] = this.eventGrid[w][d] || [];
-                this.eventGrid[w][d][row] = evt;
+                row = me.findEmptyRowIndex(w, d);
+                me.eventGrid[w][d] = me.eventGrid[w][d] || [];
+                me.eventGrid[w][d][row] = evt;
 
                 if (evt.data[M.IsAllDay.name]) {
-                    row = this.findEmptyRowIndex(w, d, true);
-                    this.allDayGrid[w][d] = this.allDayGrid[w][d] || [];
-                    this.allDayGrid[w][d][row] = evt;
+                    row = me.findEmptyRowIndex(w, d, true);
+                    me.allDayGrid[w][d] = me.allDayGrid[w][d] || [];
+                    me.allDayGrid[w][d][row] = evt;
                 }
             }
 
-            if (this.evtMaxCount[w] < this.eventGrid[w][d].length) {
-                this.evtMaxCount[w] = Math.min(max + 1, this.eventGrid[w][d].length);
+            if (me.evtMaxCount[w] < me.eventGrid[w][d].length) {
+                me.evtMaxCount[w] = Math.min(max + 1, me.eventGrid[w][d].length);
             }
             return true;
-        },
-        this);
+        });
     },
 
     // private
@@ -444,6 +444,7 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
 
     // private
     onResize: function() {
+        this.callParent(arguments);
         this.refresh();
     },
 
@@ -521,7 +522,7 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
             this.doAddFx(this.getEventEls(rec.data[Ext.calendar.data.EventMappings.EventId.name]), {
                 scope: this
             });
-        };
+        }
     },
 
     doAddFx: function(els, o) {
@@ -556,9 +557,9 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
      * Visually highlights an event using {@link Ext.Fx#highlight} config options.
      * If {@link #highlightEventActions} is false this method will have no effect.
      * @param {Ext.CompositeElement} els The element(s) to highlight
-     * @param {Object} color (optional) The highlight color. Should be a 6 char hex
+     * @param {Object} color (optional) The highlight color. Should be a 6 char hex 
      * color without the leading # (defaults to yellow: 'ffff9c')
-     * @param {Object} o (optional) Object literal with any of the {@link Ext.Fx} config
+     * @param {Object} o (optional) Object literal with any of the {@link Ext.Fx} config 
      * options. See {@link Ext.Fx#highlight} for usage examples.
      */
     highlightEvent: function(els, color, o) {
@@ -608,7 +609,7 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
     },
 
     /**
-     *
+     * 
      * @param {String} eventId
      * @param {Boolean} forSelect
      * @return {String} The selector class
@@ -619,10 +620,10 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
     },
 
     /**
-     *
+     * 
      * @param {String} eventId
      * @return {Ext.CompositeElement} The matching CompositeElement of nodes
-     * that comprise the rendered event.  Any event that spans across a view
+     * that comprise the rendered event.  Any event that spans across a view 
      * boundary will contain more than one internal Element.
      */
     getEventEls: function(eventId) {
@@ -646,17 +647,22 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
 
     // private
     isEventVisible: function(evt) {
-        var start = this.viewStart.getTime(),
-        end = this.viewEnd.getTime(),
-        M = Ext.calendar.data.EventMappings,
-        data = evt.data || evt,
-        evStart = data[M.StartDate.name].getTime(),
-        evEnd = Ext.calendar.util.Date.add(data[M.EndDate.name], {seconds: -1}).getTime(),
+        var M = Ext.calendar.data.EventMappings,
+            data = evt.data || evt,
+            start = this.viewStart.getTime(),
+            end = this.viewEnd.getTime(),
+            evStart = data[M.StartDate.name].getTime(),
+            evEnd = data[M.EndDate.name].getTime();
+            evEnd = Ext.calendar.util.Date.add(data[M.EndDate.name], {seconds: -1}).getTime();
 
-        startsInRange = (evStart >= start && evStart <= end),
-        endsInRange = (evEnd >= start && evEnd <= end),
-        spansRange = (evStart < start && evEnd > end);
-
+        return this.rangesOverlap(start, end, evStart, evEnd);
+    },
+    
+    rangesOverlap: function(start1, end1, start2, end2) {
+        var startsInRange = (start1 >= start2 && start1 <= end2),
+            endsInRange = (end1 >= start2 && end1 <= end2),
+            spansRange = (start1 <= start2 && end1 >= end2);
+            
         return (startsInRange || endsInRange || spansRange);
     },
 
@@ -677,11 +683,7 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
             end2 = start2;
         }
 
-        var ev1startsInEv2 = (start1 >= start2 && start1 <= end2),
-        ev1EndsInEv2 = (end1 >= start2 && end1 <= end2),
-        ev1SpansEv2 = (start1 < start2 && end1 > end2);
-
-        return (ev1startsInEv2 || ev1EndsInEv2 || ev1SpansEv2);
+        return (start1 <= end2 && end1 >= start2);
     },
 
     getDayEl: function(dt) {
@@ -696,7 +698,7 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
     },
 
     /**
-     * Returns the start date of the view, as set by {@link #setStartDate}. Note that this may not
+     * Returns the start date of the view, as set by {@link #setStartDate}. Note that this may not 
      * be the first date displayed in the rendered calendar -- to get the start and end dates displayed
      * to the user use {@link #getViewBounds}.
      * @return {Date} The start date
@@ -706,7 +708,7 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
     },
 
     /**
-     * Sets the start date used to calculate the view boundaries to display. The displayed view will be the
+     * Sets the start date used to calculate the view boundaries to display. The displayed view will be the 
      * earliest and latest dates that match the view requirements and contain the date passed to this function.
      * @param {Date} dt The date used to calculate the new view boundaries
      */
@@ -769,9 +771,9 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
     /* private
      * Sort events for a single day for display in the calendar.  This sorts allday
      * events first, then non-allday events are sorted either based on event start
-     * priority or span priority based on the value of {@link #spansHavePriority}
+     * priority or span priority based on the value of {@link #spansHavePriority} 
      * (defaults to event start priority).
-     * @param {MixedCollection} evts A {@link Ext.util.MixedCollection MixedCollection}
+     * @param {MixedCollection} evts A {@link Ext.util.MixedCollection MixedCollection}  
      * of {@link #Ext.calendar.EventRecord EventRecord} objects
      */
     sortEventRecordsForDay: function(evts) {
@@ -988,7 +990,7 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
 
             evtId = this.getEventIdFromEl(el);
 
-            if (this.eventOverClass != '') {
+            if (this.eventOverClass) {
                 els = this.getEventEls(evtId);
                 els[type == 'over' ? 'addCls': 'removeCls'](this.eventOverClass);
             }
@@ -1033,16 +1035,16 @@ Ext.define('Ext.calendar.view.AbstractCalendar', {
     renderItems: function() {
         throw 'This method must be implemented by a subclass';
     },
-
+    
     // private
     destroy: function(){
         this.callParent(arguments);
-
+        
         if(this.el){
             this.el.un('contextmenu', this.onContextMenu, this);
         }
         Ext.destroy(
-            this.editWin,
+            this.editWin, 
             this.eventMenu,
             this.dragZone,
             this.dropZone

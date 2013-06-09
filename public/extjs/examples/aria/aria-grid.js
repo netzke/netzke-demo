@@ -8,7 +8,7 @@ Ext.require([
 
 Ext.onReady(function() {
     Ext.QuickTips.init();
-
+    
     // setup the state provider, all state information will be saved to a cookie
     Ext.state.Manager.setProvider(Ext.create('Ext.state.CookieProvider'));
 

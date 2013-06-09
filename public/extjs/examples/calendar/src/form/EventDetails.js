@@ -27,14 +27,14 @@
 Ext.define('Ext.calendar.form.EventDetails', {
     extend: 'Ext.form.Panel',
     alias: 'widget.eventeditform',
-
+    
     requires: [
         'Ext.calendar.form.field.DateRange',
         'Ext.calendar.form.field.ReminderCombo',
         'Ext.calendar.data.EventMappings',
         'Ext.calendar.form.field.CalendarCombo'
     ],
-
+    
     fieldDefaults: {
         msgTarget: 'side',
         labelWidth: 65
@@ -175,13 +175,13 @@ Ext.define('Ext.calendar.form.EventDetails', {
         this.form.reset().loadRecord.apply(this.form, arguments);
         this.activeRecord = rec;
         this.dateRangeField.setValue(rec.data);
-
+        
         if(this.calendarStore){
             this.form.setValues({
                 'calendar': rec.data[Ext.calendar.data.EventMappings.CalendarId.name]
             });
         }
-
+        
         if (rec.phantom) {
             this.setTitle(this.titleTextAdd);
             this.down('#' + this.id + '-del-btn').hide();
@@ -192,7 +192,7 @@ Ext.define('Ext.calendar.form.EventDetails', {
         }
         this.titleField.focus();
     },
-
+    
     // inherited docs
     updateRecord: function(){
         var dates = this.dateRangeField.getValue(),
@@ -200,15 +200,15 @@ Ext.define('Ext.calendar.form.EventDetails', {
             rec = this.activeRecord,
             fs = rec.fields,
             dirty = false;
-
+            
         rec.beginEdit();
-
+        
         //TODO: This block is copied directly from BasicForm.updateRecord.
         // Unfortunately since that method internally calls begin/endEdit all
         // updates happen and the record dirty status is reset internally to
         // that call. We need the dirty status, plus currently the DateRangeField
         // does not map directly to the record values, so for now we'll duplicate
-        // the setter logic here (we need to be able to pick up any custom-added
+        // the setter logic here (we need to be able to pick up any custom-added 
         // fields generically). Need to revisit this later and come up with a better solution.
         fs.each(function(f){
             var field = this.form.findField(f.name);
@@ -216,7 +216,7 @@ Ext.define('Ext.calendar.form.EventDetails', {
                 var value = field.getValue();
                 if (value.getGroupValue) {
                     value = value.getGroupValue();
-                }
+                } 
                 else if (field.eachItem) {
                     value = [];
                     field.eachItem(function(item){
@@ -226,14 +226,14 @@ Ext.define('Ext.calendar.form.EventDetails', {
                 rec.set(f.name, value);
             }
         }, this);
-
+        
         rec.set(M.StartDate.name, dates[0]);
         rec.set(M.EndDate.name, dates[1]);
         rec.set(M.IsAllDay.name, dates[2]);
-
+        
         dirty = rec.dirty;
         rec.endEdit();
-
+        
         return dirty;
     },
 

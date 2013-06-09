@@ -1,3 +1,4 @@
+//@define Ext.calendar.data.CalendarMappings
 /**
  * @class Ext.calendar.data.CalendarMappings
  * @extends Object
@@ -17,9 +18,9 @@ Ext.calendar.data.CalendarMappings = {
         type:    'string'
     },
     Description: {
-        name:    'Description',
-        mapping: 'desc',
-        type:    'string'
+        name:    'Description', 
+        mapping: 'desc',   
+        type:    'string' 
     },
     ColorId: {
         name:    'ColorId',

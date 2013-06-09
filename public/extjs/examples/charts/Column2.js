@@ -3,22 +3,21 @@ Ext.require(['Ext.Window', 'Ext.layout.container.Fit', 'Ext.fx.target.Sprite', '
 
 Ext.onReady(function () {
     store1.loadData(generateData(5, 0));
-
+    
     var colors = ['url(#v-1)',
                   'url(#v-2)',
                   'url(#v-3)',
                   'url(#v-4)',
                   'url(#v-5)'];
-
+    
     var baseColor = '#eee';
-
+    
     Ext.define('Ext.chart.theme.Fancy', {
         extend: 'Ext.chart.theme.Base',
-
+        
         constructor: function(config) {
             this.callParent([Ext.apply({
                 axis: {
-                    fill: baseColor,
                     stroke: baseColor
                 },
                 axisLabelLeft: {
@@ -39,8 +38,6 @@ Ext.onReady(function () {
     });
 
     var chart = Ext.create('Ext.chart.Chart', {
-            id: 'chartCmp',
-            xtype: 'chart',
             theme: 'Fancy',
             animate: {
                 easing: 'bounceOut',
@@ -159,7 +156,7 @@ Ext.onReady(function () {
             }]
         });
 
-
+ 
     var win = Ext.create('Ext.Window', {
         width: 800,
         height: 600,
@@ -184,7 +181,10 @@ Ext.onReady(function () {
         }, {
             text: 'Reload Data',
             handler: function() {
-                store1.loadData(generateData(5, 0));
+                // Add a short delay to prevent fast sequential clicks
+                window.loadTask.delay(100, function() {
+                    store1.loadData(generateData(5, 0));
+                });
             }
         }],
         items: chart

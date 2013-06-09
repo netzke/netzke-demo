@@ -1,7 +1,7 @@
 /**
  * @class SimpleTasks.view.tasks.DefaultTimeWindow
  * @extends Ext.window.Window
- *
+ * 
  * A window for setting the default reminder time
  */
 Ext.define('SimpleTasks.view.tasks.DefaultTimeWindow', {
@@ -23,6 +23,7 @@ Ext.define('SimpleTasks.view.tasks.DefaultTimeWindow', {
                 {
                     xtype: 'timefield',
                     name: 'default_time',
+                    editable: false,
                     labelAlign: 'top',
                     fieldLabel: 'When setting quick reminders, default the time to',
                     anchor: '100%'

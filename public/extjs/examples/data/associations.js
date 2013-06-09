@@ -72,9 +72,9 @@ Ext.define('OrderItem', {
 Ext.define('CustomerGrid', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.customergrid',
-
+    
     title: 'Customers',
-
+    
     initComponent: function(){
         Ext.apply(this, {
             store: {
@@ -94,6 +94,7 @@ Ext.define('CustomerGrid', {
                 dataIndex: 'name',
                 flex: 1
             }, {
+                width: 140,
                 text: 'Phone',
                 dataIndex: 'phone'
             }],
@@ -111,19 +112,19 @@ Ext.define('CustomerGrid', {
         this.callParent();
         this.getSelectionModel().on('selectionchange', this.onSelectChange, this);
     },
-
+    
     onSelectChange: function(selModel, selections) {
         this.active = selections[0];
         this.down('#load').setDisabled(!this.active);
     },
-
+    
     loadOrders: function(){
         var rec = this.active,
             name = rec.get('name'),
             owner = this.ownerCt,
             orders;
-
-
+         
+        
         orders = rec.orders();
         if (orders.isLoading()) {
             Logger.log('Begin loading orders: ' + rec.getId(), true);
@@ -138,13 +139,13 @@ Ext.define('CustomerGrid', {
             store: orders
         });
         owner.getLayout().next();
-    }
+    }    
 });
 
 Ext.define('OrderGrid', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.ordergrid',
-
+    
     initComponent: function(){
         Ext.apply(this, {
             columns: [{
@@ -174,24 +175,24 @@ Ext.define('OrderGrid', {
         this.callParent();
         this.getSelectionModel().on('selectionchange', this.onSelectChange, this);
     },
-
+    
     onBackClick: function(){
         this.ownerCt.getLayout().prev();
-        this.destroy();
+        this.destroy();    
     },
-
+    
     onSelectChange: function(selModel, selections) {
         this.active = selections[0];
         this.down('#load').setDisabled(!this.active);
     },
-
+    
     loadItems: function(){
         var customerName = this.customer.get('name'),
             rec = this.active,
             date = Ext.Date.format(rec.get('date'), 'Y-m-d'),
             owner = this.ownerCt,
             orderitems;
-
+        
         orderitems = rec.orderitems();
         if (orderitems.isLoading()) {
             Logger.log('Begin loading order items - ' + rec.getId(), true);
@@ -205,13 +206,13 @@ Ext.define('OrderGrid', {
             store: orderitems
         });
         owner.getLayout().next();
-    }
+    }    
 });
 
 Ext.define('OrderItemGrid', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.orderitemgrid',
-
+    
     initComponent: function(){
         Ext.apply(this, {
             columns: [{
@@ -248,21 +249,21 @@ Ext.define('OrderItemGrid', {
         this.callParent();
         this.getSelectionModel().on('selectionchange', this.onSelectChange, this);
     },
-
+    
     onSelectChange: function(selModel, selections) {
         this.active = selections[0];
         this.down('#load').setDisabled(!this.active);
     },
-
+    
     onBackClick: function(){
         this.ownerCt.getLayout().prev();
-        this.destroy();
+        this.destroy();    
     },
-
+    
     onLoadClick: function(){
         var rec = this.active,
             id = rec.getId();
-
+        
         new ItemLoader({
             width: 400,
             height: 400,
@@ -276,7 +277,7 @@ Ext.define('OrderItemGrid', {
 
 Ext.define('ItemLoader', {
     extend: 'Ext.window.Window',
-
+    
     initComponent: function(){
         Ext.apply(this, {
             border: false,
@@ -302,11 +303,11 @@ Ext.define('ItemLoader', {
         this.callParent();
         this.orderItem = new OrderItem(this.orderItemData, this.orderItemId);
     },
-
+    
     onOrderClick: function(){
         var id = this.orderItem.get('order_id'),
             hasOrder = !!this.order;
-
+            
         if (!hasOrder) {
             Logger.log('Begin loading order - ' + id, true);
         }
@@ -326,11 +327,11 @@ Ext.define('ItemLoader', {
             }
         });
     },
-
+    
     onCompanyClick: function(){
         var id = this.order.get('customer_id'),
             hasCustomer = !!this.customer;
-
+            
         if (!hasCustomer) {
             Logger.log('Begin loading customer - ' + id, true);
         }
@@ -348,17 +349,17 @@ Ext.define('ItemLoader', {
                 });
             }
         });
-    }
+    }    
 });
 
 Logger = (function(){
     var panel;
-
+    
     return {
         init: function(log){
             panel = log;
         },
-
+        
         log: function(msg, isStart){
             panel.update({
                 now: new Date(),
@@ -366,12 +367,12 @@ Logger = (function(){
                 msg: msg
             });
             panel.body.scroll('b', 100000, true);
-        }
+        }    
     };
 })();
 
 Ext.onReady(function(){
-
+    
     var main = Ext.create('Ext.panel.Panel', {
         renderTo: document.body,
         width: 750,
@@ -402,5 +403,5 @@ Ext.onReady(function(){
     main.items.first().add({
         xtype: 'customergrid'
     });
-
+    
 });

@@ -2,7 +2,7 @@
  * @class Ext.calendar.data.EventModel
  * @extends Ext.data.Record
  * <p>This is the {@link Ext.data.Record Record} specification for calendar event data used by the
- * {@link Ext.calendar.CalendarPanel CalendarPanel}'s underlying store. It can be overridden as
+ * {@link Ext.calendar.CalendarPanel CalendarPanel}'s underlying store. It can be overridden as 
  * necessary to customize the fields supported by events, although the existing column names should
  * not be altered. If your model fields are named differently you should update the <b>mapping</b>
  * configs accordingly.</p>
@@ -38,16 +38,16 @@ rec.data[M.Notes.name] = 'Some notes';
  */
 Ext.define('Ext.calendar.data.EventModel', {
     extend: 'Ext.data.Model',
-
+    
     requires: [
         'Ext.util.MixedCollection',
         'Ext.calendar.data.EventMappings'
     ],
-
+    
     statics: {
         /**
          * Reconfigures the default record definition based on the current {@link Ext.calendar.data.EventMappings EventMappings}
-         * object. See the header documentation for {@link Ext.calendar.data.EventMappings} for complete details and
+         * object. See the header documentation for {@link Ext.calendar.data.EventMappings} for complete details and 
          * examples of reconfiguring an EventRecord.
          * @method create
          * @static
@@ -58,11 +58,11 @@ Ext.define('Ext.calendar.data.EventModel', {
                 Mappings = Data.EventMappings,
                 proto = Data.EventModel.prototype,
                 fields = [];
-
+            
             // It is critical that the id property mapping is updated in case it changed, since it
             // is used elsewhere in the data package to match records on CRUD actions:
             proto.idProperty = Mappings.EventId.name || 'id';
-
+            
             for(prop in Mappings){
                 if(Mappings.hasOwnProperty(prop)){
                     fields.push(Mappings[prop]);

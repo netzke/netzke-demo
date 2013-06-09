@@ -3,7 +3,7 @@
  * @extends Ext.container.Viewport
  *
  * The main FeedViewer application
- *
+ * 
  * @constructor
  * Create a new Feed Viewer app
  * @param {Object} config The config object
@@ -66,7 +66,7 @@ Ext.define('FeedViewer.App', {
         });
         return this.feedPanel;
     },
-
+    
     /**
      * Create the feed info container
      * @private
@@ -79,7 +79,7 @@ Ext.define('FeedViewer.App', {
         });
         return this.feedInfo;
     },
-
+    
     /**
      * Reacts to a feed being selected
      * @private

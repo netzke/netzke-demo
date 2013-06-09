@@ -15,7 +15,7 @@ Ext.define('FeedViewer.FeedPost', {
     cls: 'preview',
     autoScroll: true,
     border: true,
-
+    
     initComponent: function(){
         Ext.apply(this, {
             dockedItems: [this.createToolbar()],

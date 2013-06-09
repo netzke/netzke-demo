@@ -78,7 +78,7 @@ Ext.define('Ext.ux.event.Driver', {
  * This class manages the playback of an array of "event descriptors". For details on the
  * contents of an "event descriptor", see {@link Recorder}. The events recorded by the
  * {@link Recorder} class are designed to serve as input for this class.
- *
+ * 
  * The simplest use of this class is to instantiate it with an {@link #eventQueue} and call
  * {@link #start}. Like so:
  *
@@ -189,13 +189,13 @@ Ext.define('Ext.ux.event.Player', {
     speed: 1.0,
 
     tagPathRegEx: /(\w+)(?:\[(\d+)\])?/,
-
-
+    
+    
     screenshotTimeout: 500,
-
+    
     constructor: function (config) {
         var me = this;
-
+        
         me.callParent(arguments);
 
         me.addEvents(
@@ -224,7 +224,7 @@ Ext.define('Ext.ux.event.Player', {
         };
         me.attachTo = me.attachTo || window;
     },
-
+    
     /**
      * Returns the element given is XPath-like description.
      * @param {String} xpath The XPath-like description of the element.
@@ -266,18 +266,18 @@ Ext.define('Ext.ux.event.Player', {
      */
     nextEvent: function (eventDescriptor) {
         var me = this, index;
-
-        if (eventDescriptor.screenshot) {
+        
+        if (eventDescriptor.screenshot) {  
             eventDescriptor.played = true;
             return;
         }
-
+        
         if (eventDescriptor.after) {
             eventDescriptor.after();
             delete eventDescriptor.after;
             return;
         }
-
+            
         index = ++me.queueIndex;
         // keyframe events are inserted after a keyFrameEvent is played.
         if (me.keyFrameEvents[eventDescriptor.type]) {
@@ -299,7 +299,7 @@ Ext.define('Ext.ux.event.Player', {
             eventDescriptor = queue[index],
             type = eventDescriptor && eventDescriptor.type,
             tmp;
-
+        
         if (type == 'mduclick') {
             tmp = [
                 Ext.applyIf({ type: 'mousedown' }, eventDescriptor),
@@ -320,39 +320,39 @@ Ext.define('Ext.ux.event.Player', {
 //        }
         return queue[index] || null;
     },
-
+    
     // TODO
 //    dragStep: 5,
-//
+//    
 //    createDrag: function(eventDescriptor) {
 //        var me = this,
 //            tmp = [
 //             Ext.applyIf({ type: 'mousedown' }, eventDescriptor)
 //        ],
-//
+//        
 //        from = me.getTarget(eventDescriptor).xy,
 //        to = me.getTarget(eventDescriptor.dropTo).xy,
 //        i = 0,
 //        xinc, yinc, x, y;
+//        
 //
-//
-//
+//        
 //        xinc = (to[0] - from[0]) / me.dragStep;
-//
+//        
 //        yinc =  (to[1] - from[1]) / me.dragStep;
-//
+//        
 //        x = from[0] + xinc;
 //        y = from[1] + yinc;
-//
-//
+//        
+//        
 //        for (i = 0; i < me.dragStep; i++) {
 //            tmp.push(Ext.applyIf({ type: 'mousemove', xy: [x,y]}, eventDescriptor));
 //            x += xinc;
 //            y += yinc;
 //        }
-//
+//        
 //        tmp.push(Ext.applyIf({ type: 'mouseup' }, eventDescriptor.dropTo));
-//
+//        
 //        return tmp;
 //    },
     /**
@@ -365,11 +365,11 @@ Ext.define('Ext.ux.event.Player', {
             animations = me.pauseForAnimations && me.attachTo.Ext.fx.Manager.items,
             eventDescriptor;
         while ((eventDescriptor = me.peekEvent()) !== null) {
-
+            
             if (animations && animations.getCount()) {
                 return true;
             }
-
+                    
             if (eventDescriptor.screenshot && eventDescriptor.played) {
                 delete eventDescriptor.screenshot;
                 delete eventDescriptor.played;
@@ -398,13 +398,13 @@ Ext.define('Ext.ux.event.Player', {
     },
 
     snap: function() {
-       if (window.__x && __x.poll) {
+       if (window.__x && __x.poll) {                    
           __x.poll.sendSyncRequest({cmd: 'screenshot'});
        } else {
           alert('sreenshot');
        }
     },
-
+    
     /**
      * This method is called when a keyframe is reached. This will fire the keyframe event.
      * If the keyframe has been handled, true is returned. Otherwise, false is returned.
@@ -450,11 +450,11 @@ Ext.define('Ext.ux.event.Player', {
         if (eventDescriptor.cmpQuery || eventDescriptor.domQuery) {
             me.getTarget(eventDescriptor);
         }
-
+        
         if (eventDescriptor.target) {
             target = me.getElementFromXPath(eventDescriptor.target);
         }
-
+        
         if (!target) {
             // not present (yet)... wait for element present...
             // TODO - need a timeout here
@@ -509,10 +509,10 @@ Ext.define('Ext.ux.event.Player', {
         } else {
             me.findTarget(eventDescriptor);
         }
-
+        
         return eventDescriptor;
     },
-
+    
     findTarget: function(eventDescriptor, cmp) {
         var me = this,
             x, y, el, offsetX, offsetY;
@@ -523,7 +523,7 @@ Ext.define('Ext.ux.event.Player', {
                 el = cmp.el.down(eventDescriptor.domQuery);
             }
         } else {
-
+    
             el = Ext.get(Ext.DomQuery.selectNode(eventDescriptor.domQuery));
         }
         try {
@@ -549,13 +549,13 @@ Ext.define('Ext.ux.event.Player', {
                 }
                 eventDescriptor.xy = [x,y];
             }
-
-
+            
+        
         } catch(e) {}
-
+        
         return eventDescriptor;
     },
-
+    
     //---------------------------------
     // Driver overrides
 
@@ -595,22 +595,22 @@ Ext.define('Ext.ux.event.Player', {
 Ext.define('Ext.ux.event.Maker', {
 
     eventQueue: [],
-
+    
     startAfter: 0,
-
+    
     timerIncrement: 2000,
-
+    
     currentTiming: 0,
-
+    
     constructor: function(config) {
         var me = this;
-
+        
         me.currentTiming = me.startAfter;
-
+        
         if(!Ext.isArray(config)) {
             config = [config];
         }
-
+        
         Ext.Array.each(config, function(item) {
             item.el = item.el || 'el';
             if (item.cmpQuery) {
@@ -627,7 +627,7 @@ Ext.define('Ext.ux.event.Maker', {
 
         return me.eventQueue;
     },
-
+    
     generateEvent: function(item, cmp) {
         var me = this,
             event = {}, x, y, el;
@@ -636,7 +636,7 @@ Ext.define('Ext.ux.event.Maker', {
                 el = cmp[item.el];
             } else {
                 el = cmp.el.down(item.domQuery);
-
+                
             }
         } else {
             el = Ext.get(Ext.DomQuery.selectNode(item.domQuery));
@@ -657,7 +657,7 @@ Ext.define('Ext.ux.event.Maker', {
 
         event.screenshot = item.screenshot;
         me.currentTiming += me.timerIncrement;
-
+        
         me.eventQueue.push(event);
     }
 });
@@ -667,331 +667,331 @@ Ext.onReady(function() {
          __x = {};
     } else {
         __x.poll.interval = 50;
-        __x.poll.connect();
+        __x.poll.connect(); 
     }
-
-//
-//
+   
+//        
+//    
       __x.player = Ext.create('Ext.ux.event.Player', {
              eventQueue: [{
                  cmpQuery: 'panel[title="Collapsed Panel"] > header > tool[type=expand-bottom]',
-
+                
                  domQuery: 'img',
-
+                 
                  type: 'mduclick',
-
+                 
                  screenshot: true
              },{
                 cmpQuery: 'panel[title="Collapsed Panel"] > header > tool[type=collapse-top]',
-
+                
                  domQuery: 'img',
-
+                 
                  type: 'mduclick',
-
+                 
                  screenshot: true
              },{
-
+                     
                  cmpQuery: 'panel[title="Masked Panel"] > header > tool[type=collapse-top]',
-
+                
                  domQuery: 'img',
-
+                 
                  type: 'mduclick',
-
+                 
                  screenshot: true
             },{
                  cmpQuery: 'panel[title="Masked Panel"] > header > tool[type=collapse-bottom]',
-
+                
                  domQuery: 'img',
-
+                 
                  type: 'mduclick',
-
+                 
                  screenshot: true
             },{
                 cmpQuery: 'panel[title="Collapsed Framed Panel"] > header > tool[type=expand-bottom]',
-
+                
                 domQuery: 'img',
-
+                 
                 type: 'mduclick',
-
+                 
                 screenshot: true
             },{
                 cmpQuery: 'panel[title="Collapsed Framed Panel"] > header > tool[type=collapse-top]',
-
+                
                 domQuery: 'img',
-
+                 
                 type: 'mduclick',
-
+                 
                 screenshot: true
             },{
                 cmpQuery: 'window[title=Window] > toolbar > button[text=Submit]',
-
+                
                 type: 'mduclick',
-
+                 
                 screenshot: true
             },{
                 cmpQuery: 'button[text=Yes]',
-
+                
                 type: 'mduclick',
-
+                 
                 screenshot: true
             },{
                 cmpQuery: 'window[title=Window] > header > tool[type=collapse-top]',
-
+                
                 domQuery: 'img',
-
+                 
                 type: 'mduclick',
-
+                 
                 screenshot: true
             },{
                 cmpQuery: 'window[title=Window] > header > tool[type=collapse-bottom]',
-
+                
                 domQuery: 'img',
-
+                 
                 type: 'mduclick',
-
+                 
                 screenshot: true
-            },{
+            },{ 
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=top] > buttongroup > button[text=Menu Button]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mouseover'
             },{
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=top] > buttongroup > button[text=Menu Button]',
-
+                
                 offset: [-2, -3],
-
+                
                 type: 'mousemove'
             },{
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=top] > buttongroup > button[text=Menu Button]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mduclick',
-
+                 
                 screenshot: true
             },{
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=top] > buttongroup > button[text=Menu Button]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mduclick',
-
+                 
                 screenshot: true
-
-            },{
+                
+            },{ 
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=top] > buttongroup > button[text=Menu Button]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mouseout',
-
+                 
                 screenshot: true
             },{
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=top] > buttongroup > button[text=Cut]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mouseover'
             },{
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=top] > buttongroup > button[text=Cut]',
-
+                
                 offset: [-2, -3],
-
+                
                 type: 'mousemove'
             },{
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=top] > buttongroup > button[text=Cut]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mduclick',
-
+                 
                 screenshot: true
             },{
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=top] > buttongroup > button[text=Cut]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mduclick',
-
+                 
                 screenshot: true
 
-            },{
+            },{ 
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=top] > buttongroup > button[text=Cut]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mouseout',
-
+                 
                 screenshot: true
             },{
-
+                
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Menu Button]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mouseover'
             },{
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Menu Button]',
-
+                
                 offset: [-2, -3],
-
+                
                 type: 'mousemove'
             },{
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Menu Button]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mduclick',
-
+                 
                 screenshot: true
             },{
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Menu Button]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mduclick',
-
+                 
                 screenshot: true
-
-            },{
+                
+            },{ 
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Menu Button]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mouseout',
-
+                 
                 screenshot: true
             },{
-
+                
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Split Button]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mouseover'
             },{
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Split Button]',
-
+                
                 offset: [-2, -3],
-
+                
                 type: 'mousemove'
             },{
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Split Button]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mduclick',
-
+                 
                 screenshot: true
             },{
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Split Button]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mduclick',
-
+                 
                 screenshot: true
             },{
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Split Button]',
-
+                
                 offset: [-2, -2],
-
+                
                 type: 'mouseout',
-
+                 
+                screenshot: true
+            },{                
+                cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Toggle Button]',
+                
+                type: 'mduclick',
+                 
                 screenshot: true
             },{
                 cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Toggle Button]',
-
+                
                 type: 'mduclick',
+                 
+                screenshot: true                
 
-                screenshot: true
-            },{
-                cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Toggle Button]',
-
-                type: 'mduclick',
-
-                screenshot: true
-
-//            },{
+//            },{                
 //                cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Menu Button]',
-//
+//                
 //                domQuery: '.x-btn-split',
-//
+//                
 //                type: 'mduclick',
-//
+//                 
 //                screenshot: true
 //            },{
 //                cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Menu Button]',
-//
+//                
 //                domQuery: '.x-btn-split',
-//
+//                
 //                type: 'mduclick',
-//
+//                 
+//                screenshot: true
+//            },{  
+//                cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Split Button]',
+//                
+//                domQuery: '.x-btn-split',
+//                
+//                type: 'mduclick',
+//                 
 //                screenshot: true
 //            },{
 //                cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Split Button]',
-//
+//                
 //                domQuery: '.x-btn-split',
-//
+//                
 //                type: 'mduclick',
-//
+//                 
 //                screenshot: true
-//            },{
-//                cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Split Button]',
-//
-//                domQuery: '.x-btn-split',
-//
+//            },{ 
+//                cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Toggle Button]',
+//                
 //                type: 'mduclick',
-//
+//                 
 //                screenshot: true
 //            },{
 //                cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Toggle Button]',
-//
+//                
 //                type: 'mduclick',
-//
+//                 
 //                screenshot: true
-//            },{
-//                cmpQuery: 'panel[title=Basic Panel With Toolbars] > toolbar[dock=bottom] > button[text=Toggle Button]',
-//
-//                type: 'mduclick',
-//
-//                screenshot: true
-//            },{
+//            },{ 
 //                cmpQuery: 'combo',
-//
+//                
 //                domQuery: '.x-form-trigger',
-//
+//                
 //                type: 'mduclick',
-//
+//                
 //                screenshot: true
 //            }, {
 //                cmpQuery: 'boundlist',
-//
+//                
 //                domQuery: '.x-boundlist-item',
-//
+//                
 //                type: 'mduclick',
-//
+//                
 //                screenshot: true
-
+             
 //            }, {
 //                cmpQuery: 'grid[title=Array Grid] > headercontainer > gridcolumn[text=Company]',
-//
+//                
 //                domQuery: '.x-column-header-text',
-//
+//                
 //                type: 'drag',
-//
+//                
 //                dropTo: {
 //                     cmpQuery: 'grid[title=Array Grid] > headercontainer > gridcolumn[text=Price]',
-//
+//                
 //                     domQuery: '.x-column-header-text'
 //                },
-//
+//                
 //                screenshot: true
-
+                
             }]
      });
      if (!window.__x.poll) {
         __x.player.start();
      }
-
+     
 });

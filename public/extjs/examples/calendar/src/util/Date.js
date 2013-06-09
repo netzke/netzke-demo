@@ -1,12 +1,12 @@
 Ext.define('Ext.calendar.util.Date', {
-
+    
     singleton: true,
-
+    
     diffDays: function(start, end) {
         var day = 1000 * 60 * 60 * 24,
             clear = Ext.Date.clearTime,
             diff = clear(end, true).getTime() - clear(start, true).getTime();
-
+        
         return Math.ceil(diff / day);
     },
 
@@ -30,6 +30,13 @@ Ext.define('Ext.calendar.util.Date', {
         }
         return dt2.getTime() - dt1.getTime();
     },
+    
+    isMidnight: function(dt) {
+        return dt.getHours() === 0 &&
+               dt.getMinutes() === 0 &&
+               dt.getSeconds() === 0 && 
+               dt.getMilliseconds() === 0;    
+    },
 
     // private helper fn
     maxOrMin: function(max) {
@@ -50,11 +57,11 @@ Ext.define('Ext.calendar.util.Date', {
     min: function() {
         return this.maxOrMin.apply(this, [false, arguments]);
     },
-
+    
     today: function() {
         return Ext.Date.clearTime(new Date());
     },
-
+    
     /**
      * Adds time to the specified date and returns a new Date instance as the result (does not
      * alter the original date object). Time can be specified in any combination of milliseconds
@@ -76,7 +83,7 @@ var futureDate = Extensible.Date.add(now, {
      * @param {Date} dt The starting date to which to add time
      * @param {Object} o A config object that can contain one or more of the following
      * properties, each with an integer value:
-     *
+     * 
      * - millis
      * - seconds
      * - minutes
@@ -85,7 +92,7 @@ var futureDate = Extensible.Date.add(now, {
      * - weeks
      * - months
      * - years
-     *
+     * 
      * You can also optionally include the property "clearTime: true" which will perform all of the
      * date addition first, then clear the time value of the final date before returning it.
      * @return {Date} A new date instance containing the resulting date/time value
@@ -97,7 +104,7 @@ var futureDate = Extensible.Date.add(now, {
         var ExtDate = Ext.Date,
             dateAdd = ExtDate.add,
             newDt = ExtDate.clone(dt);
-
+        
         if (o.years) {
             newDt = dateAdd(newDt, ExtDate.YEAR, o.years);
         }
@@ -122,7 +129,7 @@ var futureDate = Extensible.Date.add(now, {
         if (o.millis) {
             newDt = dateAdd(newDt, ExtDate.MILLI, o.millis);
         }
-
+         
         return o.clearTime ? ExtDate.clearTime(newDt) : newDt;
     }
 });

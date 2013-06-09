@@ -43,16 +43,16 @@ Ext.define('SimpleTasks.view.lists.Tree', {
     ],
 
     viewConfig: {
-            plugins: {
-                ptype: 'tasksdragdrop',
-                dragText: 'Drag to reorder',
-                ddGroup: 'task'
-            }
+        plugins: {
+            ptype: 'tasksdragdrop',
+            dragText: 'Drag to reorder',
+            ddGroup: 'task'
+        }
     },
 
     initComponent: function() {
         var me = this;
-
+            
         /**
          * This Tree Panel's cell editing plugin
          * @property cellEditingPlugin
@@ -68,10 +68,7 @@ Ext.define('SimpleTasks.view.lists.Tree', {
                 editor: {
                     xtype: 'textfield',
                     selectOnFocus: true,
-                    validator: function(value){
-                        value = Ext.String.trim(value);
-                        return value.length < 1 ? this.blankText : true;
-                    }
+                    allowOnlyWhitespace: false
                 },
                 renderer: Ext.bind(me.renderName, me)
             },
@@ -84,7 +81,7 @@ Ext.define('SimpleTasks.view.lists.Tree', {
                 handler: Ext.bind(me.handleDeleteClick, me)
             }
         ];
-
+        
         me.callParent(arguments);
 
         me.addEvents(
@@ -185,7 +182,7 @@ Ext.define('SimpleTasks.view.lists.Tree', {
      * 2) When a task is dragged and dropped onto a list, or when a list is deleted the task count won't automatially be updated
      *    because none of the data in the lists store actually changed (the renderer gets the count
      *    from the tasks store).
-     *
+     *    
      * In both situations refreshing the lists view we ensure that the task counts are accurate.
      */
     refreshView: function() {

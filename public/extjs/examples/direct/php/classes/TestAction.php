@@ -33,17 +33,17 @@ class TestAction {
         }
         return $out;
     }
-
+    
     function getGrid($params){
         $sort = $params->sort[0];
         $field = $sort->property;
         $direction = $sort->direction;
-
+        
         /*
          * Here we would apply a proper sort from the DB, but since
          * it's such a small dataset we will just sort by hand here.
          */
-
+         
         if ($field == 'name') {
             $data = array(array(
                 'name'=>'ABC Accounting',
@@ -90,10 +90,10 @@ class TestAction {
         }
         return $data;
     }
-
+    
     function showDetails($data){
         $first = $data->firstName;
-        $last = $data->lastName;
+        $last = $data->lastName; 
         $age = $data->age;
         return "Hi $first $last, you are $age years old.";
     }

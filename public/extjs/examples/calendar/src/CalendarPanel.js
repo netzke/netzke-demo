@@ -14,15 +14,16 @@
 Ext.define('Ext.calendar.CalendarPanel', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.calendarpanel',
-
+    
     requires: [
         'Ext.layout.container.Card',
         'Ext.calendar.view.Day',
         'Ext.calendar.view.Week',
         'Ext.calendar.view.Month',
-        'Ext.calendar.form.EventDetails'
+        'Ext.calendar.form.EventDetails',
+        'Ext.calendar.data.EventMappings'
     ],
-
+    
     /**
      * @cfg {Boolean} showDayView
      * True to include the day view (and toolbar button), false to hide them (defaults to true).
@@ -59,7 +60,7 @@ Ext.define('Ext.calendar.CalendarPanel', {
     showTodayText: true,
     /**
      * @cfg {Boolean} showTime
-     * True to display the current time next to the date in the calendar's current day box, false to not show it
+     * True to display the current time next to the date in the calendar's current day box, false to not show it 
      * (defaults to true).
      */
     showTime: true,
@@ -186,7 +187,7 @@ Ext.define('Ext.calendar.CalendarPanel', {
              * Fires after a different calendar view is activated (but not when the event edit form is activated)
              * @param {Ext.calendar.CalendarPanel} this
              * @param {Ext.Ext.calendar.view.AbstractCalendar} view The view being activated (any valid {@link Ext.calendar.view.AbstractCalendar AbstractCalendar} subclass)
-             * @param {Object} info Extra information about the newly activated view. This is a plain object
+             * @param {Object} info Extra information about the newly activated view. This is a plain object 
              * with following properties:<div class="mdetail-params"><ul>
              * <li><b><code>activeDate</code></b> : <div class="sub-desc">The currently-selected date</div></li>
              * <li><b><code>viewStart</code></b> : <div class="sub-desc">The first date in the new view range</div></li>
@@ -201,7 +202,7 @@ Ext.define('Ext.calendar.CalendarPanel', {
             /**
              * @event eventsrendered
              * Fires after events are finished rendering in the view
-             * @param {Ext.calendar.CalendarPanel} this
+             * @param {Ext.calendar.CalendarPanel} this 
              */
             /**
              * @event eventclick
@@ -370,9 +371,9 @@ Ext.define('Ext.calendar.CalendarPanel', {
     // private
     afterRender: function() {
         this.callParent(arguments);
-
+        
         this.body.addCls('x-cal-body');
-
+        
         Ext.defer(function() {
             this.updateNavState();
             this.fireViewChange();
@@ -449,16 +450,16 @@ Ext.define('Ext.calendar.CalendarPanel', {
     setActiveView: function(id){
         var l = this.layout,
             tb = this.getDockedItems('toolbar')[0];
-
+        
         // show/hide the toolbar first so that the layout will calculate the correct item size
         if (tb) {
             tb[id === this.id+'-edit' ? 'hide' : 'show']();
         }
-
+        
         l.setActiveItem(id);
         this.doComponentLayout();
         this.activeView = l.getActiveItem();
-
+        
         if(id !== this.id+'-edit'){
            if(id !== this.preEditView){
                 l.activeItem.setStartDate(this.startDate, true);
@@ -473,7 +474,7 @@ Ext.define('Ext.calendar.CalendarPanel', {
         if (this.layout && this.layout.getActiveItem) {
             var view = this.layout.getActiveItem();
             if (view && view.getViewBounds) {
-                vb = view.getViewBounds();
+                var vb = view.getViewBounds();
                 var info = {
                     activeDate: view.getStartDate(),
                     viewStart: vb.start,

@@ -67,7 +67,7 @@ Ext.onReady(function(){
 
     // configure whether filter query is encoded or not (initially)
     var encode = false;
-
+    
     // configure whether filtering is performed locally or remotely (initially)
     var local = true;
 
@@ -160,7 +160,7 @@ Ext.onReady(function(){
 
         return columns.slice(start || 0, finish);
     };
-
+    
     var grid = Ext.create('Ext.grid.Panel', {
         border: false,
         store: store,
@@ -183,11 +183,11 @@ Ext.onReady(function(){
             enableToggle: true,
             handler: function (button, state) {
                 var encode = (grid.filters.encode !== true);
-                var text = 'Encode: ' + (encode ? 'On' : 'Off');
+                var text = 'Encode: ' + (encode ? 'On' : 'Off'); 
                 grid.filters.encode = encode;
                 grid.filters.reload();
                 button.setText(text);
-            }
+            } 
         },
         {
             text: 'Local Filtering: ' + (local ? 'On' : 'Off'),
@@ -198,7 +198,7 @@ Ext.onReady(function(){
                     text = 'Local Filtering: ' + (local ? 'On' : 'Off'),
                     newUrl = local ? url.local : url.remote,
                     store = grid.view.getStore();
-
+                 
                 // update the GridFilter setting
                 grid.filters.local = local;
                 // bind the store again so GridFilters is listening to appropriate store event
@@ -208,7 +208,7 @@ Ext.onReady(function(){
 
                 button.setText(text);
                 store.load();
-            }
+            } 
         },
         {
             text: 'All Filter Data',
@@ -216,12 +216,12 @@ Ext.onReady(function(){
             handler: function () {
                 var data = Ext.encode(grid.filters.getFilterData());
                 Ext.Msg.alert('All Filter Data',data);
-            }
+            } 
         },{
             text: 'Clear Filter Data',
             handler: function () {
                 grid.filters.clearFilters();
-            }
+            } 
         },{
             text: 'Add Columns',
             handler: function () {
@@ -231,13 +231,13 @@ Ext.onReady(function(){
                     this.disable();
                 }
             }
-        }
+        }    
     ]);
 
     var win = Ext.create('Ext.Window', {
         title: 'Grid Filters Example',
         height: 400,
-        width: 700,
+        width: 875,
         layout: 'fit',
         items: grid
     }).show();

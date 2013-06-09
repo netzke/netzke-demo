@@ -4,7 +4,7 @@ Ext.define('FV.controller.Feeds', {
     stores: ['Feeds', 'Articles'],
     models: ['Feed'],
     views: ['feed.Add'],
-
+    
     refs: [
         {ref: 'feedList', selector: 'feedlist'},
         {ref: 'feedData', selector: 'feedlist dataview'},
@@ -13,14 +13,18 @@ Ext.define('FV.controller.Feeds', {
         {ref: 'feedCombo', selector: 'feedwindow combobox'},
         {ref: 'articleGrid', selector: 'articlegrid'},
         {
-            ref: 'feedWindow',
-            selector: 'feedwindow',
+            ref: 'feedWindow', 
+            selector: 'feedwindow', 
             autoCreate: true,
             xtype: 'feedwindow'
         }
     ],
-
-    requires: ['FV.lib.FeedValidator'],
+    
+    requires: [
+        'FV.lib.FeedValidator',
+        'FV.store.Articles',
+        'FV.store.Feeds'
+    ],
 
     // At this point things haven't rendered yet since init gets called on controllers before the launch function
     // is executed on the Application
@@ -40,15 +44,15 @@ Ext.define('FV.controller.Feeds', {
             }
         });
     },
-
+    
     onLaunch: function() {
         var dataview = this.getFeedData(),
             store = this.getFeedsStore();
-
+            
         dataview.bindStore(store);
         dataview.getSelectionModel().select(store.getAt(0));
     },
-
+    
     /**
      * Loads the given feed into the viewer
      * @param {FV.model.feed} feed The feed to load
@@ -65,17 +69,17 @@ Ext.define('FV.controller.Feeds', {
                 params: {
                     feed: feed.get('url')
                 }
-            });
+            });            
         }
     },
-
+    
     /**
      * Shows the add feed dialog window
      */
     addFeed: function() {
         this.getFeedWindow().show();
     },
-
+    
     /**
      * Removes the given feed from the Feeds store
      * @param {FV.model.Feed} feed The feed to remove
@@ -83,7 +87,7 @@ Ext.define('FV.controller.Feeds', {
     removeFeed: function() {
         this.getFeedsStore().remove(this.getFeedData().getSelectionModel().getSelection()[0]);
     },
-
+    
     /**
      * @private
      * Creates a new feed in the store based on a given url. First validates that the feed is well formed
@@ -104,12 +108,12 @@ Ext.define('FV.controller.Feeds', {
         form.setLoading({
             msg: 'Validating feed...'
         });
-
+        
         FV.lib.FeedValidator.validate(feed, {
             success: function() {
                 store.add(feed);
                 form.setLoading(false);
-                win.hide();
+                win.close();
             },
             failure: function() {
                 form.setLoading(false);

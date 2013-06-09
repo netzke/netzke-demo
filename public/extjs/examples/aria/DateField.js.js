@@ -80,9 +80,9 @@ Ext.define('Ext.picker.NewDate', {
                 '</tpl>' +
             '</tr></tbody>' +
         '</table>', {
-
+        
         cellClass: function(value, data) {
-
+            
         },
         titleFormat: function(value) {
             return Ext.date.format(value, this.longDayFormat);

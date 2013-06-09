@@ -1,7 +1,5 @@
 /**
- * @class Ext.ux.data.PagingMemoryProxy
- * @extends Ext.data.proxy.Memory
- * <p>Paging Memory Proxy, allows to use paging grid with in memory dataset</p>
+ * Paging Memory Proxy, allows to use paging grid with in memory dataset
  */
 Ext.define('Ext.ux.data.PagingMemoryProxy', {
     extend: 'Ext.data.proxy.Memory',
@@ -41,7 +39,7 @@ Ext.define('Ext.ux.data.PagingMemoryProxy', {
             result.records = records;
             result.totalRecords = result.total = records.length;
         }
-
+        
         // sorting
         sorters = operation.sorters;
         if (sorters.length > 0) {
@@ -50,18 +48,18 @@ Ext.define('Ext.ux.data.PagingMemoryProxy', {
                 var result = sorters[0].sort(r1, r2),
                     length = sorters.length,
                     i;
-
+                
                     //if we have more than one sorter, OR any additional sorter functions together
                     for (i = 1; i < length; i++) {
                         result = result || sorters[i].sort.call(this, r1, r2);
-                    }
-
+                    }                
+               
                 return result;
             };
-
+    
             result.records.sort(sorterFn);
         }
-
+        
         // paging (use undefined cause start can also be 0 (thus false))
         if (operation.start !== undefined && operation.limit !== undefined) {
             result.records = result.records.slice(operation.start, operation.start + operation.limit);
@@ -71,7 +69,7 @@ Ext.define('Ext.ux.data.PagingMemoryProxy', {
         Ext.apply(operation, {
             resultSet: result
         });
-
+        
         operation.setCompleted();
         operation.setSuccessful();
 

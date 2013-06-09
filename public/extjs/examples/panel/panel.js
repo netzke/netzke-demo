@@ -10,7 +10,7 @@ Ext.onReady(function() {
     'Aliquam commodo ullamcorper erat. Nullam vel justo in neque porttitor laoreet. Aenean lacus dui, consequat eu, adipiscing '+
     'eget, nonummy non, nisi. Morbi nunc est, dignissim non, ornare sed, luctus eu, massa. Vivamus eget quam. Vivamus tincidunt '+
     'diam nec urna. Curabitur velit. Lorem ipsum dolor sit amet.</p>';
-
+    
     var configs = [{
         title: 'Basic Panel',
         collapsible:true,
@@ -29,7 +29,7 @@ Ext.onReady(function() {
                 p.body.mask('Loading...');
             },
             delay: 50
-        }
+        }    
     },{
         width: 150,
         height: 150,
@@ -83,12 +83,13 @@ Ext.onReady(function() {
     },{
         title : 'Framed panel as child',
         width : 300,
-        height: 100,
+        manageHeight: false,
         html  : null,
         layout: 'fit',
         items: [
             {
                 xtype: 'panel',
+                manageHeight: false,
                 title: 'Framed panel',
                 html : '123',
                 frame: true
@@ -97,13 +98,14 @@ Ext.onReady(function() {
     },{
         title : 'Framed panel with normal child',
         width : 300,
-        height: 100,
+        manageHeight: false,
         html  : null,
         frame: true,
         layout: 'fit',
         items: [
             {
                 xtype: 'panel',
+                manageHeight: false,
                 title: 'Non-framed child',
                 html : 'Hello'
             }
@@ -115,10 +117,10 @@ Ext.onReady(function() {
         width: 180,
         html: html
     }];
-
+    
     Ext.each(configs, function(config) {
         var element = Ext.getBody().createChild({cls: 'panel-container'});
-
+        
         Ext.widget('panel', Ext.applyIf(config, {
             renderTo: element,
             bodyPadding: 7

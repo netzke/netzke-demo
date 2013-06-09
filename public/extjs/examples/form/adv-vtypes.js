@@ -44,7 +44,7 @@ Ext.onReady(function() {
 
         passwordText: 'Passwords do not match'
     });
-
+    
     Ext.tip.QuickTipManager.init();
 
     /*
@@ -105,7 +105,16 @@ Ext.onReady(function() {
         items: [{
             fieldLabel: 'Password',
             name: 'pass',
-            itemId: 'pass'
+            itemId: 'pass',
+            allowBlank: false,
+            listeners: {
+                validitychange: function(field){
+                    field.next().validate();
+                },
+                blur: function(field){
+                    field.next().validate();
+                }
+            }
         }, {
             fieldLabel: 'Confirm Password',
             name: 'pass-cfrm',

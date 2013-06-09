@@ -36,7 +36,7 @@ Ext.define('Ext.ux.TabCloseMenu', {
 
     /**
      * @cfg {String} closeAllTabsText
-     * <p>The text for closing all tabs.
+     * The text for closing all tabs.
      */
     closeAllTabsText: 'Close All Tabs',
 
@@ -76,7 +76,7 @@ Ext.define('Ext.ux.TabCloseMenu', {
         this.mon(this.tabBar.el, {
             scope: this,
             contextmenu: this.onContextMenu,
-            delegate: 'div.x-tab'
+            delegate: '.x-tab'
         });
     },
 

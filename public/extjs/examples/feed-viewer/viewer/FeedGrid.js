@@ -121,7 +121,7 @@ Ext.define('FeedViewer.FeedGrid', {
     onProxyException: function(proxy, response, operation) {
         Ext.Msg.alert("Error with data from server", operation.error);
         this.view.el.update('');
-
+        
         // Update the detail view with a dummy empty record
         this.fireEvent('select', this, {data:{}});
     },

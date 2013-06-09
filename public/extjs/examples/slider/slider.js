@@ -73,7 +73,7 @@ Ext.onReady(function(){
         minValue: 0,
         maxValue: 100
     });
-
+    
     Ext.create('Ext.slider.Multi', {
         renderTo: 'multi-slider-horizontal',
         hideLabel: true,
@@ -82,7 +82,7 @@ Ext.onReady(function(){
         maxValue: 100,
         values: [10, 50, 90]
     });
-
+    
     Ext.create('Ext.slider.Multi', {
         renderTo: 'multi-slider-vertical',
         hideLabel: true,

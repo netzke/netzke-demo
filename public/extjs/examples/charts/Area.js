@@ -2,11 +2,8 @@ Ext.require('Ext.chart.*');
 Ext.require(['Ext.Window', 'Ext.fx.target.Sprite', 'Ext.layout.container.Fit', 'Ext.window.MessageBox']);
 
 Ext.onReady(function () {
-
-
+    
     var chart = Ext.create('Ext.chart.Chart', {
-            id: 'chartCmp',
-            xtype: 'chart',
             style: 'background:#fff',
             animate: true,
             store: store1,
@@ -15,7 +12,6 @@ Ext.onReady(function () {
             },
             axes: [{
                 type: 'Numeric',
-                grid: true,
                 position: 'left',
                 fields: ['data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7'],
                 title: 'Number of Hits',
@@ -52,8 +48,8 @@ Ext.onReady(function () {
                 }
             }]
         });
-
-    var win = Ext.create('Ext.Window', {
+    
+    var win = Ext.create('Ext.window.Window', {
         width: 800,
         height: 600,
         minHeight: 400,
@@ -62,7 +58,7 @@ Ext.onReady(function () {
         shadow: false,
         maximizable: true,
         title: 'Area Chart',
-        renderTo: Ext.getBody(),
+        autoShow: true,
         layout: 'fit',
         tbar: [{
             text: 'Save Chart',
@@ -78,17 +74,19 @@ Ext.onReady(function () {
         }, {
             text: 'Reload Data',
             handler: function() {
-                store1.loadData(generateData());
+                // Add a short delay to prevent fast sequential clicks
+                window.loadTask.delay(100, function() {
+                    store1.loadData(generateData());
+                });
             }
         }, {
             enableToggle: true,
             pressed: true,
             text: 'Animate',
             toggleHandler: function(btn, pressed) {
-                var chart = Ext.getCmp('chartCmp');
                 chart.animate = pressed ? { easing: 'ease', duration: 500 } : false;
             }
         }],
         items: chart
-    });
+    }); 
 });

@@ -44,7 +44,7 @@ Ext.onReady(function(){
                     }]
                 }
             });
-
-        }
+            
+        }        
     });
  });

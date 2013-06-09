@@ -12,7 +12,7 @@ Ext.define('Ext.calendar.data.Calendars', {
                     "id":    3,
                     "title": "School"
                 }]
-            };
+            };    
         }
     }
 });

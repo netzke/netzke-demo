@@ -11,15 +11,15 @@ Ext.onReady(function(){
             bodyPadding: 10
         },
         items: [{
-            contentEl:'script',
+            contentEl:'script', 
             title: 'Short Text',
             closable: true
         },{
-            contentEl:'markup',
+            contentEl:'markup', 
             title: 'Long Text'
         }]
     });
-
+    
     // second tabs built from JS
     var tabs2 = Ext.widget('tabpanel', {
         renderTo: document.body,

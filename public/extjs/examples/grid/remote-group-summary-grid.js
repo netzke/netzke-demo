@@ -37,7 +37,7 @@ Ext.onReady(function(){
         sorters: {property: 'due', direction: 'ASC'},
         groupField: 'project'
     });
-
+    
     var grid = Ext.create('Ext.grid.Panel', {
         width: 800,
         height: 450,
@@ -90,7 +90,8 @@ Ext.onReady(function(){
             width: 80,
             sortable: true,
             dataIndex: 'due',
-            renderer: Ext.util.Format.dateRenderer('m/d/Y')
+            renderer: Ext.util.Format.dateRenderer('m/d/Y'),
+            summaryRenderer: Ext.util.Format.dateRenderer('m/d/Y')
         }, {
             header: 'Estimate',
             width: 75,

@@ -45,7 +45,7 @@ Ext.onReady(function() {
             }
         ]
     });
-
+    
     Ext.widget('panel', {
         renderTo: Ext.getBody(),
         tbar    : toolbar,

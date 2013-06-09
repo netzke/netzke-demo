@@ -13,7 +13,7 @@ Ext.define('Ext.app.Portlet', {
     collapsible: true,
     animCollapse: true,
     draggable: {
-        moveOnDrag: false
+        moveOnDrag: false    
     },
     cls: 'x-portlet',
 
@@ -25,8 +25,13 @@ Ext.define('Ext.app.Portlet', {
             this.el.animate({
                 opacity: 0,
                 callback: function(){
+                    var closeAction = this.closeAction;
+                    this.closing = false;
                     this.fireEvent('close', this);
-                    this[this.closeAction]();
+                    this[closeAction]();
+                    if (closeAction == 'hide') {
+                        this.el.setOpacity(1);
+                    }
                 },
                 scope: this
             });

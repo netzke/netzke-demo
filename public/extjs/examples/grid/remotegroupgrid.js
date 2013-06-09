@@ -49,7 +49,7 @@ Ext.onReady(function() {
         "name": "St Michael's Alley",
         "cuisine": "Californian"
     }, {
-        "name": "Coconuts Caribbean Restaurant &amp; Bar",
+        "name": "Coconuts Caribbean Restaurant & Bar",
         "cuisine": "Caribbean"
     }, {
         "name": "Mango Caribbean Cafe",
@@ -76,7 +76,7 @@ Ext.onReady(function() {
         "name": "Starbucks",
         "cuisine": "Coffee"
     }, {
-        "name": "Rose &amp; Crown",
+        "name": "Rose & Crown",
         "cuisine": "English"
     }, {
         "name": "Bistro Maxine",
@@ -228,7 +228,7 @@ Ext.onReady(function() {
             getData: Ext.Function.createInterceptor(Ext.ux.ajax.JsonSimlet.prototype.getData, function() {
                 delete this.currentOrder;
             }),
-
+            
             // JsonSimlet respects limit param. We want to return ALL the data
             getPage: function(ctx, data) {
                 return data;
@@ -282,7 +282,7 @@ Ext.onReady(function() {
             }
         }
     });
-
+    
     var groupingFeature = Ext.create('Ext.grid.feature.Grouping',{
         groupHeaderTpl: 'Cuisine: {name} ({rows.length} Item{[values.rows.length > 1 ? "s" : ""]})',
         hideGroupedHeader: true
@@ -322,7 +322,7 @@ Ext.onReady(function() {
             }
         }]
     });
-
+    
     var newRestaurantDialog = Ext.create('Ext.window.Window', {
         closeAction: 'hide',
         title: 'Add a new restaurant',

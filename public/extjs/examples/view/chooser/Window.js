@@ -2,10 +2,10 @@
  * @class Ext.chooser.Window
  * @extends Ext.window.Window
  * @author Ed Spencer
- *
+ * 
  * This is a simple subclass of the built-in Ext.window.Window class. Although it weighs in at 100+ lines, most of this
  * is just configuration. This Window class uses a border layout and creates a DataView in the central region and an
- * information panel in the east. It also sets up a toolbar to enable sorting and filtering of the items in the
+ * information panel in the east. It also sets up a toolbar to enable sorting and filtering of the items in the 
  * DataView. We add a few simple methods to the class at the bottom, see the comments inline for details.
  */
 Ext.define('Ext.chooser.Window', {
@@ -14,18 +14,19 @@ Ext.define('Ext.chooser.Window', {
         'Ext.layout.container.Border',
         'Ext.form.field.Text',
         'Ext.form.field.ComboBox',
-        'Ext.toolbar.TextItem'
+        'Ext.toolbar.TextItem',
+        'Ext.layout.container.Fit'
     ],
-
+    
     height: 400,
-    width : 600,
+    width : 670,
     title : 'Choose an Image',
     closeAction: 'hide',
     layout: 'border',
     // modal: true,
     border: false,
     bodyBorder: false,
-
+    
     /**
      * initComponent is a great place to put any code that needs to be run when a new instance of a component is
      * created. Here we just specify the items that will go into our Window, plus the Buttons that we want to appear
@@ -36,10 +37,10 @@ Ext.define('Ext.chooser.Window', {
             {
                 xtype: 'panel',
                 region: 'center',
-                autoScroll: true,
-
+                layout: 'fit',
                 items: {
                     xtype: 'iconbrowser',
+                    autoScroll: true,
                     id: 'img-chooser-view',
                     listeners: {
                         scope: this,
@@ -47,7 +48,7 @@ Ext.define('Ext.chooser.Window', {
                         itemdblclick: this.fireImageSelected
                     }
                 },
-
+                
                 tbar: [
                     {
                         xtype: 'textfield',
@@ -92,7 +93,7 @@ Ext.define('Ext.chooser.Window', {
                 split: true
             }
         ];
-
+        
         this.buttons = [
             {
                 text: 'OK',
@@ -107,9 +108,9 @@ Ext.define('Ext.chooser.Window', {
                 }
             }
         ];
-
+        
         this.callParent(arguments);
-
+        
         /**
          * Specifies a new event that this component will fire when the user selects an item. The event is fired by the
          * fireImageSelected function below. Other components can listen to this event and take action when it is fired
@@ -123,54 +124,61 @@ Ext.define('Ext.chooser.Window', {
             'selected'
         );
     },
-
+    
     /**
      * @private
      * Called whenever the user types in the Filter textfield. Filters the DataView's store
      */
     filter: function(field, newValue) {
         var store = this.down('iconbrowser').store,
-            dataview = this.down('dataview');
-
+            view = this.down('dataview'),
+            selModel = view.getSelectionModel(),
+            selection = selModel.getSelection()[0];
+        
         store.suspendEvents();
         store.clearFilter();
-        dataview.getSelectionModel().clearSelections();
-        store.resumeEvents();
         store.filter({
             property: 'name',
             anyMatch: true,
             value   : newValue
         });
+        store.resumeEvents();
+        if (selection && store.indexOf(selection) === -1) {
+            selModel.clearSelections();
+            this.down('infopanel').clear();
+        }
+        view.refresh();
+        
     },
-
+    
     /**
      * @private
      * Called whenever the user changes the sort field using the top toolbar's combobox
      */
     sort: function() {
         var field = this.down('combobox').getValue();
-
+        
         this.down('dataview').store.sort(field);
     },
-
+    
     /**
      * Called whenever the user clicks on an item in the DataView. This tells the info panel in the east region to
      * display the details of the image that was clicked on
      */
     onIconSelect: function(dataview, selections) {
         var selected = selections[0];
-
+        
         if (selected) {
             this.down('infopanel').loadRecord(selected);
         }
     },
-
+    
     /**
      * Fires the 'selected' event, informing other components that an image has been selected
      */
     fireImageSelected: function() {
         var selectedImage = this.down('iconbrowser').selModel.getSelection()[0];
-
+        
         if (selectedImage) {
             this.fireEvent('selected', selectedImage);
             this.hide();

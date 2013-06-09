@@ -11,6 +11,6 @@ Ext.application({
         'Articles',
         'Feeds'
     ],
-
+    
     autoCreateViewport: true
 });

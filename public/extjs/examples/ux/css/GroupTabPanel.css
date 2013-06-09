@@ -8,7 +8,7 @@
 /* Card Layout container */
 .x-grouptabcontainer {
     background-color: white;
-    border-top: 1px solid #d9d9d9 !important;
+    border-top: 1px solid #d9d9d9 !important;    
     border-bottom: 1px solid #d9d9d9 !important;
     border-right: 1px solid #d9d9d9 !important;
 }
@@ -45,6 +45,7 @@
     position: relative;
     padding-left: 6px;
     padding-bottom: 2px;
+    overflow: visible; /* To allow round corner blobs (.x-grouptabs-corner) to occlude the element border */
 }
 
 .x-grouptabbar .x-grouptab-first {
@@ -59,32 +60,38 @@
     background-color: #EDEEF0;
 }
 
-.x-grouptabbar .x-tree-elbow-line,
+.x-grouptabbar .x-tree-elbow-line, 
 .x-grouptabbar .x-tree-elbow-empty {
     width: 0;
 }
 
 .x-grouptabbar .x-active-group .x-grouptab {
-    background-color: white;
+    background-color: white!important;
+    border: 0 none!important;
 }
 
 .x-grouptabbar .x-active-group .x-grouptab-first {
-    border-top: 1px solid #d9d9d9;
+    border-top: 1px solid #d9d9d9!important;
 }
 
 .x-grouptabbar .x-active-group .x-grouptab-center {
-    border-left: 1px solid #d9d9d9;
+    border-left: 1px solid #d9d9d9!important;
 }
 
 .x-grouptabbar .x-active-group .x-grouptab-last {
-    border-bottom: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9!important;
     padding-bottom: 3px;
 }
 
 .x-grouptabbar .x-active-group .x-grouptab-first,
 .x-grouptabbar .x-active-group .x-grouptab-last {
-    border-left: 1px solid #d9d9d9;
+    border-left: 1px solid #d9d9d9!important;
 }
+
+.x-grouptab-cell {
+    border: 0 none!important;
+}
+
 /* Tab corners */
 .x-grouptabbar .x-grouptabs-corner {
     background-image: url('images/x-grouptabs-corners.gif');

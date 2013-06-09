@@ -31,7 +31,7 @@ function getCombinationLayouts() {
         ['Verizon Communications',              35.57, 0.39,  1.11,  '9/1 12:00am'],
         ['Wal-Mart Stores, Inc.',               45.45, 0.73,  1.63,  '9/1 12:00am']
     ];
-
+    
     /**
      * Custom function used for column renderer
      * @param {Object} val
@@ -44,7 +44,7 @@ function getCombinationLayouts() {
         }
         return val;
     }
-
+    
     /**
      * Custom function used for column renderer
      * @param {Object} val
@@ -57,7 +57,7 @@ function getCombinationLayouts() {
         }
         return val;
     }
-
+    
     return {
         /*
          * ================  TabPanel with nested layouts  =======================
@@ -150,35 +150,35 @@ function getCombinationLayouts() {
                                      {
                                          text     : 'Company',
                                          flex     : 1,
-                                         sortable : false,
+                                         sortable : false, 
                                          dataIndex: 'company'
                                      },
                                      {
-                                         text     : 'Price',
-                                         width    : 75,
-                                         sortable : true,
-                                         renderer : 'usMoney',
+                                         text     : 'Price', 
+                                         width    : 75, 
+                                         sortable : true, 
+                                         renderer : 'usMoney', 
                                          dataIndex: 'price'
                                      },
                                      {
-                                         text     : 'Change',
-                                         width    : 75,
-                                         sortable : true,
-                                         renderer : change,
+                                         text     : 'Change', 
+                                         width    : 75, 
+                                         sortable : true, 
+                                         renderer : change, 
                                          dataIndex: 'change'
                                      },
                                      {
-                                         text     : '% Change',
-                                         width    : 75,
-                                         sortable : true,
-                                         renderer : pctChange,
+                                         text     : '% Change', 
+                                         width    : 75, 
+                                         sortable : true, 
+                                         renderer : pctChange, 
                                          dataIndex: 'pctChange'
                                      },
                                      {
-                                         text     : 'Last Updated',
-                                         width    : 85,
-                                         sortable : true,
-                                         renderer : Ext.util.Format.dateRenderer('m/d/Y'),
+                                         text     : 'Last Updated', 
+                                         width    : 85, 
+                                         sortable : true, 
+                                         renderer : Ext.util.Format.dateRenderer('m/d/Y'), 
                                          dataIndex: 'lastChange'
                                      }
                                  ],
@@ -208,6 +208,7 @@ function getCombinationLayouts() {
                 title: 'New Email',
                 layout: 'fit',
                 frame: true,
+                border: false,
                 items: {
                     xtype: 'form',
                     layout:'absolute',
@@ -215,7 +216,7 @@ function getCombinationLayouts() {
                     padding: '5 5 0 5',
                     border: false,
                     cls: 'absolute-form-panel-body',
-
+                    
                     defaultType: 'textfield',
                     items: [{
                         x: 0,
@@ -236,8 +237,9 @@ function getCombinationLayouts() {
                     },{
                         x: 55,
                         y: 27,
+                        width: 69,
                         xtype: 'button',
-                        text: 'Contacts...'
+                        text: 'Contacts'
                     },{
                         x: 127,
                         y: 27,
@@ -268,9 +270,8 @@ function getCombinationLayouts() {
                 dockedItems: [
                     {
                         xtype: 'toolbar',
-                        ignoreParentFrame: true,
-                        ignoreBorderManagement: true,
-                        cls: 'absolute-form-toolbar',
+                        border: false,
+                        cls: 'absolute-form-panel-body',
                         items: [
                             {
                                  text: 'Send',

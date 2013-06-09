@@ -6,7 +6,8 @@ Ext.require([
     'Ext.view.View',
     'Ext.layout.container.Fit',
     'Ext.toolbar.Paging',
-    'Ext.ux.form.SearchField'
+    'Ext.ux.form.SearchField',
+    'Ext.ux.DataTip'
 ]);
 
 Ext.define('Post', {
@@ -23,7 +24,7 @@ Ext.define('Post', {
 });
 
 Ext.onReady(function(){
-
+    
     var forumId = 4;
 
     var store = Ext.create('Ext.data.Store', {

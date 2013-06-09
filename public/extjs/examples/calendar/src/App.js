@@ -1,16 +1,16 @@
 /*
  * This calendar application was forked from Ext Calendar Pro
- * and contributed to Ext JS as an advanced example of what can
+ * and contributed to Ext JS as an advanced example of what can 
  * be built using and customizing Ext components and templates.
- *
+ * 
  * If you find this example to be useful you should take a look at
  * the original project, which has more features, more examples and
  * is maintained on a regular basis:
- *
+ * 
  *  http://ext.ensible.com/products/calendar
  */
 Ext.define('Ext.calendar.App', {
-
+    
     requires: [
         'Ext.Viewport',
         'Ext.layout.container.Border',
@@ -23,11 +23,11 @@ Ext.define('Ext.calendar.App', {
         'Ext.calendar.data.Calendars',
         'Ext.calendar.form.EventWindow'
     ],
-
+    
     constructor : function() {
         // Minor workaround for OSX Lion scrollbars
         this.checkScrollOffset();
-
+        
         // This is an example calendar store that enables event color-coding
         this.calendarStore = Ext.create('Ext.calendar.data.MemoryCalendarStore', {
             data: Ext.calendar.data.Calendars.getData()
@@ -39,7 +39,7 @@ Ext.define('Ext.calendar.App', {
         this.eventStore = Ext.create('Ext.calendar.data.MemoryEventStore', {
             data: Ext.calendar.data.Events.getData()
         });
-
+        
         // This is the app UI layout code.  All of the calendar views are subcomponents of
         // CalendarPanel, but the app title bar and sidebar/navigation calendar are separate
         // pieces that are composed in app-specific layout code since they could be omitted
@@ -48,10 +48,10 @@ Ext.define('Ext.calendar.App', {
             layout: 'border',
             renderTo: 'calendar-ct',
             items: [{
+                xtype: 'component',
                 id: 'app-header',
                 region: 'north',
                 height: 35,
-                border: false,
                 contentEl: 'app-header-content'
             },{
                 id: 'app-center',
@@ -64,10 +64,10 @@ Ext.define('Ext.calendar.App', {
                     }
                 },
                 items: [{
+                    xtype: 'container',
                     id:'app-west',
                     region: 'west',
-                    width: 179,
-                    border: false,
+                    width: Ext.themeName === 'neptune' ? 214 : 179,
                     items: [{
                         xtype: 'datepicker',
                         id: 'app-nav-picker',
@@ -89,13 +89,13 @@ Ext.define('Ext.calendar.App', {
                     id:'app-calendar',
                     region: 'center',
                     activeItem: 3, // month view
-
+                    
                     monthViewCfg: {
                         showHeader: true,
                         showWeekLinks: true,
                         showWeekNumbers: true
                     },
-
+                    
                     listeners: {
                         'eventclick': {
                             fn: function(vw, rec, el){
@@ -163,9 +163,9 @@ Ext.define('Ext.calendar.App', {
                             fn: function(vw, rec){
                                 var mappings = Ext.calendar.data.EventMappings,
                                     time = rec.data[mappings.IsAllDay.name] ? '' : ' \\a\\t g:i a';
-
+                                
                                 rec.commit();
-
+                                
                                 this.showMsg('Event '+ rec.data[mappings.Title.name] +' was moved to '+
                                     Ext.Date.format(rec.data[mappings.StartDate.name], ('F jS'+time)));
                             },
@@ -198,7 +198,7 @@ Ext.define('Ext.calendar.App', {
             }]
         });
     },
-
+        
     // The edit popup window is not part of the CalendarPanel itself -- it is a separate component.
     // This makes it very easy to swap it out with a different type of window or custom view, or omit
     // it altogether. Because of this, it's up to the application code to tie the pieces together.
@@ -247,7 +247,7 @@ Ext.define('Ext.calendar.App', {
         }
         this.editWin.show(rec, animateTarget);
     },
-
+        
     // The CalendarPanel itself supports the standard Panel title config, but that title
     // only spans the calendar views.  For a title that spans the entire width of the app
     // we added a title to the layout's outer center region that is app-specific. This code
@@ -255,7 +255,7 @@ Ext.define('Ext.calendar.App', {
     updateTitle: function(startDt, endDt){
         var p = Ext.getCmp('app-center'),
             fmt = Ext.Date.format;
-
+        
         if(Ext.Date.clearTime(startDt).getTime() == Ext.Date.clearTime(endDt).getTime()){
             p.setTitle(fmt(startDt, 'F j, Y'));
         }
@@ -271,7 +271,7 @@ Ext.define('Ext.calendar.App', {
             p.setTitle(fmt(startDt, 'F j, Y') + ' - ' + fmt(endDt, 'F j, Y'));
         }
     },
-
+    
     // This is an application-specific way to communicate CalendarPanel event messages back to the user.
     // This could be replaced with a function to do "toast" style messages, growl messages, etc. This will
     // vary based on application requirements, which is why it's not baked into the CalendarPanel.
@@ -281,14 +281,14 @@ Ext.define('Ext.calendar.App', {
     clearMsg: function(){
         Ext.fly('app-msg').update('').addCls('x-hidden');
     },
-
+    
     // OSX Lion introduced dynamic scrollbars that do not take up space in the
     // body. Since certain aspects of the layout are calculated and rely on
     // scrollbar width, we add a special class if needed so that we can apply
     // static style rules rather than recalculate sizes on each resize.
     checkScrollOffset: function() {
         var scrollbarWidth = Ext.getScrollbarSize ? Ext.getScrollbarSize().width : Ext.getScrollBarWidth();
-
+        
         // We check for less than 3 because the Ext scrollbar measurement gets
         // slightly padded (not sure the reason), so it's never returned as 0.
         if (scrollbarWidth < 3) {
@@ -303,7 +303,7 @@ function() {
     /*
      * A few Ext overrides needed to work around issues in the calendar
      */
-
+    
     Ext.form.Basic.override({
         reset: function() {
             var me = this;
@@ -319,7 +319,7 @@ function() {
             return me;
         }
     });
-
+    
     // Currently MemoryProxy really only functions for read-only data. Since we want
     // to simulate CRUD transactions we have to at the very least allow them to be
     // marked as completed and successful, otherwise they will never filter back to the
@@ -328,7 +328,7 @@ function() {
         updateOperation: function(operation, callback, scope) {
             operation.setCompleted();
             operation.setSuccessful();
-            Ext.callback(callback, scope || me, [operation]);
+            Ext.callback(callback, scope || this, [operation]);
         },
         create: function() {
             this.updateOperation.apply(this, arguments);

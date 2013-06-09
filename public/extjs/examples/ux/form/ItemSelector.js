@@ -42,6 +42,11 @@ Ext.define('Ext.ux.form.ItemSelector', {
         bottom: "Move to Bottom"
     },
 
+    layout: {
+        type: 'hbox',
+        align: 'stretch'
+    },
+
     initComponent: function() {
         var me = this;
 
@@ -57,7 +62,16 @@ Ext.define('Ext.ux.form.ItemSelector', {
         var me = this;
 
         return Ext.create('Ext.ux.form.MultiSelect', {
+            // We don't want the multiselects themselves to act like fields,
+            // so override these methods to prevent them from including
+            // any of their values
             submitValue: false,
+            getSubmitData: function(){
+                return null;
+            },
+            getModelData: function(){
+                return null;    
+            },
             flex: 1,
             dragGroup: me.ddGroup,
             dropGroup: me.ddGroup,
@@ -67,6 +81,7 @@ Ext.define('Ext.ux.form.ItemSelector', {
                 data: []
             },
             displayField: me.displayField,
+            valueField: me.valueField,
             disabled: me.disabled,
             listeners: {
                 boundList: {
@@ -84,30 +99,22 @@ Ext.define('Ext.ux.form.ItemSelector', {
         me.fromField = me.createList(me.fromTitle);
         me.toField = me.createList(me.toTitle);
 
-        return {
-            border: false,
-            layout: {
-                type: 'hbox',
-                align: 'stretch'
-            },
-            items: [
-                me.fromField,
-                {
-                    xtype: 'container',
-                    margins: '0 4',
-                    width: 22,
-                    layout: {
-                        type: 'vbox',
-                        pack: 'center'
-                    },
-                    items: me.createButtons()
+        return [
+            me.fromField,
+            {
+                xtype: 'container',
+                margins: '0 4',
+                layout: {
+                    type: 'vbox',
+                    pack: 'center'
                 },
-                me.toField
-            ]
-        };
+                items: me.createButtons()
+            },
+            me.toField
+        ];
     },
 
-    createButtons: function(){
+    createButtons: function() {
         var me = this,
             buttons = [];
 
@@ -130,11 +137,11 @@ Ext.define('Ext.ux.form.ItemSelector', {
 
     /**
      * Get the selected records from the specified list.
-     *
+     * 
      * Records will be returned *in store order*, not in order of selection.
      * @param {Ext.view.BoundList} list The list to read selections from.
      * @return {Ext.data.Model[]} The selected records in store order.
-     *
+     * 
      */
     getSelections: function(list) {
         var store = list.getStore();
@@ -162,7 +169,7 @@ Ext.define('Ext.ux.form.ItemSelector', {
         store.insert(0, selected);
         store.resumeEvents();
         list.refresh();
-        this.syncValue();
+        this.syncValue(); 
         list.getSelectionModel().select(selected);
     },
 
@@ -263,7 +270,7 @@ Ext.define('Ext.ux.form.ItemSelector', {
 
     // Synchronizes the submit value with the current state of the toStore
     syncValue: function() {
-        var me = this;
+        var me = this; 
         me.mixins.field.setValue.call(me, me.setupValue(me.toField.store.getRange()));
     },
 
@@ -320,7 +327,7 @@ Ext.define('Ext.ux.form.ItemSelector', {
         Ext.suspendLayouts();
         fromField.boundList.refresh();
         toField.boundList.refresh();
-        Ext.resumeLayouts(true);
+        Ext.resumeLayouts(true);        
     },
 
     onBindStore: function(store, initial) {

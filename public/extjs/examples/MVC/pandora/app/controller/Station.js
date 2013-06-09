@@ -7,7 +7,7 @@ Ext.define('Pandora.controller.Station', {
     }],
 
     stores: ['Stations', 'RecentSongs'],
-
+    
     init: function() {
         this.control({
             'stationslist': {
@@ -18,9 +18,9 @@ Ext.define('Pandora.controller.Station', {
             }
         });
     },
-
+    
     onLaunch: function() {
-        var stationsStore = this.getStationsStore();
+        var stationsStore = this.getStationsStore();        
         stationsStore.load({
             callback: this.onStationsLoad,
             scope: this
@@ -31,16 +31,16 @@ Ext.define('Pandora.controller.Station', {
         var stationsList = this.getStationsList();
         stationsList.getSelectionModel().select(0);
     },
-
+    
     onStationSelect: function(selModel, selection) {
         this.application.fireEvent('stationstart', selection[0]);
     },
-
+    
     onNewStationSelect: function(field, selection) {
         var selected = selection[0],
             store = this.getStationsStore(),
             list = this.getStationsList();
-
+            
         if (selected && !store.getById(selected.get('id'))) {
             store.add(selected);
             list.getSelectionModel().select(selected);

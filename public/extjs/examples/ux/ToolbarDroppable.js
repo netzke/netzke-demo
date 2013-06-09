@@ -1,6 +1,4 @@
 /**
- * @class Ext.ux.ToolbarDroppable
- * @extends Object
  * Plugin which allows items to be dropped onto a toolbar and be turned into new Toolbar items.
  * To use the plugin, you just need to provide a createItem implementation that takes the drop
  * data as an argument and returns an object that can be placed onto the toolbar. Example:
@@ -18,7 +16,8 @@
  Ext.define('Ext.ux.ToolbarDroppable', {
 
     /**
-     * @constructor
+     * Creates new ToolbarDroppable.
+     * @param {Object} config Config options.
      */
     constructor: function(config) {
       Ext.apply(this, config);
@@ -70,7 +69,7 @@
      * drag event
      * @param {Ext.EventObject} e The event object
      * @return {Number} The index at which to insert the new button
-     */
+     */    
     calculateEntryIndex: function(e) {
         var entryIndex = 0,
             toolbar = this.toolbar,
@@ -79,15 +78,15 @@
             xHover = e.getXY()[0],
             index = 0,
             el, xTotal, width, midpoint;
-
+ 
         for (; index < count; index++) {
             el = items[index].getEl();
             xTotal = el.getXY()[0];
             width = el.getWidth();
             midpoint = xTotal + width / 2;
-
+ 
             if (xHover < midpoint) {
-                entryIndex = index;
+                entryIndex = index; 
                 break;
             } else {
                 entryIndex = index + 1;

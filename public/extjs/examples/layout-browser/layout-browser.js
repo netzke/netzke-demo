@@ -13,35 +13,35 @@ Ext.require([
     'Ext.tree.*',
     'Ext.selection.*',
     'Ext.tab.Panel',
-    'Ext.ux.layout.Center'
+    'Ext.ux.layout.Center'  
 ]);
 
 //
 // This is the main layout definition.
 //
 Ext.onReady(function(){
-
+ 
     Ext.tip.QuickTipManager.init();
 
     // This is an inner body element within the Details panel created to provide a "slide in" effect
     // on the panel body without affecting the body's box itself.  This element is created on
     // initial use and cached in this var for subsequent access.
     var detailEl;
-
+    
     // Gets all layouts examples
     var layoutExamples = [];
     Ext.Object.each(getBasicLayouts(), function(name, example) {
         layoutExamples.push(example);
     });
-
+    
     Ext.Object.each(getCombinationLayouts(), function(name, example){
         layoutExamples.push(example);
     });
-
+    
     Ext.Object.each(getCustomLayouts(), function(name, example){
         layoutExamples.push(example);
     });
-
+    
     // This is the main content center region that will contain each example layout panel.
     // It will be implemented as a CardLayout since it will contain multiple panels with
     // only one being visible at any given time.
@@ -55,7 +55,7 @@ Ext.onReady(function(){
          border: false,
          items: layoutExamples
     };
-
+     
     var store = Ext.create('Ext.data.TreeStore', {
         root: {
             expanded: true
@@ -65,7 +65,7 @@ Ext.onReady(function(){
             url: 'tree-data.json'
         }
     });
-
+    
     // Go ahead and create the TreePanel now so that we can use it below
      var treePanel = Ext.create('Ext.tree.Panel', {
         id: 'tree-panel',
@@ -78,7 +78,7 @@ Ext.onReady(function(){
         autoScroll: true,
         store: store
     });
-
+    
     // Assign the changeLayout function to be called on tree node click.
     treePanel.getSelectionModel().on('select', function(selModel, record) {
         if (record.get('leaf')) {
@@ -91,7 +91,7 @@ Ext.onReady(function(){
             detailEl.hide().update(Ext.getDom(record.getId() + '-details').innerHTML).slideIn('l', {stopAnimation:true,duration: 200});
         }
     });
-
+    
     // This is the Details panel that contains the description for each example layout.
     var detailsPanel = {
         id: 'details-panel',
@@ -101,7 +101,7 @@ Ext.onReady(function(){
         autoScroll: true,
         html: '<p class="details-info">When you select a layout from the tree, additional details will display here.</p>'
     };
-
+ 
     // Finally, build the main layout once all the pieces are ready.  This is also a good
     // example of putting together a full-screen BorderLayout within a Viewport.
     Ext.create('Ext.Viewport', {
@@ -120,11 +120,11 @@ Ext.onReady(function(){
             border: false,
             split:true,
             margins: '2 0 5 5',
-            width: 275,
+            width: 290,
             minSize: 100,
             maxSize: 500,
             items: [treePanel, detailsPanel]
-        },
+        }, 
             contentPanel
         ],
         renderTo: Ext.getBody()

@@ -40,7 +40,7 @@ Ext.onReady(function(){
         title: 'Basic StatusBar',
         renderTo: 'basic',
         width: 550,
-        height: 100,
+        manageHeight: false,
         bodyPadding: 10,
         items:[{
             xtype: 'button',
@@ -54,7 +54,7 @@ Ext.onReady(function(){
             // defaults to use when the status is cleared:
             defaultText: 'Default status text',
             //defaultIconCls: 'default-icon',
-
+        
             // values to set initially:
             text: 'Ready',
             iconCls: 'x-status-valid',
@@ -88,7 +88,7 @@ Ext.onReady(function(){
                     handler: function (){
                         var sb = Ext.getCmp('basic-statusbar');
                         // once completed
-                        sb.clearStatus();
+                        sb.clearStatus(); 
                     }
                 },
                 '-',
@@ -104,7 +104,7 @@ Ext.onReady(function(){
         title: 'Right-aligned StatusBar',
         renderTo: 'right-aligned',
         width: 550,
-        height: 100,
+        manageHeight: false,
         bodyPadding: 10,
         items:[{
             xtype: 'button',
@@ -127,7 +127,7 @@ Ext.onReady(function(){
  */
     var win = Ext.create('Ext.Window', {
         title: 'StatusBar Window',
-        width: 400,
+        width: 410,
         minWidth: 350,
         height: 150,
         modal: true,
@@ -175,7 +175,7 @@ Ext.onReady(function(){
  */
     // Create these explicitly so we can manipulate them later
     var wordCount = Ext.create('Ext.toolbar.TextItem', {text: 'Words: 0'}),
-        charCount = Ext.create('Ext.toolbar.TextItem', {text: 'Chars: 0'}),
+        charCount = Ext.create('Ext.toolbar.TextItem', {text: 'Chars: 0'}), 
         clock = Ext.create('Ext.toolbar.TextItem', {text: Ext.Date.format(new Date(), 'g:i:s A')}),
         event = Ext.isOpera ? 'keypress' : 'keydown'; // opera behaves a little weird with keydown
 
@@ -239,11 +239,11 @@ Ext.onReady(function(){
             });
         }, 4000);
     }, null, {buffer:1500});
-
+    
     // Set up our event for updating the word/char count
     Ext.getCmp('word-textarea').on(event, function(comp){
         var v = comp.getValue(),
-            wc = 0,
+            wc = 0, 
             cc = v.length ? v.length : 0;
 
         if (cc > 0) {

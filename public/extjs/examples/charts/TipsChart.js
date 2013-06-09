@@ -1,9 +1,12 @@
-Ext.require('Ext.chart.*');
-Ext.require('Ext.layout.container.Fit');
-Ext.require('Ext.window.MessageBox');
+Ext.require([
+    'Ext.chart.*',
+    'Ext.layout.container.Fit',
+    'Ext.window.MessageBox',
+    'Ext.grid.Panel'
+]);
 
 Ext.onReady(function () {
-
+    
     var pieModel = [
         {
             name: 'data1',
@@ -26,12 +29,12 @@ Ext.onReady(function () {
             data: 10
         }
     ];
-
+    
     var pieStore = Ext.create('Ext.data.JsonStore', {
         fields: ['name', 'data'],
         data: pieModel
     });
-
+    
     var pieChart = Ext.create('Ext.chart.Chart', {
         width: 100,
         height: 100,
@@ -52,12 +55,12 @@ Ext.onReady(function () {
             }
         }]
     });
-
+    
     var gridStore = Ext.create('Ext.data.JsonStore', {
         fields: ['name', 'data'],
         data: pieModel
     });
-
+    
     var grid = Ext.create('Ext.grid.Panel', {
         store: gridStore,
         height: 130,
@@ -73,9 +76,8 @@ Ext.onReady(function () {
             }
         ]
     });
-
+    
     var chart = Ext.create('Ext.chart.Chart', {
-            xtype: 'chart',
             animate: true,
             shadow: true,
             store: store1,
@@ -125,7 +127,7 @@ Ext.onReady(function () {
                                 name: 'data5',
                                 data: storeItem.get('data5')
                             }], i, l, html;
-
+                        
                         this.setTitle("Information for " + storeItem.get('name'));
                         pieStore.loadData(data);
                         gridStore.loadData(data);

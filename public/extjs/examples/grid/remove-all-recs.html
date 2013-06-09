@@ -3,12 +3,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Stateful Array Grid Example</title>
-    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
     <link rel="stylesheet" type="text/css" href="../shared/example.css" />
 
     <!-- GC -->
 
-    <script type="text/javascript" src="../../ext.js"></script>
+    <script type="text/javascript" src="../../examples/shared/include-ext.js"></script>
+    <script type="text/javascript" src="../../examples/shared/options-toolbar.js"></script>
 
     <!-- page specific -->
     <style type="text/css">
@@ -53,7 +53,7 @@
 
 Ext.onReady(function() {
     Ext.QuickTips.init();
-
+    
     // setup the state provider, all state information will be saved to a cookie
     Ext.state.Manager.setProvider(Ext.create('Ext.state.CookieProvider'));
 
@@ -203,7 +203,7 @@ Ext.onReady(function() {
             stripeRows: true
         }
     });
-
+    
     var recs;
     var removeButton = Ext.create('Ext.Button', {
         text: "Remove all",

@@ -1,5 +1,5 @@
 class GridWithActionColumn < Netzke::Basepack::Grid
-  include Netzke::Communitypack::ActionColumn
+  include Netzke::Basepack::ActionColumn
 
   js_configure do |c|
     c.force_fit = true

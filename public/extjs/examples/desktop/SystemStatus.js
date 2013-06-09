@@ -9,7 +9,8 @@ Ext.define('MyDesktop.SystemStatus', {
     extend: 'Ext.ux.desktop.Module',
 
     requires: [
-        'Ext.chart.*'
+        'Ext.chart.*',
+        'Ext.data.JsonStore'
     ],
 
     id: 'systemstatus',
@@ -69,7 +70,7 @@ Ext.define('MyDesktop.SystemStatus', {
             border: false,
             layout: {
                 type: 'hbox',
-                align: 'stretch'
+                align: 'stretch'    
             },
             bodyStyle: {
                 'background-color': '#FFF'

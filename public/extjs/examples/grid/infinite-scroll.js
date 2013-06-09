@@ -2,7 +2,7 @@ Ext.require([
     'Ext.grid.*',
     'Ext.data.*',
     'Ext.util.*',
-    'Ext.grid.PagingScroller'
+    'Ext.grid.plugin.BufferedRenderer'
 ]);
 
 
@@ -63,7 +63,7 @@ Ext.onReady(function(){
                 var sortable = !store.isGrouped(),
                     headers = grid.headerCt.getVisibleGridColumns(),
                     i, len = headers.length;
-
+                
                 for (i = 0; i < len; i++) {
                     headers[i].sortable = (headers[i].sortable !== undefined) ? headers[i].sortable : sortable;
                 }
@@ -106,10 +106,6 @@ Ext.onReady(function(){
             ftype: 'grouping',
             hideGroupedHeader: false
         }],
-        verticalScroller:{
-            variableRowHeight: true
-
-        },
         // grid columns
         columns:[{
             xtype: 'rownumberer',

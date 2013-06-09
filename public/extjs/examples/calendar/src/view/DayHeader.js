@@ -15,7 +15,7 @@ Ext.define('Ext.calendar.view.DayHeader', {
     requires: [
         'Ext.calendar.template.DayHeader'
     ],
-
+    
     // private configs
     weekCount: 1,
     dayCount: 1,
@@ -27,7 +27,7 @@ Ext.define('Ext.calendar.view.DayHeader', {
      * Fires after the user clicks within the day view container and not on an event element
      * @param {Ext.calendar.DayBodyView} this
      * @param {Date} dt The date/time that was clicked on
-     * @param {Boolean} allday True if the day clicked on represents an all-day box, else false. Clicks within the
+     * @param {Boolean} allday True if the day clicked on represents an all-day box, else false. Clicks within the 
      * DayHeaderView always return true for this param.
      * @param {Ext.core.Element} el The Element that was clicked on
      */
@@ -61,9 +61,9 @@ Ext.define('Ext.calendar.view.DayHeader', {
     recalcHeaderBox : function(){
         var tbl = this.el.down('.ext-cal-evt-tbl'),
             h = tbl.getHeight();
-
+        
         this.el.setHeight(h+7);
-
+        
         // These should be auto-height, but since that does not work reliably
         // across browser / doc type, we have to size them manually
         this.el.down('.ext-cal-hd-ad-inner').setHeight(h+5);

@@ -12,7 +12,7 @@ Ext.onReady(function() {
             "margin-right": '10px'
         }
     };
-
+    
     var buttons = [{
             id      : 'tip1',
             text    : 'Basic ToolTip',
@@ -43,12 +43,12 @@ Ext.onReady(function() {
             text    : 'Anchor with tracking',
             renderTo: 'anchor'
     }];
-
+    
     Ext.each(buttons, function(config) {
         var btn = Ext.create('Ext.Button', Ext.apply({}, config, defaultButtonConfig));
         btn.show();
     }, this);
-
+    
     var tooltips = [{
             target: 'tip1',
             html: 'A very simple tooltip'
@@ -70,7 +70,7 @@ Ext.onReady(function() {
             width: 200,
             html: 'This tip will follow the mouse while it is over the element',
             trackMouse: true
-        },{
+        },{        
             title: '<a href="#">Rich Content Tooltip</a>',
             id: 'content-anchor-tip',
             target: 'leftCallout',
@@ -100,10 +100,10 @@ Ext.onReady(function() {
             trackMouse: true,
             html: 'Tracking while you move the mouse'
     }];
-
+        
     Ext.each(tooltips, function(config) {
         Ext.create('Ext.tip.ToolTip', config);
-    });
+    });  
 
     Ext.QuickTips.init();
 });

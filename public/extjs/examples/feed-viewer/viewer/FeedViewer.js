@@ -3,7 +3,7 @@
  * @extends Ext.container.Viewport
  *
  * The main FeedViewer application
- *
+ * 
  * @constructor
  * Create a new Feed Viewer app
  * @param {Object} config The config object
@@ -11,9 +11,9 @@
 
 Ext.define('FeedViewer.App', {
     extend: 'Ext.container.Viewport',
-
+    
     initComponent: function(){
-
+        
         Ext.define('Feed', {
             extend: 'Ext.data.Model',
             fields: ['title', 'url']
@@ -26,7 +26,7 @@ Ext.define('FeedViewer.App', {
                 type: 'date'
             }, 'link', 'description', 'content']
         });
-
+        
         Ext.apply(this, {
             layout: {
                 type: 'border',
@@ -36,7 +36,7 @@ Ext.define('FeedViewer.App', {
         });
         this.callParent(arguments);
     },
-
+    
     /**
      * Create the list of fields to be shown on the left
      * @private
@@ -67,7 +67,7 @@ Ext.define('FeedViewer.App', {
         });
         return this.feedPanel;
     },
-
+    
     /**
      * Create the feed info container
      * @private
@@ -80,7 +80,7 @@ Ext.define('FeedViewer.App', {
         });
         return this.feedInfo;
     },
-
+    
     /**
      * Reacts to a feed being selected
      * @private

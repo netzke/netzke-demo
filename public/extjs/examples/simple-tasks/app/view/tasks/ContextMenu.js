@@ -35,7 +35,7 @@ Ext.define('SimpleTasks.view.tasks.ContextMenu', {
     setTask: function(task) {
         this.task = task;
     },
-
+    
     /**
      * Gets the task associated with this menu
      * @return {Task.model.Task}

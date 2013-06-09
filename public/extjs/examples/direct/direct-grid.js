@@ -10,10 +10,10 @@ Ext.define('Company', {
     fields: ['name', 'turnover']
 });
 
-Ext.onReady(function() {
+Ext.onReady(function() {    
     Ext.direct.Manager.addProvider(Ext.app.REMOTING_API);
-
-
+    
+    
     // create the Tree
     Ext.create('Ext.grid.Panel', {
         store: {
@@ -26,7 +26,7 @@ Ext.onReady(function() {
             }],
             proxy: {
                 type: 'direct',
-                directFn: TestAction.getGrid
+                directFn: 'TestAction.getGrid'
             }
         },
         columns: [{

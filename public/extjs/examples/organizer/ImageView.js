@@ -16,25 +16,25 @@ Ext.define('Ext.org.ImageView', {
         dragSelector: 'Ext.ux.DataView.DragSelector',
         draggable   : 'Ext.ux.DataView.Draggable'
     },
-
+    
     tpl: [
         '<tpl for=".">',
             '<div class="thumb-wrap">',
                 '<div class="thumb">',
-                    (!Ext.isIE6? '<img src="../view/chooser/icons/{thumb}" />' :
+                    (!Ext.isIE6? '<img src="../view/chooser/icons/{thumb}" />' : 
                     '<div style="width:76px;height:76px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=\'../view/chooser/icons/{thumb}\')"></div>'),
                 '</div>',
                 '<span>{name}</span>',
             '</div>',
         '</tpl>'
     ],
-
+    
     itemSelector: 'div.thumb-wrap',
     multiSelect: true,
     singleSelect: false,
     cls: 'x-image-view',
     autoScroll: true,
-
+    
     initComponent: function() {
         this.store = Ext.create('Ext.data.Store', {
             autoLoad: true,
@@ -48,7 +48,7 @@ Ext.define('Ext.org.ImageView', {
                 }
             }
         });
-
+        
         this.mixins.dragSelector.init(this);
         this.mixins.draggable.init(this, {
             ddConfig: {
@@ -64,7 +64,7 @@ Ext.define('Ext.org.ImageView', {
                 '<div>'
             ]
         });
-
+        
         this.callParent();
     }
 });

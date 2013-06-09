@@ -3,7 +3,7 @@
  * @extends Ext.window.Window
  *
  * Shows a dialog for creating and validating a new feed.
- *
+ * 
  * @constructor
  * Create a new Feed Window
  * @param {Object} config The config object
@@ -11,7 +11,7 @@
 
 Ext.define('FeedViewer.FeedWindow', {
     extend: 'Ext.window.Window',
-
+    
     alias: 'widget.feedwindow',
 
     plain: true,
@@ -26,7 +26,7 @@ Ext.define('FeedViewer.FeedWindow', {
         ['http://news.google.com/news?ned=us&topic=t&output=rss', 'Sci/Tech - Google News'],
         ['http://rss.news.yahoo.com/rss/software', 'Yahoo Software News']
     ],
-
+    
     initComponent: function(){
         var me = this;
         me.addEvents(
@@ -39,7 +39,7 @@ Ext.define('FeedViewer.FeedWindow', {
              */
             'feedvalid'
         );
-
+        
         me.form = Ext.create('widget.form', {
             bodyPadding: '12 10 10',
             border: false,
@@ -53,7 +53,7 @@ Ext.define('FeedViewer.FeedWindow', {
                 xtype: 'combo',
                 store: this.defaultFeeds,
                 getInnerTpl: function(){
-                    return '<div class="feed-picker-url">{field1}</div><div class="feed-picker-title">{field2}</div>';
+                    return '<div class="feed-picker-url">{field1}</div><div class="feed-picker-title">{field2}</div>'; 
                 }
             }]
         });
@@ -77,7 +77,7 @@ Ext.define('FeedViewer.FeedWindow', {
         });
         me.callParent(arguments);
     },
-
+    
     /**
      * React to the add button being clicked.
      * @private
@@ -98,7 +98,7 @@ Ext.define('FeedViewer.FeedWindow', {
             scope: this
         });
     },
-
+    
     /**
      * React to the feed validation passing
      * @private
@@ -107,7 +107,7 @@ Ext.define('FeedViewer.FeedWindow', {
     validateFeed: function(response) {
         this.form.setLoading(false);
         this.down('button[text=Add Feed]').enable();
-
+        
         var dq = Ext.DomQuery,
             url = this.form.getComponent('feed').getValue(),
             xml,
@@ -126,9 +126,9 @@ Ext.define('FeedViewer.FeedWindow', {
         } catch(e) {
         }
         this.markInvalid();
-
+        
     },
-
+    
     /**
      * React to the feed validation failing
      * @private

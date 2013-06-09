@@ -1,13 +1,10 @@
 Ext.define('KitchenSink.store.States', {
     extend: 'Ext.data.ArrayStore',
-
-    model: Ext.define('KitchenSink.model.State', {
-        extend: 'Ext.data.Model',
-        fields: ['abbr', 'state', 'description']
-    }),
-
+    
+    model: 'KitchenSink.model.State',
+    
     storeId: 'states',
-
+    
     data: [
         ['AL', 'Alabama', 'The Heart of Dixie'],
         ['AK', 'Alaska', 'The Land of the Midnight Sun'],

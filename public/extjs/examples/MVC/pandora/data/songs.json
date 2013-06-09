@@ -1,51 +1,51 @@
 {
-    'success': true,
+    'success': true,    
     'results': [
         {
-            'name': 'Blues At Sunrise (Live)',
-            'artist': 'Stevie Ray Vaughan',
-            'album': 'Blues At Sunrise',
-            'description': 'Description for Stevie',
+            'name': 'Blues At Sunrise (Live)', 
+            'artist': 'Stevie Ray Vaughan', 
+            'album': 'Blues At Sunrise', 
+            'description': 'Description for Stevie', 
             'played_date': '1',
             'station': 1
         },
         {
-            'name': 'Sunshine Of Your Love (Live)',
-            'artist': 'Cream',
-            'album': 'Cream: Gold',
-            'description': 'Description for Cream',
+            'name': 'Sunshine Of Your Love (Live)', 
+            'artist': 'Cream', 
+            'album': 'Cream: Gold', 
+            'description': 'Description for Cream', 
             'played_date': '2',
             'station': 1
         },
         {
-            'name': 'Ziggy Stardust (Remastered)',
-            'artist': 'David Bowie',
-            'album': 'The Rise And Fall Of Ziggy Stardust (Remastered)',
-            'description': 'Description for David',
+            'name': 'Ziggy Stardust (Remastered)', 
+            'artist': 'David Bowie', 
+            'album': 'The Rise And Fall Of Ziggy Stardust (Remastered)', 
+            'description': 'Description for David', 
             'played_date': '3',
             'station': 1
         },
         {
-            'name': 'Runnin\' Down A Dream',
-            'artist': 'Tom Petty',
-            'album': 'Full Moon Fever',
-            'description': 'Description for Tom',
+            'name': 'Runnin\' Down A Dream', 
+            'artist': 'Tom Petty', 
+            'album': 'Full Moon Fever', 
+            'description': 'Description for Tom', 
             'played_date': '4',
             'station': 1
         },
         {
-            'name': 'Born Under A Bad Sign',
-            'artist': 'Jimi Hendrix',
-            'album': 'Blues',
-            'description': 'Description for Jimi',
+            'name': 'Born Under A Bad Sign', 
+            'artist': 'Jimi Hendrix', 
+            'album': 'Blues', 
+            'description': 'Description for Jimi', 
             'played_date': '5',
             'station': 1
         },
         {
-            'name': 'Paint It Black',
-            'artist': 'The Rolling Stones',
-            'album': 'Singles Collection: The London Years',
-            'description': 'Description for the Stones',
+            'name': 'Paint It Black', 
+            'artist': 'The Rolling Stones', 
+            'album': 'Singles Collection: The London Years', 
+            'description': 'Description for the Stones', 
             'played_date': '6',
             'station': 1
         },

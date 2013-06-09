@@ -1,61 +1,59 @@
 /**
- * @class Ext.ux.PreviewPlugin
- * @extends Ext.AbstractPlugin
- *
  * The Preview enables you to show a configurable preview of a record.
  *
  * This plugin assumes that it has control over the features used for this
  * particular grid section and may conflict with other plugins.
- *
- * @alias plugin.preview
- * @ptype preview
  */
 Ext.define('Ext.ux.PreviewPlugin', {
     extend: 'Ext.AbstractPlugin',
     alias: 'plugin.preview',
     requires: ['Ext.grid.feature.RowBody', 'Ext.grid.feature.RowWrap'],
-
+    
     // private, css class to use to hide the body
     hideBodyCls: 'x-grid-row-body-hidden',
-
+    
     /**
      * @cfg {String} bodyField
      * Field to display in the preview. Must be a field within the Model definition
      * that the store is using.
      */
     bodyField: '',
-
+    
     /**
      * @cfg {Boolean} previewExpanded
      */
     previewExpanded: true,
-
-    constructor: function(config) {
+    
+    setCmp: function(grid) {
         this.callParent(arguments);
+        
         var bodyField   = this.bodyField,
             hideBodyCls = this.hideBodyCls,
-            section     = this.getCmp(),
-            features = [{
+            features    = [{
                 ftype: 'rowbody',
                 getAdditionalData: function(data, idx, record, orig, view) {
-                    var o = Ext.grid.feature.RowBody.prototype.getAdditionalData.apply(this, arguments);
-                    Ext.apply(o, {
-                        rowBody: data[bodyField],
-                        rowBodyCls: section.previewExpanded ? '' : hideBodyCls
-                    });
-                    return o;
+                    var getAdditionalData = Ext.grid.feature.RowBody.prototype.getAdditionalData,
+                        additionalData = {
+                            rowBody: data[bodyField],
+                            rowBodyCls: grid.previewExpanded ? '' : hideBodyCls
+                        };
+                        
+                    if (getAdditionalData) {
+                        Ext.apply(additionalData, getAdditionalData.apply(this, arguments));
+                    }
+                    return additionalData;
                 }
-            },{
+            }, {
                 ftype: 'rowwrap'
             }];
-
-        section.previewExpanded = this.previewExpanded;
-        if (!section.features) {
-            section.features = [];
+        
+        grid.previewExpanded = this.previewExpanded;
+        if (!grid.features) {
+            grid.features = [];
         }
-        section.features = features.concat(section.features);
+        grid.features = features.concat(grid.features);
     },
-
+    
     /**
      * Toggle between the preview being expanded/hidden
      * @param {Boolean} expanded Pass true to expand the record and false to not show the preview.

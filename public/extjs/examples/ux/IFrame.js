@@ -6,10 +6,9 @@
  */
 
 /**
- * Barebones iframe implementation. For serious iframe work, see the ManagedIFrame extension
+ * Barebones iframe implementation. For serious iframe work, see the
+ * ManagedIFrame extension
  * (http://www.sencha.com/forum/showthread.php?71961).
- *
- * @class Ext.ux.IFrame
  */
 Ext.define('Ext.ux.IFrame', {
     extend: 'Ext.Component',
@@ -40,9 +39,7 @@ Ext.define('Ext.ux.IFrame', {
     },
 
     initEvents : function() {
-        var me = this,
-            iframeEl = me.iframeEl.dom,
-            frameEl = me.getFrame();
+        var me = this;
         me.callParent();
         me.iframeEl.on('load', me.onLoad, me);
     },
@@ -82,24 +79,28 @@ Ext.define('Ext.ux.IFrame', {
     },
 
     beforeDestroy: function () {
-        var me = this,
-            doc, prop;
+        this.cleanupListeners(true);
+        this.callParent();
+    },
+    
+    cleanupListeners: function(destroying){
+        var doc, prop;
 
-        if (me.rendered) {
+        if (this.rendered) {
             try {
-                doc = me.getDoc();
+                doc = this.getDoc();
                 if (doc) {
                     Ext.EventManager.removeAll(doc);
-                    for (prop in doc) {
-                        if (doc.hasOwnProperty && doc.hasOwnProperty(prop)) {
-                            delete doc[prop];
+                    if (destroying) {
+                        for (prop in doc) {
+                            if (doc.hasOwnProperty && doc.hasOwnProperty(prop)) {
+                                delete doc[prop];
+                            }
                         }
                     }
                 }
             } catch(e) { }
         }
-
-        me.callParent();
     },
 
     onLoad: function() {
@@ -129,7 +130,7 @@ Ext.define('Ext.ux.IFrame', {
             }
 
             // We need to be sure we remove all our events from the iframe on unload or we're going to LEAK!
-            Ext.EventManager.on(window, 'unload', me.beforeDestroy, me);
+            Ext.EventManager.on(this.getWin(), 'beforeunload', me.cleanupListeners, me);
 
             this.el.unmask();
             this.fireEvent('load', this);
@@ -147,8 +148,15 @@ Ext.define('Ext.ux.IFrame', {
         // relay event from the iframe's document to the document that owns the iframe...
 
         var iframeEl = this.iframeEl,
-            iframeXY = iframeEl.getXY(),
-            eventXY = event.getXY();
+
+            // Get the left-based iframe position
+            iframeXY = Ext.Element.getTrueXY(iframeEl),
+            originalEventXY = event.getXY(),
+
+            // Get the left-based XY position.
+            // This is because the consumer of the injected event (Ext.EventManager) will
+            // perform its own RTL normalization.
+            eventXY = Ext.EventManager.getPageXY(event.browserEvent);
 
         // the event from the inner document has XY relative to that document's origin,
         // so adjust it to use the origin of the iframe in the outer document:
@@ -156,7 +164,7 @@ Ext.define('Ext.ux.IFrame', {
 
         event.injectEvent(iframeEl); // blame the iframe for the event...
 
-        event.xy = eventXY; // restore the original XY (just for safety)
+        event.xy = originalEventXY; // restore the original XY (just for safety)
     },
 
     load: function (src) {

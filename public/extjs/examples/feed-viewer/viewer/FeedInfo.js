@@ -3,16 +3,16 @@
  * @extends Ext.tab.Panel
  *
  * A container class for showing a series of feed details
- *
+ * 
  * @constructor
  * Create a new Feed Info
  * @param {Object} config The config object
  */
 Ext.define('FeedViewer.FeedInfo', {
-
+    
     extend: 'Ext.tab.Panel',
     alias: 'widget.feedinfo',
-
+    
     maxTabWidth: 230,
     border: false,
 
@@ -20,10 +20,10 @@ Ext.define('FeedViewer.FeedInfo', {
         this.tabBar = {
             border: true
         };
-
+        
         this.callParent();
     },
-
+    
     /**
      * Add a new feed
      * @param {String} title The title of the feed
@@ -50,7 +50,7 @@ Ext.define('FeedViewer.FeedInfo', {
         }
         this.setActiveTab(active);
     },
-
+    
     /**
      * Listens for a new tab request
      * @private
@@ -61,7 +61,7 @@ Ext.define('FeedViewer.FeedInfo', {
         var items = [],
             item,
             title;
-
+            
         if (Ext.isArray(rec)) {
             Ext.each(rec, function(rec) {
                 title = rec.get('title');
@@ -104,7 +104,7 @@ Ext.define('FeedViewer.FeedInfo', {
         var index = this.items.findIndex('title', title);
         return (index < 0) ? null : this.items.getAt(index);
     },
-
+    
     /**
      * Listens for a row dblclick
      * @private
@@ -114,7 +114,7 @@ Ext.define('FeedViewer.FeedInfo', {
     onRowDblClick: function(info, rec){
         this.onTabOpen(null, rec);
     },
-
+    
     /**
      * Listens for the open all click
      * @private

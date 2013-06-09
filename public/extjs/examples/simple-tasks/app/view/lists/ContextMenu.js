@@ -41,7 +41,7 @@ Ext.define('SimpleTasks.view.lists.ContextMenu', {
     setList: function(list) {
         this.list = list;
     },
-
+    
     /**
      * Gets the list associated with this menu
      * @return {Task.model.List}

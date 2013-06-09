@@ -1,12 +1,12 @@
 <html>
 <head>
     <title>VBox Layout</title>
-    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
     <link rel="stylesheet" type="text/css" href="../shared/example.css" />
 
     <!-- GC -->
 
-    <script type="text/javascript" src="../../ext-all.js"></script>
+    <script type="text/javascript" src="../../examples/shared/include-ext.js"></script>
+    <script type="text/javascript" src="../../examples/shared/options-toolbar.js"></script>
 
     <style type="text/css">
         html, body {
@@ -17,47 +17,48 @@
         }
     </style>
     <script type="text/javascript">
+        Ext.require('*');
         Ext.onReady(function() {
-            var currentName;
-            var replace = function(config, name) {
-                var btns = Ext.getCmp('btns');
-                if (name && name != currentName) {
-                    currentName = name;
-                    btns.remove(0);
-                    btns.add(Ext.apply(config));
-                }
-            };
+            var currentName,
+                panelCache = [],
+                panel,
+                replace = function(config, name) {
+                    var btns = Ext.getCmp('btns');
+                    if (name && name != currentName) {
+                        currentName = name;
+                        if (btns.items.length) {
+                            btns.remove(0, false);
+                        } else {
+                            btns.body.innerHTML = '';
+                        }
+                        config.border = false,
+                        panel = panelCache[name] || (panelCache[name] = Ext.widget('panel', config));
+                        btns.add(panel);
+                    }
+                };
 
-            var viewport = Ext.create('Ext.Viewport', {
+            Ext.create('Ext.Viewport', {
                 layout:'border',
 
                 items: [{
                     id:'btns',
                     region:'west',
-                    baseCls:'x-plain',
                     split:true,
                     width:150,
                     minWidth: 100,
                     maxWidth: 250,
                     layout:'fit',
-                    margins: '5 0 5 5',
-                    items: {
-                        baseCls: 'x-plain',
-                        html: '<p style="padding:10px;color:#556677;font-size:11px;">Select a configuration to the right &raquo;</p>'
-                    }
+                    margin: '5 0 5 5',
+                    html: '<p style="padding:10px;color:#556677;font-size:11px;">Select a configuration to the right &raquo;</p>'
                }, {
                     region:'center',
-                    margins: '5 5 5 0',
-                    layout: 'anchor',
-                    items:[{
-                        anchor: '100%',
-                        baseCls:'x-plain',
-                        layout: {
-                            type:'hbox',
-                            padding: 10
-                        },
+                    margin: '5 5 5 0',
+                    dockedItems:[{
+                        xtype: 'toolbar',
+                        enableOverflow: true,
+                        dock: 'top',
                         defaults:{
-                            margins:'0 5 0 0',
+                            margin:'0 5 0 0',
                             pressed: false,
                             toggleGroup:'btns',
                             allowDepress: false
@@ -72,7 +73,7 @@
                                         padding:'5',
                                         align:'left'
                                     },
-                                    defaults:{margins:'0 0 5 0'},
+                                    defaults:{margin:'0 0 5 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Button 1'
@@ -88,7 +89,7 @@
                                     },{
                                         xtype:'button',
                                         text: 'Button 4',
-                                        margins:'0'
+                                        margin: 0
                                     }]
                                 }, 'spaced');
                             }
@@ -102,7 +103,7 @@
                                         padding:'5',
                                         align:'left'
                                     },
-                                    defaults:{margins:'0 0 5 0'},
+                                    defaults:{margin:'0 0 5 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Button 1'
@@ -124,7 +125,7 @@
                                     },{
                                         xtype:'button',
                                         text: 'Button 4',
-                                        margins:'0'
+                                        margin: 0
                                     }]
                                 }, 'multi spaced - align left');
                             }
@@ -138,7 +139,7 @@
                                         padding:'5',
                                         align:'left'
                                     },
-                                    defaults:{margins:'0 0 5 0'},
+                                    defaults:{margin:'0 0 5 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Button 1'
@@ -164,7 +165,7 @@
                                         padding:'5',
                                         align:'center'
                                     },
-                                    defaults:{margins:'0 0 5 0'},
+                                    defaults:{margin:'0 0 5 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Button 1'
@@ -190,7 +191,7 @@
                                         padding:'5',
                                         align:'stretch'
                                     },
-                                    defaults:{margins:'0 0 5 0'},
+                                    defaults:{margin:'0 0 5 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Button 1'
@@ -216,7 +217,7 @@
                                         padding:'5',
                                         align:'stretchmax'
                                     },
-                                    defaults:{margins:'0 0 5 0'},
+                                    defaults:{margin:'0 0 5 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Jamie'
@@ -234,14 +235,11 @@
                             }
                         }]
                     },{
-                        anchor: '100%',
-                        baseCls:'x-plain',
-                        layout: {
-                            type:'hbox',
-                            padding: '0 10 10'
-                        },
+                        xtype: 'toolbar',
+                        enableOverflow: true,
+                        dock: 'top',
                         defaults:{
-                            margins:'0 5 0 0',
+                            margin:'0 5 0 0',
                             pressed: false,
                             toggleGroup:'btns',
                             allowDepress: false
@@ -256,7 +254,7 @@
                                         padding:'5',
                                         align:'center'
                                     },
-                                    defaults:{margins:'0 0 5 0'},
+                                    defaults:{margin:'0 0 5 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Button 1',
@@ -273,7 +271,7 @@
                                         xtype:'button',
                                         text: 'Button 4',
                                         flex:1,
-                                        margins:'0'
+                                        margin: 0
                                     }]
                                 }, 'align flex even');
                             }
@@ -287,7 +285,7 @@
                                         padding:'5',
                                         align:'center'
                                     },
-                                    defaults:{margins:'0 0 5 0'},
+                                    defaults:{margin:'0 0 5 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Button 1',
@@ -304,7 +302,7 @@
                                         xtype:'button',
                                         text: 'Button 4',
                                         flex:3,
-                                        margins:'0'
+                                        margin: 0
                                     }]
                                 }, 'align flex ratio');
                             }
@@ -318,7 +316,7 @@
                                         padding:'5',
                                         align:'stretch'
                                     },
-                                    defaults:{margins:'0 0 5 0'},
+                                    defaults:{margin:'0 0 5 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Button 1',
@@ -335,7 +333,7 @@
                                         xtype:'button',
                                         text: 'Button 4',
                                         flex:3,
-                                        margins:'0'
+                                        margin: 0
                                     }]
                                 }, 'align flex + stretch');
                             }
@@ -350,7 +348,7 @@
                                         pack:'start',
                                         align:'center'
                                     },
-                                    defaults:{margins:'0 0 5 0'},
+                                    defaults:{margin:'0 0 5 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Button 1'
@@ -377,7 +375,7 @@
                                         pack:'center',
                                         align:'center'
                                     },
-                                    defaults:{margins:'0 0 5 0'},
+                                    defaults:{margin:'0 0 5 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Button 1'
@@ -390,7 +388,7 @@
                                     },{
                                         xtype:'button',
                                         text: 'Button 4',
-                                        margins:'0'
+                                        margin: 0
                                     }]
                                 }, 'align pack center + align center');
                             }
@@ -405,7 +403,7 @@
                                         pack:'end',
                                         align:'center'
                                     },
-                                    defaults:{margins:'0 0 5 0'},
+                                    defaults:{margin:'0 0 5 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Button 1'
@@ -418,7 +416,7 @@
                                     },{
                                         xtype:'button',
                                         text: 'Button 4',
-                                        margins:'0'
+                                        margin: 0
                                     }]
                                 }, 'align pack end + align center');
                             }

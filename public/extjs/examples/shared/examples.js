@@ -1,5 +1,3 @@
-
-
 Ext.example = function(){
     var msgCt;
 
@@ -24,7 +22,7 @@ Ext.example = function(){
 
         init : function(){
             if(!msgCt){
-                // It's better to create the msg-div here in order to avoid re-layouts
+                // It's better to create the msg-div here in order to avoid re-layouts 
                 // later that could interfere with the HtmlEditor and reset its iFrame.
                 msgCt = Ext.DomHelper.insertFirst(document.body, {id:'msg-div'}, true);
             }

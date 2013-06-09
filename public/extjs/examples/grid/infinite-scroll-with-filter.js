@@ -5,36 +5,35 @@ Ext.require([
     'Ext.grid.*',
     'Ext.data.*',
     'Ext.util.*',
-    'Ext.grid.PagingScroller',
+    'Ext.grid.plugin.BufferedRenderer',
     'Ext.ux.form.SearchField'
 ]);
 
 Ext.onReady(function(){
     Ext.define('ForumThread', {
         extend: 'Ext.data.Model',
-        fields: [
-            {
+        fields: [{
             name: 'title',
             mapping: 'topic_title'
-            }, {
+        }, {
             name: 'forumtitle',
             mapping: 'forum_title'
-            }, {
+        }, {
             name: 'forumid',
             type: 'int'
-            }, {
+        }, {
             name: 'username',
             mapping: 'author'
-            }, {
-                name: 'replycount',
+        }, {
+                name: 'replycount', 
                 mapping: 'reply_count',
                 type: 'int'
-            }, {
-                name: 'lastpost',
-                mapping: 'post_time',
-                type: 'date',
+        }, {
+                name: 'lastpost', 
+                mapping: 'post_time', 
+                type: 'date', 
                 dateFormat: 'timestamp'
-            },
+        },
             'lastposter', 'excerpt', 'topic_id'
         ],
         idProperty: 'post_id'
@@ -46,7 +45,7 @@ Ext.onReady(function(){
         model: 'ForumThread',
         // allow the grid to interact with the paging scroller by buffering
         buffered: true,
-
+        
         // The topics-remote.php script appears to be hardcoded to use 50, and ignores this parameter, so we
         // are forced to use 50 here instead of a possibly more efficient value.
         pageSize: 50,
@@ -64,7 +63,7 @@ Ext.onReady(function(){
             },
             // sends single sort as multi parameter
             simpleSortMode: true,
-
+            
             // Parameter name to send filtering information in
             filterParam: 'query',
 
@@ -79,7 +78,7 @@ Ext.onReady(function(){
         remoteFilter: true,
         autoLoad: true
     });
-
+    
     function onStoreSizeChange() {
         grid.down('#status').update({count: store.getTotalCount()});
     }
@@ -120,7 +119,8 @@ Ext.onReady(function(){
         },
         multiSelect: true,
         viewConfig: {
-            trackOver: false
+            trackOver: false,
+            emptyText: '<h1 style="margin:20px">No matching results</h1>'
         },
         // grid columns
         columns:[{

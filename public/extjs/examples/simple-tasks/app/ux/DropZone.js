@@ -38,7 +38,7 @@ Ext.define('SimpleTasks.ux.DropZone', {
         if (position == 'append' && !this.expandProcId && !Ext.Array.contains(data.records, targetNode) && !targetNode.isLeaf() && !targetNode.isExpanded()) {
             this.queueExpand(targetNode);
         }
-
+ 
         me.overRecord = overRecord;
         me.valid = true;
         return me.dropAllowed;

@@ -5,21 +5,20 @@
 Ext.define('Books.view.book.SideBar', {
     alias: 'widget.booksidebar',
     extend: 'Ext.view.View',
-
+    
     initComponent: function() {
         Ext.apply(this, {
             id: 'sidebar',
-
+            
             dock: 'left',
             width: 180,
             border: false,
             cls: 'sidebar-list',
-
+            
             selModel: {
                 deselectOnContainerClick: false
             },
-
-            store: '',
+            
             itemSelector: '.product',
             tpl: [
                 '<div class="sidebar-title">Books</div>',
@@ -28,7 +27,7 @@ Ext.define('Books.view.book.SideBar', {
                 '</tpl>'
             ]
         });
-
+                
         this.callParent(arguments);
     }
 });

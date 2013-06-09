@@ -24,7 +24,7 @@ Ext.onReady(function() {
         html     : fakeHTML,
         autoScroll: true
     });
-
+    
     new SamplePanel({
         title: 'Standard (lbar)',
         lbar: [{

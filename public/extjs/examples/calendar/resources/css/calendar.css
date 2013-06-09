@@ -1,12 +1,12 @@
 
 /*******************************************
- *
+ * 
  * Ext Calendar styles
  *
  ******************************************/
 
 /* -----------------------------------------
- * Shared calendar view containers
+ * Shared calendar view containers 
  */
 .x-panel-tbar .ext-cal-toolbar {
     padding: 3px;
@@ -149,7 +149,7 @@
 }
 .ext-cal-dayview .ext-cal-dtitle {
     padding: 8px 1px 2px;
-}
+} 
 .ext-cal-hd-ad-bg-tbl {
     position: absolute;
     left: 0;
@@ -384,7 +384,7 @@ td.ext-cal-dtitle-today div {
 /* Event cells */
 .ext-cal-ev {
     font-family:Verdana,sans-serif;
-    padding:1px 1px 0 2px;
+    padding: 0 1px 0 2px;
     vertical-align:top;
 }
 /* Event overflow more link */
@@ -396,12 +396,14 @@ td.ext-cal-dtitle-today div {
     font-family: verdana;
     color: #777;
     font-size: 10px;
-	cursor: pointer;
+    cursor: pointer;
 }
 /* More view */
 .ext-cal-mvd-tbl {
-	width: 100%;
-	table-layout: fixed;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 1;
+    border-collapse: separate;
 }
 
 .ext-cal-evt {
@@ -675,8 +677,8 @@ td.ext-cal-dtitle-today div {
     filter:alpha(opacity=50);
 }
 
-/*
- * Calendar event colors
+/* 
+ * Calendar event colors 
  */
 .ext-cal-evr,
 .ext-cal-evi,
@@ -794,9 +796,9 @@ td.ext-cal-dtitle-today div {
 }
 
 /*******************************************
- *
+ * 
  * Calendar navigation picker styles
- *
+ * 
  ******************************************/
 .ext-cal-nav-picker {
     border-style: none none solid;
@@ -850,7 +852,7 @@ td.ext-cal-dtitle-today div {
 }
 
 /*******************************************
- *
+ * 
  * Calendar form styles
  *
  ******************************************/
@@ -878,14 +880,10 @@ td.ext-cal-dtitle-today div {
 }
 
 /*******************************************
- *
+ * 
  * DateRangeField styles
  *
  ******************************************/
-.ext-dt-range {
-    /* Don't double the bottom margin, use the contained fields' margin */
-    margin-bottom: 0 !important;
-}
 .ext-dt-range label {
     font-size: 12px;
 }

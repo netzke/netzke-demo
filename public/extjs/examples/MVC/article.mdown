@@ -3,14 +3,14 @@ In the previous article we explored what it would mean to architect a Pandora-st
 Let's actually jump in and start writing the application.
 
 ## Defining our application
-In Ext 3, the entry point into your application was the Ext.onReady method, leaving it up to the developer to come up with an application architecture. In Ext 4 we have an introduced an MVC-like pattern. Using this helps you follow best practices when creating your applications.
+In Ext 3, the entry point into your application was the Ext.onReady method, leaving it up to the developer to come up with an application architecture. In Ext 4 we have an introduced an MVC-like pattern. Using this helps you follow best practices when creating your applications. 
 
 The entry point into an application written using the new MVC package will require you to use the ***Ext.application*** method. This method will create an ***Ext.app.Application*** instance for you and will fire the ***launch*** method as soon as the page is ready. This essentially replaced the need to use ***Ext.onReady*** while adding new functionality like automatically creating a viewport and setting up your namespace.
 
 ***app/Application.js***
 
     Ext.application({
-        name: 'Panda',
+        name: 'Panda',    
         autoCreateViewport: true,
         launch: function() {
             // This is fired as soon as the page is ready
@@ -20,7 +20,7 @@ The entry point into an application written using the new MVC package will requi
 The *name* configuration causes a new namespace to be created. All our views, models, stores and controllers will live in this namespace. By setting *autoCreateViewport* to true, the framework will by convention include the **app/view/Viewport.js** file. In this file a class should be defined with the name **Panda.view.Viewport**, matching the namespace that was specified by the ***name*** configuration on your application.
 
 ## The Viewport class
-When we looked at what views were needed for our UI we were very focused on the individual parts. The Viewport of an application acts as the glue for these individual parts. It loads the required views and defines the configuration needed to achieve your app's overall layout. We have found that progressively defining our views and adding them to the viewport is the fastest way to create the base structure of your UI.
+When we looked at what views were needed for our UI we were very focused on the individual parts. The Viewport of an application acts as the glue for these individual parts. It loads the required views and defines the configuration needed to achieve your app's overall layout. We have found that progressively defining our views and adding them to the viewport is the fastest way to create the base structure of your UI. 
 
 It is important during this process to focus on scaffolding your views and not on the individual views themselves. Its almost like sculpting. We start by creating the very rough shapes of our views, and add more detail to them later.
 
@@ -38,7 +38,7 @@ Leveraging the preparations we already did in the previous article, we are able 
         ... more configuration ...
     });
 
-***app/view/SongControls.js***
+***app/view/SongControls.js***  
 
     Ext.define('Panda.view.SongControls', {
         extend: 'Ext.Container',
@@ -54,9 +54,9 @@ Leveraging the preparations we already did in the previous article, we are able 
         store: 'Stations',
         ... more configuration ...
     });
-
-***app/view/RecentlyPlayedScroller.js***
-
+               
+***app/view/RecentlyPlayedScroller.js*** 
+ 
     Ext.define('Panda.view.RecentlyPlayedScroller', {
         extend: 'Ext.view.View',
         alias: 'widget.recentlyplayedscroller',
@@ -64,16 +64,16 @@ Leveraging the preparations we already did in the previous article, we are able 
         store: 'RecentSongs',
         ... more configuration ...
     });
-
+    
 ***app/view/SongInfo.js***
 
     Ext.define('Panda.view.SongInfo', {
         extend: 'Ext.panel.Panel',
-        alias: 'widget.songinfo',
+        alias: 'widget.songinfo',    
         tpl: '<h1>About {artist}</h1><p>{description}</p>',
         ... more configuration ...
     });
-
+    
 We have left out some of the configuration here since component configurations are not in the scope of this article.
 
 ![Stores](http://img1.sencha.com/files/misc/stores.png)
@@ -88,13 +88,13 @@ For our app we had decided to use two models, Station and Song. We also need thr
 ***data/songs.json***
 
     {
-        'success': true,
+        'success': true,    
         'results': [
             {
-                'name': 'Blues At Sunrise (Live)',
-                'artist': 'Stevie Ray Vaughan',
-                'album': 'Blues At Sunrise',
-                'description': 'Description for Stevie',
+                'name': 'Blues At Sunrise (Live)', 
+                'artist': 'Stevie Ray Vaughan', 
+                'album': 'Blues At Sunrise', 
+                'description': 'Description for Stevie', 
                 'played_date': '1',
                 'station': 1
             },
@@ -105,24 +105,24 @@ For our app we had decided to use two models, Station and Song. We also need thr
 ***data/stations.json***
 
     {
-        'success': true,
+        'success': true,    
         'results': [
-            {'id': 1, 'played_date': 4, 'name': 'Led Zeppelin'},
-            {'id': 2, 'played_date': 3, 'name': 'The Rolling Stones'},
+            {'id': 1, 'played_date': 4, 'name': 'Led Zeppelin'}, 
+            {'id': 2, 'played_date': 3, 'name': 'The Rolling Stones'}, 
             {'id': 3, 'played_date': 2, 'name': 'Daft Punk'}
         ]
     }
-
+    
 ***data/searchresults.json***
 
     {
-        'success': true,
+        'success': true,    
         'results': [
-            {'id': 1, 'name': 'Led Zeppelin'},
-            {'id': 2, 'name': 'The Rolling Stones'},
+            {'id': 1, 'name': 'Led Zeppelin'}, 
+            {'id': 2, 'name': 'The Rolling Stones'}, 
             {'id': 3, 'name': 'Daft Punk'},
-            {'id': 4, 'name': 'John Mayer'},
-            {'id': 5, 'name': 'Pete Philly & Perquisite'},
+            {'id': 4, 'name': 'John Mayer'}, 
+            {'id': 5, 'name': 'Pete Philly & Perquisite'}, 
             {'id': 6, 'name': 'Black Star'},
             {'id': 7, 'name': 'Macy Gray'}
         ]
@@ -136,7 +136,7 @@ Models in Ext 4 are very similar to Records we had in Ext 3. One key difference 
     Ext.define('Panda.model.Song', {
         extend: 'Ext.data.Model',
         fields: ['id', 'name', 'artist', 'album', 'played_date', 'station'],
-
+    
         proxy: {
             type: 'ajax',
             url: 'data/recentsongs.json',
@@ -152,7 +152,7 @@ As you can see we have defined the proxy on our model. It is generally good prac
 Lets go ahead and also define our Station model.
 
 ***app/model/Station.js***
-
+    
     Ext.define('Panda.model.Station', {
         extend: 'Ext.data.Model',
         fields: ['id', 'name', 'played_date'],
@@ -176,7 +176,7 @@ In Ext 4, multiple stores can use the same data model, even if the stores will l
         extend: 'Ext.data.Store',
         requires: 'Panda.model.Station',
         model: 'Panda.model.Station',
-
+        
         // Overriding the model's default proxy
         proxy: {
             type: 'ajax',
@@ -187,7 +187,7 @@ In Ext 4, multiple stores can use the same data model, even if the stores will l
             }
         }
     });
-
+    
 ***app/store/Stations.js***
 
     Ext.define('Panda.store.Stations', {
@@ -195,9 +195,9 @@ In Ext 4, multiple stores can use the same data model, even if the stores will l
         requires: 'Panda.model.Station',
         model: 'Panda.model.Station'
     });
-
+        
 In the ***SearchResults*** store definition we have overridden the proxy defined on the ***Station*** model by providing a different proxy configuration. The store's proxy used when calling the store's *load* method instead of the proxy defined on the model itself.
-
+     
 Note that you could implement your server-side to have one API for retrieving both search results and the user's favorite stations in which case both stores could use the default proxy defined on the model, only passing different parameters to the request when loading the stores.
 
 Lastly let's create the RecentSongs store.
@@ -207,7 +207,7 @@ Lastly let's create the RecentSongs store.
     Ext.define('Panda.store.RecentSongs', {
         extend: 'Ext.data.Store',
         model: 'Panda.model.Song',
-
+                
         // Make sure to require your model if you are
         // not using Ext 4.0.5
         requires: 'Panda.model.Song'
@@ -224,7 +224,7 @@ Now that we have defined our models and stores, its time to add them to our appl
 
     Ext.application({
         ...
-        models: ['Station', 'Song'],
+        models: ['Station', 'Song'],    
         stores: ['Stations', 'RecentSongs', 'SearchResults']
         ...
     });
@@ -250,7 +250,7 @@ Your Viewport class will usually want to extend *Ext.container.Viewport*. This w
 We set up all the view dependencies in our viewport. This will allow us to use their xtypes, previously configured in our views using the ***alias*** property.
 
         layout: 'fit',
-
+        
         initComponent: function() {
             this.items = {
                 xtype: 'panel',
@@ -305,10 +305,10 @@ We set up all the view dependencies in our viewport. This will allow us to use t
                     }]
                 }]
             };
-
+        
             this.callParent();
         }
-    });
+    });    
 
 Since Viewport extends Container, and Containers can't have docked items (yet), we have added a Panel as the single item of our viewport. We make this panel the same size as our viewport by defining a layout of **fit**.
 
@@ -334,7 +334,7 @@ Now that we have the basic architecture for our UI, models and stores set up it'
             ...
         },
         ...
-    });
+    });     
 
 ***app/controller/Song.js***
 
@@ -345,12 +345,12 @@ Now that we have the basic architecture for our UI, models and stores set up it'
         },
         ...
     });
-
+    
 When including the controllers in your application, the framework will automatically load the controller and call the ***init*** method on it. Inside of the init method you should set up listeners for your view and application events. In larger applications you might want to load additional controllers at runtime. You can do this by using the ***getController*** method.
 
     someAction: function() {
         var controller = this.getController('AnotherController');
-
+        
         // Remember to call the init method manually
         controller.init();
     }
@@ -365,7 +365,7 @@ For the purposes of our example application, we'll let the framework load and in
         ...
         controllers: ['Station', 'Song']
     });
-
+    
 ### Setting up listeners
 Let's start controlling some parts of our UI by using the ***control** method inside of the controller's init function.
 
@@ -383,7 +383,7 @@ Let's start controlling some parts of our UI by using the ***control** method in
         });
     }
     ...
-
+    
 The ***control*** method is passed an object where the keys are component queries. In our example the component queries are just using the xtypes of our views. However, using these component queries you can target very specific parts of your UI. To learn more about advanced component queries you can refer to the [API docs](http://docs.sencha.com/ext-js/4-0/#/api/Ext.ComponentQuery).
 
 Each query is bound to a listener configuration. Inside each listener configuration the key is the event name we want to listen for. The events available are the ones provided by the component targeted by your query. In this case we use the ***selectionchange*** event provided by Grid (which is what our StationsList view extends from) and the ***select*** event provided by ComboBox (which our NewStation view extends from). To find out which events are available for a particular component you can look in the events section available for each component in the API docs.
@@ -395,7 +395,7 @@ The value in the listener configuration is the function that gets executed whene
 Let's also set up some listeners in our Song controller.
 
 ***app/controller/Song.js***
-
+    
     ...
     init: function() {
         this.control({
@@ -403,7 +403,7 @@ Let's also set up some listeners in our Song controller.
                 selectionchange: this.onSongSelect
             }
         });
-
+    
         this.application.on({
             stationstart: this.onStationStart,
             scope: this

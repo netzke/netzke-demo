@@ -29,7 +29,7 @@ Ext.onReady(function() {
     function changeSortDirection(button, changeDirection) {
         var sortData = button.sortData,
             iconCls  = button.iconCls;
-
+        
         if (sortData) {
             if (changeDirection !== false) {
                 button.sortData.direction = Ext.String.toggle(button.sortData.direction, "ASC", "DESC");
@@ -46,7 +46,7 @@ Ext.onReady(function() {
      */
     function getSorters() {
         var sorters = [];
-
+ 
         Ext.each(tbar.query('button'), function(button) {
             sorters.push(button.sortData);
         }, this);
@@ -140,9 +140,9 @@ Ext.onReady(function() {
             var header = data.header,
                 headerCt = header.ownerCt,
                 reorderer = headerCt.reorderer;
-
+            
             // Hide the drop indicators of the standard HeaderDropZone
-            // in case user had a pending valid drop in
+            // in case user had a pending valid drop in 
             if (reorderer) {
                 reorderer.dropZone.invalidateDrop();
             }

@@ -3,6 +3,7 @@
  */
 Ext.define('Books.model.Review', {
     extend: 'Ext.data.Model',
+    requires: ['Ext.data.association.HasMany', 'Ext.data.association.BelongsTo'],
 
     fields: [
         'product_id',
@@ -12,5 +13,9 @@ Ext.define('Books.model.Review', {
         'title',
         'comment'
     ],
-    belongsTo: 'Books.model.Book'
+    belongsTo: {
+        model: 'Books.model.Book',
+        getterName: 'getBook',
+        setterName: 'setBook'
+    }
 });

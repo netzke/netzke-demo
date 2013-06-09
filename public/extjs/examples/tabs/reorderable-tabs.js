@@ -38,7 +38,7 @@ Ext.onReady(function() {
             html : "I can't be moved",
             reorderable: false,
             closable: true
-
+        
         },{
             xtype: 'panel',
             title: 'Tab 4',

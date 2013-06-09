@@ -12,10 +12,10 @@ Ext.onReady(function() {
     // Needed if you want to handle history for multiple components in the same page.
     // Should be something that won't be in component ids.
     var tokenDelimiter = ':';
-
+    
     function onTabChange(tabPanel, tab) {
         var tabs = [],
-            ownerCt = tabPanel.ownerCt,
+            ownerCt = tabPanel.ownerCt, 
             oldToken, newToken;
 
         tabs.push(tab.id);
@@ -25,40 +25,40 @@ Ext.onReady(function() {
             tabs.push(ownerCt.id);
             ownerCt = ownerCt.ownerCt;
         }
-
+        
         newToken = tabs.reverse().join(tokenDelimiter);
-
+        
         oldToken = Ext.History.getToken();
-
+       
         if (oldToken === null || oldToken.search(newToken) === -1) {
             Ext.History.add(newToken);
         }
     }
-
+    
     // Handle this change event in order to restore the UI to the appropriate history state
     function onAfterRender() {
         Ext.History.on('change', function(token) {
             var parts, tabPanel, length, i;
-
+            
             if (token) {
                 parts = token.split(tokenDelimiter);
                 length = parts.length;
-
+                
                 // setActiveTab in all nested tabs
                 for (i = 0; i < length - 1; i++) {
                     Ext.getCmp(parts[i]).setActiveTab(Ext.getCmp(parts[i + 1]));
                 }
             }
         });
-
+        
         // This is the initial default state.  Necessary if you navigate starting from the
         // page without any existing history token params and go back to the start state.
         var activeTab1 = Ext.getCmp('main-tabs').getActiveTab(),
             activeTab2 = activeTab1.getActiveTab();
-
+            
         onTabChange(activeTab1, activeTab2);
     }
-
+    
     Ext.create('Ext.TabPanel', {
         renderTo: Ext.getBody(),
         id: 'main-tabs',
@@ -68,7 +68,7 @@ Ext.onReady(function() {
         defaults: {
             padding: 10
         },
-
+        
         items: [{
             xtype: 'tabpanel',
             title: 'Tab 1',
@@ -77,7 +77,7 @@ Ext.onReady(function() {
             padding: 5,
             border: true,
             plain: true,
-
+            
             defaults: {
                 padding: 10
             },
@@ -95,7 +95,7 @@ Ext.onReady(function() {
                 id: 'subtab3',
                 html: 'Sub-tab 3 content'
             }],
-
+            
             listeners: {
                 tabchange: onTabChange
             }
@@ -118,7 +118,7 @@ Ext.onReady(function() {
         }],
         listeners: {
             tabchange: onTabChange,
-            afterrender: onAfterRender
+            afterrender: onAfterRender 
         }
     });
 });

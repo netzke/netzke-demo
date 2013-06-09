@@ -9,15 +9,15 @@
  *         // etc.
  *         bbar: Ext.create('Ext.ux.StatusBar', {
  *             id: 'my-status',
- *
+ *      
  *             // defaults to use when the status is cleared:
  *             defaultText: 'Default status text',
  *             defaultIconCls: 'default-icon',
- *
+ *      
  *             // values to set initially:
  *             text: 'Ready',
  *             iconCls: 'ready-icon',
- *
+ *      
  *             // any standard Toolbar items:
  *             items: [{
  *                 text: 'A Button'
@@ -232,7 +232,7 @@ Ext.define('Ext.ux.statusbar.StatusBar', {
      * it will be used as the callback interval (in milliseconds), overriding the {@link #autoClear} value.
      * All other options will be defaulted as with the boolean option.  To customize any other options,
      * you can pass an object in the format:
-     *
+     * 
      * @param {Number} config.clear.wait The number of milliseconds to wait before clearing
      * (defaults to {@link #autoClear}).
      * @param {Boolean} config.clear.anim False to clear the status immediately once the callback

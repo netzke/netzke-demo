@@ -1,7 +1,7 @@
 Ext.define('Pandora.view.Viewport', {
     extend: 'Ext.container.Viewport',
     layout: 'fit',
-
+    
     requires: [
         'Pandora.view.NewStation',
         'Pandora.view.SongControls',
@@ -9,7 +9,7 @@ Ext.define('Pandora.view.Viewport', {
         'Pandora.view.RecentlyPlayedScroller',
         'Pandora.view.SongInfo'
     ],
-
+    
     initComponent: function() {
         this.items = {
             dockedItems: [{
@@ -63,7 +63,7 @@ Ext.define('Pandora.view.Viewport', {
                 }]
             }]
         };
-
+        
         this.callParent();
     }
 });

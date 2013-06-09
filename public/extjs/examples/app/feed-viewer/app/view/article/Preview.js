@@ -7,7 +7,7 @@ Ext.define('FV.view.article.Preview', {
     cls: 'preview',
     autoScroll: true,
     border: false,
-
+    
     initComponent: function() {
         Ext.apply(this, {
             tpl: new Ext.XTemplate(

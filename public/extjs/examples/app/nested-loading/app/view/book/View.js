@@ -5,9 +5,9 @@
 Ext.define('Books.view.book.View', {
     alias: 'widget.bookview',
     extend: 'Ext.panel.Panel',
-
+    
     requires: ['Ext.Img'],
-
+    
     initComponent: function() {
         Ext.apply(this, {
             cls: 'item-ct',
@@ -20,7 +20,7 @@ Ext.define('Books.view.book.View', {
                 pack : 'center',
                 availableSpaceOffset: Ext.getScrollbarSize().width
             },
-
+            
             items: [{
                 xtype: 'image',
                 itemId: 'imgCt',
@@ -40,10 +40,10 @@ Ext.define('Books.view.book.View', {
                 border: false
             }]
         });
-
+                
         this.callParent(arguments);
     },
-
+    
     /**
      * Binds a record to this view
      */

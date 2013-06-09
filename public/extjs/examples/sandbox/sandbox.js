@@ -55,8 +55,8 @@ Ext4.onReady(function() {
         data: generateData(processArray)
     });
 
-    cpuLoadStore = Ext4.create('store.json', {
-      fields: ['core1', 'core2', 'time']
+    cpuLoadStore = Ext4.create('store.json', { 
+      fields: ['core1', 'core2', 'time'] 
     });
 
     data = [];

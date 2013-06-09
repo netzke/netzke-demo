@@ -44,8 +44,8 @@ Ext.onReady(function(){
                 var record = operation.getRecords()[0],
                     name = Ext.String.capitalize(operation.action),
                     verb;
-
-
+                    
+                    
                 if (name == 'Destroy') {
                     record = operation.records[0];
                     verb = 'Destroyed';
@@ -53,13 +53,22 @@ Ext.onReady(function(){
                     verb = name + 'd';
                 }
                 Ext.example.msg(name, Ext.String.format("{0} user: {1}", verb, record.getId()));
-
+                
             }
         }
     });
-
-    var rowEditing = Ext.create('Ext.grid.plugin.RowEditing');
-
+    
+    var rowEditing = Ext.create('Ext.grid.plugin.RowEditing', {
+        listeners: {
+            cancelEdit: function(rowEditing, context) {
+                // Canceling editing of a locally added, unsaved record: remove it
+                if (context.record.phantom) {
+                    store.remove(context.record);
+                }
+            }
+        }
+    });
+    
     var grid = Ext.create('Ext.grid.Panel', {
         renderTo: document.body,
         plugins: [rowEditing],

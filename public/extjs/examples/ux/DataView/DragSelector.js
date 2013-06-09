@@ -1,8 +1,5 @@
 /**
- * @class Ext.ux.DataView.DragSelector
- * @extends Object
  * @author Ed Spencer
- *
  */
 Ext.define('Ext.ux.DataView.DragSelector', {
     requires: ['Ext.dd.DragTracker', 'Ext.util.Region'],
@@ -37,8 +34,8 @@ Ext.define('Ext.ux.DataView.DragSelector', {
         /**
          * @property tracker
          * @type Ext.dd.DragTracker
-         * The DragTracker attached to this instance. Note that the 4 on* functions are called in the scope of the
-         * DragTracker ('this' refers to the DragTracker inside those functions), so we pass a reference to the
+         * The DragTracker attached to this instance. Note that the 4 on* functions are called in the scope of the 
+         * DragTracker ('this' refers to the DragTracker inside those functions), so we pass a reference to the 
          * DragSelector so that we can call this class's functions.
          */
         this.tracker = Ext.create('Ext.dd.DragTracker', {

@@ -2,9 +2,9 @@ Ext.define('Pandora.view.SongInfo', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.songinfo',
     border: false,
-
+    
     tpl: '<h1>About {artist}</h1><p>{description}</p>',
-
+    
     initComponent: function() {
         this.dockedItems = [{
             xtype: 'container',
@@ -25,10 +25,10 @@ Ext.define('Pandora.view.SongInfo', {
                 action: 'song-menu'
             }]
         }];
-
+        
         this.callParent();
     },
-
+    
     update: function(record) {
         var data = record ? record.data : {};
         this.down('#songdescription').update(data);

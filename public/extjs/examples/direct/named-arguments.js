@@ -7,7 +7,7 @@ Ext.require([
 
 Ext.onReady(function(){
     Ext.direct.Manager.addProvider(Ext.app.REMOTING_API);
-
+    
     var form = Ext.create('Ext.form.Panel', {
         width: 300,
         height: 130,
@@ -18,13 +18,17 @@ Ext.onReady(function(){
             fieldLabel: 'First Name',
             name: 'firstName',
             value: 'Evan',
-            allowBlank: false
+            allowBlank: false,
+            maxLength: 30,
+            enforceMaxLength: true
         }, {
             xtype: 'textfield',
             fieldLabel: 'Last Name',
             name: 'lastName',
             value: 'Trimboli',
-            allowBlank: false
+            allowBlank: false,
+            maxLength: 30,
+            enforceMaxLength: true
         }, {
             xtype: 'numberfield',
             fieldLabel: 'Age',
@@ -46,6 +50,6 @@ Ext.onReady(function(){
                     });
                 }
             }]
-        }]
+        }]  
     });
 });

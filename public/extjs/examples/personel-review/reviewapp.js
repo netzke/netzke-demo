@@ -14,11 +14,11 @@ Ext.onReady(function() {
             {name:'last_name', type:'string'},
             {name:'title', type:'string'}
         ],
-
+        
         hasMany: {model:'Review', name:'reviews'}
     });
-
-    // Review Data Model
+    
+    // Review Data Model    
     Ext.regModel('Review', {
         fields: [
             {name:'review_date', label:'Date', type:'date', dateFormat:'d-m-Y'},
@@ -30,10 +30,10 @@ Ext.onReady(function() {
             {name:'teamwork', label:'Teamwork', type:'int'},
             {name:'employee_id', label:'Employee ID', type:'int'}
         ],
-
+        
         belongsTo: 'Employee'
     });
-
+    
     // Instance of a Data Store to hold Employee records
     var employeeStore = new Ext.data.Store({
         storeId:'employeeStore',
@@ -47,12 +47,12 @@ Ext.onReady(function() {
             {id:6, first_name:'Stanley', last_name:'Hudson', title:'Sales Rep'},
             {id:7, first_name:'Phyllis', last_name:'Lapin-Vance', title:'Sales Rep'},
             {id:8, first_name:'Kevin', last_name:'Malone', title:'Accountant'},
-            {id:9, first_name:'Angela', last_name:'Martin', title:'Senior Accountant'},
-            {id:10, first_name:'Meredith', last_name:'Palmer', title:'Supplier Relations Rep'}
+            {id:9, first_name:'Angela', last_name:'Martin', title:'Senior Accountant'},             
+            {id:10, first_name:'Meredith', last_name:'Palmer', title:'Supplier Relations Rep'}                                                                                   
         ],
-        autoLoad:true
-    });
-
+        autoLoad:true        
+    });    
+      
    /**
      * App.RadarStore
      * @extends Ext.data.Store
@@ -61,19 +61,19 @@ Ext.onReady(function() {
      * into the format required by the Radar Chart.
      *
      * The constructor demonstrates dynamically generating store fields.
-     * populateReviewScores() populates the store using records from
+     * populateReviewScores() populates the store using records from 
      * the reviewStore which holds all the employee review scores.
      *
      * calculateAverageScores() iterates through each metric in the
      * review and calculates an average across all available reviews.
-     *
+     * 
      * Most of the actual data population and updates done by
      * addUpdateRecordFromReviews() and removeRecordFromReviews()
-     * called when add/update/delete events are triggered on the ReviewStore.
-     */
+     * called when add/update/delete events are triggered on the ReviewStore.      
+     */      
     Ext.define('App.RadarStore', {
         extend: 'Ext.data.Store',
-
+        
         constructor: function(config) {
             config = config || {};
             var dynamicFields = ['metric', 'avg'];  // initalize the non-dynamic fields first
@@ -81,24 +81,24 @@ Ext.onReady(function() {
             employeeStore.each(function(record){    // loops through all the employees to setup the dynamic fields
                 dynamicFields.push('eid_' + record.get('id'));
             });
-
+                        
             Ext.apply(config, {
                 storeId:'radarStore',   // let's us look it up later using Ext.data.StoreMgr.lookup('radarStore')
                 fields:dynamicFields,
                 data:[]
             });
-
+            
             App.RadarStore.superclass.constructor.call(this, config);
         },
-
+        
         addUpdateRecordFromReviews: function(reviews) {
             var me = this;
-
-            Ext.Array.each(reviews, function(review, recordIndex, all) {    // add a new radarStore record for each review record
-                var eid = 'eid_' + review.get('employee_id');   // creates a unique id for each employee column in the store
-
+            
+            Ext.Array.each(reviews, function(review, recordIndex, all) {    // add a new radarStore record for each review record 
+                var eid = 'eid_' + review.get('employee_id');   // creates a unique id for each employee column in the store    
+                    
                 review.fields.each(function(field) {
-
+                
                     if(field.name !== "employee_id" && field.name !== "review_date") {  // filter out the fields we don't need
                         var metricRecord = me.findRecord('metric', field.name); // checks for an existing metric record in the store
                         if(metricRecord) {
@@ -112,25 +112,25 @@ Ext.onReady(function() {
                     }
                 });
             });
-
+            
             this.calculateAverageScores();  // update average scores
         },
-
+        
        /**
          * Calculates an average for each metric across all employees.
-         * We use this to create the average series always shown in the Radar Chart.
-         */
+         * We use this to create the average series always shown in the Radar Chart.      
+         */              
         calculateAverageScores: function() {
             var me = this; // keeps the store in scope during Ext.Array.each
             var reviewStore = Ext.data.StoreMgr.lookup('reviewStore');
-
+            
             var Review = Ext.ModelMgr.getModel('Review');
-
+            
             Ext.Array.each(Review.prototype.fields.keys, function(fieldName) {  // loop through the Review model fields and calculate average scores
                 if(fieldName !== "employee_id" && fieldName !== "review_date") {  // ignore non-score fields
                     var avgScore = Math.round(reviewStore.average(fieldName));  // takes advantage of Ext.data.Store.average()
                     var record = me.findRecord('metric', fieldName);
-
+                        
                     if(record) {
                         record.set('avg', avgScore);
                     } else {
@@ -139,35 +139,35 @@ Ext.onReady(function() {
                 }
             });
         },
-
+        
         populateReviewScores: function() {
             var reviewStore = Ext.data.StoreMgr.lookup('reviewStore');
             this.addUpdateRecordFromReviews(reviewStore.data.items); // add all the review records to this store
         },
-
+           
         removeRecordFromReviews: function(reviews) {
             var me = this;
             Ext.Array.each(reviews, function(review, recordIndex, all) {
                 var eid = 'eid_' + review.get('employee_id');
-
+                
                 me.each(function(record) {
                     delete record.data[eid];
                 });
             });
-
+            
             // upate average scores
-            this.calculateAverageScores();
+            this.calculateAverageScores(); 
         }
     }); // end App.RadarStore definition
-
-
+      
+    
    /** Creates an instance of App.RadarStore here so we
      * here so we can re-use it during the life of the app.
      * Otherwise we'd have to create a new instance everytime
      * refreshRadarChart() is run.
      */
     var radarStore = new App.RadarStore();
-
+            
     var reviewStore = new Ext.data.Store({
         storeId:'reviewStore',
         model:'Review',
@@ -178,17 +178,17 @@ Ext.onReady(function() {
             {review_date:'01-04-2011', attendance:8, attitude:2, communication:4, excellence:2, skills:5, teamwork:6, employee_id:4},
             {review_date:'01-04-2011', attendance:4, attitude:1, communication:5, excellence:7, skills:5, teamwork:5, employee_id:5},
             {review_date:'01-04-2011', attendance:5, attitude:2, communication:4, excellence:7, skills:9, teamwork:8, employee_id:6},
-            {review_date:'01-04-2011', attendance:10, attitude:7, communication:8, excellence:7, skills:3, teamwork:4, employee_id:7},
+            {review_date:'01-04-2011', attendance:10, attitude:7, communication:8, excellence:7, skills:3, teamwork:4, employee_id:7},                        
             {review_date:'01-04-2011', attendance:10, attitude:8, communication:8, excellence:4, skills:8, teamwork:7, employee_id:8},
             {review_date:'01-04-2011', attendance:6, attitude:4, communication:9, excellence:7, skills:6, teamwork:5, employee_id:9},
-            {review_date:'01-04-2011', attendance:7, attitude:5, communication:9, excellence:4, skills:2, teamwork:4, employee_id:10}
+            {review_date:'01-04-2011', attendance:7, attitude:5, communication:9, excellence:4, skills:2, teamwork:4, employee_id:10}            
         ],
         listeners: {
             add:function(store, records, storeIndex) {
                 var radarStore = Ext.data.StoreMgr.lookup('radarStore');
-
+                
                 if(radarStore) {    // only add records if an instance of the rardarStore already exists
-                    radarStore.addUpdateRecordFromReviews(records);   // add a new radarStore records for new review records
+                    radarStore.addUpdateRecordFromReviews(records);   // add a new radarStore records for new review records                              
                 }
             }, // end add listener
             update: function(store, record, operation) {
@@ -202,23 +202,23 @@ Ext.onReady(function() {
             } // end remove listener
         }
     });
-
+        
    /**
      * App.PerformanceRadar
      * @extends Ext.chart.Chart
-     * This is a specialized Radar Chart which we use to display employee
+     * This is a specialized Radar Chart which we use to display employee 
      * performance reviews.
      *
      * The class will be registered with an xtype of 'performanceradar'
-     */
+     */      
     Ext.define('App.PerformanceRadar', {
         extend: 'Ext.chart.Chart',
         alias: 'widget.performanceradar',           // register xtype performanceradar
         constructor: function(config) {
             config = config || {};
-
+            
             this.setAverageSeries(config);    // make sure average is always present
-
+            
             Ext.apply(config, {
                 id:'radarchart',
                 theme:'Category2',
@@ -239,11 +239,11 @@ Ext.onReady(function() {
                     }
                 }]
             }); // end Ext.apply
-
+            
             App.PerformanceRadar.superclass.constructor.call(this, config);
-
+        
         }, // end constructor
-
+        
         setAverageSeries: function(config) {
             var avgSeries = {
                 type: 'radar',
@@ -265,16 +265,16 @@ Ext.onReady(function() {
                     fill: 'none'
                 }
             }
-
-            if(config.series) {
+            
+            if(config.series) {        
                 config.series.push(avgSeries);     // if a series is passed in then append the average to it
-            } else {
+            } else {                    
                 config.series = [avgSeries];    // if a series isn't passed just create average
             }
-        }
-
+        } 
+    
     }); // end Ext.ux.Performance radar definition
-
+    
    /**
      * App.EmployeeDetail
      * @extends Ext.Panel
@@ -301,31 +301,31 @@ Ext.onReady(function() {
             'Communication:&nbsp;{communication}&nbsp;&nbsp;',
             'Excellence:&nbsp;{excellence}&nbsp;&nbsp;',
             'Skills:&nbsp;{skills}&nbsp;&nbsp;',
-            'Teamwork:&nbsp;{teamwork}'
+            'Teamwork:&nbsp;{teamwork}' 
         ],
-
+        
         height:90,
         bodyPadding: 7,
         // override initComponent to create and compile the template
         // apply styles to the body of the panel
         initComponent: function() {
             this.tpl = new Ext.Template(this.tplMarkup);
-
+                                   
             // call the superclass's initComponent implementation
             App.EmployeeDetail.superclass.initComponent.call(this);
         }
     });
-
+            
     Ext.define('App.ReviewWindow', {
         extend: 'Ext.window.Window',
 
-        constructor: function(config) {
+        constructor: function(config) {        
             config = config || {};
-            Ext.apply(config, {
+            Ext.apply(config, {        
                 title:'Employee Performance Review',
                 width:320,
                 height:420,
-                layout:'fit',
+                layout:'fit',        
                 items:[{
                     xtype:'form',
                     id:'employeereviewcomboform',
@@ -333,7 +333,7 @@ Ext.onReady(function() {
                         labelAlign: 'left',
                         labelWidth: 90,
                         anchor: '100%'
-                    },
+                    },            
                     bodyPadding:5,
                     items:[{
                         xtype:'fieldset',
@@ -350,12 +350,12 @@ Ext.onReady(function() {
                             xtype:'textfield',
                             name:'last_name',
                             fieldLabel:'Last Name',
-                            allowBlank:false
+                            allowBlank:false                               
                         },{
                             xtype:'textfield',
                             name:'title',
                             fieldLabel:'Title',
-                            allowBlank:false
+                            allowBlank:false                               
                         }]
                     },{
                         xtype:'fieldset',
@@ -364,14 +364,14 @@ Ext.onReady(function() {
                             xtype:'datefield',
                             name:'review_date',
                             fieldLabel:'Review Date',
-                            format:'d-m-Y',
+                            format:'d-m-Y',                   
                             maxValue: new Date(),
                             value: new Date(),
                             allowBlank:false
                         },{
                             xtype:'slider',
                             name:'attendance',
-                            fieldLabel:'Attendance',
+                            fieldLabel:'Attendance',                    
                             value:5,
                             increment:1,
                             minValue:1,
@@ -386,7 +386,7 @@ Ext.onReady(function() {
                         },{
                             xtype:'slider',
                             name:'communication',
-                            fieldLabel:'Communication',
+                            fieldLabel:'Communication',                    
                             value:5,
                             increment:1,
                             minValue:1,
@@ -397,21 +397,21 @@ Ext.onReady(function() {
                             fieldLabel:'Excellence',
                             value:5,
                             minValue: 1,
-                            maxValue: 10
+                            maxValue: 10                
                         },{
                             xtype:'numberfield',
                             name:'skills',
                             fieldLabel:'Skills',
                             value:5,
                             minValue: 1,
-                            maxValue: 10
+                            maxValue: 10                
                         },{
                             xtype:'numberfield',
                             name:'teamwork',
                             fieldLabel:'Teamwork',
                             value:5,
                             minValue: 1,
-                            maxValue: 10
+                            maxValue: 10                
                         }]
                     }]
                 }],
@@ -428,19 +428,19 @@ Ext.onReady(function() {
                     handler:function(btn, eventObj) {
                         var window = btn.up('window');
                         var form = window.down('form').getForm();
-
+                        
                         if (form.isValid()) {
                             window.getEl().mask('saving data...');
                             var vals = form.getValues();
                             var employeeStore = Ext.data.StoreMgr.lookup('employeeStore');
                             var currentEmployee = employeeStore.findRecord('id', vals['employee_id']);
-
+                            
                             // look up id for this employee to see if they already exist
                             if(vals['employee_id'] && currentEmployee) {
                                 currentEmployee.set('first_name', vals['first_name']);
                                 currentEmployee.set('last_name', vals['last_name']);
                                 currentEmployee.set('title', vals['title']);
-
+                                
                                 var currentReview = Ext.data.StoreMgr.lookup('reviewStore').findRecord('employee_id', vals['employee_id']);
                                 currentReview.set('review_date', vals['review_date']);
                                 currentReview.set('attendance', vals['attendance']);
@@ -448,17 +448,17 @@ Ext.onReady(function() {
                                 currentReview.set('communication', vals['communication']);
                                 currentReview.set('excellence', vals['excellence']);
                                 currentReview.set('skills', vals['skills']);
-                                currentReview.set('teamwork', vals['teamwork']);
+                                currentReview.set('teamwork', vals['teamwork']);                                                                                                                                                                
                             } else {
-                                var newId = employeeStore.getCount() + 1;
-
+                                var newId = employeeStore.getCount() + 1; 
+                                                                                           
                                 employeeStore.add({
                                     id: newId,
                                     first_name: vals['first_name'],
                                     last_name: vals['last_name'],
                                     title: vals['title']
                                 });
-
+    
                                 Ext.data.StoreMgr.lookup('reviewStore').add({
                                     review_date: vals['review_date'],
                                     attendance: vals['attendance'],
@@ -476,26 +476,26 @@ Ext.onReady(function() {
                     }
                 }]
             }); // end Ext.apply
-
+            
             App.ReviewWindow.superclass.constructor.call(this, config);
-
+            
         } // end constructor
-
+        
     });
 
-
-    // adds a record to the radar chart store and
+            
+    // adds a record to the radar chart store and 
     // creates a series in the chart for selected employees
-    function refreshRadarChart(employees) {
+    function refreshRadarChart(employees) {       
         employees = employees || []; // in case its called with nothing we'll at least have an empty array
         var existingRadarChart = Ext.getCmp('radarchart'); // grab the radar chart component (used down below)
         var reportsPanel = Ext.getCmp('reportspanel'); // grab the reports panel component (used down below)
         var dynamicSeries = []; // setup an array of chart series that we'll create dynamically
-
+       
         for(var index = 0; index < employees.length; index++) {
             var fullName = employees[index].get('first_name') + ' ' + employees[index].get('last_name');
             var eid = 'eid_' + employees[index].get('id');
-
+                       
             // add to the dynamic series we're building
             dynamicSeries.push({
                 type: 'radar',
@@ -514,9 +514,9 @@ Ext.onReady(function() {
                     fill: 'none'
                 }
             });
-
+            
         } // end for loop
-
+        
         // destroy the existing chart
         existingRadarChart.destroy();
         // create the new chart using the dynamic series we just made
@@ -528,12 +528,12 @@ Ext.onReady(function() {
         // un mask the reports panel
         reportsPanel.getEl().unmask();
     }
-
+    
     function refreshEmployeeDetails(employees) {
         var detailsPanel = Ext.getCmp('detailspanel');
         var reviewStore = Ext.data.StoreMgr.lookup('reviewStore');
         var items = [];
-
+               
         for(var index = 0; index < employees.length; index++) {
             var templateData = Ext.applyIf(employees[index].data, reviewStore.findRecord('employee_id', employees[index].get('id')).data);
             var employeePanel = new App.EmployeeDetail({
@@ -542,16 +542,16 @@ Ext.onReady(function() {
             });
             items.push(employeePanel);
         }
-
+        
         detailsPanel.getEl().mask('updating details...');
         detailsPanel.removeAll();
         detailsPanel.add(items);
         detailsPanel.getEl().unmask();
     }
-
+    
     // sets Up Checkbox Selection Model for the Employee Grid
     var checkboxSelModel = new Ext.selection.CheckboxModel();
-
+    
     var viewport = new Ext.container.Viewport({
         id:'mainviewport',
         layout: 'border',            // sets up Ext.layout.container.Border
@@ -613,14 +613,14 @@ Ext.onReady(function() {
                                 function(choice) {
                                     if(choice === 'yes') {
                                         var reviewStore = Ext.data.StoreMgr.lookup('reviewStore');
-
+                                    
                                         var employee = grid.getStore().getAt(rowIndex);
                                         var reviewIndex = reviewStore.find('employee_id', employee.get('id'));
                                         reviewStore.removeAt(reviewIndex);
                                         grid.getStore().removeAt(rowIndex);
                                     }
                                 }
-                            );
+                            );   
                         }
                     }]
                 }],
@@ -654,5 +654,5 @@ Ext.onReady(function() {
             }]
         }]  // mainviewport items array ends here
     });
-
+        
 });

@@ -31,4 +31,4 @@ try {
 
 echo json_encode($jsonResult);
 
-?>
+?> 

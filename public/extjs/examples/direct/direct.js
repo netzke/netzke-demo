@@ -6,23 +6,23 @@ Ext.require([
 ]);
 
 Ext.onReady(function(){
-
+    
     function doEcho(field){
         TestAction.doEcho(field.getValue(), function(result, event){
             var transaction = event.getTransaction(),
                 content = Ext.String.format('<b>Successful call to {0}.{1} with response:</b><pre>{2}</pre>',
                     transaction.action, transaction.method, Ext.encode(result));
-
+            
             updateMain(content);
             field.reset();
         });
     }
-
+    
     function doMultiply(field){
         TestAction.multiply(field.getValue(), function(result, event){
             var transaction = event.getTransaction(),
                 content;
-
+                
             if (event.status) {
                 content = Ext.String.format('<b>Successful call to {0}.{1} with response:</b><pre>{2}</pre>',
                     transaction.action, transaction.method, Ext.encode(result));
@@ -34,14 +34,14 @@ Ext.onReady(function(){
             field.reset();
         });
     }
-
+    
     function updateMain(content){
         main.update({
             data: content
         });
         main.body.scroll('b', 100000, true);
     }
-
+    
     Ext.direct.Manager.addProvider(Ext.app.REMOTING_API, {
         type:'polling',
         url: 'php/poll.php',
@@ -51,8 +51,9 @@ Ext.onReady(function(){
             }
         }
     });
-
+    
     var main = Ext.create('Ext.panel.Panel', {
+        // The id is used for styling
         id: 'logger',
         title: 'Remote Call Log',
         renderTo: document.body,
@@ -61,7 +62,7 @@ Ext.onReady(function(){
         tpl: '<p>{data}</p>',
         tplWriteMode: 'append',
         autoScroll: true,
-        bodyStyle: 'padding: 5px;',
+        bodyPadding: 5,
         dockedItems: [{
             dock: 'bottom',
             xtype: 'toolbar',
@@ -88,7 +89,7 @@ Ext.onReady(function(){
                 hideLabel: true,
                 itemId: 'multiplyText',
                 xtype: 'textfield',
-                width: 80,
+                width: 90,
                 emptyText: 'Multiply x 8',
                 listeners: {
                     specialkey: function(field, event){

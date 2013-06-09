@@ -22,7 +22,7 @@ Ext.onReady(function(){
                     handler: function(){
                         var value = Ext.getCmp(fieldId).getValue();
                         Ext.Msg.alert('Value is a split array', value.join(', '));
-                    }
+                    } 
                 }, {
                     text: 'Set value (2,3)',
                     handler: function(){

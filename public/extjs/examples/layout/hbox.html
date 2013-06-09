@@ -1,12 +1,12 @@
 <html>
 <head>
     <title>HBox Layout</title>
-    <link rel="stylesheet" type="text/css" href="../../resources/css/ext-all.css" />
     <link rel="stylesheet" type="text/css" href="../shared/example.css" />
 
     <!-- GC -->
 
-    <script type="text/javascript" src="../../ext-all.js"></script>
+    <script type="text/javascript" src="../../examples/shared/include-ext.js"></script>
+    <script type="text/javascript" src="../../examples/shared/options-toolbar.js"></script>
 
     <style type="text/css">
         html, body {
@@ -20,47 +20,47 @@
 
         Ext.onReady(function() {
             var currentName,
-                viewport;
-            var replace = function(config, name) {
-                var btns = Ext.getCmp('btns');
-                if (name && name != currentName) {
-                    currentName = name;
-                    btns.remove(0);
-                    btns.add(Ext.apply(config));
-                }
-            };
+                panelCache = [],
+                panel,
+                replace = function(config, name) {
+                    var btns = Ext.getCmp('btns');
+                    if (name && name != currentName) {
+                        currentName = name;
+                        if (btns.items.length) {
+                            btns.remove(0, false);
+                        } else {
+                            btns.body.innerHTML = '';
+                        }
+                        config.border = false,
+                        panel = panelCache[name] || (panelCache[name] = Ext.widget('panel', config));
+                        btns.add(panel);
+                    }
+                };
 
-            viewport = Ext.create('Ext.Viewport', {
+            Ext.create('Ext.Viewport', {
                 layout:'border',
 
                 items: [{
                     id:'btns',
                     region:'north',
-                    baseCls:'x-plain',
                     split: true,
                     height: 100,
                     minHeight: 75,
                     maxHeight: 150,
                     layout:'fit',
-                    margins: '5 5 0 5',
-                    items: {
-                        baseCls: 'x-plain',
-                        html: '<p style="padding:10px;color:#556677;">Select a configuration below:</p>'
-                    }
+                    margin: '5 5 0 5',
+                    html: '<p style="padding:10px;color:#556677;">Select a configuration below:</p>'
                }, {
                     region:'center',
-                    margins: '0 5 5 5',
+                    margin: '0 5 5 5',
                     layout:'anchor',
 
-                    items:[{
-                        anchor:'100%',
-                        baseCls:'x-plain',
-                        layout: {
-                            type: 'hbox',
-                            padding: 10
-                        },
+                    dockedItems:[{
+                        xtype: 'toolbar',
+                        enableOverflow: true,
+                        dock: 'top',
                         defaults:{
-                            margins:'0 5 0 0',
+                            margin:'0 5 0 0',
                             pressed: false,
                             toggleGroup:'btns',
                             allowDepress: false
@@ -75,7 +75,7 @@
                                         padding:'5',
                                         align:'top'
                                     },
-                                    defaults:{margins:'0 5 0 0'},
+                                    defaults:{margin:'0 5 0 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Small Size'
@@ -93,7 +93,7 @@
                                         xtype:'button',
                                         scale: 'large',
                                         text: 'Large Size',
-                                        margins:'0'
+                                        margin: 0
                                     }]
                                 }, 'spaced');
                             }
@@ -107,7 +107,7 @@
                                         padding:'5',
                                         align:'top'
                                     },
-                                    defaults:{margins:'0 5 0 0'},
+                                    defaults:{margin:'0 5 0 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Small Size'
@@ -132,7 +132,7 @@
                                         padding:'5',
                                         align:'middle'
                                     },
-                                    defaults:{margins:'0 5 0 0'},
+                                    defaults:{margin:'0 5 0 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Small Size'
@@ -157,7 +157,7 @@
                                         padding:'5',
                                         align:'stretch'
                                     },
-                                    defaults:{margins:'0 5 0 0'},
+                                    defaults:{margin:'0 5 0 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Small Size'
@@ -182,7 +182,7 @@
                                         padding:'5',
                                         align:'stretchmax'
                                     },
-                                    defaults:{margins:'0 5 0 0'},
+                                    defaults:{margin:'0 5 0 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Small Size'
@@ -199,14 +199,11 @@
                             }
                         }]
                     },{
-                        anchor:'100%',
-                        baseCls:'x-plain',
-                        layout: {
-                            type: 'hbox',
-                            padding: '0 10 10'
-                        },
+                        xtype: 'toolbar',
+                        enableOverflow: true,
+                        dock: 'top',
                         defaults:{
-                            margins:'0 5 0 0',
+                            margin:'0 5 0 0',
                             pressed: false,
                             toggleGroup:'btns',
                             allowDepress: false
@@ -222,7 +219,7 @@
                                         align: 'middle'
                                     },
                                     defaults:{
-                                        margins: '0 5 0 0'
+                                        margin: '0 5 0 0'
                                     },
                                     items:[{
                                         xtype: 'button',
@@ -240,7 +237,7 @@
                                         xtype: 'button',
                                         text: 'Button 4',
                                         flex: 1,
-                                        margins: '0'
+                                        margin: '0'
                                     }]
                                 }, 'flex all even');
                             }
@@ -254,7 +251,7 @@
                                         padding:'5',
                                         align:'top'
                                     },
-                                    defaults:{margins:'0 5 0 0'},
+                                    defaults:{margin:'0 5 0 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Button 1',
@@ -271,7 +268,7 @@
                                         xtype:'button',
                                         text: 'Button 4',
                                         flex:3,
-                                        margins:'0'
+                                        margin: 0
                                     }]
                                 }, 'flex ratio');
                             }
@@ -286,7 +283,7 @@
                                         pack:'start',
                                         align:'middle'
                                     },
-                                    defaults:{margins:'0 5 0 0'},
+                                    defaults:{margin:'0 5 0 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Button 1'
@@ -313,7 +310,7 @@
                                         pack:'center',
                                         align:'middle'
                                     },
-                                    defaults:{margins:'0 5 0 0'},
+                                    defaults:{margin:'0 5 0 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Button 1'
@@ -326,7 +323,7 @@
                                     },{
                                         xtype:'button',
                                         text: 'Button 4',
-                                        margins:'0'
+                                        margin: 0
                                     }]
                                 }, 'pack center');
                             }
@@ -341,7 +338,7 @@
                                         pack:'end',
                                         align:'middle'
                                     },
-                                    defaults:{margins:'0 5 0 0'},
+                                    defaults:{margin:'0 5 0 0'},
                                     items:[{
                                         xtype:'button',
                                         text: 'Button 1'
@@ -354,7 +351,7 @@
                                     },{
                                         xtype:'button',
                                         text: 'Button 4',
-                                        margins:'0'
+                                        margin: 0
                                     }]
                                 }, 'pack end');
                             }

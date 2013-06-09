@@ -2,7 +2,7 @@
  * @class Ext.chooser.InfoPanel
  * @extends Ext.panel.Panel
  * @author Ed Spencer
- *
+ * 
  * This panel subclass just displays information about an image. We have a simple template set via the tpl property,
  * and a single function (loadRecord) which updates the contents with information about another image.
  */
@@ -17,7 +17,7 @@ Ext.define('Ext.chooser.InfoPanel', {
     tpl: [
         '<div class="details">',
             '<tpl for=".">',
-                    (!Ext.isIE6? '<img src="icons/{thumb}" />' :
+                    (!Ext.isIE6? '<img src="icons/{thumb}" />' : 
                     '<div style="width:74px;height:74px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=\'icons/{thumb}\')"></div>'),
                 '<div class="details-info">',
                     '<b>Example Name:</b>',
@@ -30,14 +30,14 @@ Ext.define('Ext.chooser.InfoPanel', {
             '</tpl>',
         '</div>'
     ],
-
+    
     afterRender: function(){
         this.callParent();
         if (!Ext.isWebKit) {
             this.el.on('click', function(){
                 alert('The Sencha Touch examples are intended to work on WebKit browsers. They may not display correctly in other browsers.');
             }, this, {delegate: 'a'});
-        }
+        }    
     },
 
     /**
@@ -49,5 +49,9 @@ Ext.define('Ext.chooser.InfoPanel', {
         this.body.slideIn('l', {
             duration: 250
         });
+    },
+    
+    clear: function(){
+        this.body.update('');
     }
 });

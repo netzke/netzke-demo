@@ -9,6 +9,6 @@ Ext.application({
     controllers: [
         'Books'
     ],
-
+    
     autoCreateViewport: true
 });

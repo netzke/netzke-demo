@@ -5,7 +5,7 @@ Ext.require([
     'Ext.layout.container.Accordion'
 ]);
 
-Ext.onReady(function(){
+Ext.onReady(function(){    
     /*
      * Notice that Direct requests will batch together if they occur
      * within the enableBuffer delay period (in milliseconds).
@@ -13,10 +13,10 @@ Ext.onReady(function(){
      */
     Ext.app.REMOTING_API.enableBuffer = 100;
     Ext.direct.Manager.addProvider(Ext.app.REMOTING_API);
-
+    
     // provide feedback for any errors
     Ext.tip.QuickTipManager.init();
-
+    
     var basicInfo = Ext.create('Ext.form.Panel', {
         // configs for FormPanel
         title: 'Basic Information',
@@ -25,9 +25,9 @@ Ext.onReady(function(){
         // configs for BasicForm
         api: {
             // The server-side method to call for load() requests
-            load: Profile.getBasicInfo,
+            load: 'Profile.getBasicInfo',
             // The server-side must mark the submit handler as a 'formHandler'
-            submit: Profile.updateBasicInfo
+            submit: 'Profile.updateBasicInfo'
         },
         // specify the order for the passed params
         paramOrder: ['uid', 'foo'],
@@ -45,7 +45,7 @@ Ext.onReady(function(){
                             uid: 34
                         }
                     });
-                }
+                }      
             }]
         }],
         defaultType: 'textfield',
@@ -64,7 +64,7 @@ Ext.onReady(function(){
             name: 'company'
         }]
     });
-
+    
     var phoneInfo = Ext.create('Ext.form.Panel', {
         title: 'Phone Numbers',
         border: false,
@@ -88,7 +88,7 @@ Ext.onReady(function(){
             name: 'home'
         }]
     });
-
+    
     var locationInfo = Ext.create('Ext.form.Panel', {
         title: 'Location Information',
         border: false,
@@ -115,16 +115,16 @@ Ext.onReady(function(){
             name: 'zip'
         }]
     });
-
+    
     var accordion = Ext.create('Ext.panel.Panel', {
         layout: 'accordion',
         renderTo: Ext.getBody(),
         title: 'My Profile',
-        width: 300,
-        height: 240,
+        width: Ext.themeName === 'neptune' ? 350 : 300,
+        height: Ext.themeName === 'neptune' ? 300 : 240,
         items: [basicInfo, phoneInfo, locationInfo]
     });
-
+    
     // load the forms (notice the load requests will get batched together)
     basicInfo.getForm().load({
         // pass 2 arguments to server side getBasicInfo method (len=2)

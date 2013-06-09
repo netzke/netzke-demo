@@ -10,9 +10,10 @@
 Ext.define('Ext.calendar.form.EventWindow', {
     extend: 'Ext.window.Window',
     alias: 'widget.eventeditwindow',
-
+    
     requires: [
         'Ext.form.Panel',
+        'Ext.calendar.util.Date',
         'Ext.calendar.data.EventModel',
         'Ext.calendar.data.EventMappings'
     ],
@@ -45,11 +46,11 @@ Ext.define('Ext.calendar.form.EventWindow', {
                 fieldLabel: 'When'
             }]
         };
-
+    
         if (config.calendarStore) {
             this.calendarStore = config.calendarStore;
             delete config.calendarStore;
-
+    
             formPanelCfg.items.push({
                 xtype: 'calendarpicker',
                 itemId: 'calendar',
@@ -58,7 +59,7 @@ Ext.define('Ext.calendar.form.EventWindow', {
                 store: this.calendarStore
             });
         }
-
+    
         this.callParent([Ext.apply({
             titleTextAdd: 'Add Event',
             titleTextEdit: 'Edit Event',
@@ -72,7 +73,7 @@ Ext.define('Ext.calendar.form.EventWindow', {
             savingMessage: 'Saving changes...',
             deletingMessage: 'Deleting event...',
             layout: 'fit',
-
+    
             defaultFocus: 'title',
             onEsc: function(key, event) {
                         event.target.blur(); // Remove the focus to avoid doing the validity checks when the window is shown again.
@@ -168,13 +169,13 @@ Ext.define('Ext.calendar.form.EventWindow', {
         this.el.addCls('ext-cal-event-win');
 
         Ext.get('tblink').on('click', this.onEditDetailsClick, this);
-
+        
         this.titleField = this.down('#title');
         this.dateRangeField = this.down('#date-range');
         this.calendarField = this.down('#calendar');
         this.deleteButton = this.down('#delete-btn');
     },
-
+    
     // private
     onEditDetailsClick: function(e){
         e.stopEvent();
@@ -185,8 +186,8 @@ Ext.define('Ext.calendar.form.EventWindow', {
     /**
      * Shows the window, rendering it first if necessary, or activates it and brings it to front if hidden.
 	 * @param {Ext.data.Record/Object} o Either a {@link Ext.data.Record} if showing the form
-	 * for an existing event in edit mode, or a plain object containing a StartDate property (and
-	 * optionally an EndDate property) for showing the form in add mode.
+	 * for an existing event in edit mode, or a plain object containing a StartDate property (and 
+	 * optionally an EndDate property) for showing the form in add mode. 
      * @param {String/Element} animateTarget (optional) The target element or id from which the window should
      * animate while opening (defaults to null with no animation)
      * @return {Ext.Window} this
@@ -200,7 +201,7 @@ Ext.define('Ext.calendar.form.EventWindow', {
         this.callParent([anim, function(){
             me.titleField.focus(true);
         }]);
-
+        
         this.deleteButton[o.data && o.data[M.EventId.name] ? 'show': 'hide']();
 
         var rec,
@@ -276,7 +277,7 @@ Ext.define('Ext.calendar.form.EventWindow', {
                 obj[name] = values[name];
             }
         });
-
+        
         var dates = this.dateRangeField.getValue();
         obj[M.StartDate.name] = dates[0];
         obj[M.EndDate.name] = dates[1];
@@ -284,14 +285,14 @@ Ext.define('Ext.calendar.form.EventWindow', {
 
         record.beginEdit();
         record.set(obj);
-
+        
         if (!keepEditing) {
             record.endEdit();
         }
 
         return this;
     },
-
+    
     // private
     onSave: function(){
         if(!this.formPanel.form.isValid()){
@@ -306,7 +307,7 @@ Ext.define('Ext.calendar.form.EventWindow', {
         // Clear phantom and modified states.
         this.activeRecord.commit();
     },
-
+    
     // private
     onDelete: function(){
         this.fireEvent('eventdelete', this, this.activeRecord, this.animateTarget);

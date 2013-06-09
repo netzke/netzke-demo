@@ -1,5 +1,4 @@
 /**
- * @class Ext.ux.Spotlight
  * UX used to provide a spotlight around a specified component/element.
  */
 Ext.define('Ext.ux.Spotlight', {
@@ -32,7 +31,7 @@ Ext.define('Ext.ux.Spotlight', {
      * True if the spotlight is active on the element
      */
     active: false,
-
+    
     constructor: function(config){
         Ext.apply(this, config);
     },
@@ -66,7 +65,7 @@ Ext.define('Ext.ux.Spotlight', {
      */
     show: function(el, callback, scope) {
         var me = this;
-
+        
         //get the target element
         me.el = Ext.get(el);
 
@@ -92,7 +91,7 @@ Ext.define('Ext.ux.Spotlight', {
      */
     hide: function(callback, scope) {
         var me = this;
-
+        
         Ext.EventManager.removeResizeListener(me.syncSize, me);
 
         me.applyBounds(me.animate, true);
@@ -119,7 +118,7 @@ Ext.define('Ext.ux.Spotlight', {
             i = 0,
             config = false,
             from, to, clone;
-
+            
         //where the element should start (if animation)
         from = {
             right: {
@@ -207,7 +206,7 @@ Ext.define('Ext.ux.Spotlight', {
      */
     destroy: function() {
         var me = this;
-
+        
         Ext.destroy(me.right, me.left, me.top, me.bottom);
         delete me.el;
         delete me.all;

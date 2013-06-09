@@ -4,7 +4,7 @@ include '../connection.php';
 
 try {
     $params = json_decode(file_get_contents('php://input'));
-
+     
     $db->beginTransaction();
 
     // if the node is being appended to the root node, change relatedId and position so that the node will be appended after the last node in the db
@@ -41,7 +41,7 @@ try {
     } else if($params->position == 'append') {
         $insertionPoint = $relatedNodeBounds['rgt'];
     }
-
+    
     // Step 3: before moving the node and its descendants, make room at the insertion point
     // this is done by incrementing by nodeSize the left/right values for all nodes to the right of the insertion point
     $statement = $db->prepare("update list set lft = lft + $nodeSize where lft >= $insertionPoint");

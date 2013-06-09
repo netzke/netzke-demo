@@ -7,7 +7,7 @@ Ext.require([
 /**
  * @class Ext.aria.AriaController
  * <p>This class supplies support methods for integrating ARIA support into Components.</p>
- *
+ * 
  */
 Ext.define('Ext.aria.AriaController', {
     singleton: true,
@@ -25,7 +25,7 @@ Ext.define('Ext.aria.AriaController', {
             classFn = Ext.aria.AriaController.getClassAriaHandler(this.self.prototype, evtName),
             ariaFn = Ext.aria.AriaController[evtName],
             result;
-
+    
         // Call user event handlers first.
         result = Ext.util.Observable.prototype.fireEvent.apply(me, arguments);
         if (result !== false) {
@@ -125,7 +125,7 @@ Ext.define('Ext.aria.AriaController', {
         }
     }
 }, function() {
-
+    
     // Inject an updateAria method into AbstractComponent's prorotype
     Ext.override(Ext.AbstractComponent, {
         getElConfig: function() {
@@ -164,7 +164,7 @@ Ext.define('Ext.aria.AriaController', {
             }
         }
     });
-
+    
     Ext.core.Element.prototype.set = function(o, useSet) {
         var el = this.dom,
             attr,
@@ -306,7 +306,7 @@ Ext.onReady(function() {
                 }
             }
         };
-
+        
         return {
             role: 'combobox',
 
@@ -847,9 +847,9 @@ Ext.define('Ext.picker.NewDate', {
                 '</tpl>' +
             '</tr></tbody>' +
         '</table>', {
-
+        
         cellClass: function(value, data) {
-
+            
         },
         titleFormat: function(value) {
             return Ext.date.format(value, this.longDayFormat);

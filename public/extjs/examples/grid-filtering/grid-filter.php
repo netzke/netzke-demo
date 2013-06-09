@@ -25,7 +25,7 @@ $count  = isset($_REQUEST['limit'])  ? $_REQUEST['limit']  : 50;
 $sort   = isset($_REQUEST['sort'])   ? json_decode($_REQUEST['sort'])   : null;
 $filters = isset($_REQUEST['filter']) ? $_REQUEST['filter'] : null;
 
-$sortProperty = $sort[0]->property;
+$sortProperty = $sort[0]->property; 
 $sortDirection = $sort[0]->direction;
 
 // GridFilters sends filters as an Array if not json encoded

@@ -38,7 +38,7 @@
 				));
 		}
 	}
-
+    
 	/**
 	 * Returns a hard-coded data value matching the type passed in.
 	 */
@@ -66,13 +66,13 @@
     function generateData() {
 		global $date_format;
 	    $row_count = rand(10, 30);
-		$col_count = rand(5, 10);
+		$col_count = rand(3, 7);
 		$types = array();
         $data['data'] = array();
 		$fields = array();
 		$columns = array();
 		$defineFields = true;
-
+        
         for ($i=0; $i<$row_count; $i++) {
 			
 			for ($j=0; $j<$col_count; $j++) {
@@ -99,7 +99,7 @@
 					
 					// =====================================================================
 					// define the default placeholder column definition to match the field.
-					// note that this columns block only applies to grids. in the past the
+					// note that this columns block only applies to grids. in the past the 
 					// fields config was reused both by the store and also by grids, but since
 					// it is usually preferable to add column-specific metadata that the store
 					// doesn't care about, it's usually better to split the two definitions.
@@ -163,6 +163,6 @@
 		
         return $data;
     }
-
+    
     echo json_encode(generateData());
 ?>

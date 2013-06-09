@@ -7,7 +7,7 @@ Ext.onReady(function() {
             if (!this.el) {
                 this.el = Ext.get(this.getEl());
             }
-
+            
             //Cache the original XY Coordinates of the element, we'll use this later.
             this.originalXY = this.el.getXY();
         },
@@ -22,7 +22,7 @@ Ext.onReady(function() {
             if (this.invalidDrop === true) {
                 // Remove the drop invitation
                 this.el.removeCls('dropOK');
-
+                
                 // Create the animation configuration object
                 var animCfgObj = {
                     easing   : 'elasticOut',
@@ -33,9 +33,9 @@ Ext.onReady(function() {
                         this.el.dom.style.position = '';
                     }
                 };
-
+                
                 // Apply the repair animation
-                this.el.moveTo(this.originalXY[0], this.originalXY[1], animCfgObj);
+                this.el.setXY([this.originalXY[0], this.originalXY[1]], animCfgObj);
                 delete this.invalidDrop;
             }
         },
@@ -43,17 +43,17 @@ Ext.onReady(function() {
         onDragDrop : function(evtObj, targetElId) {
             // Wrap the drop target element with Ext.Element
             var dropEl = Ext.get(targetElId);
-
+            
             // Perform the node move only if the drag element's
             // parent is not the same as the drop target
             if (this.el.dom.parentNode.id != targetElId) {
-
+                
                 // Move the element
                 dropEl.appendChild(this.el);
-
+                
                 // Remove the drag invitation
                 this.onDragOut(evtObj, targetElId);
-
+                
                 // Clear the styles
                 this.el.dom.style.position ='';
                 this.el.dom.style.top = '';
@@ -98,7 +98,7 @@ Ext.onReady(function() {
         });
         Ext.apply(dd, overrides);
     });
-
+    
     // Instantiate instances of Ext.dd.DDTarget for the cars and trucks container
     var carsDDTarget = Ext.create('Ext.dd.DDTarget', 'cars','carsDDGroup');
     var trucksDDTarget = Ext.create('Ext.dd.DDTarget', 'trucks', 'trucksDDGroup');

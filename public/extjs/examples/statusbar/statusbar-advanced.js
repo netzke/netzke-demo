@@ -64,7 +64,7 @@ Ext.onReady(function(){
                     }
                 }
             }]
-        },
+        }, 
             Ext.create('Ext.ux.StatusBar', {
                 dock: 'bottom',
                 id: 'form-statusbar',

@@ -40,9 +40,9 @@ var data = [
 ];
 
 Ext.onReady(function(){
-
+    
     Ext.tip.QuickTipManager.init();
-
+    
     var store = Ext.create('Ext.data.Store', {
         model: 'Task',
         data: data,

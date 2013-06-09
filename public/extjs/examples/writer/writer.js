@@ -182,6 +182,10 @@ Ext.define('Writer.Grid', {
                 text: 'ID',
                 width: 40,
                 sortable: true,
+                resizable: false,
+                draggable: false,
+                hideable: false,
+                menuDisabled: true,
                 dataIndex: 'id'
             }, {
                 header: 'Email',
@@ -212,7 +216,7 @@ Ext.define('Writer.Grid', {
         this.callParent();
         this.getSelectionModel().on('selectionchange', this.onSelectChange, this);
     },
-
+    
     onSelectChange: function(selModel, selections){
         this.down('#delete').setDisabled(selections.length === 0);
     },
@@ -274,7 +278,7 @@ Ext.require([
 
 Ext.onReady(function(){
     Ext.tip.QuickTipManager.init();
-
+    
     Ext.create('Ext.button.Button', {
         margin: '0 0 20 20',
         text: 'Reset sample database back to initial state',
@@ -286,10 +290,10 @@ Ext.onReady(function(){
                 url: 'app.php/example/reset',
                 callback: function(options, success, response) {
                     Ext.getBody().unmask();
-
+                    
                     var didReset = true,
                         o;
-
+                    
                     if (success) {
                         try {
                             o = Ext.decode(response.responseText);
@@ -300,7 +304,7 @@ Ext.onReady(function(){
                     } else {
                         didReset = false;
                     }
-
+                    
                     if (didReset) {
                         store.load();
                         main.down('#form').setActiveRecord(null);
@@ -308,12 +312,12 @@ Ext.onReady(function(){
                     } else {
                         Ext.MessageBox.alert('Error', 'Unable to reset example database');
                     }
-
+                    
                 }
             });
         }
     })
-
+    
     var store = Ext.create('Ext.data.Store', {
         model: 'Writer.Person',
         autoLoad: true,
@@ -361,7 +365,7 @@ Ext.onReady(function(){
     var main = Ext.create('Ext.container.Container', {
         padding: '0 0 0 20',
         width: 500,
-        height: 450,
+        height: Ext.themeName === 'neptune' ? 500 : 450,
         renderTo: document.body,
         layout: {
             type: 'vbox',
@@ -370,7 +374,7 @@ Ext.onReady(function(){
         items: [{
             itemId: 'form',
             xtype: 'writerform',
-            height: 150,
+            manageHeight: false,
             margins: '0 0 10 0',
             listeners: {
                 create: function(form, data){

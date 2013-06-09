@@ -69,7 +69,7 @@ Ext.define('FV.controller.Articles', {
     openArticle: function(btn) {
         window.open(btn.up('articlepreview').article.get('link'));
     },
-
+    
     openAllArticles: function() {
         this.loadArticles(this.getArticlesStore().getRange());
     },
@@ -77,12 +77,12 @@ Ext.define('FV.controller.Articles', {
     viewArticle: function(btn) {
         this.loadArticle(null, btn.up('articlepreview').article);
     },
-
+    
     loadArticles: function(articles){
         var viewer = this.getViewer(),
             toAdd = [],
             id;
-
+            
         Ext.Array.forEach(articles, function(article){
             id = article.id;
             if (!viewer.down('[articleId=' + id + ']')) {
@@ -106,7 +106,7 @@ Ext.define('FV.controller.Articles', {
         var viewer = this.getViewer(),
             title = article.get('title'),
             articleId = article.id;
-
+            
         tab = viewer.down('[articleId=' + articleId + ']');
         if (!tab) {
             tab = this.getArticleTab();
@@ -119,8 +119,8 @@ Ext.define('FV.controller.Articles', {
         tab.update(article.data);
 
         viewer.add(tab);
-        viewer.setActiveTab(tab);
-
+        viewer.setActiveTab(tab);            
+        
         return tab;
     }
 });

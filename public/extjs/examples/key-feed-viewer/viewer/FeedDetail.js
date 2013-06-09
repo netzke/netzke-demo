@@ -3,7 +3,7 @@
  * @extends Ext.panel.Panel
  *
  * Shows the details of a particular feed
- *
+ * 
  * @constructor
  * Create a new Feed Detail
  * @param {Object} config The config object
@@ -14,7 +14,7 @@ Ext.define('FeedViewer.FeedDetail', {
     alias: 'widget.feeddetail',
 
     border: false,
-
+    
     initComponent: function(){
         this.display = Ext.create('widget.feedpost', {});
         Ext.apply(this, {

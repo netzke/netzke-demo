@@ -10,9 +10,9 @@ Ext.require([
     'Ext.ux.LiveSearchGridPanel'
 ]);
 
-Ext.onReady(function() {
+Ext.onReady(function() {    
     Ext.QuickTips.init();
-
+        
     // sample static data for the store
     var myData = [
         ['3m Co',                               71.72, 0.02,  0.03,  '9/1 12:00am'],
@@ -70,9 +70,9 @@ Ext.onReady(function() {
             return '<span style="color:red;">' + val + '%</span>';
         }
         return val;
-    }
-
-
+    }        
+    
+    
     // create the data store
     var store = Ext.create('Ext.data.ArrayStore', {
         fields: [
@@ -84,7 +84,7 @@ Ext.onReady(function() {
         ],
         data: myData
     });
-
+    
     // create the Grid, see Ext.
     Ext.create('Ext.ux.LiveSearchGridPanel', {
         store: store,
@@ -93,35 +93,35 @@ Ext.onReady(function() {
             {
                 text     : 'Company',
                 flex     : 1,
-                sortable : false,
+                sortable : false, 
                 dataIndex: 'company'
             },
             {
-                text     : 'Price',
-                width    : 75,
-                sortable : true,
-                renderer : 'usMoney',
+                text     : 'Price', 
+                width    : 75, 
+                sortable : true, 
+                renderer : 'usMoney', 
                 dataIndex: 'price'
             },
             {
-                text     : 'Change',
-                width    : 75,
-                sortable : true,
+                text     : 'Change', 
+                width    : 75, 
+                sortable : true, 
                 dataIndex: 'change',
                 renderer: change
             },
             {
-                text     : '% Change',
-                width    : 75,
-                sortable : true,
+                text     : '% Change', 
+                width    : 75, 
+                sortable : true, 
                 dataIndex: 'pctChange',
                 renderer: pctChange
             },
             {
                 xtype    : 'datecolumn',
-                text     : 'Last Updated',
-                width    : 85,
-                sortable : true,
+                text     : 'Last Updated', 
+                width    : 85, 
+                sortable : true, 
                 dataIndex: 'lastChange'
             }
         ],

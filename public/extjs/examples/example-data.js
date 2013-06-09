@@ -6,9 +6,9 @@ Ext.onReady(function() {
         var data = [],
             p = (Math.random() *  11) + 1,
             i;
-
+            
         floor = (!floor && floor !== 0)? 20 : floor;
-
+        
         for (i = 0; i < (n || 12); i++) {
             data.push({
                 name: Ext.Date.monthNames[i % 12],
@@ -25,14 +25,14 @@ Ext.onReady(function() {
         }
         return data;
     };
-
+    
     window.generateDataNegative = function(n, floor){
         var data = [],
             p = (Math.random() *  11) + 1,
             i;
-
+            
         floor = (!floor && floor !== 0)? 20 : floor;
-
+            
         for (i = 0; i < (n || 12); i++) {
             data.push({
                 name: Ext.Date.monthNames[i % 12],
@@ -69,7 +69,7 @@ Ext.onReady(function() {
     window.store5 = Ext.create('Ext.data.JsonStore', {
         fields: ['name', 'data1', 'data2', 'data3', 'data4', 'data5', 'data6', 'data7', 'data9', 'data9'],
         data: generateData()
-    });
-
-
+    });    
+    
+    window.loadTask = new Ext.util.DelayedTask();
 });

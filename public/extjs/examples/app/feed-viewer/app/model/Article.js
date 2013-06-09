@@ -1,6 +1,6 @@
 Ext.define('FV.model.Article', {
     extend: 'Ext.data.Model',
-
+    
     fields: [
         'title', 'author', {
             name: 'pubDate',

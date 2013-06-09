@@ -1,7 +1,7 @@
 /**
  * @class SimpleTasks.view.tasks.DefaultTimeWindow
  * @extends Ext.window.Window
- *
+ * 
  * A window for displaying alerts when the reminder date for a task has passed
  */
 Ext.define('SimpleTasks.view.tasks.ReminderWindow', {
@@ -74,7 +74,7 @@ Ext.define('SimpleTasks.view.tasks.ReminderWindow', {
     setTask: function(task) {
         this.task = task;
     },
-
+    
     /**
      * Gets the task associated with this reminder
      * @return {Task.model.Task}

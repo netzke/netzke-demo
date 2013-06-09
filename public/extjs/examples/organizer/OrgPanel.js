@@ -8,9 +8,9 @@
 Ext.define('Ext.org.OrgPanel', {
     extend: 'Ext.panel.Panel',
     requires: 'Ext.layout.container.Border',
-
+    
     layout: 'border',
-
+    
     initComponent: function() {
         this.items = [
             {
@@ -46,7 +46,7 @@ Ext.define('Ext.org.OrgPanel', {
                 }
             }
         ];
-
+        
         this.callParent(arguments);
     }
 });

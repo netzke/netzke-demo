@@ -2,7 +2,7 @@
  * This class manages the playback of an array of "event descriptors". For details on the
  * contents of an "event descriptor", see {@link Ext.ux.event.Recorder}. The events recorded by the
  * {@link Ext.ux.event.Recorder} class are designed to serve as input for this class.
- *
+ * 
  * The simplest use of this class is to instantiate it with an {@link #eventQueue} and call
  * {@link #method-start}. Like so:
  *
@@ -113,10 +113,10 @@ Ext.define('Ext.ux.event.Player', {
     stallTime: 0,
 
     tagPathRegEx: /(\w+)(?:\[(\d+)\])?/,
-
+    
     constructor: function (config) {
         var me = this;
-
+        
         me.callParent(arguments);
 
         me.addEvents(
@@ -275,7 +275,7 @@ Ext.define('Ext.ux.event.Player', {
             if (animations && animations.getCount()) {
                 return true;
             }
-
+            
             if (eventDescriptor.keyframe) {
                 if (!me.processKeyFrame(eventDescriptor)) {
                     return false;
@@ -286,7 +286,7 @@ Ext.define('Ext.ux.event.Player', {
                        me.playEvent(eventDescriptor)) {
                 if(window.__x && eventDescriptor.screenshot) {
                      __x.poll.sendSyncRequest({cmd: 'screenshot'});
-                }
+                }       
                 me.nextEvent(eventDescriptor);
             } else {
                 return true;
@@ -300,7 +300,7 @@ Ext.define('Ext.ux.event.Player', {
     /**
      * This method is called when a keyframe is reached. This will fire the keyframe event.
      * If the keyframe has been handled, true is returned. Otherwise, false is returned.
-     * @param {Object} The event descriptor of the keyframe.
+     * @param {Object} eventDescriptor The event descriptor of the keyframe.
      * @return {Boolean} True if the keyframe was handled, false if not.
      */
     processKeyFrame: function (eventDescriptor) {
@@ -318,7 +318,7 @@ Ext.define('Ext.ux.event.Player', {
     /**
      * Called to inject the given event on the specified target.
      * @param {HTMLElement} target The target of the event.
-     * @param {Ext.EventObject} The event to inject.
+     * @param {Ext.EventObject} event The event to inject.
      */
     injectEvent: function (target, event) {
         event.injectEvent(target);
@@ -396,7 +396,7 @@ Ext.define('Ext.ux.event.Player', {
         event.ctrlKey = modKeys.indexOf('C') > 0;
         event.metaKey = modKeys.indexOf('M') > 0;
         event.shiftKey = modKeys.indexOf('S') > 0;
-
+    
         return event;
     },
 
