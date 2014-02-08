@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~>3.2.0'
+gem 'rails', '~>4.0.0'
+gem 'activerecord-session_store'
 
 gem 'faker'
 gem 'pg'
@@ -8,11 +9,10 @@ gem 'carrierwave'
 
 gem 'thin'
 
-gem 'netzke-core', github: "netzke/netzke-core", branch: :ext42
-gem 'netzke-basepack', github: "netzke/netzke-basepack", branch: :ext42
+gem 'netzke-core'
+gem 'netzke-basepack'
 
 gem 'thin'
-
 
 group :development, :test do
   gem 'pry'
