@@ -1,4 +1,4 @@
-This is the source-code for [http://netzke-demo.herokuapp.com](http://netzke-demo.herokuapp.com) - the official [Netzke](http://netzke.org) demo.
+This is the source-code for [http://demo.netzke.org](http://demo.netzke.org) - the official [Netzke](http://netzke.org) demo.
 
 ## To run locally
 
@@ -16,11 +16,15 @@ This is the source-code for [http://netzke-demo.herokuapp.com](http://netzke-dem
 
     $ rake db:create && rake db:migrate && rake db:seed
 
+5. Symlink your Ext JS folder to `public/extjs`, e.g.:
+
+    $ ln -s PATH/TO/YOUR/EXTJS/FILES public/extjs
+
 ## Dependencies
 
-* Rails ~> 4.0.0
-* Ext JS ~> 4.2.0
-* Netzke Core/Basepack ~> 0.10.0
+* Rails ~> 4.2.0
+* Ext JS = 5.1.0
+* Netzke = 0.12.0
 
 ## Feedback
 
@@ -28,4 +32,4 @@ Google groups: http://groups.google.com/group/netzke
 
 Twitter: http://twitter.com/netzke
 
-Author's twitter: http://twitter.com/uptomax
+Author's twitter: http://twitter.com/mxgrn

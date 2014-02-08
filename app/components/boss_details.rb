@@ -6,13 +6,12 @@ class BossDetails < Netzke::Base
     c.update_stats = <<-JS
       function(){
         // Create and show the mask
-        if (!this.maskCmp) this.maskCmp = new Ext.LoadMask(this.getEl(), {msg: "Updating..."});
-        this.maskCmp.show();
+        this.getEl().mask();
 
         // Call endpoint
         this.serverUpdate({}, function(){
           // Hide mask (we're in the callback function)
-          this.maskCmp.hide();
+          this.getEl().unmask();
         }, this);
       }
     JS

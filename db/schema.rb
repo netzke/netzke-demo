@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20110306181243) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bosses", force: true do |t|
+  create_table "bosses", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20110306181243) do
     t.datetime "updated_at"
   end
 
-  create_table "clerks", force: true do |t|
+  create_table "clerks", force: :cascade do |t|
     t.integer  "boss_id"
     t.string   "first_name"
     t.string   "last_name"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20110306181243) do
     t.string   "image"
   end
 
-  create_table "sessions", force: true do |t|
+  create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
     t.text     "data"
     t.datetime "created_at"

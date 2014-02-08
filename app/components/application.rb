@@ -60,7 +60,7 @@ class Application < Netzke::Basepack::Viewport
   end
 
   component :grid_with_action_column do |c|
-    c.desc = "A grid where you can delet rows by clicking a column action. Uses <a href='https://github.com/netzke/netzke-communitypack'>netzke-communitypack</a>. " + source_code_link(c)
+    c.desc = "A grid where you can delet rows by clicking a column action. " + source_code_link(c)
   end
 
   component :grid_with_persistent_columns do |c|
@@ -155,7 +155,7 @@ protected
   def header_html
     %Q{
       <div style="color:#333; font-family: Helvetica; font-size: 150%;">
-        <a style="color:#B32D15;" href="http://netzke.org">Netzke</a> demo app v0.10
+        <a style="color:#B32D15;" href="http://netzke.org">Netzke</a> demo app (Netzke 0.12, Rails 4.2, Ext JS 5.1)
       </div>
     }
   end

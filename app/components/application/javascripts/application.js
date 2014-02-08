@@ -33,7 +33,7 @@
         <br/> \
         <p>Follow <a target="_blank" href="http://twitter.com/netzke">@netzke</a> on Twitter for the latest news on the framework. <p/> \
         <br/> \
-        <div style="text-align: right">By <a target="_blank" href="http://twitter.com/nomadcoder">nomadcoder</a>, ' + (new Date()).getFullYear() + '</div> \
+        <div style="text-align: right">By <a target="_blank" href="http://twitter.com/mxgrn">Max Gorin</a>, ' + (new Date()).getFullYear() + '</div> \
         '
     });
   },

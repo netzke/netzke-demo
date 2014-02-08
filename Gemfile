@@ -1,18 +1,13 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~>4.0.0'
+gem 'rails', '~>4.2.0'
 gem 'activerecord-session_store'
 
 gem 'faker'
 gem 'pg'
 gem 'carrierwave'
 
-gem 'thin'
-
-gem 'netzke-core', '0.10.0.rc2'
-gem 'netzke-basepack', '0.10.0.rc2'
-
-gem 'thin'
+gem 'netzke', '~>0.12.0.beta'
 
 group :development, :test do
   gem 'pry'
@@ -23,4 +18,12 @@ group :development, :test do
   gem 'spork-rails'
   gem 'launchy'    # So you can do Then show me the page
   gem 'factory_girl_rails'
+end
+
+group :development do
+  gem 'capistrano', '~> 3.0.1'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails', '~> 1.1.0'
+  gem 'capistrano-rails-console'
+  gem 'capistrano-passenger'
 end
