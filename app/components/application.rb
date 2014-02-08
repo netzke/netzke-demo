@@ -73,16 +73,6 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "A grid from #{link('this', '/')} tutorial. " + source_code_link(c)
   end
 
-  component :clerk_paging_form do |c|
-    c.title  = "Clerk Paging Form"
-    c.desc = "A paging form panel configured with just a model. Browse through the records by clicking on the paging toobar. " + source_code_link(c)
-  end
-
-  component :clerk_form_custom_layout do |c|
-    c.klass  = ClerkForm
-    c.desc = "A paging form panel with custom layout. " + source_code_link(c)
-  end
-
   #
   # Composite components
   #
@@ -202,14 +192,6 @@ protected
                 leaf("Grid with customized columns", :clerks, :user),
                 leaf("Grid with action column", :grid_with_action_column, :user),
                 leaf("Grid with persistent columns", :grid_with_persistent_columns, :user_suit)
-              ]
-            },
-
-            { :text => "Form",
-              :expanded => true,
-              :children => [
-                leaf("Paging Form", :clerk_paging_form, :application_form),
-                leaf("Paging Form, custom layout", :clerk_form_custom_layout, :application_form_edit)
               ]
             },
 
