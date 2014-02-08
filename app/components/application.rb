@@ -155,7 +155,7 @@ protected
   def header_html
     %Q{
       <div style="color:#333; font-family: Helvetica; font-size: 150%;">
-        <a style="color:#B32D15;" href="http://netzke.org">Netzke</a> demo app v0.9
+        <a style="color:#B32D15;" href="http://netzke.org">Netzke</a> demo app v0.10
       </div>
     }
   end

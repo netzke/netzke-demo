@@ -18,9 +18,9 @@ This is the source-code for [http://netzke-demo.herokuapp.com](http://netzke-dem
 
 ## Dependencies
 
-* Rails ~> 3.2.0
-* Ext JS ~> 4.1.0
-* Netzke Core/Basepack ~> 0.8.0
+* Rails ~> 4.0.0
+* Ext JS ~> 4.2.0
+* Netzke Core/Basepack ~> 0.10.0
 
 ## Feedback
 
@@ -28,4 +28,4 @@ Google groups: http://groups.google.com/group/netzke
 
 Twitter: http://twitter.com/netzke
 
-Author's twitter: http://twitter.com/nomadcoder
+Author's twitter: http://twitter.com/uptomax
