@@ -9,8 +9,8 @@ gem 'carrierwave'
 
 gem 'thin'
 
-gem 'netzke-core'
-gem 'netzke-basepack'
+gem 'netzke-core', '0.10.0.rc2'
+gem 'netzke-basepack', '0.10.0.rc2'
 
 gem 'thin'
 

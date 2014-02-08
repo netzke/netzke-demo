@@ -62,8 +62,6 @@ GEM
     faker (1.2.0)
       i18n (~> 0.5)
     ffi (1.9.3)
-    haml (4.0.5)
-      tilt
     hike (1.2.3)
     i18n (0.6.9)
     json (1.8.1)
@@ -77,11 +75,10 @@ GEM
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.4)
-    netzke-basepack (0.10.0)
-      netzke-core (~> 0.10.0.rc1)
-    netzke-core (0.10.0)
+    netzke-basepack (0.10.0.rc2)
+      netzke-core (= 0.10.0.rc2)
+    netzke-core (0.10.0.rc2)
       execjs
-      haml
       uglifier
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
@@ -170,8 +167,8 @@ DEPENDENCIES
   factory_girl_rails
   faker
   launchy
-  netzke-basepack
-  netzke-core
+  netzke-basepack (= 0.10.0.rc2)
+  netzke-core (= 0.10.0.rc2)
   pg
   pry
   rails (~> 4.0.0)
