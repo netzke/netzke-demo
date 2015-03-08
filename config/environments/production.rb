@@ -29,7 +29,7 @@ NetzkeDemo::Application.configure do
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
-  config.serve_static_assets = false
+  config.serve_static_files = false
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -45,4 +45,5 @@ NetzkeDemo::Application.configure do
   config.i18n.fallbacks = true
 
   config.eager_load = true
+  config.log_level = :info
 end
