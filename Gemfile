@@ -9,6 +9,8 @@ gem 'carrierwave'
 
 gem 'netzke', '~>0.12.0.beta'
 
+gem 'whenever', :require => false
+
 group :development, :test do
   gem 'pry'
   gem 'capybara'
