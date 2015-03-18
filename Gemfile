@@ -7,7 +7,7 @@ gem 'faker'
 gem 'pg'
 gem 'carrierwave'
 
-gem 'netzke', '~>0.12.0.beta'
+gem 'netzke', '~>0.12.0'
 
 gem 'whenever', :require => false
 

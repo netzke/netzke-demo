@@ -27,7 +27,7 @@ class BossDetails < Netzke::Base
   # HTML template used to display the stats
   def body_content(boss)
     %Q(
-      <h1>Statistics on clerks</h1>
+      <h2>Statistics on clerks</h2>
       Number: #{boss.clerks.count}<br/>
       With salary > $5,000: #{boss.clerks.where(["salary >= ?", 5000]).count}<br/>
       To lay off: #{boss.clerks.where(:subject_to_lay_off => true).count}

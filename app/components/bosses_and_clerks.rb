@@ -4,10 +4,11 @@ class BossesAndClerks < Netzke::Base
 
   def configure(c)
     super
+    c.header = false
     c.items = [
-      { netzke_component: :bosses, region: :center },
-      { netzke_component: :boss_details, region: :east, width: 240, split: true },
-      { netzke_component: :clerks, region: :south, height: 250, split: true }
+      { netzke_component: :bosses, region: :center, border: false },
+      { netzke_component: :boss_details, region: :east, width: 240, split: true, border: false },
+      { netzke_component: :clerks, region: :south, height: 250, split: true, border: false }
     ]
   end
 

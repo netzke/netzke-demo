@@ -37,10 +37,10 @@ class Application < Netzke::Basepack::Viewport
       { layout: :border,
         tbar: [header_html, '->', :about, current_user ? :sign_out : :sign_in],
         items: [
-          { region: :west, item_id: :navigation, width: 300, split: true, xtype: :treepanel, root: menu, root_visible: false, title: "Navigation" },
+          { region: :west, item_id: :navigation, width: 300, split: true, xtype: :treepanel, root: menu, root_visible: false, border: false, title: "Navigation" },
           { region: :center, layout: :border, border: false, items: [
-            { item_id: :info_panel, region: :north, height: 35, body_padding: 5, split: true, html: initial_html },
-            { item_id: :main_panel, region: :center, layout: :fit, border: false, items: [{body_padding: 5, html: "Components will be loaded in this area"}] } # items is only needed here for cosmetic reasons (initial border)
+            { region: :north, height: 35, border: false, split: true, layout: :fit, items: [{item_id: :info_panel, padding: 5, border: false}] },
+            { item_id: :main_panel, region: :center, layout: :fit, border: false, items: [{border: false, body_padding: 5, html: "Components will be loaded in this area"}] } # items is only needed here for cosmetic reasons (initial border)
           ]}
         ]
       }
@@ -154,16 +154,8 @@ protected
 
   def header_html
     %Q{
-      <div style="color:#333; font-family: Helvetica; font-size: 150%;">
+      <div style="font-size: 150%;">
         <a style="color:#B32D15;" href="http://netzke.org">Netzke</a> demo app (Netzke 0.12, Rails 4.2, Ext JS 5.1)
-      </div>
-    }
-  end
-
-  def initial_html
-    %Q{
-      <div style="color:#333; font-family: Helvetica;">
-        <img src='#{uri_to_icon(:information)}'/>
       </div>
     }
   end
