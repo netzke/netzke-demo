@@ -19,6 +19,8 @@
 
 # Learn more: http://github.com/javan/whenever
 
+set :job_template, "PATH=/usr/local/bin /bin/bash -l -c ':job'"
+
 every 24.hours do
   rake "db:seed"
 end
