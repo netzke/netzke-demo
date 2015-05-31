@@ -9,6 +9,7 @@ gem 'carrierwave'
 
 gem 'netzke', '~>0.12.0'
 
+gem 'awesome_nested_set'
 gem 'whenever', :require => false
 
 group :development, :test do

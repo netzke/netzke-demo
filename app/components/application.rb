@@ -73,6 +73,10 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "A grid from #{link('this', '/')} tutorial. " + source_code_link(c)
   end
 
+  component :files do |c|
+    c.desc = "A tree panel configure with just a model. " + source_code_link(c)
+  end
+
   #
   # Composite components
   #
@@ -184,6 +188,13 @@ protected
                 leaf("Grid with customized columns", :clerks, :user),
                 leaf("Grid with action column", :grid_with_action_column, :user),
                 leaf("Grid with persistent columns", :grid_with_persistent_columns, :user_suit)
+              ]
+            },
+
+            { text: "Tree",
+              expanded: true,
+              children: [
+                leaf("Tree panel", :files, :application_side_tree)
               ]
             },
 

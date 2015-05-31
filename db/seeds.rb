@@ -31,4 +31,19 @@ Clerk.delete_all
   })
 end
 
+FileRecord.delete_all
+ids = []
+200.times do |t|
+  file = FileRecord.create({
+    name: "file-#{t}",
+    size: rand(100000),
+    parent_id: ids.sample
+  })
 
+  ids << file.id
+end
+
+puts "Updating leaf status..."
+FileRecord.all.each do |r|
+  r.update_attribute(:leaf, r.children.empty?)
+end
