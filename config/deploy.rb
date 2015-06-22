@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.3.5'
+lock '3.4.0'
 
 set :application, 'netzke-demo'
 set :repo_url, 'git@github.com:netzke/netzke-demo.git'
@@ -49,3 +49,17 @@ namespace :deploy do
   end
 
 end
+
+# OVERIDE passenger:restart
+Rake::Task["passenger:restart"].clear_actions
+namespace :passenger do
+  task :restart do
+    on roles(fetch(:passenger_roles)), in: fetch(:passenger_restart_runner), wait: fetch(:passenger_restart_wait), limit: fetch(:passenger_restart_limit) do
+      with fetch(:passenger_environment_variables) do
+        execute :mkdir, '-p', release_path.join('tmp')
+        execute :touch, release_path.join('tmp/restart.txt')
+      end
+    end
+  end
+end
+
