@@ -8,6 +8,8 @@ gem 'pg'
 gem 'carrierwave'
 
 gem 'netzke', '~>0.12.0'
+gem 'netzke-core', github: "netzke/netzke-core", branch: 'master'
+gem 'netzke-basepack', github: "netzke/netzke-basepack", branch: 'master'
 
 gem 'awesome_nested_set'
 gem 'whenever', :require => false

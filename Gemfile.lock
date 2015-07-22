@@ -1,3 +1,21 @@
+GIT
+  remote: git://github.com/netzke/netzke-basepack.git
+  revision: bcc6f00f87cddeb6e651588b31c8f5166471ca62
+  branch: master
+  specs:
+    netzke-basepack (0.12.7)
+      netzke-core (~> 0.12.0)
+      netzke-testing (~> 0.12.0)
+
+GIT
+  remote: git://github.com/netzke/netzke-core.git
+  revision: ab9cd61f6c256873d634edc34ec5a90cde9f4643
+  branch: master
+  specs:
+    netzke-core (0.12.3)
+      execjs
+      uglifier
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -65,7 +83,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-screenshot (1.0.10)
+    capybara-screenshot (1.0.11)
       capybara (>= 1.0, < 3)
       launchy
     carrierwave (0.10.0)
@@ -115,12 +133,6 @@ GEM
       netzke-basepack (~> 0.12.0)
       netzke-core (~> 0.12.0)
       netzke-testing (~> 0.12.0)
-    netzke-basepack (0.12.6)
-      netzke-core (~> 0.12.0)
-      netzke-testing (~> 0.12.0)
-    netzke-core (0.12.2)
-      execjs
-      uglifier
     netzke-testing (0.12.3)
       coffee-script
     nokogiri (1.6.6.2)
@@ -227,6 +239,8 @@ DEPENDENCIES
   faker
   launchy
   netzke (~> 0.12.0)
+  netzke-basepack!
+  netzke-core!
   pg
   pry
   rails (~> 4.2.0)
