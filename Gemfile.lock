@@ -1,20 +1,38 @@
 GIT
   remote: git://github.com/netzke/netzke-basepack.git
-  revision: 781da495fb94dc3c16c13612b788ae18d598657b
+  revision: ad03e1ab777f0c36cc7cef6f3de28f4e5daaa597
   branch: master
   specs:
-    netzke-basepack (0.12.7)
-      netzke-core (~> 0.12.0)
-      netzke-testing (~> 0.12.0)
+    netzke-basepack (1.0.0.0.alpha)
+      netzke-core (= 1.0.0.0.alpha)
+      netzke-testing (= 1.0.0.0.alpha)
 
 GIT
   remote: git://github.com/netzke/netzke-core.git
-  revision: ab9cd61f6c256873d634edc34ec5a90cde9f4643
+  revision: b6765b195c09adc2dd40127213e3f168ff42afcb
   branch: master
   specs:
-    netzke-core (0.12.3)
+    netzke-core (1.0.0.0.alpha)
       execjs
       uglifier
+
+GIT
+  remote: git://github.com/netzke/netzke-testing.git
+  revision: 883f61f55646cdb037cded63feb93cf4aacc85e4
+  branch: master
+  specs:
+    netzke-testing (1.0.0.0.alpha)
+      coffee-script
+
+GIT
+  remote: git://github.com/netzke/netzke.git
+  revision: 000f5df899cb67b0d12e8ead44fe4327abb067b6
+  branch: master
+  specs:
+    netzke (1.0.0.alpha)
+      netzke-basepack (~> 1.0.0.0.alpha)
+      netzke-core (~> 1.0.0.0.alpha)
+      netzke-testing (~> 1.0.0.0.alpha)
 
 GEM
   remote: http://rubygems.org/
@@ -59,7 +77,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
-    arel (6.0.2)
+    arel (6.0.3)
     awesome_nested_set (3.0.2)
       activerecord (>= 4.0.0, < 5)
     builder (3.2.2)
@@ -102,7 +120,7 @@ GEM
     colorize (0.7.7)
     diff-lcs (1.2.5)
     erubis (2.7.0)
-    execjs (2.5.2)
+    execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -111,7 +129,7 @@ GEM
     faker (1.4.3)
       i18n (~> 0.5)
     ffi (1.9.10)
-    globalid (0.3.5)
+    globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
     json (1.8.3)
@@ -124,17 +142,11 @@ GEM
     method_source (0.8.2)
     mime-types (2.6.1)
     mini_portile (0.6.2)
-    minitest (5.7.0)
+    minitest (5.8.0)
     multi_json (1.11.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
-    netzke (0.12.0)
-      netzke-basepack (~> 0.12.0)
-      netzke-core (~> 0.12.0)
-      netzke-testing (~> 0.12.0)
-    netzke-testing (0.12.3)
-      coffee-script
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     pg (0.18.2)
@@ -158,7 +170,7 @@ GEM
       sprockets-rails
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.6)
+    rails-dom-testing (1.0.7)
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
@@ -188,7 +200,7 @@ GEM
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
     rubyzip (1.1.7)
-    selenium-webdriver (2.46.2)
+    selenium-webdriver (2.47.1)
       childprocess (~> 0.5)
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
@@ -198,7 +210,7 @@ GEM
     spork-rails (4.0.0)
       rails (>= 3.0.0, < 5)
       spork (>= 1.0rc0)
-    sprockets (3.2.0)
+    sprockets (3.3.1)
       rack (~> 1.0)
     sprockets-rails (2.3.2)
       actionpack (>= 3.0)
@@ -238,9 +250,10 @@ DEPENDENCIES
   factory_girl_rails
   faker
   launchy
-  netzke (~> 0.12.0)
+  netzke (~> 1.0.0.alpha)!
   netzke-basepack!
   netzke-core!
+  netzke-testing!
   pg
   pry
   rails (~> 4.2.0)

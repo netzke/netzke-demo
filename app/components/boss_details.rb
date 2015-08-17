@@ -17,7 +17,7 @@ class BossDetails < Netzke::Base
     JS
   end
 
-  endpoint :server_update do |params, this|
+  endpoint :server_update do |params|
     # updateBodyHtml is a JS-side method we inherit from Netkze::Basepack::Panel
 
     this[:update] = [body_content(boss)]

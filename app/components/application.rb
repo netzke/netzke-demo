@@ -124,20 +124,20 @@ class Application < Netzke::Basepack::Viewport
   # Endpoints
   #
   #
-  endpoint :sign_in do |params,this|
+  endpoint :sign_in do |params|
     user = User.new
     if User.authenticate_with?(params[:email], params[:password])
       session[:user_id] = 1 # anything; this is what you'd normally do in a real-life case
-      this.netzke_set_result(true)
+      true
     else
-      this.netzke_set_result(false)
       this.netzke_feedback("Wrong credentials")
+      false
     end
   end
 
-  endpoint :sign_out do |params,this|
+  endpoint :sign_out do |params|
     session[:user_id] = nil
-    this.netzke_set_result(true)
+    true
   end
 
 protected
@@ -159,7 +159,7 @@ protected
   def header_html
     %Q{
       <div style="font-size: 150%;">
-        <a style="color:#B32D15;" href="http://netzke.org">Netzke</a> demo app (Netzke 0.12, Rails 4.2, Ext JS 5.1)
+        <a style="color:#B32D15;" href="http://netzke.org">Netzke</a> demo app (Netzke 1.0.0.alpha, Rails 4.2, Ext JS 5.1)
       </div>
     }
   end

@@ -34,7 +34,7 @@ class BossesAndClerks < Netzke::Base
     JS
   end
 
-  endpoint :select_boss do |params, this|
+  endpoint :select_boss do |params|
     # store selected boss id in the session for this component's instance
     component_session[:selected_boss_id] = params[:boss_id]
   end
