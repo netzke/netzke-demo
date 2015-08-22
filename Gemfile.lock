@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/netzke/netzke-basepack.git
-  revision: 6750c31744ed841eba3b0e01f687cc1c107af269
+  revision: 0a526fbe3b1a2688a2b21d80395c0a74bf3b3dda
   branch: master
   specs:
     netzke-basepack (1.0.0.0.alpha)
@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git://github.com/netzke/netzke-core.git
-  revision: 9e0400dc7c6792da47effe8bd734b46986ad14b9
+  revision: 028241adcf820653430ab64888b35d2a7c5d542b
   branch: master
   specs:
     netzke-core (1.0.0.0.alpha)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: git://github.com/netzke/netzke-testing.git
-  revision: 883f61f55646cdb037cded63feb93cf4aacc85e4
+  revision: ab60bc4a72eb7c5fec63aa9a2b63736c0322a8a7
   branch: master
   specs:
     netzke-testing (1.0.0.0.alpha)
@@ -126,7 +126,7 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
-    faker (1.4.3)
+    faker (1.5.0)
       i18n (~> 0.5)
     ffi (1.9.10)
     globalid (0.3.6)
@@ -135,7 +135,7 @@ GEM
     json (1.8.3)
     launchy (2.4.3)
       addressable (~> 2.3)
-    loofah (2.0.2)
+    loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
@@ -210,7 +210,7 @@ GEM
     spork-rails (4.0.0)
       rails (>= 3.0.0, < 5)
       spork (>= 1.0rc0)
-    sprockets (3.3.1)
+    sprockets (3.3.3)
       rack (~> 1.0)
     sprockets-rails (2.3.2)
       actionpack (>= 3.0)
