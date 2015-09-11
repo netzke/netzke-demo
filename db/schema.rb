@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150516163715) do
+ActiveRecord::Schema.define(version: 20150724161016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(version: 20150516163715) do
     t.string   "name"
     t.integer  "size",       default: 0
     t.boolean  "leaf",       default: false
-    t.boolean  "expanded",   default: false
     t.integer  "parent_id"
     t.integer  "lft",                        null: false
     t.integer  "rgt",                        null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.boolean  "expanded",   default: false
   end
 
   add_index "file_records", ["lft"], name: "index_file_records_on_lft", using: :btree
