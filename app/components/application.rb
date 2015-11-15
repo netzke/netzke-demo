@@ -25,9 +25,8 @@ class Application < Netzke::Basepack::Viewport
     c.text = "Sign out #{current_user.email}" if current_user
   end
 
-  js_configure do |c|
+  client_class do |c|
     c.layout = :fit
-    c.mixin
   end
 
   def configure(c)
@@ -86,20 +85,12 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "A compound component from #{link("this", "https://github.com/netzke/netzke/wiki/Building-a-composite-component")} tutorial. The component is a sample implementation of the one-to-many relationship UI. " + source_code_link(c)
   end
 
-  component :static_tab_panel do |c|
-    c.desc = "A TabPanel with pre-loaded tabs (as opposed to dynamically loaded components). " + source_code_link(c)
+  component :tab_panel_with_grids do |c|
+    c.desc = "A TabPanel. " + source_code_link(c)
   end
 
-  component :dynamic_tab_panel do |c|
-    c.desc = "A TabPanel with dynamically loaded tab components. " + source_code_link(c)
-  end
-
-  component :static_accordion do |c|
-    c.desc = "An Accordion with pre-loaded tabs (as opposed to dynamically loaded components). " + source_code_link(c)
-  end
-
-  component :dynamic_accordion do |c|
-    c.desc = "An Accordion with dynamically loaded tab components. " + source_code_link(c)
+  component :accordion_with_grids do |c|
+    c.desc = "An Accordion. " + source_code_link(c)
   end
 
   component :simple_window do |c|
@@ -213,10 +204,8 @@ protected
           :expanded => true,
           :children => [
             leaf("Bosses and Clerks", :bosses_and_clerks, :user_user_suit),
-            leaf("TabPanel (static)", :static_tab_panel, :bullet_black),
-            leaf("TabPanel (dynamic)", :dynamic_tab_panel, :bullet_black),
-            leaf("Accordion (static)", :static_accordion, :bullet_black),
-            leaf("Accordion (dynamic)", :dynamic_accordion, :bullet_black)
+            leaf("TabPanel", :tab_panel_with_grids, :bullet_black),
+            leaf("Accordion", :accordion_with_grids, :bullet_black),
           ]
         }
       ]

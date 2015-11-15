@@ -24,7 +24,7 @@ This is the source-code for [http://demo.netzke.org](http://demo.netzke.org) - t
 
 * Rails ~> 4.2.0
 * Ext JS = 5.1.0
-* Netzke = 0.12.0
+* Netzke = 1.0.0.0.alpha
 
 ## Feedback
 

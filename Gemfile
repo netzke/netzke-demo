@@ -7,7 +7,7 @@ gem 'faker'
 gem 'pg'
 gem 'carrierwave'
 
-gem 'netzke', '~>1.0.0.alpha', github: 'netzke/netzke', branch: 'master'
+# gem 'netzke', '~>1.0.0.alpha', github: 'netzke/netzke', branch: 'master'
 gem 'netzke-core', github: "netzke/netzke-core", branch: 'master'
 gem 'netzke-basepack', github: "netzke/netzke-basepack", branch: 'master'
 gem 'netzke-testing', github: "netzke/netzke-testing", branch: 'master'

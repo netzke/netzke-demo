@@ -1,11 +1,11 @@
-class StaticTabPanel < Netzke::Basepack::TabPanel
-  component :clerks do |c|
-    c.eager_loading = true
+class AccordionWithGrids < Netzke::Base
+  client_class do |c|
+    c.layout = "accordion"
   end
 
-  component :bosses do |c|
-    c.eager_loading = true
-  end
+  component :clerks
+
+  component :bosses
 
   def configure(c)
     c.active_tab = 0

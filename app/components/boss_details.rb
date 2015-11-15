@@ -1,6 +1,6 @@
 class BossDetails < Netzke::Base
 
-  js_configure do |c|
+  client_class do |c|
     c.body_padding = 5
     c.title = "Info"
     c.update_stats = <<-JS

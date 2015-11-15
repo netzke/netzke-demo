@@ -1,12 +1,12 @@
 class GridWithActionColumn < Netzke::Basepack::Grid
   include Netzke::Basepack::ActionColumn
 
-  js_configure do |c|
+  client_class do |c|
     c.force_fit = true
     # handler for the 'delete' column action
     c.on_delete_row = <<-JS
-      function(record){
-        this.getSelectionModel().select(record);
+      function(grid, rowIndex, colIndex){
+        this.getSelectionModel().select(rowIndex);
         this.onDel();
       }
     JS

@@ -6,13 +6,13 @@ class BossesAndClerks < Netzke::Base
     super
     c.header = false
     c.items = [
-      { netzke_component: :bosses, region: :center, border: false },
-      { netzke_component: :boss_details, region: :east, width: 240, split: true, border: false },
-      { netzke_component: :clerks, region: :south, height: 250, split: true, border: false }
+      { component: :bosses, region: :center, border: false },
+      { component: :boss_details, region: :east, width: 240, split: true, border: false },
+      { component: :clerks, region: :south, height: 250, split: true, border: false }
     ]
   end
 
-  js_configure do |c|
+  client_class do |c|
     c.layout = :border
     c.border = false
 

@@ -13,7 +13,7 @@ class CustomActionGrid < Netzke::Basepack::Grid
     c.context_menu = [:show_details, "-", *c.context_menu]
   end
 
-  js_configure do |c|
+  client_class do |c|
     c.init_component = <<-JS
       function(){
         this.callParent();
