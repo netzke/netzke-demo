@@ -1,4 +1,8 @@
 {
+  netzkeRoutes: {
+    ":component": "handleNavigateToComponent"
+  },
+
   initComponent: function() {
     this.callParent();
 
@@ -11,11 +15,16 @@
     }, this);
 
     this.navigation.on('select', function(m, r) {
-      this.netzkeLoadComponent(r.raw.cmp, {container: this.mainPanel, callback: function(cmp) {
-        this.updateInfo(cmp.desc);
-        if (cmp.isFloating()) { cmp.show(); }
-      }, scope: this});
+      if (r.raw.cmp) this.netzkeNavigateTo(r.raw.cmp);
     }, this);
+  },
+
+  handleNavigateToComponent: function(cmp){
+    var node = this.navigation.getStore().getById(cmp);
+    this.navigation.getSelectionModel().select(node);
+    this.netzkeLoadComponent(cmp, {container: this.mainPanel, callback: function(cmp) {
+      this.updateInfo(cmp.desc);
+    }, scope: this});
   },
 
   updateInfo: function(html) {

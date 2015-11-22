@@ -157,6 +157,7 @@ protected
 
   def leaf(text, component, icon = nil)
     { text: text,
+      id: component,
       icon: icon && uri_to_icon(icon),
       cmp: component,
       leaf: true
