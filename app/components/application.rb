@@ -159,7 +159,10 @@ protected
   def header_html
     %Q{
       <div style="font-size: 150%;">
-        <a style="color:#B32D15;" href="http://netzke.org">Netzke</a> demo app (Netzke 0.12, Rails 4.2, Ext JS 5.1)
+        Official <a style="color:#B32D15;" href="http://netzke.org">Netzke</a> demo. Uses Netzke 0.12, Rails 4.2, Ext JS 5.1.
+      </div>
+      <div style="font-size: 100%; margin-top: 5px;">
+        Also, check out the <a href="http://edgedemo.netzke.org">edge version</a> from <a href="https://github.com/netzke/netzke-demo">master</a> for the most recent stuff.
       </div>
     }
   end
