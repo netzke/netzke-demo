@@ -51,7 +51,7 @@ class Application < Netzke::Basepack::Viewport
   #
 
   component :bosses do |c|
-    c.desc = "Grid configured with just a model. " + source_code_link(c)
+    c.desc = "Grid configured with just a model. Implements infinite scrolling, per-column filtering, sorting, and CRUD operations. " + source_code_link(c)
   end
 
   component :clerks do |c|
