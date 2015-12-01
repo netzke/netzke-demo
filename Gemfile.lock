@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: git://github.com/netzke/netzke-testing.git
-  revision: ab60bc4a72eb7c5fec63aa9a2b63736c0322a8a7
+  revision: be491e52adfb85653cee066cde089b9f359eb091
   branch: master
   specs:
     netzke-testing (1.0.0.0.alpha)
