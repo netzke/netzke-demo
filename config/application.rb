@@ -43,7 +43,7 @@ module NetzkeDemo
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
-    config.repo_root = "https://github.com/netzke/netzke-demo/blob/master"
+    config.repo_root = "https://github.com/netzke/netzke-demo/tree/0-12"
 
     config.active_record.raise_in_transactional_callbacks = true
   end
