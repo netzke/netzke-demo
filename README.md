@@ -1,5 +1,7 @@
 This is the source-code for [http://demo.netzke.org](http://demo.netzke.org) - the official [Netzke](http://netzke.org) demo.
 
+The cutting-edge version (updated directly from master) is [here](http://edgedemo.netzke.org).
+
 ## To run locally
 
 1. Get the code from github
@@ -23,7 +25,7 @@ This is the source-code for [http://demo.netzke.org](http://demo.netzke.org) - t
 ## Dependencies
 
 * Rails ~> 4.2.0
-* Ext JS = 5.1.0
+* Ext JS = 5.1.1
 * Netzke = 1.0.0.0.alpha
 
 ## Feedback
