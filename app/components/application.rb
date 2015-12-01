@@ -51,29 +51,33 @@ class Application < Netzke::Basepack::Viewport
   #
 
   component :bosses do |c|
-    c.desc = "A grid configured with just a model. " + source_code_link(c)
+    c.desc = "Grid configured with just a model. " + source_code_link(c)
   end
 
   component :clerks do |c|
-    c.desc = "A grid with customized columns. " + source_code_link(c)
+    c.desc = "Grid with customized columns. " + source_code_link(c)
   end
 
   component :grid_with_action_column do |c|
-    c.desc = "A grid where you can delet rows by clicking a column action. " + source_code_link(c)
+    c.desc = "Grid where you can delet rows by clicking a column action. " + source_code_link(c)
   end
 
   component :grid_with_persistent_columns do |c|
-    c.desc = "Columns size, order, and hidden status will be remembered for this grid - play with that! " + source_code_link(c)
+    c.desc = "Columns size, order, and hidden status will be remembered for this grid across page reloads. " + source_code_link(c)
+  end
+
+  component :grid_with_pagination do |c|
+    c.desc = "Grid using pagination instead of \"infinite scrolling\" " + source_code_link(c)
   end
 
   component :custom_action_grid do |c|
     c.model  = "Boss"
     c.title  = "Bosses"
-    c.desc = "A grid from #{link('this', '/')} tutorial. " + source_code_link(c)
+    c.desc = "Grid from #{link('this', '/')} tutorial. " + source_code_link(c)
   end
 
   component :files do |c|
-    c.desc = "A tree panel configure with just a model. " + source_code_link(c)
+    c.desc = "Tree panel configure with just a model. " + source_code_link(c)
   end
 
   #
@@ -176,10 +180,11 @@ protected
             { :text => "Grid",
               :expanded => true,
               :children => [
-                leaf("Grid with defaults", :bosses, :user_suit),
-                leaf("Grid with customized columns", :clerks, :user),
-                leaf("Grid with action column", :grid_with_action_column, :user),
-                leaf("Grid with persistent columns", :grid_with_persistent_columns, :user_suit)
+                leaf("Defaults", :bosses, :user_suit),
+                leaf("Customized columns", :clerks, :user),
+                leaf("Action column", :grid_with_action_column, :user),
+                leaf("Persistent columns", :grid_with_persistent_columns, :user_suit),
+                leaf("Pagination", :grid_with_pagination, :user_suit)
               ]
             },
 
