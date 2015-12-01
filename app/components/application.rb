@@ -70,6 +70,10 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "Grid using pagination instead of \"infinite scrolling\" " + source_code_link(c)
   end
 
+  component :grid_with_inline_editing do |c|
+    c.desc = "Grid using inline (multi-line) editing of records " + source_code_link(c)
+  end
+
   component :custom_action_grid do |c|
     c.model  = "Boss"
     c.title  = "Bosses"
@@ -184,7 +188,8 @@ protected
                 leaf("Customized columns", :clerks, :user),
                 leaf("Action column", :grid_with_action_column, :user),
                 leaf("Persistent columns", :grid_with_persistent_columns, :user_suit),
-                leaf("Pagination", :grid_with_pagination, :user_suit)
+                leaf("Pagination", :grid_with_pagination, :user_suit),
+                leaf("Inline editing", :grid_with_inline_editing, :user_suit)
               ]
             },
 
