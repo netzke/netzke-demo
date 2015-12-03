@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/netzke/netzke-basepack.git
-  revision: acc5fbafd5115cd74d3377cfce6cef50fb2b248a
+  revision: d02f5ea9e17c7a764c73009086129d7acebc945c
   branch: master
   specs:
     netzke-basepack (1.0.0.0.alpha)
@@ -107,7 +107,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
-    colorize (0.7.7)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -206,8 +205,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sshkit (1.7.1)
-      colorize (>= 0.7.0)
+    sshkit (1.8.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     thor (0.19.1)
