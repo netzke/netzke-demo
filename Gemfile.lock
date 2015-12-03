@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/netzke/netzke-basepack.git
-  revision: d02f5ea9e17c7a764c73009086129d7acebc945c
+  revision: 10666089a2439733d6469ead546426883f5dbc43
   branch: master
   specs:
     netzke-basepack (1.0.0.0.alpha)
