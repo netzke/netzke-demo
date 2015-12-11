@@ -1,5 +1,5 @@
 {
-  netzkeRoutes: {
+  nzRoutes: {
     ":component": "handleNavigateToComponent"
   },
 
@@ -15,14 +15,14 @@
     }, this);
 
     this.navigation.on('select', function(m, r) {
-      if (r.raw.cmp) this.netzkeNavigateTo(r.raw.cmp);
+      if (r.raw.cmp) this.nzNavigateTo(r.raw.cmp);
     }, this);
   },
 
   handleNavigateToComponent: function(cmp){
     var node = this.navigation.getStore().getById(cmp);
     this.navigation.getSelectionModel().select(node);
-    this.netzkeLoadComponent(cmp, {container: this.mainPanel, callback: function(cmp) {
+    this.nzLoadComponent(cmp, {container: this.mainPanel, callback: function(cmp) {
       this.updateInfo(cmp.desc);
     }, scope: this});
   },

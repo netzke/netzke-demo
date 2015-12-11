@@ -58,6 +58,10 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "Grid with customized columns. " + source_code_link(c)
   end
 
+  component :grid_with_custom_form_layout do |c|
+    c.desc = "Grid with customized form layout. " + source_code_link(c)
+  end
+
   component :grid_with_action_column do |c|
     c.desc = "Grid where you can delet rows by clicking a column action. " + source_code_link(c)
   end
@@ -186,6 +190,7 @@ protected
               :children => [
                 leaf("Defaults", :bosses, :user_suit),
                 leaf("Customized columns", :clerks, :user),
+                leaf("Customized form layout", :"grid_with_custom_form_layout", :user),
                 leaf("Action column", :grid_with_action_column, :user),
                 leaf("Persistent columns", :grid_with_persistent_columns, :user_suit),
                 leaf("Pagination", :grid_with_pagination, :user_suit),

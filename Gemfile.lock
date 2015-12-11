@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/netzke/netzke-basepack.git
-  revision: fdd2e9ee3e8713d48dd5dfac5fc31715ef93b0c1
+  revision: 6f549024301381c9442f456060565e4de271698d
   branch: master
   specs:
     netzke-basepack (1.0.0.0.alpha)
@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: git://github.com/netzke/netzke-core.git
-  revision: fea89d1a5bed467ef81b944e7bb06ad4745f319e
+  revision: e3c168549d1514feb4dac17aab1ca91300ca879f
   branch: master
   specs:
     netzke-core (1.0.0.0.alpha)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: git://github.com/netzke/netzke-testing.git
-  revision: be491e52adfb85653cee066cde089b9f359eb091
+  revision: 4afef81b07ffb78a7b0394e424798c06c5e5ffd2
   branch: master
   specs:
     netzke-testing (1.0.0.0.alpha)
@@ -66,7 +66,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.3.8)
+    addressable (2.4.0)
     arel (6.0.3)
     awesome_nested_set (3.0.2)
       activerecord (>= 4.0.0, < 5)
@@ -78,7 +78,7 @@ GEM
     capistrano-bundler (1.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
-    capistrano-passenger (0.1.1)
+    capistrano-passenger (0.2.0)
       capistrano (~> 3.0)
     capistrano-rails (1.1.0)
       capistrano (>= 3.0.0)
@@ -107,6 +107,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
+    concurrent-ruby (1.0.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -199,13 +200,14 @@ GEM
     spork-rails (4.0.0)
       rails (>= 3.0.0, < 5)
       spork (>= 1.0rc0)
-    sprockets (3.4.1)
+    sprockets (3.5.2)
+      concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (2.3.3)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sshkit (1.8.0)
+    sshkit (1.8.1)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     thor (0.19.1)
