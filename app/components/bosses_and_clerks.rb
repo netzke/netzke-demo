@@ -26,7 +26,7 @@ class BossesAndClerks < Netzke::Base
         var view = this.getComponent('bosses').getView();
         view.on('itemclick', function(view, record){
           // The beauty of using Ext.Direct: calling 3 endpoints in a row, which results in a single call to the server!
-          this.selectBoss({boss_id: record.get('id')});
+          this.server.selectBoss(record.get('id'));
           this.getComponent('clerks').getStore().load();
           this.getComponent('boss_details').updateStats();
         }, this);
@@ -34,9 +34,9 @@ class BossesAndClerks < Netzke::Base
     JS
   end
 
-  endpoint :select_boss do |params|
+  endpoint :select_boss do |id|
     # store selected boss id in the session for this component's instance
-    component_session[:selected_boss_id] = params[:boss_id]
+    component_session[:selected_boss_id] = id
   end
 
   component :bosses do |c|
@@ -47,8 +47,8 @@ class BossesAndClerks < Netzke::Base
   component :clerks do |c|
     c.klass = Clerks
     c.data_store = {auto_load: false}
-    c.scope = {:boss_id => component_session[:selected_boss_id]}
-    c.strong_default_attrs = {:boss_id => component_session[:selected_boss_id]}
+    c.scope = lambda {|rel| rel.where(boss_id: component_session[:selected_boss_id])}
+    c.strong_values = {boss_id: component_session[:selected_boss_id]}
   end
 
   component :boss_details do |c|

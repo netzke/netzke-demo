@@ -9,7 +9,7 @@ class BossDetails < Netzke::Base
         this.getEl().mask();
 
         // Call endpoint
-        this.serverUpdate({}, function(){
+        this.server.update({}, function(){
           // Hide mask (we're in the callback function)
           this.getEl().unmask();
         }, this);
@@ -17,11 +17,9 @@ class BossDetails < Netzke::Base
     JS
   end
 
-  endpoint :server_update do |params|
-    # updateBodyHtml is a JS-side method we inherit from Netkze::Basepack::Panel
-
-    this[:update] = [body_content(boss)]
-    this.set_title boss.name
+  endpoint :update do |params|
+    client.update_body(body_content(boss))
+    client.set_title(boss.name)
   end
 
   # HTML template used to display the stats
