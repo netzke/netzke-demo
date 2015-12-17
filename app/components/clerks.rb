@@ -5,6 +5,20 @@ class Clerks < Netzke::Basepack::Grid
     c.require :main
   end
 
+  attribute :image do |c|
+    c.getter = lambda {|r| %Q(<a href='#{r.image.url}'>Download</a>) if r.image.url}
+
+    c.field_config = {
+      # In the forms, show it as label, not field
+      xtype: :displayfield
+    }
+  end
+
+  attribute :updated_bulb do |c|
+    # Do not show this virtual attribute in the form
+    c.field_config = { excluded: true }
+  end
+
   def configure(c)
     c.model = "Clerk"
     c.persistence = true
@@ -30,7 +44,7 @@ class Clerks < Netzke::Basepack::Grid
       { :name => :boss__last_name,
         :header => "Boss"
       },
-      {:name => :image, :getter => lambda{ |r| "<a href='#{r.image.url}'>Download</a>" if r.image.url }}
+      :image
     ]
     super
   end
