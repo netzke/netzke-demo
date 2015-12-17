@@ -24,4 +24,9 @@ class GridWithCustomFormLayout < Netzke::Basepack::Grid
       { name: :boss__name, anchor: "100%", label_width: 80 }
     ]
   end
+
+  # Hide "image" column from grid
+  attribute :image do |c|
+    c.excluded = true
+  end
 end
