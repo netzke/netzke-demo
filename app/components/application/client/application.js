@@ -34,14 +34,13 @@
   onAbout: function() {
     Ext.Msg.show({
       width: 450,
-      height: 180,
+      height: 220,
       title: "Netzke Demo",
       buttons: Ext.Msg.OK,
       icon: Ext.MessageBox.INFO,
       msg: '<p>Explore demo <a target="_blank" href="http://netzke.org">Netzke</a> components along with their source code. <p/> \
-        <br/> \
         <p>Follow <a target="_blank" href="http://twitter.com/netzke">@netzke</a> on Twitter for the latest news on the framework. <p/> \
-        <br/> \
+        <p>The source code is on <a target="_blank" href="https://github.com/netzke/netzke-demo">Github</a>. <p/> \
         <div style="text-align: right">By <a target="_blank" href="http://twitter.com/mxgrn">Max Gorin</a>, ' + (new Date()).getFullYear() + '</div> \
         '
     });
