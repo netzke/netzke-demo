@@ -97,6 +97,10 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "This grid has actions configured with glyphicons. " + source_code_link(c)
   end
 
+  component :grid_with_live_search do |c|
+    c.desc = "Grid showing off Basepack::GridLiveSearch plugin. " + source_code_link(c)
+  end
+
   #
   # Composite components
   #
@@ -205,6 +209,7 @@ protected
                 leaf("Pagination", :grid_with_pagination, :table),
                 leaf("Inline editing", :grid_with_inline_editing, :table),
                 leaf("File upload", :grid_with_file_upload, :table),
+                leaf("Live search", :grid_with_live_search, :table),
                 leaf("Glyphicons", :grid_with_glyphicons)
               ]
             },
