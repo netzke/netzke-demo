@@ -6,6 +6,7 @@ class Application < Netzke::Basepack::Viewport
       self.email = "demo@netzke.org"
       self.password = "netzke"
     end
+
     def self.authenticate_with?(email, password)
       instance = self.new
       [email, password] == [instance.email, instance.password]
@@ -13,11 +14,11 @@ class Application < Netzke::Basepack::Viewport
   end
 
   action :about do |c|
-    c.icon = :information
+    c.glyph = 'xf0c7@FontAwesome'
   end
 
   action :sign_in do |c|
-    c.icon = :door_in
+    c.glyph = 'xf08b@FontAwesome'
   end
 
   action :sign_out do |c|
@@ -92,6 +93,10 @@ class Application < Netzke::Basepack::Viewport
     c.desc = "Tree panel configure with just a model. " + source_code_link(c)
   end
 
+  component :grid_with_glyphicons do |c|
+    c.desc = "This grid has actions configured with glyphicons. " + source_code_link(c)
+  end
+
   #
   # Composite components
   #
@@ -134,7 +139,7 @@ class Application < Netzke::Basepack::Viewport
   endpoint :sign_in do |params|
     user = User.new
     if User.authenticate_with?(params[:email], params[:password])
-      session[:user_id] = 1 # anything; this is what you'd normally do in a real-life case
+      session[:user_id] = 1 # authenticated user's fake ID; see #current_user below
       true
     else
       this.netzke_feedback("Wrong credentials")
@@ -149,6 +154,7 @@ class Application < Netzke::Basepack::Viewport
 
 protected
 
+  # Fake implementation, returns user by user_id stored in the session
   def current_user
     @current_user ||= session[:user_id] && User.new
   end
@@ -174,7 +180,6 @@ protected
   def leaf(text, component, icon = nil)
     { text: text,
       id: component,
-      icon: icon && uri_to_icon(icon),
       cmp: component,
       leaf: true
     }
@@ -199,7 +204,8 @@ protected
                 leaf("Persistent columns", :grid_with_persistent_columns, :table),
                 leaf("Pagination", :grid_with_pagination, :table),
                 leaf("Inline editing", :grid_with_inline_editing, :table),
-                leaf("File upload", :grid_with_file_upload, :table)
+                leaf("File upload", :grid_with_file_upload, :table),
+                leaf("Glyphicons", :grid_with_glyphicons)
               ]
             },
 
