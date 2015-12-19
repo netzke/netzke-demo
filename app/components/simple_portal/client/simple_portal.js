@@ -11,7 +11,7 @@
   afterRender: function() {
     this.callParent(arguments);
     // incremented index for dynamically added components
-    this.nzPortletIndex = this.allPortlets().length;
+    this.netzkePortletIndex = this.allPortlets().length;
   },
 
   setDropEvent: function() {

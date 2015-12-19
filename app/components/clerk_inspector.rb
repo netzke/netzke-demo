@@ -20,7 +20,7 @@ class ClerkInspector < Netzke::Basepack::BorderLayoutPanel
 
       // When a row is clicked in the clerk grid, make the clerk form load the corresponding record
       this.clerkGrid.on('itemclick', function(view, record){
-        this.clerkForm.nzLoad({id: record.getId()});
+        this.clerkForm.netzkeLoad({id: record.getId()});
       }, this);
     }
   JS
