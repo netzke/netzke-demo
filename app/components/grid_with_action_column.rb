@@ -4,10 +4,10 @@ class GridWithActionColumn < Netzke::Basepack::Grid
   client_class do |c|
     c.force_fit = true
     # handler for the 'delete' column action
-    c.on_delete_row = <<-JS
+    c.handle_delete_row = <<-JS
       function(grid, rowIndex, colIndex){
         this.getSelectionModel().select(rowIndex);
-        this.onDel();
+        this.handleDel();
       }
     JS
   end

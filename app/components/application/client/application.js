@@ -31,7 +31,7 @@
     this.infoPanel.body.update("<img style='position: relative; top: 3px; margin-right: 3px;' src='/images/icons/information.png' />" + html);
   },
 
-  onAbout: function() {
+  handleAbout: function() {
     Ext.Msg.show({
       width: 450,
       height: 220,
@@ -46,7 +46,7 @@
     });
   },
 
-  onSignIn: function() {
+  handleSignIn: function() {
     var me = this;
     this.signinWin = this.signinWin || Ext.create('widget.window', {
       width: 300, height: 200, modal: true, layout: 'fit', closeAction: 'hide',
@@ -90,7 +90,7 @@
     this.signinWin.show();
   },
 
-  onSignOut: function() {
+  handleSignOut: function() {
     this.signOut(null, function(success) {
       if (success) {
         Ext.Msg.show({title: "Signed out", msg: "Signed out, reloading the application...", icon: Ext.Msg.INFO, closable: false});
