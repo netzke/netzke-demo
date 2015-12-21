@@ -1,4 +1,4 @@
-class CustomActionGrid < Netzke::Basepack::Grid
+class CustomActionGrid < Netzke::Grid::Base
   action :show_details do |c|
     c.text = "Show details"
     c.disabled = true

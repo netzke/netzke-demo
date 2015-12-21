@@ -40,7 +40,7 @@ class BossesAndClerks < Netzke::Base
   end
 
   component :bosses do |c|
-    c.klass = Netzke::Basepack::Grid
+    c.klass = Netzke::Grid::Base
     c.model = "Boss"
   end
 

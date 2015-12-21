@@ -1,4 +1,4 @@
-class Files < Netzke::Basepack::Tree
+class Files < Netzke::Tree::Base
   def configure(c)
     super
 

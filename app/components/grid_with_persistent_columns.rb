@@ -1,4 +1,4 @@
-class GridWithPersistentColumns < Netzke::Basepack::Grid
+class GridWithPersistentColumns < Netzke::Grid::Base
   def configure(c)
     super
     c.model = "Boss"

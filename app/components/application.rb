@@ -1,4 +1,4 @@
-class Application < Netzke::Basepack::Viewport
+class Application < Netzke::Viewport::Base
 
   # A simple mockup of the User model
   class User < Struct.new(:email, :password)

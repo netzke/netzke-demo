@@ -1,4 +1,4 @@
-class GridWithCustomFormLayout < Netzke::Basepack::Grid
+class GridWithCustomFormLayout < Netzke::Grid::Base
   def configure(c)
     super
 

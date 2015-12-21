@@ -1,4 +1,4 @@
-class GridWithActionColumn < Netzke::Basepack::Grid
+class GridWithActionColumn < Netzke::Grid::Base
   include Netzke::Basepack::ActionColumn
 
   client_class do |c|

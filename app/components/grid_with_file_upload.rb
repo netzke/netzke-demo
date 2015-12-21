@@ -1,4 +1,4 @@
-class GridWithFileUpload < Netzke::Basepack::Grid
+class GridWithFileUpload < Netzke::Grid::Base
   attribute :image do |c|
     c.field_config = {
       xtype: :fileuploadfield
