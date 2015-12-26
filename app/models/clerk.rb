@@ -6,9 +6,4 @@ class Clerk < ActiveRecord::Base
   validates_presence_of :name
 
   mount_uploader :image, ImageUploader
-
-  # this method will be used by another "virtual column"
-  def updated
-    self.updated_at > 5.minutes.ago
-  end
 end

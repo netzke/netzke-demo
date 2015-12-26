@@ -55,7 +55,7 @@ class Application < Netzke::Viewport::Base
     c.desc = "Grid configured with just a model (20K records seeded). Implements infinite scrolling, per-column filtering and sorting, CRUD operations, association support, advanced search etc. " + source_code_link(c)
   end
 
-  component :clerks do |c|
+  component :grid_with_customized_columns do |c|
     c.desc = "Grid with customized columns. " + source_code_link(c)
   end
 
@@ -202,7 +202,7 @@ protected
               :expanded => true,
               :children => [
                 leaf("Basic configuration", :grid_with_defaults, :table),
-                leaf("Customized columns", :clerks, :table),
+                leaf("Customized columns", :grid_with_customized_columns, :table),
                 leaf("Customized form layout", :"grid_with_custom_form_layout", :table),
                 leaf("Action column", :grid_with_action_column, :table),
                 leaf("Persistent columns", :grid_with_persistent_columns, :table),

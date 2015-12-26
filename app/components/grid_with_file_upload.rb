@@ -11,11 +11,7 @@ class GridWithFileUpload < Netzke::Grid::Base
 
   def configure(c)
     super
-
     c.model = "Clerk"
-    c.persistence = true
-    c.columns = [
-      :name, :image
-    ]
+    c.columns = [ :name, :image ]
   end
 end
