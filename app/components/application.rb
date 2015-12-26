@@ -52,7 +52,7 @@ class Application < Netzke::Viewport::Base
   #
 
   component :grid_with_defaults do |c|
-    c.desc = "Grid configured with just a model (20K records seeded). Implements infinite scrolling, per-column filtering and sorting, CRUD operations, association support, advanced search etc. " + source_code_link(c)
+    c.desc = "Grid configured with just a model (20K records seeded). Implements infinite scrolling, automatic column configuration, per-column server filtering and sorting, CRUD operations, association support, advanced search, multi-line editing, and more. " + source_code_link(c)
   end
 
   component :grid_with_customized_columns do |c|
@@ -68,7 +68,11 @@ class Application < Netzke::Viewport::Base
   end
 
   component :grid_with_action_column do |c|
-    c.desc = "Grid where you can delet rows by clicking a column action. " + source_code_link(c)
+    c.desc = "Grid where you can delete rows by clicking a column action. " + source_code_link(c)
+  end
+
+  component :grid_with_highlighted_rows do |c|
+    c.desc = "Grid where employees with salary > 8K are highlighted with color " + source_code_link(c)
   end
 
   component :grid_with_persistent_columns do |c|
@@ -205,6 +209,7 @@ protected
                 leaf("Customized columns", :grid_with_customized_columns, :table),
                 leaf("Customized form layout", :"grid_with_custom_form_layout", :table),
                 leaf("Action column", :grid_with_action_column, :table),
+                leaf("Row highlighting", :grid_with_highlighted_rows, :table),
                 leaf("Persistent columns", :grid_with_persistent_columns, :table),
                 leaf("Pagination", :grid_with_pagination, :table),
                 leaf("Inline editing", :grid_with_inline_editing, :table),
