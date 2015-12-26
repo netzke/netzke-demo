@@ -29,7 +29,6 @@ class Clerks < Netzke::Grid::Base
         :renderer => "uppercase",
         :width => 200
       },
-      :name,
       { :name => :updated_bulb,
         :width => 30,
         :header => "",
