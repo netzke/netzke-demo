@@ -2,7 +2,7 @@ class GridWithCustomFormLayout < Netzke::Grid::Base
   def configure(c)
     super
 
-    c.model = "Clerk"
+    c.model = Employee
 
     c.form_items = [
       {
@@ -12,7 +12,7 @@ class GridWithCustomFormLayout < Netzke::Grid::Base
           {
             flex: 1, border: false,
             defaults: {anchor: "-25", label_width: 80},
-            items: [ :name ]
+            items: [ :name, :birthdate ]
           },
           {
             flex: 1, border: false,
@@ -21,7 +21,7 @@ class GridWithCustomFormLayout < Netzke::Grid::Base
           }
         ]
       },
-      { name: :boss__name, anchor: "100%", label_width: 80 }
+      { name: :department__name, anchor: "100%", label_width: 80 }
     ]
   end
 
