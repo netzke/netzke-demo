@@ -1,6 +1,6 @@
 class GridWithDefaults < Netzke::Grid::Base
   def configure(c)
     super
-    c.model = Clerk
+    c.model = Employee
   end
 end

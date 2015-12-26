@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150724161016) do
+ActiveRecord::Schema.define(version: 20151226061600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,26 @@ ActiveRecord::Schema.define(version: 20150724161016) do
     t.datetime "updated_at"
     t.string   "image"
   end
+
+  create_table "departments", force: :cascade do |t|
+    t.string   "name"
+    t.string   "logo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "department_id"
+    t.string   "email"
+    t.date     "birthdate"
+    t.integer  "salary"
+    t.boolean  "remote"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "employees", ["department_id"], name: "index_employees_on_department_id", using: :btree
 
   create_table "file_records", force: :cascade do |t|
     t.string   "name"
@@ -61,4 +81,5 @@ ActiveRecord::Schema.define(version: 20150724161016) do
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
+  add_foreign_key "employees", "departments"
 end
