@@ -3,6 +3,4 @@ class Bosses < Netzke::Grid::Base
     super
     c.model = "Boss"
   end
-
-  include PgGridTweaks
 end

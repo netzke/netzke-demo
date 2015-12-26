@@ -48,6 +48,4 @@ class Clerks < Netzke::Grid::Base
     ]
     super
   end
-
-  include PgGridTweaks
 end

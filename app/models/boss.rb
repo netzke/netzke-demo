@@ -1,7 +1,5 @@
 class Boss < ActiveRecord::Base
-  # Which columns and in which order to expose.
-  # Note the double underscore notation for signaling which column (or instance method)
-  # of the association should be used.
+  default_scope { order(:id) }
 
   has_many :clerks
 
@@ -21,5 +19,4 @@ class Boss < ActiveRecord::Base
   def clerks_number
     clerks.count
   end
-
 end

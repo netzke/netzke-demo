@@ -18,6 +18,4 @@ class GridWithFileUpload < Netzke::Grid::Base
       :first_name, :last_name, :image
     ]
   end
-
-  include PgGridTweaks
 end
