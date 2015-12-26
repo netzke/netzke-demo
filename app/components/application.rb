@@ -94,7 +94,7 @@ class Application < Netzke::Viewport::Base
   end
 
   component :grid_with_glyphicons do |c|
-    c.desc = "This grid has actions configured with glyphicons. " + source_code_link(c)
+    c.desc = "This grid has actions and header configured with glyphicons. " + source_code_link(c)
   end
 
   component :grid_with_live_search do |c|

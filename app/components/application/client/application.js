@@ -1,6 +1,6 @@
 {
   netzkeRoutes: {
-    ":component": "handleNavigateToComponent"
+    ":component": "onNavigateToComponent"
   },
 
   initComponent: function() {
@@ -19,7 +19,7 @@
     }, this);
   },
 
-  handleNavigateToComponent: function(cmp){
+  onNavigateToComponent: function(cmp){
     var node = this.navigation.getStore().getById(cmp);
     this.navigation.getSelectionModel().select(node);
     this.netzkeLoadComponent(cmp, {container: this.mainPanel, callback: function(cmp) {
@@ -31,7 +31,7 @@
     this.infoPanel.body.update("<img style='position: relative; top: 3px; margin-right: 3px;' src='/images/icons/information.png' />" + html);
   },
 
-  handleAbout: function() {
+  netzkeOnAbout: function() {
     Ext.Msg.show({
       width: 450,
       height: 220,
@@ -46,7 +46,7 @@
     });
   },
 
-  handleSignIn: function() {
+  netzkeOnSignIn: function() {
     var me = this;
     this.signinWin = this.signinWin || Ext.create('widget.window', {
       width: 300, height: 200, modal: true, layout: 'fit', closeAction: 'hide',
@@ -90,7 +90,7 @@
     this.signinWin.show();
   },
 
-  handleSignOut: function() {
+  netzkeOnSignOut: function() {
     this.signOut(null, function(success) {
       if (success) {
         Ext.Msg.show({title: "Signed out", msg: "Signed out, reloading the application...", icon: Ext.Msg.INFO, closable: false});

@@ -12,7 +12,7 @@ class GridWithGlyphicons < Bosses
     glyph_icon(c, "f14b")
   end
 
-  action :del do |c|
+  action :delete do |c|
     super c
     glyph_icon(c, "f056")
   end

@@ -1,4 +1,4 @@
-class WindowWithGrid < Netzke::Basepack::Window
+class WindowWithGrid < Netzke::Window::Base
   def configure(c)
     super
     c.persistence = true

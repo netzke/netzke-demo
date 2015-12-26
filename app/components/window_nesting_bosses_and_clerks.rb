@@ -1,4 +1,4 @@
-class WindowNestingBossesAndClerks < Netzke::Basepack::Window
+class WindowNestingBossesAndClerks < Netzke::Window::Base
   def configure(c)
     super
     c.persistence = true

@@ -1,4 +1,4 @@
-class SimpleWindow < Netzke::Basepack::Window
+class SimpleWindow < Netzke::Window::Base
   def configure(c)
     super
     c.width = 400

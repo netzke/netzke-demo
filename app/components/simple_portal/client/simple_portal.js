@@ -80,11 +80,11 @@
     // return portlets;
   },
 
-  handleAddServerStatsPortlet: function() {
+  netzkeOnAddServerStatsPortlet: function() {
     this.addPortlet("ServerStats");
   },
 
-  handleAddCpuChartPortlet: function() {
+  netzkeOnAddCpuChartPortlet: function() {
     this.addPortlet("CpuChart");
   },
 
