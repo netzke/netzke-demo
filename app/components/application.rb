@@ -176,7 +176,7 @@ protected
   def header_html
     %Q{
       <div style="font-size: 150%;">
-        <a style="color:#B32D15;" href="http://netzke.org">Netzke</a> demo app (Netzke 1.0.0.alpha, Rails 4.2, Ext JS 5.1)
+        <a style="color:#B32D15;" href="http://netzke.org">Netzke</a> demo app (Netzke 1.0.0.0.alpha, Rails 4.2, Ext JS 5.1)
       </div>
     }
   end
