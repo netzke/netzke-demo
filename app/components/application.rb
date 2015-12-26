@@ -39,7 +39,7 @@ class Application < Netzke::Viewport::Base
         items: [
           { region: :west, item_id: :navigation, width: 300, split: true, xtype: :treepanel, root: menu, root_visible: false, border: false, title: "Navigation" },
           { region: :center, layout: :border, border: false, items: [
-            { region: :north, height: 35, border: false, split: true, layout: :fit, items: [{item_id: :info_panel, padding: 5, border: false}] },
+            { region: :north, height: 50, border: false, split: true, layout: :fit, items: [{item_id: :info_panel, padding: 5, border: false}] },
             { item_id: :main_panel, region: :center, layout: :fit, border: false, items: [{border: false, body_padding: 5, html: "Components will be loaded in this area"}] } # items is only needed here for cosmetic reasons (initial border)
           ]}
         ]
@@ -51,8 +51,8 @@ class Application < Netzke::Viewport::Base
   # Components
   #
 
-  component :bosses do |c|
-    c.desc = "Grid configured with just a model. Implements infinite scrolling, per-column filtering, sorting, and CRUD operations. " + source_code_link(c)
+  component :grid_with_defaults do |c|
+    c.desc = "Grid configured with just a model (20K records seeded). Implements infinite scrolling, per-column filtering and sorting, CRUD operations, association support, advanced search etc. " + source_code_link(c)
   end
 
   component :clerks do |c|
@@ -201,7 +201,7 @@ protected
             { :text => "Grid",
               :expanded => true,
               :children => [
-                leaf("Defaults", :bosses, :table),
+                leaf("Basic configuration", :grid_with_defaults, :table),
                 leaf("Customized columns", :clerks, :table),
                 leaf("Customized form layout", :"grid_with_custom_form_layout", :table),
                 leaf("Action column", :grid_with_action_column, :table),

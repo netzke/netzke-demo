@@ -4,8 +4,7 @@ class ClerkForm < Netzke::Basepack::PagingForm
     c.model = "Clerk"
 
     boss_contact = [
-      {:field_label => "First name", :name => :boss__first_name, :read_only => true},
-      {:field_label => "Last name", :name => :boss__last_name, :read_only => true},
+      {:field_label => "Name", :name => :boss__name, :read_only => true},
       {:field_label => "Email", :name => :boss__email, :read_only => true}
     ]
 
@@ -20,13 +19,13 @@ class ClerkForm < Netzke::Basepack::PagingForm
         :layout => :hbox, :border => false,
         :items => [
           {:flex => 1, :border => false, :defaults => {:anchor => "-8"}, :items => [
-            :first_name,
+            :name,
             :email,
             {:name => :image_link, :xtype => :displayfield, :display_only => true, :getter => lambda {|r| %Q(<a href='#{r.image.url}'>Download</a>) if r.image.url}},
             {:name => :image, :field_label => "Upload image", :xtype => :fileuploadfield, :getter => lambda {|r| ""}, :display_only => true}
           ]},
           {:flex => 1, :border => false, :defaults => {:anchor => "100%"}, :items => [
-            :last_name,
+            :name,
             :salary,
             :boss__name
           ]}

@@ -1,8 +1,7 @@
 class CreateBosses < ActiveRecord::Migration
   def self.up
     create_table :bosses do |t|
-      t.string :first_name
-      t.string :last_name
+      t.string :name
       t.string :email
       t.integer :salary
 

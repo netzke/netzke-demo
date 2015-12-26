@@ -22,6 +22,6 @@ class GridWithActionColumn < Netzke::Grid::Base
   def configure(c)
     super
     c.model = "Clerk"
-    c.columns = [:first_name, :last_name, :email, :actions]
+    c.columns = [:name, :email, :actions]
   end
 end

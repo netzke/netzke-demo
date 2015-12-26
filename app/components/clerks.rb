@@ -29,8 +29,7 @@ class Clerks < Netzke::Grid::Base
         :renderer => "uppercase",
         :width => 200
       },
-      :first_name,
-      :last_name,
+      :name,
       { :name => :updated_bulb,
         :width => 30,
         :header => "",
@@ -41,7 +40,7 @@ class Clerks < Netzke::Grid::Base
         }
       },
       :email,
-      { :name => :boss__last_name,
+      { :name => :boss__name,
         :header => "Boss"
       },
       :image

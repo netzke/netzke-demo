@@ -12,7 +12,7 @@ class GridWithCustomFormLayout < Netzke::Grid::Base
           {
             flex: 1, border: false,
             defaults: {anchor: "-25", label_width: 80},
-            items: [ :first_name, :last_name ]
+            items: [ :name ]
           },
           {
             flex: 1, border: false,

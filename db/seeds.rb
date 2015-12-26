@@ -5,11 +5,11 @@ Boss.delete_all
 bosses_ids = []
 data = number_of_bosses.times.with_index.map do |i|
   first_name = Faker::Name.first_name
-  email = "#{first_name.downcase}@#{Faker::Internet.email.split("@").last}"
+  last_name = Faker::Name.last_name
+  email = "#{last_name.downcase}@#{Faker::Internet.email.split("@").last}"
   {
     id: i + 1,
-    :first_name => first_name,
-    :last_name => Faker::Name.last_name,
+    :name => [first_name, last_name].join(" "),
     :email => email,
     :salary => (rand(10)+1)*10000
   }
@@ -21,11 +21,11 @@ Clerk.delete_all
 timestamp = 15.minutes.ago
 data = 20000.times.map do
   first_name = Faker::Name.first_name
-  email = "#{first_name.downcase}@#{Faker::Internet.email.split("@").last}"
+  last_name = Faker::Name.last_name
+  email = "#{last_name.downcase}@#{Faker::Internet.email.split("@").last}"
   {
     :boss_id => rand(number_of_bosses) + 1,
-    :first_name => first_name,
-    :last_name => Faker::Name.last_name,
+    :name => [first_name, last_name].join(" "),
     :email => email,
     :salary => (rand(10)+1)*1000,
     :subject_to_lay_off => rand > 0.8,
@@ -48,7 +48,7 @@ ids = []
   ids << file.id
 end
 
-puts "Updating leaf status..."
+puts "Updating File tree leaf statuses..."
 FileRecord.all.each do |r|
   r.update_attribute(:leaf, r.children.empty?)
 end
