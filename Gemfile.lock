@@ -1,29 +1,3 @@
-GIT
-  remote: git://github.com/netzke/netzke-basepack.git
-  revision: 2a53318ca5fb84b34e7ba671fe5fbf636cd8ac43
-  branch: master
-  specs:
-    netzke-basepack (1.0.0.0.alpha)
-      netzke-core (= 1.0.0.0.alpha)
-      netzke-testing (= 1.0.0.0.alpha)
-
-GIT
-  remote: git://github.com/netzke/netzke-core.git
-  revision: 5ebb8f68ef6cfdf7115e48e88f1c3cbb94328f3c
-  branch: master
-  specs:
-    netzke-core (1.0.0.0.alpha)
-      execjs
-      uglifier
-
-GIT
-  remote: git://github.com/netzke/netzke-testing.git
-  revision: c333618aa06b801406a7e42abee2eab80362b50c
-  branch: master
-  specs:
-    netzke-testing (1.0.0.0.alpha)
-      coffee-script
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -137,6 +111,16 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.1)
+    netzke (1.0.0.0.pre2)
+      netzke-basepack (= 1.0.0.0.pre2)
+      netzke-core (= 1.0.0.0.pre3)
+      netzke-testing (= 1.0.0.0.pre)
+    netzke-basepack (1.0.0.0.pre2)
+    netzke-core (1.0.0.0.pre3)
+      execjs
+      uglifier
+    netzke-testing (1.0.0.0.pre)
+      coffee-script
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     pg (0.18.4)
@@ -240,9 +224,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   launchy
-  netzke-basepack!
-  netzke-core!
-  netzke-testing!
+  netzke (= 1.0.0.0.pre2)
   pg
   pry
   rails (~> 4.2.0)
