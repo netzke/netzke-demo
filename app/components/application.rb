@@ -87,10 +87,8 @@ class Application < Netzke::Viewport::Base
     c.desc = "Grid using inline (multi-line) editing of records " + source_code_link(c)
   end
 
-  component :custom_action_grid do |c|
-    c.model  = "Boss"
-    c.title  = "Bosses"
-    c.desc = "Grid from #{link('this', '/')} tutorial. " + source_code_link(c)
+  component :grid_with_custom_action do |c|
+    c.desc = "Grid implementing a simple custom action that queries the server side on total records count. " + source_code_link(c)
   end
 
   component :files do |c|
@@ -209,6 +207,7 @@ protected
                 leaf("Customized columns", :grid_with_customized_columns, :table),
                 leaf("Customized form layout", :"grid_with_custom_form_layout", :table),
                 leaf("Action column", :grid_with_action_column, :table),
+                leaf("Custom action", :grid_with_custom_action),
                 leaf("Row highlighting", :grid_with_highlighted_rows, :table),
                 leaf("Persistent columns", :grid_with_persistent_columns, :table),
                 leaf("Pagination", :grid_with_pagination, :table),
