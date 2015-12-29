@@ -4,17 +4,21 @@ class CustomActionGrid < Netzke::Grid::Base
     c.disabled = true
   end
 
-  def configure(c)
-    c.model = "Clerk" # For stand-alone testing
-
-    super
-
-    c.bbar = [:show_details, "-", *c.bbar]
-    c.context_menu = [:show_details, "-", *c.context_menu]
+  def model
+    Clerk
   end
 
+  def bbar
+    [*super, "-", :show_details]
+  end
+
+  def context_menu
+    [*super, "-", :show_details]
+  end
+
+  # Client-side methods declared inline for conciseness
   client_class do |c|
-    c.init_component = <<-JS
+    c.init_component = l(<<-JS)
       function(){
         this.callParent();
 
@@ -24,7 +28,7 @@ class CustomActionGrid < Netzke::Grid::Base
       }
     JS
 
-    c.on_show_details = <<-JS
+    c.netzke_on_show_details = l(<<-JS)
       function(){
         var tmpl = new Ext.Template("<b>{0}</b>: {1}<br/>"), html = "",
             record = this.getSelectionModel().getSelection()[0];
@@ -41,5 +45,4 @@ class CustomActionGrid < Netzke::Grid::Base
       }
     JS
   end
-
 end

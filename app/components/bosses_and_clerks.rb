@@ -17,7 +17,7 @@ class BossesAndClerks < Netzke::Base
     c.border = false
 
     # Overriding initComponent
-    c.init_component = <<-JS
+    c.init_component = l(<<-JS)
       function(){
         // calling superclass's initComponent
         this.callParent();

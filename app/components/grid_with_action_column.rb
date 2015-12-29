@@ -4,7 +4,7 @@ class GridWithActionColumn < Netzke::Grid::Base
   client_class do |c|
     c.force_fit = true
     # handler for the 'delete' column action
-    c.netzke_on_delete_row = <<-JS
+    c.netzke_on_delete_row = l(<<-JS)
       function(grid, rowIndex, colIndex){
         this.getSelectionModel().select(rowIndex);
         this.netzkeOnDelete();

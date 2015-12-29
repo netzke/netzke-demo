@@ -3,7 +3,7 @@ class BossDetails < Netzke::Base
   client_class do |c|
     c.body_padding = 5
     c.title = "Info"
-    c.update_stats = <<-JS
+    c.update_stats = l(<<-JS)
       function(){
         // Create and show the mask
         this.getEl().mask();
