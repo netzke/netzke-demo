@@ -45,20 +45,20 @@ GEM
     awesome_nested_set (3.0.2)
       activerecord (>= 4.0.0, < 5)
     builder (3.2.2)
-    capistrano (3.0.1)
+    capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
-      sshkit (>= 0.0.23)
-    capistrano-bundler (1.1.2)
-      capistrano (~> 3.0)
+      sshkit (~> 1.3)
+    capistrano-bundler (1.1.4)
+      capistrano (~> 3.1)
       sshkit (~> 1.2)
     capistrano-passenger (0.2.0)
       capistrano (~> 3.0)
-    capistrano-rails (1.1.0)
-      capistrano (>= 3.0.0)
-      capistrano-bundler (>= 1.0.0)
-    capistrano-rails-console (0.5.2)
-      capistrano (>= 3.0.0, < 4.0.0)
+    capistrano-rails (1.1.5)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rails-console (1.0.2)
+      capistrano (>= 3.1.0, < 4.0.0)
     capybara (2.5.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -110,7 +110,7 @@ GEM
     multi_json (1.11.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-ssh (3.0.1)
+    net-ssh (3.0.2)
     netzke (1.0.0.0.pre3)
       netzke-basepack (= 1.0.0.0.pre3)
       netzke-core (= 1.0.0.0.pre4)
@@ -213,7 +213,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-session_store
   awesome_nested_set
-  capistrano (~> 3.0.1)
+  capistrano (~> 3)
   capistrano-bundler
   capistrano-passenger
   capistrano-rails (~> 1.1.0)
