@@ -16,7 +16,7 @@ class BossesAndClerks < Netzke::Base
     c.layout = :border
     c.border = false
 
-    # Overriding initComponent
+    # Overriding initComponent. We do inline in the Ruby code for the sake of simplicity.
     c.init_component = l(<<-JS)
       function(){
         // calling superclass's initComponent
@@ -26,17 +26,12 @@ class BossesAndClerks < Netzke::Base
         var view = this.getComponent('bosses').getView();
         view.on('itemclick', function(view, record){
           // The beauty of using Ext.Direct: calling 3 endpoints in a row, which results in a single call to the server!
-          this.server.selectBoss(record.get('id'));
+          this.serverConfig.selected_boss_id = record.get('id');
           this.getComponent('clerks').getStore().load();
           this.getComponent('boss_details').updateStats();
         }, this);
       }
     JS
-  end
-
-  endpoint :select_boss do |id|
-    # store selected boss id in the session for this component's instance
-    component_session[:selected_boss_id] = id
   end
 
   component :bosses do |c|
@@ -47,12 +42,12 @@ class BossesAndClerks < Netzke::Base
   component :clerks do |c|
     c.klass = Clerks
     c.data_store = {auto_load: false}
-    c.scope = lambda {|rel| rel.where(boss_id: component_session[:selected_boss_id])}
-    c.strong_values = {boss_id: component_session[:selected_boss_id]}
+    c.scope = lambda {|rel| rel.where(boss_id: client_config[:selected_boss_id])}
+    c.strong_values = {boss_id: client_config[:selected_boss_id]}
   end
 
   component :boss_details do |c|
     c.klass = BossDetails
-    c.boss_id = component_session[:selected_boss_id]
+    c.boss_id = client_config[:selected_boss_id]
   end
 end
