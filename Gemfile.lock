@@ -111,15 +111,15 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.2)
-    netzke (1.0.0.0.pre3)
-      netzke-basepack (= 1.0.0.0.pre3)
-      netzke-core (= 1.0.0.0.pre4)
-      netzke-testing (= 1.0.0.0.pre)
-    netzke-basepack (1.0.0.0.pre3)
-    netzke-core (1.0.0.0.pre4)
+    netzke (1.0.0.0)
+      netzke-basepack (= 1.0.0.0)
+      netzke-core (= 1.0.0.0)
+      netzke-testing (= 1.0.0.0)
+    netzke-basepack (1.0.0.0)
+    netzke-core (1.0.0.0)
       execjs
       uglifier
-    netzke-testing (1.0.0.0.pre)
+    netzke-testing (1.0.0.0)
       coffee-script
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
@@ -224,7 +224,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   launchy
-  netzke (= 1.0.0.0.pre3)
+  netzke (= 1.0.0.0)
   pg
   pry
   rails (~> 4.2.0)
