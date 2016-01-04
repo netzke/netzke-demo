@@ -30,8 +30,11 @@ The cutting-edge version (updated directly from master) is [here](http://edgedem
 
 ## Feedback
 
-Google groups: http://groups.google.com/group/netzke
-
 Twitter: http://twitter.com/netzke
 
 Author's twitter: http://twitter.com/mxgrn
+
+Google groups: http://groups.google.com/group/netzke
+
+---
+Copyright (c) 2009-2016 [Good Bit Labs](http://goodbitlabs.com/), released under the same license as [Ext JS](https://www.sencha.com/legal/#Sencha_Ext_JS)
