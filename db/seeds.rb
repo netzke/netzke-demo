@@ -1,6 +1,8 @@
+Employee.delete_all
+Department.delete_all
+
 puts "Generating departments..."
 number_of_departments = 100
-Department.delete_all
 bosses_ids = []
 data = number_of_departments .times.with_index.map do |i|
   {
@@ -11,7 +13,6 @@ end
 Department.create(data)
 
 puts "Generating employees..."
-Employee.delete_all
 timestamp = 15.minutes.ago
 data = 20000.times.map do
   first_name = Faker::Name.first_name
