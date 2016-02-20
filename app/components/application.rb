@@ -83,6 +83,10 @@ class Application < Netzke::Viewport::Base
     c.desc = "Grid using pagination instead of \"infinite scrolling\" " + source_code_link(c)
   end
 
+  component :grid_with_summary do |c|
+    c.desc = "Grid that shows a summary row at the bottom. It also doesn't use pagination nor \"infinite scrolling\", thus loading all data records at once. " + source_code_link(c)
+  end
+
   component :grid_with_inline_editing do |c|
     c.desc = "Grid using inline (multi-line) editing of records " + source_code_link(c)
   end
@@ -211,6 +215,7 @@ protected
                 leaf("Row highlighting", :grid_with_highlighted_rows, :table),
                 leaf("Persistent columns", :grid_with_persistent_columns, :table),
                 leaf("Pagination", :grid_with_pagination, :table),
+                leaf("Summary", :grid_with_summary, :table),
                 leaf("Inline editing", :grid_with_inline_editing, :table),
                 leaf("File upload", :grid_with_file_upload, :table),
                 leaf("Live search", :grid_with_live_search, :table),
