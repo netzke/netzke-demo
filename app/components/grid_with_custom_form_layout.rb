@@ -7,15 +7,13 @@ class GridWithCustomFormLayout < Netzke::Grid::Base
     c.form_items = [
       {
         layout: :hbox, border: false, anchor: "100%",
-        defaults: {layout: 'anchor'},
+        defaults: {layout: 'anchor', flex: 1, border: false},
         items: [
           {
-            flex: 1, border: false,
             defaults: {anchor: "-25", label_width: 80},
             items: [ :name, :birthdate ]
           },
           {
-            flex: 1, border: false,
             defaults: {anchor: "100%", label_width: 50},
             items: [ :email, :salary ]
           }
