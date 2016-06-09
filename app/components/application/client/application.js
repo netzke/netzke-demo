@@ -59,7 +59,7 @@
               values = form.getForm().getValues();
 
           // calling the endpoint
-          me.signIn(values, function(res){
+          me.server.signIn(values, function(res){
             if (res) {
               this.signinWin.close();
               Ext.Msg.show({title: "Signed in", msg: "Signed in successfully, reloading the application...", icon: Ext.Msg.INFO, closable: false});
@@ -91,7 +91,7 @@
   },
 
   netzkeOnSignOut: function() {
-    this.signOut(null, function(success) {
+    this.server.signOut(null, function(success) {
       if (success) {
         Ext.Msg.show({title: "Signed out", msg: "Signed out, reloading the application...", icon: Ext.Msg.INFO, closable: false});
         window.location = window.location;
