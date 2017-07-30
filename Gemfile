@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '~>5.1.0'
-# gem 'activerecord-session_store'
+gem 'activerecord-session_store'
 
 gem 'faker'
 gem 'pg'
@@ -16,7 +16,8 @@ group :development, :test do
   gem 'pry'
   gem 'capybara'
   gem 'capybara-screenshot'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 3.4.4'
+  gem 'chromedriver-helper'
   gem 'rspec-rails'
   # gem 'spork-rails'
   gem 'launchy'    # So you can do Then show me the page

@@ -2,8 +2,8 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 
+require File.expand_path(File.dirname(__FILE__) + '/capybara_config')
 require 'capybara/rspec'
 require 'capybara/rails'
 

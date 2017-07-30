@@ -1,4 +1,4 @@
-class CreateClerks < ActiveRecord::Migration
+class CreateClerks < ActiveRecord::Migration[4.2]
   def self.up
     create_table :clerks do |t|
       t.integer :boss_id
