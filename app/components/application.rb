@@ -99,6 +99,10 @@ class Application < Netzke::Viewport::Base
     c.desc = "Tree panel configure with just a model. " + source_code_link(c)
   end
 
+  component :tree_drag_and_drop do |c|
+    c.desc = "Tree panel with drag and drop" + source_code_link(c)
+  end
+
   component :grid_with_glyphicons do |c|
     c.desc = "This grid has actions and header configured with glyphicons. " + source_code_link(c)
   end
@@ -226,7 +230,9 @@ protected
             { text: "Tree",
               expanded: true,
               children: [
-                leaf("Tree panel", :files, :application_side_tree)
+                leaf("Tree panel", :files, :application_side_tree),
+                leaf("Tree drag & drop", :tree_drag_and_drop, :application_side_tree)
+
               ]
             },
 
