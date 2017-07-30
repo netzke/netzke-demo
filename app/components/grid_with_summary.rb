@@ -11,6 +11,7 @@ class GridWithSummary < Bosses
 
   def configure(c)
     super
+    c.paging = :none
     c.infinite_scrolling = false
     c.features = [{ ftype: 'summary', dock: :bottom }]
   end
