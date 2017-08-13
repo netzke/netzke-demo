@@ -7,7 +7,11 @@ gem 'faker'
 gem 'pg'
 gem 'carrierwave'
 
-# gem 'netzke', '1.0.1.0'
+gem 'netzke', '6.5.0.0.rc1'
+
+# gem 'netzke-core', github: 'thepry/netzke-core', branch: 'ext-js-6-0-0'
+# gem 'netzke-basepack', github: 'thepry/netzke-basepack', branch: 'ext-6-rails-5'
+# gem 'netzke-testing', github: 'thepry/netzke-testing', branch: 'ext-6-rails-5'
 
 gem 'awesome_nested_set'
 gem 'whenever', :require => false
@@ -31,7 +35,3 @@ group :development do
   gem 'capistrano-rails-console'
   gem 'capistrano-passenger'
 end
-
-gem 'netzke-core', github: 'thepry/netzke-core', branch: 'ext-js-6-0-0'
-gem 'netzke-basepack', github: 'thepry/netzke-basepack', branch: 'ext-6-rails-5'
-gem 'netzke-testing', github: 'thepry/netzke-testing', branch: 'ext-6-rails-5'
