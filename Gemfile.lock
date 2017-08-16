@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/netzke/netzke-basepack.git
-  revision: feb7050328c2a25a1e532c7f1f031354896ae524
+  revision: f0b0b6521d612e490db02702793bfe188ca3308f
   branch: 6-5-0
   specs:
     netzke-basepack (6.5.0.0.rc1)
@@ -233,7 +233,7 @@ GEM
       net-ssh (>= 2.8.0)
     sshkit-interactive (0.2.2)
       sshkit (~> 1.12)
-    thor (0.19.4)
+    thor (0.20.0)
     thread_safe (0.3.6)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
