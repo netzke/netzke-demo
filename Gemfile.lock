@@ -1,3 +1,38 @@
+GIT
+  remote: https://github.com/netzke/netzke-basepack.git
+  revision: feb7050328c2a25a1e532c7f1f031354896ae524
+  branch: 6-5-0
+  specs:
+    netzke-basepack (6.5.0.0.rc1)
+
+GIT
+  remote: https://github.com/netzke/netzke-core.git
+  revision: 9224c603b523077c1cf06f6eae9bb8e4d98fca5b
+  branch: 6-5-0
+  specs:
+    netzke-core (6.5.0.0.rc1)
+      execjs
+      mime-types (< 3)
+      uglifier
+
+GIT
+  remote: https://github.com/netzke/netzke-testing.git
+  revision: fa18972743d61c419bcca45ec19855a629b5b7e7
+  branch: 6-5-0
+  specs:
+    netzke-testing (6.5.0.0.rc1)
+      coffee-script
+
+GIT
+  remote: https://github.com/netzke/netzke.git
+  revision: 3f9a32d4e077e349122635428702668849398c30
+  branch: 6-5-0
+  specs:
+    netzke (6.5.0.0.rc1)
+      netzke-basepack (= 6.5.0.0.rc1)
+      netzke-core (= 6.5.0.0.rc1)
+      netzke-testing (= 6.5.0.0.rc1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -128,17 +163,6 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.1.0)
-    netzke (6.5.0.0.rc1)
-      netzke-basepack (= 6.5.0.0.rc1)
-      netzke-core (= 6.5.0.0.rc1)
-      netzke-testing (= 6.5.0.0.rc1)
-    netzke-basepack (6.5.0.0.rc1)
-    netzke-core (6.5.0.0.rc1)
-      execjs
-      mime-types (< 3)
-      uglifier
-    netzke-testing (6.5.0.0.rc1)
-      coffee-script
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
@@ -241,7 +265,10 @@ DEPENDENCIES
   factory_girl_rails
   faker
   launchy
-  netzke (= 6.5.0.0.rc1)
+  netzke!
+  netzke-basepack!
+  netzke-core!
+  netzke-testing!
   pg
   pry
   rails (~> 5.1.0)
