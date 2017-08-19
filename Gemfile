@@ -7,12 +7,12 @@ gem 'faker'
 gem 'pg'
 gem 'carrierwave'
 
-# gem 'netzke', '6.5.0.0.rc1'
+gem 'netzke', '6.5.0.0.rc2'
 
-gem 'netzke', git: 'https://github.com/netzke/netzke.git', branch: '6-5-0'
-gem 'netzke-core', git: 'https://github.com/netzke/netzke-core.git', branch: '6-5-0'
-gem 'netzke-basepack', git: 'https://github.com/netzke/netzke-basepack.git', branch: '6-5-0'
-gem 'netzke-testing', git: 'https://github.com/netzke/netzke-testing.git', branch: '6-5-0'
+# gem 'netzke', git: 'https://github.com/netzke/netzke.git', branch: '6-5-0'
+# gem 'netzke-core', git: 'https://github.com/netzke/netzke-core.git', branch: '6-5-0'
+# gem 'netzke-basepack', git: 'https://github.com/netzke/netzke-basepack.git', branch: '6-5-0'
+# gem 'netzke-testing', git: 'https://github.com/netzke/netzke-testing.git', branch: '6-5-0'
 
 gem 'awesome_nested_set'
 gem 'whenever', :require => false
