@@ -15,7 +15,7 @@ role :db,  %w{netzke-edgedemo@netzke.org}
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'netzke.com', user: 'netzke-edgedemo', roles: %w{web app}
+server 'netzke.org', user: 'netzke-edgedemo', roles: %w{web app}
 
 
 # Custom SSH Options

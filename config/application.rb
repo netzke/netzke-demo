@@ -44,7 +44,5 @@ module NetzkeDemo
     config.filter_parameters += [:password]
 
     config.repo_root = "https://github.com/netzke/netzke-demo/blob/master"
-
-    config.active_record.raise_in_transactional_callbacks = true
   end
 end

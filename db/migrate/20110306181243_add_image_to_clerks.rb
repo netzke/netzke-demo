@@ -1,4 +1,4 @@
-class AddImageToClerks < ActiveRecord::Migration
+class AddImageToClerks < ActiveRecord::Migration[4.2]
   def self.up
     add_column :clerks, :image, :string
   end

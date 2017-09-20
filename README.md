@@ -24,9 +24,9 @@ The cutting-edge version (updated directly from master) is [here](http://edgedem
 
 ## Dependencies
 
-* Rails ~> 4.2.0
-* Ext JS = 5.1.1
-* Netzke = 1.0.0.0.alpha
+* Rails ~> 5.1.0
+* Ext JS = 6.5.1
+* Netzke = 6.5.0.0
 
 ## Feedback
 
@@ -37,4 +37,4 @@ Author's twitter: http://twitter.com/mxgrn
 Google groups: http://groups.google.com/group/netzke
 
 ---
-Copyright (c) 2009-2016 [Good Bit Labs](http://goodbitlabs.com/), released under the same license as [Ext JS](https://www.sencha.com/legal/#Sencha_Ext_JS)
+Copyright (c) 2009-2017 [Good Bit Labs](http://goodbitlabs.com/), released under the same license as [Ext JS](https://www.sencha.com/legal/#Sencha_Ext_JS)
