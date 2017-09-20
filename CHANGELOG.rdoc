@@ -1,3 +1,6 @@
+2017-09-20
+* Compatibility with Netzke 6.5.0.0
+
 2010-06-25
 * Added TabPanel demo page.
 
